@@ -1,14 +1,10 @@
-// You have generated a new plugin project without specifying the `--platforms`
-// flag. A plugin project with no platform support was generated. To add a
-// platform, run `flutter create -t plugin --platforms <platforms> .` under the
-// same directory. You can also find a detailed instruction on how to add
-// platforms in the `pubspec.yaml` at
-// https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
+library base_ui_core;
 
-import 'base_ui_core_platform_interface.dart';
-
-class BaseUiCore {
-  Future<String?> getPlatformVersion() {
-    return BaseUiCorePlatform.instance.getPlatformVersion();
-  }
-}
+export 'src/action_icon/action_icon.dart';
+export 'src/badge/badge.dart';
+export 'src/blockquote/blockquote.dart';
+export 'src/button/button.dart';
+export 'src/checkbox/checkbox.dart';
+export 'src/kbd/kdb.dart';
+export 'src/loader/loader.dart';
+export 'src/switch/switch.dart';
