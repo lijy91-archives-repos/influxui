@@ -1,7 +1,7 @@
 name: base_ui
 description: A new Flutter plugin project.
 version: 0.0.1
-homepage:
+homepage: https://github.com/leanflutter/base_ui/tree/main/packages/base_ui
 
 environment:
   sdk: '>=2.19.3 <3.0.0'
@@ -10,7 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
+  base_ui_core:
+    path: ../base_ui_core
 
 dev_dependencies:
   flutter_test:

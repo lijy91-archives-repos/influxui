@@ -1,0 +1,10 @@
+name: base_ui_dev
+version: 0.1.0
+publish_to: "none"
+
+environment:
+  sdk: ">=2.0.0 <3.0.0"
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  melos: ^3.0.0

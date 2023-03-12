@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
 
+/// Blockquote with optional cite
 class Blockquote extends StatelessWidget {
+  /// Describe a reference to a cited quote
+  final String? cite;
+
+  final WidgetBuilder? citeBuilder;
+
+  /// Icon, defaults to quote icon
   final Widget? icon;
-  final Widget cite;
+
   final Widget child;
 
   const Blockquote({
     super.key,
     this.icon,
-    required this.cite,
+    this.cite,
+    this.citeBuilder,
     required this.child,
   });
+
+  Widget _buildCite(BuildContext context) {
+    return Text(cite!);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +35,7 @@ class Blockquote extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               child,
-              cite,
+              _buildCite(context),
             ],
           ),
         ],

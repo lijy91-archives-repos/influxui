@@ -5,19 +5,18 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('golden test', (tester) async {
-    await loadTestFonts();
     await tester.binding.setSurfaceSize(const Size(200, 200));
+    await loadTestFonts();
 
     await tester.pumpWidget(const TestWidgetApp(
-      child: Blockquote(
-        cite: 'test-cite',
-        child: Text('test-quote'),
+      child: Button(
+        label: 'Button',
       ),
     ));
 
     await expectLater(
-      find.byType(Blockquote),
-      matchesGoldenFile('goldens/blockquote.png'),
+      find.byType(Button),
+      matchesGoldenFile('goldens/button.png'),
     );
   });
 }

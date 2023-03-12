@@ -5,19 +5,20 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('golden test', (tester) async {
-    await loadTestFonts();
     await tester.binding.setSurfaceSize(const Size(200, 200));
+    await loadTestFonts();
 
     await tester.pumpWidget(const TestWidgetApp(
-      child: Blockquote(
-        cite: 'test-cite',
-        child: Text('test-quote'),
+      child: Alert(
+        title: 'Bummer!',
+        message:
+            'Something terrible happened! You made a mistake and there is no going back, your data was lost forever!',
       ),
     ));
 
     await expectLater(
-      find.byType(Blockquote),
-      matchesGoldenFile('goldens/blockquote.png'),
+      find.byType(Alert),
+      matchesGoldenFile('goldens/alert.png'),
     );
   });
 }
