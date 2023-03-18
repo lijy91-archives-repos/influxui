@@ -1,11 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 enum CheckboxLabelPosition {
   left,
   right,
 }
 
+class CheckboxIcon extends StatelessWidget {
+  const CheckboxIcon({
+    super.key,
+    required this.indeterminate,
+  });
+  final bool indeterminate;
+
+  @override
+  Widget build(BuildContext context) {
+    if (indeterminate) {
+      return SvgPicture.string('''
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 6">
+  <rect width="32" height="6" fill="currentColor" rx="3" />
+</svg>
+''');
+    }
+    return SvgPicture.string('''
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 7">
+  <path
+    d="M4 4.586L1.707 2.293A1 1 0 1 0 .293 3.707l3 3a.997.997 0 0 0 1.414 0l5-5A1 1 0 1 0 8.293.293L4 4.586z"
+    fill="currentColor"
+    fillRule="evenodd"
+    clipRule="evenodd"
+  />
+</svg>
+''');
+  }
+}
+
 class Checkbox extends StatelessWidget {
+  const Checkbox({
+    super.key,
+    this.value,
+    this.tristate = false,
+    this.onChanged,
+    this.label,
+    this.labelPosition = CheckboxLabelPosition.left,
+    this.labelBuilder,
+  });
+
   /// Whether this checkbox is checked.
   ///
   /// When [tristate] is true, a value of null corresponds to the mixed state.
@@ -60,16 +100,6 @@ class Checkbox extends StatelessWidget {
   final CheckboxLabelPosition labelPosition;
   final Widget? labelBuilder;
 
-  const Checkbox({
-    super.key,
-    this.value,
-    this.tristate = false,
-    this.onChanged,
-    this.label,
-    this.labelPosition = CheckboxLabelPosition.left,
-    this.labelBuilder,
-  });
-
   Widget _buildLabel(BuildContext context) {
     return Text(label!);
   }
@@ -78,6 +108,7 @@ class Checkbox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        CheckboxIcon(indeterminate: value == null),
         _buildLabel(context),
       ],
     );

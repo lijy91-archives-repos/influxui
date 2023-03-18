@@ -1,5 +1,4 @@
-name: base_ui_dev
-version: 0.1.0
+name: base_ui_workspace
 publish_to: "none"
 
 environment:

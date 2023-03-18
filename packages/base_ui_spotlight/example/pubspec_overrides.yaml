@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: base_ui_spotlight
+dependency_overrides:
+  base_ui_spotlight:
+    path: ..

@@ -1,6 +1,6 @@
 name: base_ui_test
 description: base_ui_test
-version: 0.0.1
+version: 0.1.0
 homepage: https://github.com/leanflutter/base_ui/tree/main/packages/base_ui_test
 
 environment:
@@ -8,13 +8,11 @@ environment:
   flutter: ">=2.5.0"
 
 dependencies:
+  base_ui_core: ^0.1.0
   flutter:
     sdk: flutter
-
-dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
 
 flutter:
   fonts:

@@ -1,7 +1,8 @@
-name: base_ui
+name: base_ui_workspace
 repository: https://github.com/leanflutter/base_ui
 
 packages:
+  - examples/**
   - packages/**
 
 scripts:
@@ -22,6 +23,10 @@ scripts:
   fix:
     exec: dart fix . --apply
     description: Run `dart fix` for all packages.
+
+  test:
+    exec: flutter test
+    description: Run `flutter test` for all packages.
 
   dependency_validator:
     exec: flutter pub run dependency_validator

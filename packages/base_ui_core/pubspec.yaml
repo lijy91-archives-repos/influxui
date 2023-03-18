@@ -1,6 +1,6 @@
 name: base_ui_core
 description: base_ui_core
-version: 0.0.1
+version: 0.1.0
 homepage: https://github.com/leanflutter/base_ui/tree/main/packages/base_ui_core
 
 environment:
@@ -10,10 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.3
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^2.0.0
   base_ui_test:
     path: ../base_ui_test
+  flutter_test:
+    sdk: flutter

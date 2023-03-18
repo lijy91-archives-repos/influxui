@@ -1,13 +1,12 @@
+import 'package:base_ui_core/src/box/box.dart';
+import 'package:base_ui_core/src/button/button_theme.dart';
 import 'package:base_ui_core/src/theme/theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
-const EdgeInsets _kButtonPadding = EdgeInsets.all(16.0);
-const EdgeInsets _kBackgroundButtonPadding = EdgeInsets.symmetric(
-  vertical: 14.0,
-  horizontal: 64.0,
-);
+export 'package:base_ui_core/src/button/button_theme.dart';
 
+const EdgeInsets _kButtonPadding = EdgeInsets.all(16.0);
 const _kPressedOpacity = 0.8;
 
 /// Controls button appearance
@@ -20,7 +19,30 @@ enum ButtonVariant {
   gradient,
 }
 
+class ButtonSize extends Size {
+  ButtonSize(super.width, super.height);
+  static NamedSize get tiny => NamedSize.tiny;
+  static NamedSize get small => NamedSize.small;
+  static NamedSize get medium => NamedSize.medium;
+  static NamedSize get large => NamedSize.large;
+  static NamedSize get big => NamedSize.big;
+}
+
 class Button extends StatefulWidget {
+  const Button({
+    super.key,
+    this.variant,
+    this.label,
+    this.labelBuilder,
+    this.padding,
+    this.color,
+    this.shape,
+    this.size,
+    this.compact = false,
+    this.uppercase = false,
+    this.onPressed,
+  }) : assert(size is Size || size is NamedSize || size == null);
+
   final ButtonVariant? variant;
   final String? label;
   final WidgetBuilder? labelBuilder;
@@ -31,21 +53,11 @@ class Button extends StatefulWidget {
   final EdgeInsetsGeometry? padding;
 
   final Color? color;
+  final Shape? shape;
+  final Size? size;
   final bool compact;
   final bool uppercase;
   final VoidCallback? onPressed;
-
-  const Button({
-    super.key,
-    this.variant,
-    this.label,
-    this.labelBuilder,
-    this.padding,
-    this.color,
-    this.compact = false,
-    this.uppercase = false,
-    this.onPressed,
-  });
 
   /// Whether the button is enabled or disabled. Buttons are disabled by default. To
   /// enable a button, set its [onPressed] property to a non-null value.
@@ -140,8 +152,8 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
     final ThemeData themeData = Theme.of(context);
     final Color primaryColor = themeData.primaryColor;
     final Color backgroundColor = widget.color ?? primaryColor;
-
-    final Color foregroundColor = Colors.white;
+    final theme = ButtonTheme.sizedOf(context);
+    // Size? size = theme.sizes?[widget.size];
 
     // final TextStyle textStyle =
     //     themeData.textTheme.textStyle.copyWith(color: foregroundColor);
@@ -181,10 +193,7 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
                   color: backgroundColor,
                 ),
                 child: Padding(
-                  padding: widget.padding ??
-                      (backgroundColor != null
-                          ? _kBackgroundButtonPadding
-                          : _kButtonPadding),
+                  padding: widget.padding ?? _kButtonPadding,
                   child: Align(
                     // alignment: widget.alignment,
                     widthFactor: 1.0,

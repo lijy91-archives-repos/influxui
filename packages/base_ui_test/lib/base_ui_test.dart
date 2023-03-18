@@ -1,12 +1,3 @@
-import 'package:flutter/services.dart';
+library base_ui_test;
 
-export 'src/test_widget_app.dart';
-
-Future<void> loadTestFonts() async {
-  final font = rootBundle.load(
-    'packages/base_ui_test/fonts/Roboto/Roboto-Regular.ttf',
-  );
-
-  final fontLoader = FontLoader('Roboto')..addFont(font);
-  await fontLoader.load();
-}
+export 'src/test_golden.dart';

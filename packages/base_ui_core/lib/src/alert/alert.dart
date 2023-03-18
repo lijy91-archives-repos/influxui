@@ -9,6 +9,15 @@ enum AlertVariant {
 
 /// Attract user attention with important static message
 class Alert extends StatelessWidget {
+  const Alert({
+    super.key,
+    this.variant,
+    this.title,
+    this.titleBuilder,
+    this.message,
+    this.messageBuilder,
+  });
+
   final AlertVariant? variant;
 
   /// Alert title
@@ -22,15 +31,6 @@ class Alert extends StatelessWidget {
 
   /// Alert message builder
   final WidgetBuilder? messageBuilder;
-
-  const Alert({
-    super.key,
-    this.variant,
-    this.title,
-    this.titleBuilder,
-    this.message,
-    this.messageBuilder,
-  });
 
   Widget _buildTitle(BuildContext context) {
     return Text(title!);

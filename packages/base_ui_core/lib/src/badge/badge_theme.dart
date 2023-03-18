@@ -1,7 +1,6 @@
+import 'package:base_ui_core/src/theme/theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-
-import 'package:base_ui_core/src/theme/theme.dart';
 
 // Examples can assume:
 // late BuildContext context;
@@ -28,6 +27,7 @@ class BadgeThemeData with Diagnosticable {
   /// Creates the set of color, style, and size properties used to configure [Badge].
   const BadgeThemeData({
     this.color,
+    this.size,
     this.labelColor,
     this.labelStyle,
     this.padding,
@@ -36,6 +36,8 @@ class BadgeThemeData with Diagnosticable {
 
   /// Overrides the default value for [Badge.color].
   final Color? color;
+
+  final Size? size;
 
   /// Overrides the default value for [Badge.labelColor].
   final Color? labelColor;

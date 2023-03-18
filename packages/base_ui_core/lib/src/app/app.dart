@@ -1,9 +1,8 @@
+import 'package:base_ui_core/src/button/button.dart';
+import 'package:base_ui_core/src/theme/theme.dart';
 import 'package:flutter/material.dart'
     show MaterialPageRoute, MaterialScrollBehavior, Scrollbar;
 import 'package:flutter/widgets.dart';
-
-import '../button/button.dart';
-import '../theme/theme.dart';
 
 class BaseApp extends StatefulWidget {
   /// Creates a BaseApp.

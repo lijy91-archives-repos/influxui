@@ -1,9 +1,9 @@
+import 'package:base_ui_core/src/badge/badge_theme.dart';
+import 'package:base_ui_core/src/button/button_theme.dart';
+import 'package:base_ui_core/src/text/text_theme.dart';
 import 'package:base_ui_core/src/theme/colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-
-import '../badge/badge_theme.dart';
-import '../text/text_theme.dart';
 
 export 'package:flutter/services.dart' show Brightness;
 
@@ -142,6 +142,7 @@ class ThemeData with Diagnosticable {
     TextThemeData? textTheme,
     // COMPONENT THEMES
     BadgeThemeData? badgeTheme,
+    ButtonThemeData? buttonTheme,
   }) {
     // GENERAL CONFIGURATION
     extensions ??= <ThemeExtension<dynamic>>[];
@@ -155,6 +156,7 @@ class ThemeData with Diagnosticable {
 
     // COMPONENT THEMES
     badgeTheme ??= const BadgeThemeData();
+    buttonTheme ??= const ButtonThemeData();
 
     return ThemeData.raw(
       // GENERAL CONFIGURATION
@@ -167,6 +169,7 @@ class ThemeData with Diagnosticable {
       textTheme: textTheme ?? TextThemeData(),
       // COMPONENT THEMES
       badgeTheme: badgeTheme,
+      buttonTheme: buttonTheme,
     );
   }
 
@@ -188,6 +191,7 @@ class ThemeData with Diagnosticable {
     required this.textTheme,
     // COMPONENT THEMES
     required this.badgeTheme,
+    required this.buttonTheme,
   });
 
   /// A default light blue theme.
@@ -265,6 +269,8 @@ class ThemeData with Diagnosticable {
   /// A theme for customizing the color of [Badge]s.
   final BadgeThemeData badgeTheme;
 
+  final ButtonThemeData buttonTheme;
+
   /// Caches localized themes to speed up the [localize] method.
 
   /// Creates a copy of this theme but with the given fields replaced with the new values.
@@ -282,6 +288,7 @@ class ThemeData with Diagnosticable {
     TextThemeData? textTheme,
     // COMPONENT THEMES
     BadgeThemeData? badgeTheme,
+    ButtonThemeData? buttonTheme,
   }) {
     return ThemeData.raw(
       // GENERAL CONFIGURATION
@@ -296,6 +303,7 @@ class ThemeData with Diagnosticable {
       textTheme: textTheme ?? this.textTheme,
       // COMPONENT THEMES
       badgeTheme: badgeTheme ?? this.badgeTheme,
+      buttonTheme: buttonTheme ?? this.buttonTheme,
     );
   }
 
@@ -350,6 +358,7 @@ class ThemeData with Diagnosticable {
       textTheme: TextThemeData.lerp(a.textTheme, b.textTheme, t),
       // COMPONENT THEMES
       badgeTheme: BadgeThemeData.lerp(a.badgeTheme, b.badgeTheme, t),
+      buttonTheme: ButtonThemeData.lerp(a.buttonTheme, b.buttonTheme, t),
     );
   }
 
@@ -364,7 +373,8 @@ class ThemeData with Diagnosticable {
         // COLOR
         other.canvasColor == canvasColor &&
         // COMPONENT THEMES
-        other.badgeTheme == badgeTheme;
+        other.badgeTheme == badgeTheme &&
+        other.buttonTheme == buttonTheme;
   }
 
   @override
@@ -377,6 +387,7 @@ class ThemeData with Diagnosticable {
       canvasColor,
       // COMPONENT THEMES
       badgeTheme,
+      buttonTheme,
     ];
     return Object.hashAll(values);
   }
@@ -387,14 +398,30 @@ class ThemeData with Diagnosticable {
     final ThemeData defaultData = ThemeData.fallback();
     // GENERAL CONFIGURATION
     properties.add(IterableProperty<ThemeExtension<dynamic>>(
-        'extensions', extensions.values,
-        defaultValue: defaultData.extensions.values,
-        level: DiagnosticLevel.debug));
+      'extensions',
+      extensions.values,
+      defaultValue: defaultData.extensions.values,
+      level: DiagnosticLevel.debug,
+    ));
     // COLORS
-    properties.add(ColorProperty('canvasColor', canvasColor,
-        defaultValue: defaultData.canvasColor, level: DiagnosticLevel.debug));
+    properties.add(ColorProperty(
+      'canvasColor',
+      canvasColor,
+      defaultValue: defaultData.canvasColor,
+      level: DiagnosticLevel.debug,
+    ));
     // COMPONENT THEMES
-    properties.add(DiagnosticsProperty<BadgeThemeData>('badgeTheme', badgeTheme,
-        defaultValue: defaultData.badgeTheme, level: DiagnosticLevel.debug));
+    properties.add(DiagnosticsProperty<BadgeThemeData>(
+      'badgeTheme',
+      badgeTheme,
+      defaultValue: defaultData.badgeTheme,
+      level: DiagnosticLevel.debug,
+    ));
+    properties.add(DiagnosticsProperty<ButtonThemeData>(
+      'buttonTheme',
+      buttonTheme,
+      defaultValue: defaultData.buttonTheme,
+      level: DiagnosticLevel.debug,
+    ));
   }
 }

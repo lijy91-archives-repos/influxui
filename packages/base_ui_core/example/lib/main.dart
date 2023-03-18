@@ -1,5 +1,17 @@
 import 'package:base_ui_core/base_ui_core.dart';
-import 'package:flutter/material.dart' hide Checkbox;
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
+
+enum Shape {
+  pill,
+  round,
+  circle,
+  square,
+}
+
+final _kLightTheme = ThemeData(
+  buttonTheme: const ButtonThemeData(),
+);
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +28,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return BaseApp(
+      theme: _kLightTheme,
       home: Center(
         child: Column(
           children: [
@@ -38,6 +51,7 @@ class _MyAppState extends State<MyApp> {
             ),
             Button(
               label: 'Button',
+              size: ButtonSize.medium,
               onPressed: () {},
             ),
           ],

@@ -1,9 +1,9 @@
+import 'package:base_ui_core/src/theme/theme_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
-import 'theme_data.dart';
-
 export 'colors.dart';
+export 'sizes.dart';
 export 'theme_data.dart' show Brightness, ThemeData;
 
 /// The duration over which theme changes animate by default.
@@ -141,7 +141,7 @@ class _InheritedTheme extends InheritedTheme {
   const _InheritedTheme({
     required this.theme,
     required super.child,
-  }) : assert(theme != null);
+  });
 
   final Theme theme;
 
@@ -152,89 +152,4 @@ class _InheritedTheme extends InheritedTheme {
 
   @override
   bool updateShouldNotify(_InheritedTheme old) => theme.data != old.theme.data;
-}
-
-/// An interpolation between two [ThemeData]s.
-///
-/// This class specializes the interpolation of [Tween<ThemeData>] to call the
-/// [ThemeData.lerp] method.
-///
-/// See [Tween] for a discussion on how to use interpolation objects.
-class ThemeDataTween extends Tween<ThemeData> {
-  /// Creates a [ThemeData] tween.
-  ///
-  /// The [begin] and [end] properties must be non-null before the tween is
-  /// first used, but the arguments can be null if the values are going to be
-  /// filled in later.
-  ThemeDataTween({super.begin, super.end});
-
-  @override
-  ThemeData lerp(double t) => ThemeData.lerp(begin!, end!, t);
-}
-
-/// Animated version of [Theme] which automatically transitions the colors,
-/// etc, over a given duration whenever the given theme changes.
-///
-/// Here's an illustration of what using this widget looks like, using a [curve]
-/// of [Curves.elasticInOut].
-/// {@animation 250 266 https://flutter.github.io/assets-for-api-docs/assets/widgets/animated_theme.mp4}
-///
-/// See also:
-///
-///  * [Theme], which [AnimatedTheme] uses to actually apply the interpolated
-///    theme.
-///  * [ThemeData], which describes the actual configuration of a theme.
-///  * [MaterialApp], which includes an [AnimatedTheme] widget configured via
-///    the [MaterialApp.theme] argument.
-class AnimatedTheme extends ImplicitlyAnimatedWidget {
-  /// Creates an animated theme.
-  ///
-  /// By default, the theme transition uses a linear curve. The [data] and
-  /// [child] arguments must not be null.
-  const AnimatedTheme({
-    super.key,
-    required this.data,
-    super.curve,
-    super.duration = kThemeAnimationDuration,
-    super.onEnd,
-    required this.child,
-  })  : assert(child != null),
-        assert(data != null);
-
-  /// Specifies the color and typography values for descendant widgets.
-  final ThemeData data;
-
-  /// The widget below this widget in the tree.
-  ///
-  /// {@macro flutter.widgets.ProxyWidget.child}
-  final Widget child;
-
-  @override
-  AnimatedWidgetBaseState<AnimatedTheme> createState() => _AnimatedThemeState();
-}
-
-class _AnimatedThemeState extends AnimatedWidgetBaseState<AnimatedTheme> {
-  ThemeDataTween? _data;
-
-  @override
-  void forEachTween(TweenVisitor<dynamic> visitor) {
-    _data = visitor(_data, widget.data,
-            (dynamic value) => ThemeDataTween(begin: value as ThemeData))!
-        as ThemeDataTween;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Theme(
-      data: _data!.evaluate(animation),
-      child: widget.child,
-    );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder description) {
-    super.debugFillProperties(description);
-    description.add(DiagnosticsProperty<ThemeDataTween>('data', _data,
-        showName: false, defaultValue: null));
-  }
 }

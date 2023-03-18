@@ -2,11 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'package:base_ui_core/src/theme/theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-
-import '../theme/colors.dart';
-import '../theme/theme.dart';
 
 // Please update _TextThemeDefaultsBuilder accordingly after changing the default
 // color here, as their implementation depends on the default value of the color
@@ -268,7 +266,6 @@ class TextThemeData with Diagnosticable {
   ///
   /// {@macro dart.ui.shadow.lerp}
   static TextThemeData lerp(TextThemeData? a, TextThemeData? b, double t) {
-    assert(t != null);
     return TextThemeData();
   }
 
@@ -307,8 +304,7 @@ class _TextThemeDefaultsBuilder {
   const _TextThemeDefaultsBuilder(
     this.labelColor,
     this.inactiveGrayColor,
-  )   : assert(labelColor != null),
-        assert(inactiveGrayColor != null);
+  );
 
   final Color labelColor;
   final Color inactiveGrayColor;
