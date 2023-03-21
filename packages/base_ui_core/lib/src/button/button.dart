@@ -1,4 +1,4 @@
-import 'package:base_ui_core/src/box/box.dart';
+// import 'package:base_ui_core/src/button/button_theme.dart';
 import 'package:base_ui_core/src/button/button_theme.dart';
 import 'package:base_ui_core/src/theme/theme.dart';
 import 'package:flutter/foundation.dart';
@@ -53,7 +53,7 @@ class Button extends StatefulWidget {
   final EdgeInsetsGeometry? padding;
 
   final Color? color;
-  final Shape? shape;
+  final BoxShape? shape;
   final Size? size;
   final bool compact;
   final bool uppercase;
@@ -152,8 +152,12 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
     final ThemeData themeData = Theme.of(context);
     final Color primaryColor = themeData.primaryColor;
     final Color backgroundColor = widget.color ?? primaryColor;
-    final theme = ButtonTheme.sizedOf(context);
+    // final theme = ButtonTheme.sizedOf(context);
     // Size? size = theme.sizes?[widget.size];
+
+    final theme = ButtonTheme.of(context).sized(widget.size);
+
+    // MaterialApp(theme: ,themeMode:  ThemeMode,);
 
     // final TextStyle textStyle =
     //     themeData.textTheme.textStyle.copyWith(color: foregroundColor);

@@ -1,8 +1,5 @@
 import 'package:base_ui_core/src/badge/badge_theme.dart';
-import 'package:base_ui_core/src/box/box.dart';
-import 'package:base_ui_core/src/text/text_theme.dart';
 import 'package:base_ui_core/src/theme/theme.dart';
-import 'package:flutter/material.dart' show MaterialColor;
 import 'package:flutter/widgets.dart';
 
 export 'badge_theme.dart';
@@ -12,7 +9,6 @@ enum BadgeVariant {
   light,
   filled,
   outline,
-  dot,
   gradient,
 }
 
@@ -31,13 +27,38 @@ class Badge extends StatelessWidget {
     super.key,
     this.variant,
     this.color,
-    this.shape,
     this.size = BadgeSize.medium,
+    this.cornered,
+    this.cornerRadius,
     this.label,
-    this.labelColor,
     this.labelStyle,
     this.labelBuilder,
-  }) : assert(labelBuilder == null && label != null);
+  })  : assert(labelBuilder == null && label != null),
+        _pilled = false;
+
+  Badge.pill({
+    super.key,
+    this.variant,
+    this.color,
+    this.size = BadgeSize.medium,
+    this.cornered,
+    this.cornerRadius,
+    this.label,
+    this.labelStyle,
+    this.labelBuilder,
+  }) : _pilled = true;
+
+  Badge.dot({
+    super.key,
+    this.variant,
+    this.color,
+    this.size = BadgeSize.medium,
+    this.cornered,
+    this.cornerRadius,
+    this.label,
+    this.labelStyle,
+    this.labelBuilder,
+  }) : _pilled = true;
 
   /// Controls badge appearance
   final BadgeVariant? variant;
@@ -45,15 +66,14 @@ class Badge extends StatelessWidget {
   /// The badge's fill color.
   final Color? color;
 
-  final Shape? shape;
-
   final Size? size;
+
+  final bool? cornered;
+
+  final double? cornerRadius;
 
   /// Badge label
   final String? label;
-
-  /// Badge label color
-  final Color? labelColor;
 
   /// Badge label style
   final TextStyle? labelStyle;
@@ -61,28 +81,75 @@ class Badge extends StatelessWidget {
   /// Badge label builder
   final WidgetBuilder? labelBuilder;
 
+  final bool _pilled;
+
   @override
   Widget build(BuildContext context) {
-    Color color = this.color ?? Theme.of(context).primaryColor;
-    Color labelColor = color;
+    final BadgeThemeData badgeTheme = BadgeTheme.of(context);
+    final BadgeThemeData defaults = _BadgeDefaults(context);
 
-    if (color is MaterialColor) {
-      labelColor = color;
-      color = color.shade200;
+    final Color color = this.color ?? badgeTheme.color ?? defaults.color!;
+    final TextStyle labelStyle =
+        this.labelStyle ?? badgeTheme.labelStyle ?? defaults.labelStyle!;
+
+    Color backgroundColor = color;
+    Color labelColor = labelStyle.color ?? color;
+    bool cornered = this.cornered ?? badgeTheme.cornered ?? defaults.cornered!;
+    double cornerRadius =
+        this.cornerRadius ?? badgeTheme.cornerRadius ?? defaults.cornerRadius!;
+
+    switch (variant) {
+      case BadgeVariant.light:
+        backgroundColor = color is ShadedColor ? color.shade100 : color;
+        break;
+      case BadgeVariant.filled:
+        labelColor = Colors.white;
+        break;
+      case BadgeVariant.outline:
+        backgroundColor = Colors.transparent;
+        break;
+      case BadgeVariant.gradient:
+        break;
+      default:
     }
-    return Box(
-      shape: shape ?? Shape.circle,
-      color: color,
-      child: Builder(builder: (_) {
-        TextStyle labelStyle = (this.labelStyle ??
-                BadgeTheme.of(context).labelStyle ??
-                TextStyle())
-            .copyWith(color: labelColor, fontFamily: 'Roboto');
-        return DefaultTextStyle(
-          style: labelStyle,
-          child: labelBuilder?.call(context) ?? Text(label!),
-        );
-      }),
+
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        border: Border.all(
+          color: color,
+        ),
+        borderRadius:
+            cornered ? BorderRadius.circular(cornerRadius) : BorderRadius.zero,
+      ),
+      child: DefaultTextStyle(
+        style: labelStyle.copyWith(
+          color: labelColor,
+        ),
+        child: labelBuilder?.call(context) ?? Text(label!),
+      ),
     );
   }
+}
+
+class _BadgeDefaults extends BadgeThemeData {
+  _BadgeDefaults(this.context)
+      : super(
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          alignment: const AlignmentDirectional(12, -4),
+        );
+
+  @override
+  Color? get color => Theme.of(context).primaryColor;
+
+  @override
+  bool? get cornered => true;
+
+  @override
+  double? get cornerRadius => 24;
+
+  @override
+  TextStyle? get labelStyle => Theme.of(context).textTheme.textStyle;
+
+  final BuildContext context;
 }

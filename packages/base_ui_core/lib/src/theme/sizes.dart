@@ -5,6 +5,20 @@ class NamedSize extends Size {
 
   final String name;
 
+  @override
+  int get hashCode => Object.hash(width, height, name);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other.runtimeType != runtimeType) {
+      return false;
+    }
+    return other is NamedSize && other.name == name;
+  }
+
   static const NamedSize tiny = NamedSize('tiny');
   static const NamedSize small = NamedSize('small');
   static const NamedSize medium = NamedSize('medium');

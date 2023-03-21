@@ -13,7 +13,7 @@ import 'package:flutter/widgets.dart';
 // Values derived from https://developer.apple.com/design/resources/.
 const TextStyle _kDefaultTextStyle = TextStyle(
   inherit: false,
-  // fontFamily: '.SF Pro Text',
+  fontFamily: 'Roboto',
   fontSize: 17.0,
   letterSpacing: -0.41,
   color: Colors.black,

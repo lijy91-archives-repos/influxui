@@ -31,6 +31,7 @@ class ButtonThemeData with Diagnosticable {
     this.labelColor,
     this.labelStyle,
     this.size,
+    this.sizedCustomizer,
   });
 
   /// Overrides the default value for [Button.color].
@@ -45,6 +46,16 @@ class ButtonThemeData with Diagnosticable {
   /// Overrides the default value for [Button.size].
   final Size? size;
 
+  final Customizer<Size, ButtonThemeData>? sizedCustomizer;
+
+  ButtonThemeData sized(Size? size) {
+    if (size is! NamedSize) return this;
+    ButtonThemeData? sizedTheme = sizedCustomizer?.of(size);
+    return copyWith(
+      size: sizedTheme?.size ?? this.size,
+    );
+  }
+
   /// Creates a copy of this object but with the given fields replaced with the
   /// new values.
   ButtonThemeData copyWith({
@@ -52,7 +63,6 @@ class ButtonThemeData with Diagnosticable {
     Color? labelColor,
     TextStyle? labelStyle,
     Size? size,
-    Iterable<SizedButtonThemeData>? sizedThemes,
   }) {
     return ButtonThemeData(
       color: color ?? this.color,
@@ -101,12 +111,6 @@ class ButtonThemeData with Diagnosticable {
     properties.add(DiagnosticsProperty<TextStyle>('labelStyle', labelStyle,
         defaultValue: null));
   }
-}
-
-class SizedButtonThemeData extends ButtonThemeData {
-  const SizedButtonThemeData(this.namedSize, {super.size});
-
-  final NamedSize namedSize;
 }
 
 /// An inherited widget that overrides the default color style, and size

@@ -28,7 +28,8 @@ class BadgeThemeData with Diagnosticable {
   const BadgeThemeData({
     this.color,
     this.size,
-    this.labelColor,
+    this.cornered,
+    this.cornerRadius,
     this.labelStyle,
     this.padding,
     this.alignment,
@@ -37,10 +38,12 @@ class BadgeThemeData with Diagnosticable {
   /// Overrides the default value for [Badge.color].
   final Color? color;
 
+  /// Overrides the default value for [Badge.size].
   final Size? size;
 
-  /// Overrides the default value for [Badge.labelColor].
-  final Color? labelColor;
+  final bool? cornered;
+
+  final double? cornerRadius;
 
   /// Overrides the default value for [Badge.labelStyle].
   final TextStyle? labelStyle;
@@ -55,6 +58,8 @@ class BadgeThemeData with Diagnosticable {
   /// new values.
   BadgeThemeData copyWith({
     Color? color,
+    bool? cornered,
+    double? cornerRadius,
     Color? labelColor,
     TextStyle? labelStyle,
     EdgeInsetsGeometry? padding,
@@ -62,7 +67,8 @@ class BadgeThemeData with Diagnosticable {
   }) {
     return BadgeThemeData(
       color: color ?? this.color,
-      labelColor: labelColor ?? this.labelColor,
+      cornered: cornered ?? this.cornered,
+      cornerRadius: cornerRadius ?? this.cornerRadius,
       labelStyle: labelStyle ?? this.labelStyle,
       padding: padding ?? this.padding,
       alignment: alignment ?? this.alignment,
@@ -73,7 +79,6 @@ class BadgeThemeData with Diagnosticable {
   static BadgeThemeData lerp(BadgeThemeData? a, BadgeThemeData? b, double t) {
     return BadgeThemeData(
       color: Color.lerp(a?.color, b?.color, t),
-      labelColor: Color.lerp(a?.labelColor, b?.labelColor, t),
       labelStyle: TextStyle.lerp(a?.labelStyle, b?.labelStyle, t),
       padding: EdgeInsetsGeometry.lerp(a?.padding, b?.padding, t),
       alignment: AlignmentDirectional.lerp(a?.alignment, b?.alignment, t),
@@ -83,7 +88,7 @@ class BadgeThemeData with Diagnosticable {
   @override
   int get hashCode => Object.hash(
         color,
-        labelColor,
+        cornerRadius,
         labelStyle,
         padding,
         alignment,
@@ -99,7 +104,6 @@ class BadgeThemeData with Diagnosticable {
     }
     return other is BadgeThemeData &&
         other.color == color &&
-        other.labelColor == labelColor &&
         other.labelStyle == labelStyle &&
         other.padding == padding &&
         other.alignment == alignment;
@@ -108,15 +112,26 @@ class BadgeThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(ColorProperty('color', color, defaultValue: null));
-    properties.add(ColorProperty('labelColor', labelColor, defaultValue: null));
-    properties.add(DiagnosticsProperty<TextStyle>('labelStyle', labelStyle,
-        defaultValue: null));
-    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>('padding', padding,
-        defaultValue: null));
+    properties.add(ColorProperty(
+      'color',
+      color,
+      defaultValue: null,
+    ));
+    properties.add(DiagnosticsProperty<TextStyle>(
+      'labelStyle',
+      labelStyle,
+      defaultValue: null,
+    ));
+    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>(
+      'padding',
+      padding,
+      defaultValue: null,
+    ));
     properties.add(DiagnosticsProperty<AlignmentDirectional>(
-        'alignment', alignment,
-        defaultValue: null));
+      'alignment',
+      alignment,
+      defaultValue: null,
+    ));
   }
 }
 

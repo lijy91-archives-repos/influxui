@@ -5,11 +5,28 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 Future<void> _loadFonts() async {
-  final font = rootBundle.load(
-    'packages/base_ui_test/fonts/Roboto/Roboto-Regular.ttf',
-  );
-  final fontLoader = FontLoader('Roboto')..addFont(font);
-  await fontLoader.load();
+  final List<Map<String, dynamic>> fonts = [
+    {
+      'name': 'Roboto',
+      'files': [
+        'packages/base_ui_test/fonts/Roboto/Roboto-Regular.ttf',
+      ]
+    },
+    {
+      'name': 'Roboto Mono',
+      'files': [
+        'packages/base_ui_test/fonts/RobotoMono/RobotoMono-Regular.ttf',
+      ]
+    },
+  ];
+
+  for (var font in fonts) {
+    final fontLoader = FontLoader(font['name']);
+    for (var file in (font['files'] ?? [])) {
+      fontLoader.addFont(rootBundle.load(file));
+    }
+    await fontLoader.load();
+  }
 }
 
 void testGolden(

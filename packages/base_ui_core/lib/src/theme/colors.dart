@@ -1,5 +1,44 @@
-import 'package:flutter/material.dart' show MaterialColor;
 import 'package:flutter/painting.dart';
+
+class ShadedColor extends ColorSwatch<int> {
+  /// Creates a color swatch with a variety of shades.
+  ///
+  /// The `primary` argument should be the 32 bit ARGB value of one of the
+  /// values in the swatch, as would be passed to the [Color.new] constructor
+  /// for that same color, and as is exposed by [value]. (This is distinct from
+  /// the specific index of the color in the swatch.)
+  const ShadedColor(super.primary, super.swatch);
+
+  /// The lightest shade.
+  Color get shade50 => this[50]!;
+
+  /// The second lightest shade.
+  Color get shade100 => this[100]!;
+
+  /// The third lightest shade.
+  Color get shade200 => this[200]!;
+
+  /// The fourth lightest shade.
+  Color get shade300 => this[300]!;
+
+  /// The fifth lightest shade.
+  Color get shade400 => this[400]!;
+
+  /// The default shade.
+  Color get shade500 => this[500]!;
+
+  /// The fourth darkest shade.
+  Color get shade600 => this[600]!;
+
+  /// The third darkest shade.
+  Color get shade700 => this[700]!;
+
+  /// The second darkest shade.
+  Color get shade800 => this[800]!;
+
+  /// The darkest shade.
+  Color get shade900 => this[900]!;
+}
 
 /// [Color] and [ColorSwatch] constants which represent Material design's
 /// [color palette](https://material.io/design/color/).
@@ -340,7 +379,7 @@ class Colors {
   ///  * [transparent], a fully-transparent color, not far from this one.
   static const Color white10 = Color(0x1AFFFFFF);
 
-  static const MaterialColor gray = MaterialColor(
+  static const ShadedColor gray = ShadedColor(
     _grayPrimaryValue,
     <int, Color>{
       50: Color(0xFFf8f9fa),
@@ -368,7 +407,7 @@ class Colors {
   /// )
   /// ```
   /// {@end-tool}
-  static const MaterialColor red = MaterialColor(
+  static const ShadedColor red = ShadedColor(
     _redPrimaryValue,
     <int, Color>{
       50: Color(0xFFfff5f5),
@@ -385,7 +424,7 @@ class Colors {
   );
   static const int _redPrimaryValue = 0xFFff6b6b;
 
-  static const MaterialColor pink = MaterialColor(
+  static const ShadedColor pink = ShadedColor(
     _pinkPrimaryValue,
     <int, Color>{
       50: Color(0xFFfff0f6),
@@ -402,7 +441,7 @@ class Colors {
   );
   static const int _pinkPrimaryValue = 0xFFf06595;
 
-  static const MaterialColor grape = MaterialColor(
+  static const ShadedColor grape = ShadedColor(
     _grapePrimaryValue,
     <int, Color>{
       50: Color(0xFFf8f0fc),
@@ -419,7 +458,7 @@ class Colors {
   );
   static const int _grapePrimaryValue = 0xFFcc5de8;
 
-  static const MaterialColor violet = MaterialColor(
+  static const ShadedColor violet = ShadedColor(
     _violetPrimaryValue,
     <int, Color>{
       50: Color(0xFFf3f0ff),
@@ -436,7 +475,7 @@ class Colors {
   );
   static const int _violetPrimaryValue = 0xFF845ef7;
 
-  static const MaterialColor indigo = MaterialColor(
+  static const ShadedColor indigo = ShadedColor(
     _indigoPrimaryValue,
     <int, Color>{
       50: Color(0xFFedf2ff),
@@ -453,7 +492,7 @@ class Colors {
   );
   static const int _indigoPrimaryValue = 0xFF5c7cfa;
 
-  static const MaterialColor blue = MaterialColor(
+  static const ShadedColor blue = ShadedColor(
     _bluePrimaryValue,
     <int, Color>{
       50: Color(0xFFe7f5ff),
@@ -470,7 +509,7 @@ class Colors {
   );
   static const int _bluePrimaryValue = 0xFF339af0;
 
-  static const MaterialColor cyan = MaterialColor(
+  static const ShadedColor cyan = ShadedColor(
     _cyanPrimaryValue,
     <int, Color>{
       50: Color(0xFFe3fafc),
@@ -487,7 +526,7 @@ class Colors {
   );
   static const int _cyanPrimaryValue = 0xFF22b8cf;
 
-  static const MaterialColor teal = MaterialColor(
+  static const ShadedColor teal = ShadedColor(
     _tealPrimaryValue,
     <int, Color>{
       50: Color(0xFFe6fcf5),
@@ -504,7 +543,7 @@ class Colors {
   );
   static const int _tealPrimaryValue = 0xFF20c997;
 
-  static const MaterialColor green = MaterialColor(
+  static const ShadedColor green = ShadedColor(
     _greenPrimaryValue,
     <int, Color>{
       50: Color(0xFFebfbee),
@@ -521,7 +560,7 @@ class Colors {
   );
   static const int _greenPrimaryValue = 0xFF51cf66;
 
-  static const MaterialColor lime = MaterialColor(
+  static const ShadedColor lime = ShadedColor(
     _limePrimaryValue,
     <int, Color>{
       50: Color(0xFFf4fce3),
@@ -538,7 +577,7 @@ class Colors {
   );
   static const int _limePrimaryValue = 0xFF94d82d;
 
-  static const MaterialColor yellow = MaterialColor(
+  static const ShadedColor yellow = ShadedColor(
     _yellowPrimaryValue,
     <int, Color>{
       50: Color(0xFFfff9db),
@@ -555,7 +594,7 @@ class Colors {
   );
   static const int _yellowPrimaryValue = 0xFFfcc419;
 
-  static const MaterialColor orange = MaterialColor(
+  static const ShadedColor orange = ShadedColor(
     _orangePrimaryValue,
     <int, Color>{
       50: Color(0xFFfff4e6),

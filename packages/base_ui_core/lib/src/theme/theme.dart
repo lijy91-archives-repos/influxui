@@ -153,3 +153,28 @@ class _InheritedTheme extends InheritedTheme {
   @override
   bool updateShouldNotify(_InheritedTheme old) => theme.data != old.theme.data;
 }
+
+class Customizer<K, V> with Diagnosticable {
+  const Customizer(this.data);
+
+  @protected
+  final Map<K, V> data;
+
+  V? operator [](K key) => data[key];
+
+  V? of(K key) {
+    return this[key];
+  }
+}
+
+abstract class BrightnessedCustomizable<T> {
+  Customizer<Brightness, T> get brightnessedCustomizer;
+
+  T brightnessed(Brightness? brightness);
+}
+
+abstract class SizedCustomizable<T> {
+  Customizer<Size, T> get sizedCustomizer;
+
+  T sized(Size? size);
+}

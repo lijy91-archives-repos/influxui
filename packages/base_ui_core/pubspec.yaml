@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.3
+  non_uniform_border: ^1.0.0
 
 dev_dependencies:
   base_ui_test:

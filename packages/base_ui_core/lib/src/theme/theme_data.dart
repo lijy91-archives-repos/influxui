@@ -1,5 +1,6 @@
 import 'package:base_ui_core/src/badge/badge_theme.dart';
 import 'package:base_ui_core/src/button/button_theme.dart';
+import 'package:base_ui_core/src/kbd/kbd_theme.dart';
 import 'package:base_ui_core/src/text/text_theme.dart';
 import 'package:base_ui_core/src/theme/colors.dart';
 import 'package:flutter/foundation.dart';
@@ -143,6 +144,7 @@ class ThemeData with Diagnosticable {
     // COMPONENT THEMES
     BadgeThemeData? badgeTheme,
     ButtonThemeData? buttonTheme,
+    KbdThemeData? kbdTheme,
   }) {
     // GENERAL CONFIGURATION
     extensions ??= <ThemeExtension<dynamic>>[];
@@ -157,6 +159,7 @@ class ThemeData with Diagnosticable {
     // COMPONENT THEMES
     badgeTheme ??= const BadgeThemeData();
     buttonTheme ??= const ButtonThemeData();
+    kbdTheme ??= const KbdThemeData();
 
     return ThemeData.raw(
       // GENERAL CONFIGURATION
@@ -170,6 +173,7 @@ class ThemeData with Diagnosticable {
       // COMPONENT THEMES
       badgeTheme: badgeTheme,
       buttonTheme: buttonTheme,
+      kbdTheme: kbdTheme,
     );
   }
 
@@ -192,6 +196,7 @@ class ThemeData with Diagnosticable {
     // COMPONENT THEMES
     required this.badgeTheme,
     required this.buttonTheme,
+    required this.kbdTheme,
   });
 
   /// A default light blue theme.
@@ -271,6 +276,8 @@ class ThemeData with Diagnosticable {
 
   final ButtonThemeData buttonTheme;
 
+  final KbdThemeData kbdTheme;
+
   /// Caches localized themes to speed up the [localize] method.
 
   /// Creates a copy of this theme but with the given fields replaced with the new values.
@@ -289,6 +296,7 @@ class ThemeData with Diagnosticable {
     // COMPONENT THEMES
     BadgeThemeData? badgeTheme,
     ButtonThemeData? buttonTheme,
+    KbdThemeData? kbdTheme,
   }) {
     return ThemeData.raw(
       // GENERAL CONFIGURATION
@@ -304,6 +312,7 @@ class ThemeData with Diagnosticable {
       // COMPONENT THEMES
       badgeTheme: badgeTheme ?? this.badgeTheme,
       buttonTheme: buttonTheme ?? this.buttonTheme,
+      kbdTheme: kbdTheme ?? this.kbdTheme,
     );
   }
 
@@ -359,6 +368,7 @@ class ThemeData with Diagnosticable {
       // COMPONENT THEMES
       badgeTheme: BadgeThemeData.lerp(a.badgeTheme, b.badgeTheme, t),
       buttonTheme: ButtonThemeData.lerp(a.buttonTheme, b.buttonTheme, t),
+      kbdTheme: KbdThemeData.lerp(a.kbdTheme, b.kbdTheme, t),
     );
   }
 
@@ -374,7 +384,8 @@ class ThemeData with Diagnosticable {
         other.canvasColor == canvasColor &&
         // COMPONENT THEMES
         other.badgeTheme == badgeTheme &&
-        other.buttonTheme == buttonTheme;
+        other.buttonTheme == buttonTheme &&
+        other.kbdTheme == kbdTheme;
   }
 
   @override
@@ -388,6 +399,7 @@ class ThemeData with Diagnosticable {
       // COMPONENT THEMES
       badgeTheme,
       buttonTheme,
+      kbdTheme,
     ];
     return Object.hashAll(values);
   }
