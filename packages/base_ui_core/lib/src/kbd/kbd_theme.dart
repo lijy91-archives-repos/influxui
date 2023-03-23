@@ -14,9 +14,9 @@ final _kKbdBrightnessedCustomizer = Customizer<Brightness, KbdThemeData>({
     labelColor: Colors.gray.shade700,
   ),
   Brightness.dark: KbdThemeData(
-    color: Colors.black54,
-    borderColor: Colors.black45,
-    labelColor: Colors.black45,
+    color: Colors.darkGray.shade500,
+    borderColor: Colors.darkGray.shade400,
+    labelColor: Colors.darkGray.shade50,
   ),
 });
 
@@ -96,6 +96,7 @@ class KbdThemeData
   /// Overrides the default value for [Kbd.size].
   final Size? size;
 
+  /// Overrides the default value for [Kbd.borderColor].
   final Color? borderColor;
 
   /// The radius of the button's corners when it has a background color.
@@ -109,7 +110,10 @@ class KbdThemeData
   /// Overrides the default value for [Kbd.labelFontSize].
   final double? labelFontSize;
 
+  /// The [Customizer] for [KbdThemeData]s that are sized.
   final Customizer<Size, KbdThemeData>? _sizedCustomizer;
+
+  /// The [Customizer] for [KbdThemeData]s that are brightnessed.
   final Customizer<Brightness, KbdThemeData>? _brightnessedCustomizer;
 
   @override
@@ -146,6 +150,7 @@ class KbdThemeData
   /// Creates a copy of this object but with the given fields replaced with the
   /// new values.
   KbdThemeData copyWith({
+    Brightness? brightness,
     EdgeInsetsGeometry? padding,
     Color? color,
     Size? size,
@@ -155,6 +160,7 @@ class KbdThemeData
     double? labelFontSize,
   }) {
     return KbdThemeData(
+      brightness: brightness ?? this.brightness,
       padding: padding ?? this.padding,
       color: color ?? this.color,
       size: size ?? this.size,
@@ -178,6 +184,7 @@ class KbdThemeData
 
   @override
   int get hashCode => Object.hash(
+        brightness,
         color,
         padding,
         labelColor,

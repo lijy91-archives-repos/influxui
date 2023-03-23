@@ -22,9 +22,12 @@ class Kbd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final KbdThemeData theme = KbdTheme.of(context)
-        .brightnessed(brightness ?? Theme.of(context).brightness)
-        .sized(size);
+    final brightness = this.brightness ??
+        KbdTheme.of(context).brightness ??
+        Theme.of(context).brightness;
+
+    final KbdThemeData theme =
+        KbdTheme.of(context).brightnessed(brightness).sized(size);
 
     final TextStyle textStyle = TextTheme.of(context).textStyle.copyWith(
       color: theme.labelColor,

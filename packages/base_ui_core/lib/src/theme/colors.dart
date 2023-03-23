@@ -610,4 +610,21 @@ class Colors {
     },
   );
   static const int _orangePrimaryValue = 0xFFff922b;
+
+  static const ShadedColor darkGray = ShadedColor(
+    _darkGrayPrimaryValue,
+    <int, Color>{
+      50: Color(0xFFC1C2C5),
+      100: Color(0xFFA6A7AB),
+      200: Color(0xFF909296),
+      300: Color(0xFF5c5f66),
+      400: Color(0xFF373A40),
+      500: Color(_darkGrayPrimaryValue),
+      600: Color(0xFF25262b),
+      700: Color(0xFF1A1B1E),
+      800: Color(0xFF141517),
+      900: Color(0xFF101113),
+    },
+  );
+  static const int _darkGrayPrimaryValue = 0xFF2C2E33;
 }

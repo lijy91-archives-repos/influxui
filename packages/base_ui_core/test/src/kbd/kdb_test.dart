@@ -20,18 +20,54 @@ void main() {
       ),
     );
     testGolden(
-      'kdb-dark',
+      'kdb-light-sizes',
       (_) => Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Kbd('shift', brightness: Brightness.dark),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 4),
-            child: Text('+'),
-          ),
-          Kbd('M', brightness: Brightness.dark),
+          Kbd('shift', size: NamedSize.tiny),
+          Kbd('shift', size: NamedSize.small),
+          Kbd('shift', size: NamedSize.medium),
+          Kbd('shift', size: NamedSize.large),
+          Kbd('shift', size: NamedSize.big),
         ],
       ),
+      size: Size(320, 60),
+    );
+    testGolden(
+      'kdb-dark',
+      (_) => KbdTheme(
+        data: KbdThemeData(brightness: Brightness.dark),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Kbd('shift'),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4),
+              child: Text('+'),
+            ),
+            Kbd('M'),
+          ],
+        ),
+      ),
+    );
+    testGolden(
+      'kdb-dark-sizes',
+      (_) => KbdTheme(
+        data: KbdThemeData(brightness: Brightness.dark),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Kbd('shift', size: NamedSize.tiny),
+            Kbd('shift', size: NamedSize.small),
+            Kbd('shift', size: NamedSize.medium),
+            Kbd('shift', size: NamedSize.large),
+            Kbd('shift', size: NamedSize.big),
+          ],
+        ),
+      ),
+      size: Size(320, 60),
     );
   });
 }
