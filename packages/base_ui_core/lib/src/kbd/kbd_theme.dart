@@ -127,23 +127,21 @@ class KbdThemeData
   }
 
   @override
-  KbdThemeData sized(Size? size) {
-    if (size is! NamedSize) return this;
-    KbdThemeData? theme = sizedCustomizer.of(size);
+  KbdThemeData brightnessed(Brightness? brightness) {
+    KbdThemeData? brightnessedTheme = brightnessedCustomizer.of(brightness);
     return copyWith(
-      size: theme?.size ?? this.size,
-      labelFontSize: theme?.labelFontSize ?? labelFontSize,
+      color: brightnessedTheme?.color ?? color,
+      borderColor: brightnessedTheme?.borderColor ?? borderColor,
+      labelColor: brightnessedTheme?.labelColor ?? labelColor,
     );
   }
 
   @override
-  KbdThemeData brightnessed(Brightness? brightness) {
-    brightness ??= this.brightness ?? Brightness.light;
-    KbdThemeData? theme = brightnessedCustomizer.of(brightness);
+  KbdThemeData sized(Size? size) {
+    KbdThemeData? sizedTheme = sizedCustomizer.of(size);
     return copyWith(
-      color: theme?.color ?? color,
-      borderColor: theme?.borderColor ?? borderColor,
-      labelColor: theme?.labelColor ?? labelColor,
+      // padding: sizedTheme?.padding ?? padding,
+      labelFontSize: sizedTheme?.labelFontSize ?? labelFontSize,
     );
   }
 

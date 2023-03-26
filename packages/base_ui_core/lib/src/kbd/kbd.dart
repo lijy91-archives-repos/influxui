@@ -22,16 +22,18 @@ class Kbd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final brightness = this.brightness ??
-        KbdTheme.of(context).brightness ??
-        Theme.of(context).brightness;
+    final KbdThemeData theme = KbdTheme.of(context);
 
-    final KbdThemeData theme =
-        KbdTheme.of(context).brightnessed(brightness).sized(size);
+    final Brightness brightness =
+        this.brightness ?? theme.brightness ?? Theme.of(context).brightness;
+
+    final KbdThemeData styledTheme = KbdTheme.of(context) // styled
+        .brightnessed(brightness)
+        .sized(size);
 
     final TextStyle textStyle = TextTheme.of(context).textStyle.copyWith(
-      color: theme.labelColor,
-      fontSize: theme.labelFontSize,
+      color: styledTheme.labelColor,
+      fontSize: styledTheme.labelFontSize,
       fontWeight: FontWeight.w700,
       fontFamily: 'Roboto Mono',
       fontFamilyFallback: ['Roboto'],
@@ -39,19 +41,19 @@ class Kbd extends StatelessWidget {
 
     return Container(
       decoration: ShapeDecoration(
-        color: theme.color,
+        color: styledTheme.color,
         shape: NonUniformBorder(
           leftWidth: 1,
           rightWidth: 1,
           topWidth: 1,
           bottomWidth: 3,
-          color: theme.borderColor!,
+          color: styledTheme.borderColor!,
           strokeAlign: BorderSide.strokeAlignInside,
-          borderRadius: theme.borderRadius ?? BorderRadius.zero,
+          borderRadius: styledTheme.borderRadius ?? BorderRadius.zero,
         ),
       ),
       child: Padding(
-        padding: theme.padding ?? EdgeInsets.zero,
+        padding: styledTheme.padding ?? EdgeInsets.zero,
         child: DefaultTextStyle(
           style: textStyle,
           child: Text(label),

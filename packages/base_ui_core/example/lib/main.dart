@@ -83,6 +83,28 @@ class _MyAppState extends State<MyApp> {
               size: ButtonSize.medium,
               onPressed: () {},
             ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const [
+                Badge(label: 'Badge', size: BadgeSize.tiny),
+                Badge(label: 'Badge', size: BadgeSize.small),
+                Badge(label: 'Badge', size: BadgeSize.medium),
+                Badge(label: 'Badge', size: BadgeSize.large),
+                Badge(label: 'Badge', size: BadgeSize.big),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const [
+                Kbd('shift', size: NamedSize.tiny),
+                Kbd('shift', size: NamedSize.small),
+                Kbd('shift', size: NamedSize.medium),
+                Kbd('shift', size: NamedSize.large),
+                Kbd('shift', size: NamedSize.big),
+              ],
+            ),
           ],
         ),
       ),

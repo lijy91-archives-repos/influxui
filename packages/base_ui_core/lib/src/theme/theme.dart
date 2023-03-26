@@ -1,8 +1,10 @@
+import 'package:base_ui_core/src/theme/shapes.dart';
 import 'package:base_ui_core/src/theme/theme_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 export 'colors.dart';
+export 'shapes.dart';
 export 'sizes.dart';
 export 'theme_data.dart' show Brightness, ThemeData;
 
@@ -162,7 +164,8 @@ class Customizer<K, V> with Diagnosticable {
 
   V? operator [](K key) => data[key];
 
-  V? of(K key) {
+  V? of(K? key) {
+    if (key == null || !data.containsKey(key)) return null;
     return this[key];
   }
 }
@@ -173,8 +176,26 @@ abstract class BrightnessedCustomizable<T> {
   T brightnessed(Brightness? brightness);
 }
 
+abstract class VariantedCustomizable<V, T> {
+  Customizer<V, T> get variantedCustomizer;
+
+  T varianted(V? variant);
+}
+
+abstract class ColoredCustomizable<T> {
+  Customizer<Color, T> get coloredCustomizer;
+
+  T colored(Color? color);
+}
+
 abstract class SizedCustomizable<T> {
   Customizer<Size, T> get sizedCustomizer;
 
   T sized(Size? size);
+}
+
+abstract class ShapedCustomizable<T> {
+  Customizer<Shape, T> get shapedCustomizer;
+
+  T shaped(Shape? shape);
 }
