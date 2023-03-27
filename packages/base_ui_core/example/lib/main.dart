@@ -105,6 +105,17 @@ class _MyAppState extends State<MyApp> {
                 Kbd('shift', size: NamedSize.big),
               ],
             ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const [
+                Loader(size: NamedSize.tiny),
+                Loader(size: NamedSize.small),
+                Loader(size: NamedSize.medium),
+                Loader(size: NamedSize.large),
+                Loader(size: NamedSize.big),
+              ],
+            ),
           ],
         ),
       ),

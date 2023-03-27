@@ -1,6 +1,7 @@
 import 'package:base_ui_core/src/badge/badge_theme.dart';
 import 'package:base_ui_core/src/button/button_theme.dart';
 import 'package:base_ui_core/src/kbd/kbd_theme.dart';
+import 'package:base_ui_core/src/loader/loader_theme.dart';
 import 'package:base_ui_core/src/text/text_theme.dart';
 import 'package:base_ui_core/src/theme/colors.dart';
 import 'package:flutter/foundation.dart';
@@ -145,6 +146,7 @@ class ThemeData with Diagnosticable {
     BadgeThemeData? badgeTheme,
     ButtonThemeData? buttonTheme,
     KbdThemeData? kbdTheme,
+    LoaderThemeData? loaderTheme,
   }) {
     // GENERAL CONFIGURATION
     extensions ??= <ThemeExtension<dynamic>>[];
@@ -160,6 +162,7 @@ class ThemeData with Diagnosticable {
     badgeTheme ??= const BadgeThemeData();
     buttonTheme ??= const ButtonThemeData();
     kbdTheme ??= const KbdThemeData();
+    loaderTheme ??= const LoaderThemeData();
 
     return ThemeData.raw(
       // GENERAL CONFIGURATION
@@ -174,6 +177,7 @@ class ThemeData with Diagnosticable {
       badgeTheme: badgeTheme,
       buttonTheme: buttonTheme,
       kbdTheme: kbdTheme,
+      loaderTheme: loaderTheme,
     );
   }
 
@@ -197,6 +201,7 @@ class ThemeData with Diagnosticable {
     required this.badgeTheme,
     required this.buttonTheme,
     required this.kbdTheme,
+    required this.loaderTheme,
   });
 
   /// A default light blue theme.
@@ -278,6 +283,8 @@ class ThemeData with Diagnosticable {
 
   final KbdThemeData kbdTheme;
 
+  final LoaderThemeData loaderTheme;
+
   /// Caches localized themes to speed up the [localize] method.
 
   /// Creates a copy of this theme but with the given fields replaced with the new values.
@@ -297,6 +304,7 @@ class ThemeData with Diagnosticable {
     BadgeThemeData? badgeTheme,
     ButtonThemeData? buttonTheme,
     KbdThemeData? kbdTheme,
+    LoaderThemeData? loaderTheme,
   }) {
     return ThemeData.raw(
       // GENERAL CONFIGURATION
@@ -313,6 +321,7 @@ class ThemeData with Diagnosticable {
       badgeTheme: badgeTheme ?? this.badgeTheme,
       buttonTheme: buttonTheme ?? this.buttonTheme,
       kbdTheme: kbdTheme ?? this.kbdTheme,
+      loaderTheme: loaderTheme ?? this.loaderTheme,
     );
   }
 
@@ -369,6 +378,7 @@ class ThemeData with Diagnosticable {
       badgeTheme: BadgeThemeData.lerp(a.badgeTheme, b.badgeTheme, t),
       buttonTheme: ButtonThemeData.lerp(a.buttonTheme, b.buttonTheme, t),
       kbdTheme: KbdThemeData.lerp(a.kbdTheme, b.kbdTheme, t),
+      loaderTheme: LoaderThemeData.lerp(a.loaderTheme, b.loaderTheme, t),
     );
   }
 
@@ -385,7 +395,8 @@ class ThemeData with Diagnosticable {
         // COMPONENT THEMES
         other.badgeTheme == badgeTheme &&
         other.buttonTheme == buttonTheme &&
-        other.kbdTheme == kbdTheme;
+        other.kbdTheme == kbdTheme &&
+        other.loaderTheme == loaderTheme;
   }
 
   @override
@@ -400,6 +411,7 @@ class ThemeData with Diagnosticable {
       badgeTheme,
       buttonTheme,
       kbdTheme,
+      loaderTheme,
     ];
     return Object.hashAll(values);
   }
@@ -433,6 +445,18 @@ class ThemeData with Diagnosticable {
       'buttonTheme',
       buttonTheme,
       defaultValue: defaultData.buttonTheme,
+      level: DiagnosticLevel.debug,
+    ));
+    properties.add(DiagnosticsProperty<KbdThemeData>(
+      'kbdTheme',
+      kbdTheme,
+      defaultValue: defaultData.kbdTheme,
+      level: DiagnosticLevel.debug,
+    ));
+    properties.add(DiagnosticsProperty<LoaderThemeData>(
+      'loaderTheme',
+      loaderTheme,
+      defaultValue: defaultData.loaderTheme,
       level: DiagnosticLevel.debug,
     ));
   }
