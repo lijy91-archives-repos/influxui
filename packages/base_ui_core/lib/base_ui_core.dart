@@ -10,6 +10,7 @@ export 'src/breadcrumb/breadcrumb.dart';
 export 'src/button/button.dart';
 export 'src/card/card.dart';
 export 'src/checkbox/checkbox.dart';
+export 'src/divider/divider.dart';
 export 'src/kbd/kbd.dart';
 export 'src/loader/loader.dart';
 export 'src/switch/switch.dart';

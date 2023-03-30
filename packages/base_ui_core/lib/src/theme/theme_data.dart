@@ -1,5 +1,6 @@
 import 'package:base_ui_core/src/badge/badge_theme.dart';
 import 'package:base_ui_core/src/button/button_theme.dart';
+import 'package:base_ui_core/src/divider/divider_theme.dart';
 import 'package:base_ui_core/src/kbd/kbd_theme.dart';
 import 'package:base_ui_core/src/loader/loader_theme.dart';
 import 'package:base_ui_core/src/text/text_theme.dart';
@@ -145,6 +146,7 @@ class ThemeData with Diagnosticable {
     // COMPONENT THEMES
     BadgeThemeData? badgeTheme,
     ButtonThemeData? buttonTheme,
+    DividerThemeData? dividerTheme,
     KbdThemeData? kbdTheme,
     LoaderThemeData? loaderTheme,
   }) {
@@ -161,6 +163,7 @@ class ThemeData with Diagnosticable {
     // COMPONENT THEMES
     badgeTheme ??= const BadgeThemeData();
     buttonTheme ??= const ButtonThemeData();
+    dividerTheme ??= const DividerThemeData();
     kbdTheme ??= const KbdThemeData();
     loaderTheme ??= const LoaderThemeData();
 
@@ -176,6 +179,7 @@ class ThemeData with Diagnosticable {
       // COMPONENT THEMES
       badgeTheme: badgeTheme,
       buttonTheme: buttonTheme,
+      dividerTheme: dividerTheme,
       kbdTheme: kbdTheme,
       loaderTheme: loaderTheme,
     );
@@ -200,6 +204,7 @@ class ThemeData with Diagnosticable {
     // COMPONENT THEMES
     required this.badgeTheme,
     required this.buttonTheme,
+    required this.dividerTheme,
     required this.kbdTheme,
     required this.loaderTheme,
   });
@@ -281,6 +286,8 @@ class ThemeData with Diagnosticable {
 
   final ButtonThemeData buttonTheme;
 
+  final DividerThemeData dividerTheme;
+
   final KbdThemeData kbdTheme;
 
   final LoaderThemeData loaderTheme;
@@ -303,6 +310,7 @@ class ThemeData with Diagnosticable {
     // COMPONENT THEMES
     BadgeThemeData? badgeTheme,
     ButtonThemeData? buttonTheme,
+    DividerThemeData? dividerTheme,
     KbdThemeData? kbdTheme,
     LoaderThemeData? loaderTheme,
   }) {
@@ -320,6 +328,7 @@ class ThemeData with Diagnosticable {
       // COMPONENT THEMES
       badgeTheme: badgeTheme ?? this.badgeTheme,
       buttonTheme: buttonTheme ?? this.buttonTheme,
+      dividerTheme: dividerTheme ?? this.dividerTheme,
       kbdTheme: kbdTheme ?? this.kbdTheme,
       loaderTheme: loaderTheme ?? this.loaderTheme,
     );
@@ -377,6 +386,7 @@ class ThemeData with Diagnosticable {
       // COMPONENT THEMES
       badgeTheme: BadgeThemeData.lerp(a.badgeTheme, b.badgeTheme, t),
       buttonTheme: ButtonThemeData.lerp(a.buttonTheme, b.buttonTheme, t),
+      dividerTheme: DividerThemeData.lerp(a.dividerTheme, b.dividerTheme, t),
       kbdTheme: KbdThemeData.lerp(a.kbdTheme, b.kbdTheme, t),
       loaderTheme: LoaderThemeData.lerp(a.loaderTheme, b.loaderTheme, t),
     );
@@ -395,6 +405,7 @@ class ThemeData with Diagnosticable {
         // COMPONENT THEMES
         other.badgeTheme == badgeTheme &&
         other.buttonTheme == buttonTheme &&
+        other.dividerTheme == dividerTheme &&
         other.kbdTheme == kbdTheme &&
         other.loaderTheme == loaderTheme;
   }
@@ -410,6 +421,7 @@ class ThemeData with Diagnosticable {
       // COMPONENT THEMES
       badgeTheme,
       buttonTheme,
+      dividerTheme,
       kbdTheme,
       loaderTheme,
     ];
@@ -445,6 +457,12 @@ class ThemeData with Diagnosticable {
       'buttonTheme',
       buttonTheme,
       defaultValue: defaultData.buttonTheme,
+      level: DiagnosticLevel.debug,
+    ));
+    properties.add(DiagnosticsProperty<DividerThemeData>(
+      'dividerTheme',
+      dividerTheme,
+      defaultValue: defaultData.dividerTheme,
       level: DiagnosticLevel.debug,
     ));
     properties.add(DiagnosticsProperty<KbdThemeData>(

@@ -1,47 +1,6 @@
 import 'package:base_ui_core/base_ui_core.dart';
 import 'package:flutter/widgets.dart';
 
-final _kLightTheme = ThemeData(
-  kbdTheme: KbdThemeData(
-    brightnessedCustomizer: Customizer<Brightness, KbdThemeData>({
-      Brightness.light: KbdThemeData(
-        color: Colors.gray.shade50,
-        borderColor: Colors.gray.shade300,
-        labelColor: Colors.gray.shade700,
-      ),
-      Brightness.dark: const KbdThemeData(
-        color: Colors.black54,
-        borderColor: Colors.black45,
-        labelColor: Colors.black45,
-      ),
-    }),
-    sizedCustomizer: Customizer<NamedSize, KbdThemeData>(
-      {
-        NamedSize.tiny: const KbdThemeData(
-          padding: EdgeInsets.symmetric(horizontal: 2, vertical: 4),
-          labelFontSize: 10,
-        ),
-        NamedSize.small: const KbdThemeData(
-          padding: EdgeInsets.symmetric(horizontal: 3, vertical: 5),
-          labelFontSize: 12,
-        ),
-        NamedSize.medium: const KbdThemeData(
-          padding: EdgeInsets.symmetric(horizontal: 4, vertical: 7),
-          labelFontSize: 14,
-        ),
-        NamedSize.large: const KbdThemeData(
-          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 9),
-          labelFontSize: 16,
-        ),
-        NamedSize.big: const KbdThemeData(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 14),
-          labelFontSize: 20,
-        ),
-      },
-    ),
-  ),
-);
-
 void main() {
   runApp(const MyApp());
 }
@@ -57,7 +16,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return BaseApp(
-      theme: _kLightTheme,
       home: Center(
         child: Column(
           children: [
@@ -114,6 +72,75 @@ class _MyAppState extends State<MyApp> {
                 Loader(size: NamedSize.medium),
                 Loader(size: NamedSize.large),
                 Loader(size: NamedSize.big),
+              ],
+            ),
+            const SizedBox(
+              width: 500,
+              height: 20,
+              child: Center(
+                child: Divider(
+                  variant: DividerVariant.solid,
+                  color: Colors.blue,
+                  label: 'Label',
+                ),
+              ),
+            ),
+            const SizedBox(
+              width: 500,
+              height: 20,
+              child: Center(
+                child: Divider(
+                  variant: DividerVariant.dashed,
+                  color: Colors.blue,
+                ),
+              ),
+            ),
+            const SizedBox(
+              width: 500,
+              height: 20,
+              child: Center(
+                child: Divider(
+                  variant: DividerVariant.dotted,
+                  color: Colors.blue,
+                ),
+              ),
+            ),
+            Row(
+              children: const [
+                SizedBox(
+                  width: 50,
+                  height: 200,
+                  child: Center(
+                    child: Divider(
+                      direction: Axis.vertical,
+                      variant: DividerVariant.solid,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 50,
+                  height: 200,
+                  child: Center(
+                    child: Divider(
+                      direction: Axis.vertical,
+                      variant: DividerVariant.dashed,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 50,
+                  height: 200,
+                  child: Center(
+                    child: Divider(
+                      direction: Axis.vertical,
+                      variant: DividerVariant.dotted,
+                      color: Colors.blue,
+                      label: 'Label',
+                    ),
+                  ),
+                ),
               ],
             ),
           ],
