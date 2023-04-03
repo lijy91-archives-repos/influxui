@@ -13,6 +13,7 @@ export 'src/checkbox/checkbox.dart';
 export 'src/divider/divider.dart';
 export 'src/kbd/kbd.dart';
 export 'src/loader/loader.dart';
+export 'src/notification/notification.dart';
 export 'src/switch/switch.dart';
 export 'src/text/text.dart';
 export 'src/theme/theme.dart';

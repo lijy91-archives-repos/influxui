@@ -1,5 +1,5 @@
 import 'package:base_ui_core/base_ui_core.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart' hide Notification;
 
 void main() {
   runApp(const MyApp());
@@ -74,72 +74,93 @@ class _MyAppState extends State<MyApp> {
                 Loader(size: NamedSize.big),
               ],
             ),
-            const SizedBox(
-              width: 500,
-              height: 20,
-              child: Center(
-                child: Divider(
-                  variant: DividerVariant.solid,
+            // const SizedBox(
+            //   width: 500,
+            //   height: 20,
+            //   child: Center(
+            //     child: Divider(
+            //       variant: DividerVariant.solid,
+            //       color: Colors.blue,
+            //       label: 'Label',
+            //     ),
+            //   ),
+            // ),
+            // const SizedBox(
+            //   width: 500,
+            //   height: 20,
+            //   child: Center(
+            //     child: Divider(
+            //       variant: DividerVariant.dashed,
+            //       color: Colors.blue,
+            //     ),
+            //   ),
+            // ),
+            // const SizedBox(
+            //   width: 500,
+            //   height: 20,
+            //   child: Center(
+            //     child: Divider(
+            //       variant: DividerVariant.dotted,
+            //       color: Colors.blue,
+            //     ),
+            //   ),
+            // ),
+            // Row(
+            //   children: const [
+            //     SizedBox(
+            //       width: 50,
+            //       height: 200,
+            //       child: Center(
+            //         child: Divider(
+            //           direction: Axis.vertical,
+            //           variant: DividerVariant.solid,
+            //           color: Colors.blue,
+            //         ),
+            //       ),
+            //     ),
+            //     SizedBox(
+            //       width: 50,
+            //       height: 200,
+            //       child: Center(
+            //         child: Divider(
+            //           direction: Axis.vertical,
+            //           variant: DividerVariant.dashed,
+            //           color: Colors.blue,
+            //         ),
+            //       ),
+            //     ),
+            //     SizedBox(
+            //       width: 50,
+            //       height: 200,
+            //       child: Center(
+            //         child: Divider(
+            //           direction: Axis.vertical,
+            //           variant: DividerVariant.dotted,
+            //           color: Colors.blue,
+            //           label: 'Label',
+            //         ),
+            //       ),
+            //     ),
+            //   ],
+            // ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Notification(
                   color: Colors.blue,
-                  label: 'Label',
+                  title: 'Default notification',
+                  body: 'This is default notification with title and body',
                 ),
-              ),
-            ),
-            const SizedBox(
-              width: 500,
-              height: 20,
-              child: Center(
-                child: Divider(
-                  variant: DividerVariant.dashed,
-                  color: Colors.blue,
+                SizedBox(height: 50),
+                Notification(
+                  color: Colors.teal,
+                  title: 'Teal notification',
+                  body: 'This is teal notification with icon',
                 ),
-              ),
-            ),
-            const SizedBox(
-              width: 500,
-              height: 20,
-              child: Center(
-                child: Divider(
-                  variant: DividerVariant.dotted,
-                  color: Colors.blue,
-                ),
-              ),
-            ),
-            Row(
-              children: const [
-                SizedBox(
-                  width: 50,
-                  height: 200,
-                  child: Center(
-                    child: Divider(
-                      direction: Axis.vertical,
-                      variant: DividerVariant.solid,
-                      color: Colors.blue,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 50,
-                  height: 200,
-                  child: Center(
-                    child: Divider(
-                      direction: Axis.vertical,
-                      variant: DividerVariant.dashed,
-                      color: Colors.blue,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 50,
-                  height: 200,
-                  child: Center(
-                    child: Divider(
-                      direction: Axis.vertical,
-                      variant: DividerVariant.dotted,
-                      color: Colors.blue,
-                      label: 'Label',
-                    ),
-                  ),
+                SizedBox(height: 50),
+                Notification(
+                  color: Colors.red,
+                  title: 'Bummer! Notification without title',
                 ),
               ],
             ),

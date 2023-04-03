@@ -3,10 +3,11 @@ import 'package:base_ui_core/src/button/button_theme.dart';
 import 'package:base_ui_core/src/divider/divider_theme.dart';
 import 'package:base_ui_core/src/kbd/kbd_theme.dart';
 import 'package:base_ui_core/src/loader/loader_theme.dart';
+import 'package:base_ui_core/src/notification/notification.dart';
 import 'package:base_ui_core/src/text/text_theme.dart';
 import 'package:base_ui_core/src/theme/colors.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart' hide Notification;
 
 export 'package:flutter/services.dart' show Brightness;
 
@@ -149,6 +150,7 @@ class ThemeData with Diagnosticable {
     DividerThemeData? dividerTheme,
     KbdThemeData? kbdTheme,
     LoaderThemeData? loaderTheme,
+    NotificationThemeData? notificationTheme,
   }) {
     // GENERAL CONFIGURATION
     extensions ??= <ThemeExtension<dynamic>>[];
@@ -166,6 +168,7 @@ class ThemeData with Diagnosticable {
     dividerTheme ??= const DividerThemeData();
     kbdTheme ??= const KbdThemeData();
     loaderTheme ??= const LoaderThemeData();
+    notificationTheme ??= const NotificationThemeData();
 
     return ThemeData.raw(
       // GENERAL CONFIGURATION
@@ -182,6 +185,7 @@ class ThemeData with Diagnosticable {
       dividerTheme: dividerTheme,
       kbdTheme: kbdTheme,
       loaderTheme: loaderTheme,
+      notificationTheme: notificationTheme,
     );
   }
 
@@ -207,6 +211,7 @@ class ThemeData with Diagnosticable {
     required this.dividerTheme,
     required this.kbdTheme,
     required this.loaderTheme,
+    required this.notificationTheme,
   });
 
   /// A default light blue theme.
@@ -292,6 +297,8 @@ class ThemeData with Diagnosticable {
 
   final LoaderThemeData loaderTheme;
 
+  final NotificationThemeData notificationTheme;
+
   /// Caches localized themes to speed up the [localize] method.
 
   /// Creates a copy of this theme but with the given fields replaced with the new values.
@@ -313,6 +320,7 @@ class ThemeData with Diagnosticable {
     DividerThemeData? dividerTheme,
     KbdThemeData? kbdTheme,
     LoaderThemeData? loaderTheme,
+    NotificationThemeData? notificationTheme,
   }) {
     return ThemeData.raw(
       // GENERAL CONFIGURATION
@@ -331,6 +339,7 @@ class ThemeData with Diagnosticable {
       dividerTheme: dividerTheme ?? this.dividerTheme,
       kbdTheme: kbdTheme ?? this.kbdTheme,
       loaderTheme: loaderTheme ?? this.loaderTheme,
+      notificationTheme: notificationTheme ?? this.notificationTheme,
     );
   }
 
@@ -389,6 +398,8 @@ class ThemeData with Diagnosticable {
       dividerTheme: DividerThemeData.lerp(a.dividerTheme, b.dividerTheme, t),
       kbdTheme: KbdThemeData.lerp(a.kbdTheme, b.kbdTheme, t),
       loaderTheme: LoaderThemeData.lerp(a.loaderTheme, b.loaderTheme, t),
+      notificationTheme: NotificationThemeData.lerp(
+          a.notificationTheme, b.notificationTheme, t),
     );
   }
 
@@ -424,6 +435,7 @@ class ThemeData with Diagnosticable {
       dividerTheme,
       kbdTheme,
       loaderTheme,
+      notificationTheme,
     ];
     return Object.hashAll(values);
   }
@@ -475,6 +487,12 @@ class ThemeData with Diagnosticable {
       'loaderTheme',
       loaderTheme,
       defaultValue: defaultData.loaderTheme,
+      level: DiagnosticLevel.debug,
+    ));
+    properties.add(DiagnosticsProperty<NotificationThemeData>(
+      'notificationTheme',
+      notificationTheme,
+      defaultValue: defaultData.notificationTheme,
       level: DiagnosticLevel.debug,
     ));
   }

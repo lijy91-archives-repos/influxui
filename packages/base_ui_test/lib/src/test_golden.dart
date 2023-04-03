@@ -33,6 +33,7 @@ void testGolden(
   String description,
   WidgetBuilder builder, {
   String? goldenFile,
+  Color? backgroundColor,
   Size? size,
   bool skip = false,
 }) {
@@ -45,11 +46,12 @@ void testGolden(
       const widgetKey = ValueKey('widget-key');
       goldenFile ??= '../_goldens/$description.png';
 
+      debugDisableShadows = false;
       await tester.pumpWidget(BaseApp(
         key: widgetKey,
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          backgroundColor: Colors.transparent,
+          backgroundColor: backgroundColor ?? Colors.transparent,
           body: Center(
             child: Builder(builder: builder),
           ),
@@ -60,6 +62,7 @@ void testGolden(
         find.byKey(widgetKey),
         matchesGoldenFile(goldenFile!),
       );
+      debugDisableShadows = true;
     },
     skip: skip,
   );
