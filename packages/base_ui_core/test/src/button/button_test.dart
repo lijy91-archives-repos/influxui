@@ -1,6 +1,5 @@
 import 'package:base_ui_core/base_ui_core.dart';
 import 'package:base_ui_test/base_ui_test.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -14,15 +13,36 @@ void main() {
     testGolden(
       'button-shape-rectangle',
       (_) => Button(
-        shape: BoxShape.rectangle,
+        shape: Shape.rectangle,
         label: 'Round shape',
+      ),
+    );
+    testGolden(
+      'button-shape-square',
+      (_) => Button(
+        shape: Shape.square,
+        label: 'Circle square',
       ),
     );
     testGolden(
       'button-shape-circle',
       (_) => Button(
-        shape: BoxShape.circle,
+        shape: Shape.circle,
         label: 'Circle shape',
+      ),
+    );
+    testGolden(
+      'button-shape-round',
+      (_) => Button(
+        shape: Shape.round,
+        label: 'Circle round',
+      ),
+    );
+    testGolden(
+      'button-shape-pill',
+      (_) => Button(
+        shape: Shape.pill,
+        label: 'Circle round',
       ),
     );
 

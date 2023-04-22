@@ -31,6 +31,7 @@ class ButtonSize extends Size {
 class Button extends StatefulWidget {
   const Button({
     super.key,
+    this.brightness,
     this.variant,
     this.label,
     this.labelBuilder,
@@ -43,7 +44,9 @@ class Button extends StatefulWidget {
     this.onPressed,
   }) : assert(size is Size || size is NamedSize || size == null);
 
+  final Brightness? brightness;
   final ButtonVariant? variant;
+  final Shape? shape;
   final String? label;
   final WidgetBuilder? labelBuilder;
 
@@ -53,7 +56,6 @@ class Button extends StatefulWidget {
   final EdgeInsetsGeometry? padding;
 
   final Color? color;
-  final BoxShape? shape;
   final Size? size;
   final bool compact;
   final bool uppercase;
@@ -148,14 +150,14 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final bool enabled = widget.enabled;
-    final ThemeData themeData = Theme.of(context);
-    final Color primaryColor = themeData.primaryColor;
-    final Color backgroundColor = widget.color ?? primaryColor;
-    // final theme = ButtonTheme.sizedOf(context);
-    // Size? size = theme.sizes?[widget.size];
+    final ButtonThemeData styledTheme = ButtonTheme.of(context) // styled
+        .brightnessed(widget.brightness ?? Theme.of(context).brightness)
+        .varianted(widget.variant)
+        .colored(widget.color ?? Theme.of(context).primaryColor)
+        .sized(widget.size)
+        .shaped(widget.shape);
 
-    final theme = ButtonTheme.of(context).sized(widget.size);
+    final bool enabled = widget.enabled;
 
     // MaterialApp(theme: ,themeMode:  ThemeMode,);
 
@@ -166,6 +168,25 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
         (context) {
           return Text(widget.label!);
         };
+    Color? backgroundColor = styledTheme.color;
+    Color? borderColor = styledTheme.color;
+
+    ShapeBorder? shapeBorder = RoundedRectangleBorder(
+      side: BorderSide(
+        color: borderColor ?? Colors.transparent,
+      ),
+      borderRadius: BorderRadius.circular(
+        styledTheme.cornerRadius ?? 0,
+      ),
+    );
+
+    if (widget.shape == Shape.circle) {
+      shapeBorder = CircleBorder(
+        side: BorderSide(
+          color: borderColor ?? Colors.transparent,
+        ),
+      );
+    }
 
     return MouseRegion(
       cursor: enabled && kIsWeb ? SystemMouseCursors.click : MouseCursor.defer,
@@ -188,13 +209,9 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
             child: FadeTransition(
               opacity: _opacityAnimation,
               child: DecoratedBox(
-                decoration: BoxDecoration(
-                  // borderRadius: widget.borderRadius,
-                  // color: backgroundColor != null && !enabled
-                  //     ? CupertinoDynamicColor.resolve(
-                  //         widget.disabledColor, context)
-                  //     : backgroundColor,
+                decoration: ShapeDecoration(
                   color: backgroundColor,
+                  shape: shapeBorder,
                 ),
                 child: Padding(
                   padding: widget.padding ?? _kButtonPadding,

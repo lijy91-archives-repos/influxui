@@ -3,6 +3,85 @@ import 'package:base_ui_core/src/theme/theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
+final _kButtonBrightnessedCustomizer = Customizer<Brightness, ButtonThemeData>({
+  Brightness.light: ButtonThemeData(
+    variantedCustomizer: Customizer<ButtonVariant, ButtonThemeData>({
+      ButtonVariant.light: ButtonThemeData(
+        colorShade: 50,
+        coloredCustomizer: Customizer<Color, ButtonThemeData>({
+          Colors.darkGray: ButtonThemeData(
+            colorShade: 100,
+          ),
+        }),
+      ),
+      ButtonVariant.filled: ButtonThemeData(
+        labelColor: Colors.white,
+        coloredCustomizer: Customizer<Color, ButtonThemeData>({
+          Colors.darkGray: ButtonThemeData(
+            colorShade: 100,
+          ),
+        }),
+      ),
+      ButtonVariant.outline: ButtonThemeData(
+        colorShade: -1,
+        labelColorShade: 700,
+        coloredCustomizer: Customizer<Color, ButtonThemeData>({
+          Colors.darkGray: ButtonThemeData(
+            colorShade: 100,
+          ),
+        }),
+      ),
+    }),
+  ),
+  Brightness.dark: ButtonThemeData(
+    variantedCustomizer: Customizer<ButtonVariant, ButtonThemeData>({
+      ButtonVariant.light: ButtonThemeData(
+        colorShade: 800,
+      ),
+      ButtonVariant.filled: ButtonThemeData(),
+    }),
+  ),
+});
+
+final _kButtonColoredCustomizer = Customizer<Color, ButtonThemeData>({});
+
+final _kButtonSizedCustomizer = Customizer<NamedSize, ButtonThemeData>({
+  NamedSize.tiny: ButtonThemeData(
+    padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+    size: Size(0, 16),
+    labelFontSize: 9,
+  ),
+  NamedSize.small: ButtonThemeData(
+    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+    size: Size(0, 18),
+    labelFontSize: 10,
+  ),
+  NamedSize.medium: ButtonThemeData(
+    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+    size: Size(0, 20),
+    labelFontSize: 11,
+  ),
+  NamedSize.large: ButtonThemeData(
+    padding: EdgeInsets.symmetric(horizontal: 14, vertical: 2),
+    size: Size(0, 26),
+    labelFontSize: 13,
+  ),
+  NamedSize.big: ButtonThemeData(
+    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+    size: Size(0, 32),
+    labelFontSize: 26,
+  ),
+});
+
+final _kButtonShapedCustomizer = Customizer<Shape, ButtonThemeData>({
+  Shape.round: ButtonThemeData(
+    cornerRadius: 4,
+  ),
+  Shape.pill: ButtonThemeData(
+    cornerRadius: 100,
+  ),
+});
+
 // Examples can assume:
 // late BuildContext context;
 
@@ -24,51 +103,189 @@ import 'package:flutter/widgets.dart';
 ///  * [ThemeData], which describes the overall theme information for the
 ///    application.
 @immutable
-class ButtonThemeData with Diagnosticable {
+class ButtonThemeData
+    with
+        Diagnosticable,
+        BrightnessedCustomizable<ButtonThemeData>,
+        VariantedCustomizable<ButtonVariant, ButtonThemeData>,
+        ColoredCustomizable<ButtonThemeData>,
+        SizedCustomizable<ButtonThemeData>,
+        ShapedCustomizable<ButtonThemeData> {
   /// Creates the set of color, style, and size properties used to configure [Button].
-  const ButtonThemeData({
-    this.color,
-    this.labelColor,
-    this.labelStyle,
-    this.size,
-    this.sizedCustomizer,
-  });
+  const ButtonThemeData(
+      {this.brightness,
+      this.padding,
+      this.color,
+      this.colorShade,
+      this.size,
+      this.cornered,
+      this.cornerRadius,
+      this.labelColor,
+      this.labelColorShade,
+      this.labelFontSize,
+      Customizer<Brightness, ButtonThemeData>? brightnessedCustomizer,
+      Customizer<ButtonVariant, ButtonThemeData>? variantedCustomizer,
+      Customizer<Color, ButtonThemeData>? coloredCustomizer,
+      Customizer<Size, ButtonThemeData>? sizedCustomizer,
+      Customizer<Shape, ButtonThemeData>? shapedCustomizer})
+      : _brightnessedCustomizer = brightnessedCustomizer,
+        _variantedCustomizer = variantedCustomizer,
+        _coloredCustomizer = coloredCustomizer,
+        _sizedCustomizer = sizedCustomizer,
+        _shapedCustomizer = shapedCustomizer;
+
+  /// Overrides the default value for [Button.brightness].
+  final Brightness? brightness;
 
   /// Overrides the default value for [Button.color].
   final Color? color;
 
-  /// Overrides the default value for [Button.labelColor].
-  final Color? labelColor;
-
-  /// Overrides the default value for [Button.labelStyle].
-  final TextStyle? labelStyle;
+  final int? colorShade;
 
   /// Overrides the default value for [Button.size].
   final Size? size;
 
-  final Customizer<Size, ButtonThemeData>? sizedCustomizer;
+  final bool? cornered;
 
-  ButtonThemeData sized(Size? size) {
-    if (size is! NamedSize) return this;
-    ButtonThemeData? sizedTheme = sizedCustomizer?.of(size);
+  final double? cornerRadius;
+
+  /// Overrides the default value for [Button.labelColor].
+  final Color? labelColor;
+
+  final int? labelColorShade;
+
+  /// Overrides the default value for [Button.labelFontSize].
+  final double? labelFontSize;
+
+  /// Overrides the default value for [Button.padding].
+  final EdgeInsetsGeometry? padding;
+
+  /// The [Customizer] for [ButtonThemeData]s that are brightnessed.
+  final Customizer<Brightness, ButtonThemeData>? _brightnessedCustomizer;
+
+  /// The [Customizer] for [ButtonThemeData]s that are varianted.
+  final Customizer<ButtonVariant, ButtonThemeData>? _variantedCustomizer;
+
+  /// The [Customizer] for [ButtonThemeData]s that are brightnessed.
+  final Customizer<Color, ButtonThemeData>? _coloredCustomizer;
+
+  /// The [Customizer] for [ButtonThemeData]s that are sized.
+  final Customizer<Size, ButtonThemeData>? _sizedCustomizer;
+
+  /// The [Customizer] for [ButtonThemeData]s that are shaped.
+  final Customizer<Shape, ButtonThemeData>? _shapedCustomizer;
+
+  @override
+  Customizer<Brightness, ButtonThemeData> get brightnessedCustomizer {
+    return _brightnessedCustomizer ?? _kButtonBrightnessedCustomizer;
+  }
+
+  @override
+  Customizer<ButtonVariant, ButtonThemeData> get variantedCustomizer {
+    return _variantedCustomizer ??
+        brightnessedCustomizer
+            .of(brightness ?? Brightness.light)!
+            .variantedCustomizer;
+  }
+
+  @override
+  Customizer<Color, ButtonThemeData> get coloredCustomizer {
+    return _coloredCustomizer ?? _kButtonColoredCustomizer;
+  }
+
+  @override
+  Customizer<Size, ButtonThemeData> get sizedCustomizer {
+    return _sizedCustomizer ?? _kButtonSizedCustomizer;
+  }
+
+  @override
+  Customizer<Shape, ButtonThemeData> get shapedCustomizer {
+    return _shapedCustomizer ?? _kButtonShapedCustomizer;
+  }
+
+  @override
+  ButtonThemeData brightnessed(Brightness? brightness) {
+    ButtonThemeData? brightnessedTheme = brightnessedCustomizer.of(brightness);
     return copyWith(
-      size: sizedTheme?.size ?? this.size,
+      variantedCustomizer:
+          brightnessedTheme?.variantedCustomizer ?? variantedCustomizer,
+    );
+  }
+
+  @override
+  ButtonThemeData varianted(ButtonVariant? variant) {
+    ButtonThemeData? variantedTheme = variantedCustomizer.of(variant);
+    return copyWith(
+      colorShade: variantedTheme?.colorShade ?? colorShade,
+      labelColor: variantedTheme?.labelColor ?? labelColor,
+      labelColorShade: variantedTheme?.labelColorShade ?? labelColorShade,
+      coloredCustomizer: variantedTheme?.coloredCustomizer ?? coloredCustomizer,
+    );
+  }
+
+  @override
+  ButtonThemeData colored(Color? color) {
+    ButtonThemeData? coloredTheme = coloredCustomizer.of(color);
+
+    return copyWith(
+      color: coloredTheme?.color ?? color ?? this.color,
+      colorShade: coloredTheme?.colorShade ?? colorShade,
+      labelColor: coloredTheme?.labelColor ?? labelColor ?? color,
+      labelColorShade: coloredTheme?.labelColorShade ?? labelColorShade,
+    );
+  }
+
+  @override
+  ButtonThemeData sized(Size? size) {
+    ButtonThemeData? sizedTheme = sizedCustomizer.of(size);
+    return copyWith(
+      padding: sizedTheme?.padding ?? padding,
+      size: sizedTheme?.size ?? size,
+      labelFontSize: sizedTheme?.labelFontSize ?? labelFontSize,
+    );
+  }
+
+  @override
+  ButtonThemeData shaped(Shape? shape) {
+    ButtonThemeData? shapedTheme = shapedCustomizer.of(shape);
+    return copyWith(
+      cornered: shapedTheme?.cornered ?? cornered,
+      cornerRadius: shapedTheme?.cornerRadius ?? cornerRadius,
     );
   }
 
   /// Creates a copy of this object but with the given fields replaced with the
   /// new values.
   ButtonThemeData copyWith({
-    Color? color,
-    Color? labelColor,
-    TextStyle? labelStyle,
+    EdgeInsetsGeometry? padding,
     Size? size,
+    Color? color,
+    int? colorShade,
+    bool? cornered,
+    double? cornerRadius,
+    Color? labelColor,
+    int? labelColorShade,
+    double? labelFontSize,
+    Customizer<Brightness, ButtonThemeData>? brightnessedCustomizer,
+    Customizer<ButtonVariant, ButtonThemeData>? variantedCustomizer,
+    Customizer<Color, ButtonThemeData>? coloredCustomizer,
+    Customizer<Size, ButtonThemeData>? sizedCustomizer,
   }) {
     return ButtonThemeData(
-      color: color ?? this.color,
-      labelColor: labelColor ?? this.labelColor,
-      labelStyle: labelStyle ?? this.labelStyle,
+      padding: padding ?? this.padding,
       size: size ?? this.size,
+      color: color ?? this.color,
+      colorShade: colorShade ?? this.colorShade,
+      cornered: cornered ?? this.cornered,
+      cornerRadius: cornerRadius ?? this.cornerRadius,
+      labelColor: labelColor ?? this.labelColor,
+      labelColorShade: labelColorShade ?? this.labelColorShade,
+      labelFontSize: labelFontSize ?? this.labelFontSize,
+      brightnessedCustomizer:
+          brightnessedCustomizer ?? this.brightnessedCustomizer,
+      variantedCustomizer: variantedCustomizer ?? this.variantedCustomizer,
+      coloredCustomizer: coloredCustomizer ?? this.coloredCustomizer,
+      sizedCustomizer: sizedCustomizer ?? this.sizedCustomizer,
     );
   }
 
@@ -76,17 +293,19 @@ class ButtonThemeData with Diagnosticable {
   static ButtonThemeData lerp(
       ButtonThemeData? a, ButtonThemeData? b, double t) {
     return ButtonThemeData(
+      size: Size.lerp(a?.size, b?.size, t),
       color: Color.lerp(a?.color, b?.color, t),
-      labelColor: Color.lerp(a?.labelColor, b?.labelColor, t),
-      labelStyle: TextStyle.lerp(a?.labelStyle, b?.labelStyle, t),
+      padding: EdgeInsetsGeometry.lerp(a?.padding, b?.padding, t),
     );
   }
 
   @override
   int get hashCode => Object.hash(
+        brightness,
+        padding,
+        size,
         color,
-        labelColor,
-        labelStyle,
+        cornerRadius,
       );
 
   @override
@@ -98,18 +317,25 @@ class ButtonThemeData with Diagnosticable {
       return false;
     }
     return other is ButtonThemeData &&
+        other.size == size &&
         other.color == color &&
         other.labelColor == labelColor &&
-        other.labelStyle == labelStyle;
+        other.padding == padding;
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(ColorProperty('color', color, defaultValue: null));
-    properties.add(ColorProperty('labelColor', labelColor, defaultValue: null));
-    properties.add(DiagnosticsProperty<TextStyle>('labelStyle', labelStyle,
-        defaultValue: null));
+    properties.add(ColorProperty(
+      'color',
+      color,
+      defaultValue: null,
+    ));
+    properties.add(DiagnosticsProperty<EdgeInsetsGeometry>(
+      'padding',
+      padding,
+      defaultValue: null,
+    ));
   }
 }
 
@@ -143,13 +369,6 @@ class ButtonTheme extends InheritedTheme {
   static ButtonThemeData of(BuildContext context) {
     final ButtonTheme? buttonTheme =
         context.dependOnInheritedWidgetOfExactType<ButtonTheme>();
-    return buttonTheme?.data ?? Theme.of(context).buttonTheme;
-  }
-
-  static ButtonThemeData sizedOf(BuildContext context) {
-    final ButtonTheme? buttonTheme =
-        context.dependOnInheritedWidgetOfExactType<ButtonTheme>();
-
     return buttonTheme?.data ?? Theme.of(context).buttonTheme;
   }
 
