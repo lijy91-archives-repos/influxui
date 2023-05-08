@@ -1,3 +1,4 @@
+import 'package:base_ui_core/src/action_icon/action_icon_theme.dart';
 import 'package:base_ui_core/src/badge/badge_theme.dart';
 import 'package:base_ui_core/src/button/button_theme.dart';
 import 'package:base_ui_core/src/divider/divider_theme.dart';
@@ -145,6 +146,7 @@ class ThemeData with Diagnosticable {
     IconThemeData? iconTheme,
     TextThemeData? textTheme,
     // COMPONENT THEMES
+    ActionIconThemeData? actionIconTheme,
     BadgeThemeData? badgeTheme,
     ButtonThemeData? buttonTheme,
     DividerThemeData? dividerTheme,
@@ -163,6 +165,7 @@ class ThemeData with Diagnosticable {
     iconTheme ??= const IconThemeData(color: Color(0xff000000));
 
     // COMPONENT THEMES
+    actionIconTheme ??= const ActionIconThemeData();
     badgeTheme ??= const BadgeThemeData();
     buttonTheme ??= const ButtonThemeData();
     dividerTheme ??= const DividerThemeData();
@@ -180,6 +183,7 @@ class ThemeData with Diagnosticable {
       iconTheme: iconTheme,
       textTheme: textTheme ?? TextThemeData(),
       // COMPONENT THEMES
+      actionIconTheme: actionIconTheme,
       badgeTheme: badgeTheme,
       buttonTheme: buttonTheme,
       dividerTheme: dividerTheme,
@@ -206,6 +210,7 @@ class ThemeData with Diagnosticable {
     required this.iconTheme,
     required this.textTheme,
     // COMPONENT THEMES
+    required this.actionIconTheme,
     required this.badgeTheme,
     required this.buttonTheme,
     required this.dividerTheme,
@@ -286,6 +291,8 @@ class ThemeData with Diagnosticable {
 
   // COMPONENT THEMES
 
+  final ActionIconThemeData actionIconTheme;
+
   /// A theme for customizing the color of [Badge]s.
   final BadgeThemeData badgeTheme;
 
@@ -315,6 +322,7 @@ class ThemeData with Diagnosticable {
     IconThemeData? iconTheme,
     TextThemeData? textTheme,
     // COMPONENT THEMES
+    ActionIconThemeData? actionIconTheme,
     BadgeThemeData? badgeTheme,
     ButtonThemeData? buttonTheme,
     DividerThemeData? dividerTheme,
@@ -334,6 +342,7 @@ class ThemeData with Diagnosticable {
       iconTheme: iconTheme ?? this.iconTheme,
       textTheme: textTheme ?? this.textTheme,
       // COMPONENT THEMES
+      actionIconTheme: actionIconTheme ?? this.actionIconTheme,
       badgeTheme: badgeTheme ?? this.badgeTheme,
       buttonTheme: buttonTheme ?? this.buttonTheme,
       dividerTheme: dividerTheme ?? this.dividerTheme,
@@ -393,6 +402,8 @@ class ThemeData with Diagnosticable {
       iconTheme: IconThemeData.lerp(a.iconTheme, b.iconTheme, t),
       textTheme: TextThemeData.lerp(a.textTheme, b.textTheme, t),
       // COMPONENT THEMES
+      actionIconTheme:
+          ActionIconThemeData.lerp(a.actionIconTheme, b.actionIconTheme, t),
       badgeTheme: BadgeThemeData.lerp(a.badgeTheme, b.badgeTheme, t),
       buttonTheme: ButtonThemeData.lerp(a.buttonTheme, b.buttonTheme, t),
       dividerTheme: DividerThemeData.lerp(a.dividerTheme, b.dividerTheme, t),

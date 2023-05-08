@@ -15,6 +15,8 @@ class Divider extends StatelessWidget {
     this.direction = Axis.horizontal,
     this.color,
     this.size,
+    this.indent,
+    this.endIndent,
     this.label,
     this.labelBuilder,
   });
@@ -26,6 +28,10 @@ class Divider extends StatelessWidget {
   final Color? color;
 
   final Size? size;
+
+  final double? indent;
+
+  final double? endIndent;
 
   /// Badge label
   final String? label;
@@ -73,9 +79,13 @@ class Divider extends StatelessWidget {
       child: Flex(
         direction: direction,
         children: [
+          if (indent != null) SizedBox(width: indent),
           Expanded(
-            child: CustomPaint(
-              painter: painter,
+            child: Container(
+              height: 1,
+              child: CustomPaint(
+                painter: painter,
+              ),
             ),
           ),
           if (label != null || labelBuilder != null)
@@ -90,10 +100,14 @@ class Divider extends StatelessWidget {
             ),
           if (label != null || labelBuilder != null)
             Expanded(
-              child: CustomPaint(
-                painter: painter,
+              child: Container(
+                height: 1,
+                child: CustomPaint(
+                  painter: painter,
+                ),
               ),
             ),
+          if (endIndent != null) SizedBox(width: endIndent),
         ],
       ),
     );
