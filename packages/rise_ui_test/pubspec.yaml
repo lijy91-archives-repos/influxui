@@ -16,9 +16,12 @@ dependencies:
 
 flutter:
   fonts:
+    - family: MaterialIcons
+      fonts:
+        - asset: fonts/MaterialIcons-Regular.otf
     - family: Roboto
       fonts:
-        - asset: fonts/Roboto/Roboto-Regular.ttf
+        - asset: fonts/Roboto-Regular.ttf
     - family: Roboto Mono
       fonts:
-        - asset: fonts/RobotoMono/RobotoMono-Regular.ttf
+        - asset: fonts/RobotoMono-Regular.ttf

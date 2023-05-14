@@ -4,6 +4,7 @@ import 'package:rise_ui/src/theme/shapes.dart';
 import 'package:rise_ui/src/theme/theme_data.dart';
 
 export 'colors.dart';
+export 'icons.dart';
 export 'shapes.dart';
 export 'sizes.dart';
 export 'theme_data.dart' show Brightness, ThemeData;

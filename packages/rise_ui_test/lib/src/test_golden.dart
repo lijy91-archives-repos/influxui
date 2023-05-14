@@ -7,15 +7,21 @@ import 'package:rise_ui/rise_ui.dart';
 Future<void> _loadFonts() async {
   final List<Map<String, dynamic>> fonts = [
     {
+      'name': 'MaterialIcons',
+      'files': [
+        'packages/rise_ui_test/fonts/MaterialIcons-Regular.otf',
+      ]
+    },
+    {
       'name': 'Roboto',
       'files': [
-        'packages/rise_ui_test/fonts/Roboto/Roboto-Regular.ttf',
+        'packages/rise_ui_test/fonts/Roboto-Regular.ttf',
       ]
     },
     {
       'name': 'Roboto Mono',
       'files': [
-        'packages/rise_ui_test/fonts/RobotoMono/RobotoMono-Regular.ttf',
+        'packages/rise_ui_test/fonts/RobotoMono-Regular.ttf',
       ]
     },
   ];
