@@ -1,4 +1,0 @@
-# melos_managed_dependency_overrides: base_ui_notifications
-dependency_overrides:
-  base_ui_notifications:
-    path: ..

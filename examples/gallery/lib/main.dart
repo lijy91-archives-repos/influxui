@@ -1,4 +1,6 @@
-import 'package:base_ui/base_ui.dart';
+import 'package:flutter/widgets.dart';
+import 'package:rise_ui/rise_ui.dart';
+import 'package:flutter/material.dart' as md;
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:gallery/router_config.dart';
 
@@ -14,12 +16,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: BaseApp.router(
-        title: 'Flutter Demo',
-        theme: ThemeData(),
-        routerConfig: routerConfig,
+    return Theme(
+      data: ThemeData(),
+      child: Container(
+        color: Colors.white,
+        child: md.MaterialApp.router(
+          title: 'Flutter Demo',
+          theme: md.ThemeData(),
+          routerConfig: routerConfig,
+        ),
       ),
     );
   }
@@ -48,9 +53,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: Column(
+      child: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const <Widget>[
+        children: <Widget>[
           Text(
             'You have pushed the button this many times:',
           ),

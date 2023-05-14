@@ -1,0 +1,20 @@
+name: rise_ui
+description: rise_ui
+version: 0.1.0
+homepage: https://github.com/leanflutter/rise_ui/tree/main/packages/rise_ui
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.3.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg: ^2.0.3
+  non_uniform_border: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  rise_ui_test:
+    path: ../rise_ui_test

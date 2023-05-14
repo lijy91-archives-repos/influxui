@@ -1,4 +1,5 @@
-import 'package:base_ui/base_ui.dart';
+import 'package:flutter/widgets.dart';
+import 'package:rise_ui/rise_ui.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {

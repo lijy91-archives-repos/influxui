@@ -5,3 +5,4 @@
 .idea/
 
 **/test/**/failures/
+pubspec_overrides.yaml

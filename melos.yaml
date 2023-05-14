@@ -1,5 +1,5 @@
-name: base_ui_workspace
-repository: https://github.com/leanflutter/base_ui
+name: rise_ui_workspace
+repository: https://github.com/leanflutter/rise_ui
 
 packages:
   - examples/**
@@ -27,9 +27,3 @@ scripts:
   test:
     exec: flutter test
     description: Run `flutter test` for all packages.
-
-  dependency_validator:
-    exec: flutter pub run dependency_validator
-    select-package:
-      depends-on:
-        - dependency_validator
