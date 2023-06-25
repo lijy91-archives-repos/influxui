@@ -45,6 +45,30 @@ class _MyAppState extends State<MyApp> {
                   size: ButtonSize.medium,
                   onPressed: () {},
                 ),
+                Row(
+                  children: [
+                    Button(
+                      variant: ButtonVariant.subtle,
+                      label: 'Subtle variant',
+                      onPressed: () {},
+                    ),
+                    Button(
+                      variant: ButtonVariant.light,
+                      label: 'Light variant',
+                      onPressed: () {},
+                    ),
+                    Button(
+                      variant: ButtonVariant.filled,
+                      label: 'Filled variant',
+                      onPressed: () {},
+                    ),
+                    Button(
+                      variant: ButtonVariant.outline,
+                      label: 'Outline variant',
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
                 const Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

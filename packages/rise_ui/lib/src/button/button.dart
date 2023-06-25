@@ -1,7 +1,9 @@
 // import 'package:rise_ui/src/button/button_theme.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/button/button_theme.dart';
+import 'package:rise_ui/src/text/text_theme.dart';
 import 'package:rise_ui/src/theme/theme.dart';
 
 export 'package:rise_ui/src/button/button_theme.dart';
@@ -32,7 +34,7 @@ class Button extends StatefulWidget {
   const Button({
     super.key,
     this.brightness,
-    this.variant,
+    this.variant = ButtonVariant.filled,
     this.label,
     this.labelBuilder,
     this.padding,
@@ -77,6 +79,8 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
 
   late AnimationController _animationController;
   late Animation<double> _opacityAnimation;
+
+  bool _isHovering = false;
 
   @override
   void initState() {
@@ -159,17 +163,39 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
 
     final bool enabled = widget.enabled;
 
-    // MaterialApp(theme: ,themeMode:  ThemeMode,);
-
-    // final TextStyle textStyle =
-    //     themeData.textTheme.textStyle.copyWith(color: foregroundColor);
-
-    final WidgetBuilder labelBuilder = widget.labelBuilder ??
-        (context) {
-          return Text(widget.label!);
-        };
     Color? backgroundColor = styledTheme.color;
+    Color? hoveredBackgroundColor = styledTheme.color;
     Color? borderColor = styledTheme.color;
+    Color? labelColor = styledTheme.labelColor;
+
+    if (backgroundColor is ShadedColor) {
+      if (styledTheme.colorShade != null) {
+        backgroundColor = backgroundColor[styledTheme.colorShade!];
+      }
+    }
+
+    if (hoveredBackgroundColor is ShadedColor) {
+      if (styledTheme.colorShade != null) {
+        hoveredBackgroundColor =
+            hoveredBackgroundColor[100];
+        print(styledTheme.colorShade);
+        print('>>>> ${hoveredBackgroundColor}');
+      } else {
+        hoveredBackgroundColor = hoveredBackgroundColor[700];
+      }
+    }
+
+    if (borderColor is ShadedColor) {
+      if (widget.variant != ButtonVariant.outline) {
+        borderColor = null;
+      }
+    }
+
+    if (labelColor is ShadedColor) {
+      if (styledTheme.labelColorShade != null) {
+        labelColor = labelColor[styledTheme.labelColorShade!];
+      }
+    }
 
     ShapeBorder? shapeBorder = RoundedRectangleBorder(
       side: BorderSide(
@@ -190,6 +216,16 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
 
     return MouseRegion(
       cursor: enabled && kIsWeb ? SystemMouseCursors.click : MouseCursor.defer,
+      onEnter: (PointerEnterEvent event) {
+        setState(() {
+          _isHovering = true;
+        });
+      },
+      onExit: (PointerExitEvent event) {
+        setState(() {
+          _isHovering = false;
+        });
+      },
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTapDown: enabled ? _handleTapDown : null,
@@ -210,16 +246,24 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
               opacity: _opacityAnimation,
               child: DecoratedBox(
                 decoration: ShapeDecoration(
-                  color: backgroundColor,
+                  color: _isHovering ? hoveredBackgroundColor : backgroundColor,
                   shape: shapeBorder,
                 ),
                 child: Padding(
                   padding: widget.padding ?? _kButtonPadding,
                   child: Align(
-                    // alignment: widget.alignment,
+                    alignment: Alignment.center,
                     widthFactor: 1.0,
                     heightFactor: 1.0,
-                    child: labelBuilder.call(context),
+                    child: DefaultTextStyle(
+                      style: TextTheme.of(context).textStyle.copyWith(
+                            color: styledTheme.labelColor,
+                            fontSize: styledTheme.labelFontSize,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                      child: widget.labelBuilder?.call(context) ??
+                          Text(widget.label!),
+                    ),
                   ),
                 ),
               ),

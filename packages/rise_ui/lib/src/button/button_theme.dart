@@ -6,14 +6,6 @@ import 'package:rise_ui/src/theme/theme.dart';
 final _kButtonBrightnessedCustomizer = Customizer<Brightness, ButtonThemeData>({
   Brightness.light: ButtonThemeData(
     variantedCustomizer: Customizer<ButtonVariant, ButtonThemeData>({
-      ButtonVariant.light: ButtonThemeData(
-        colorShade: 50,
-        coloredCustomizer: Customizer<Color, ButtonThemeData>({
-          Colors.darkGray: ButtonThemeData(
-            colorShade: 100,
-          ),
-        }),
-      ),
       ButtonVariant.filled: ButtonThemeData(
         labelColor: Colors.white,
         coloredCustomizer: Customizer<Color, ButtonThemeData>({
@@ -25,6 +17,38 @@ final _kButtonBrightnessedCustomizer = Customizer<Brightness, ButtonThemeData>({
       ButtonVariant.outline: ButtonThemeData(
         colorShade: -1,
         labelColorShade: 700,
+        coloredCustomizer: Customizer<Color, ButtonThemeData>({
+          Colors.darkGray: ButtonThemeData(
+            colorShade: 100,
+          ),
+        }),
+      ),
+      ButtonVariant.light: ButtonThemeData(
+        colorShade: 50,
+        coloredCustomizer: Customizer<Color, ButtonThemeData>({
+          Colors.darkGray: ButtonThemeData(
+            colorShade: 100,
+          ),
+        }),
+      ),
+      ButtonVariant.white: ButtonThemeData(
+        labelColor: Colors.white,
+        coloredCustomizer: Customizer<Color, ButtonThemeData>({
+          Colors.darkGray: ButtonThemeData(
+            colorShade: 100,
+          ),
+        }),
+      ),
+      ButtonVariant.subtle: ButtonThemeData(
+        colorShade: 50,
+        coloredCustomizer: Customizer<Color, ButtonThemeData>({
+          Colors.darkGray: ButtonThemeData(
+            colorShade: 100,
+          ),
+        }),
+      ),
+      ButtonVariant.gradient: ButtonThemeData(
+        labelColor: Colors.white,
         coloredCustomizer: Customizer<Color, ButtonThemeData>({
           Colors.darkGray: ButtonThemeData(
             colorShade: 100,
