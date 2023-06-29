@@ -6,6 +6,7 @@ import 'package:rise_ui/src/button/button_theme.dart';
 import 'package:rise_ui/src/divider/divider_theme.dart';
 import 'package:rise_ui/src/kbd/kbd_theme.dart';
 import 'package:rise_ui/src/loader/loader_theme.dart';
+import 'package:rise_ui/src/menu/menu_theme.dart';
 import 'package:rise_ui/src/notification/notification.dart';
 import 'package:rise_ui/src/text/text_theme.dart';
 import 'package:rise_ui/src/theme/colors.dart';
@@ -152,10 +153,14 @@ class ThemeData with Diagnosticable {
     DividerThemeData? dividerTheme,
     KbdThemeData? kbdTheme,
     LoaderThemeData? loaderTheme,
+    MenuThemeData? menuTheme,
+    MenuItemThemeData? menuItemTheme,
+    MenuSectionThemeData? menuSectionTheme,
     NotificationThemeData? notificationTheme,
   }) {
     // GENERAL CONFIGURATION
     extensions ??= <ThemeExtension<dynamic>>[];
+    brightness ??= Brightness.light;
 
     // COLOR
     canvasColor ??= const Color(0xffffffff);
@@ -171,11 +176,15 @@ class ThemeData with Diagnosticable {
     dividerTheme ??= const DividerThemeData();
     kbdTheme ??= const KbdThemeData();
     loaderTheme ??= const LoaderThemeData();
+    menuTheme ??= const MenuThemeData();
+    menuItemTheme ??= const MenuItemThemeData();
+    menuSectionTheme ??= const MenuSectionThemeData();
     notificationTheme ??= const NotificationThemeData();
 
     return ThemeData.raw(
       // GENERAL CONFIGURATION
       extensions: _themeExtensionIterableToMap(extensions),
+      brightness: brightness,
       // COLOR
       canvasColor: canvasColor,
       primaryColor: primaryColor,
@@ -189,6 +198,9 @@ class ThemeData with Diagnosticable {
       dividerTheme: dividerTheme,
       kbdTheme: kbdTheme,
       loaderTheme: loaderTheme,
+      menuTheme: menuTheme,
+      menuItemTheme: menuItemTheme,
+      menuSectionTheme: menuSectionTheme,
       notificationTheme: notificationTheme,
     );
   }
@@ -204,6 +216,7 @@ class ThemeData with Diagnosticable {
     // GENERAL CONFIGURATION
     required this.extensions,
     // COLOR
+    required this.brightness,
     required this.canvasColor,
     required this.primaryColor,
     // TYPOGRAPHY & ICONOGRAPHY
@@ -216,6 +229,9 @@ class ThemeData with Diagnosticable {
     required this.dividerTheme,
     required this.kbdTheme,
     required this.loaderTheme,
+    required this.menuTheme,
+    required this.menuItemTheme,
+    required this.menuSectionTheme,
     required this.notificationTheme,
   });
 
@@ -233,7 +249,7 @@ class ThemeData with Diagnosticable {
   /// The default [TextStyle] color for the [textTheme] is black if the
   /// theme is constructed with [Brightness.light] and white if the
   /// theme is constructed with [Brightness.dark].
-  Brightness get brightness => Brightness.light;
+  final Brightness brightness;
 
   // For the sanity of the reader, make sure these properties are in the same
   // order in every place that they are separated by section comments (e.g.
@@ -304,6 +320,12 @@ class ThemeData with Diagnosticable {
 
   final LoaderThemeData loaderTheme;
 
+  final MenuThemeData menuTheme;
+
+  final MenuItemThemeData menuItemTheme;
+
+  final MenuSectionThemeData menuSectionTheme;
+
   final NotificationThemeData notificationTheme;
 
   /// Caches localized themes to speed up the [localize] method.
@@ -328,6 +350,9 @@ class ThemeData with Diagnosticable {
     DividerThemeData? dividerTheme,
     KbdThemeData? kbdTheme,
     LoaderThemeData? loaderTheme,
+    MenuThemeData? menuTheme,
+    MenuItemThemeData? menuItemTheme,
+    MenuSectionThemeData? menuSectionTheme,
     NotificationThemeData? notificationTheme,
   }) {
     return ThemeData.raw(
@@ -336,6 +361,7 @@ class ThemeData with Diagnosticable {
           ? _themeExtensionIterableToMap(extensions)
           : this.extensions,
       // COLOR
+      brightness: brightness ?? this.brightness,
       canvasColor: canvasColor ?? this.canvasColor,
       primaryColor: primaryColor ?? this.primaryColor,
       // TYPOGRAPHY & ICONOGRAPHY
@@ -348,6 +374,9 @@ class ThemeData with Diagnosticable {
       dividerTheme: dividerTheme ?? this.dividerTheme,
       kbdTheme: kbdTheme ?? this.kbdTheme,
       loaderTheme: loaderTheme ?? this.loaderTheme,
+      menuTheme: menuTheme ?? this.menuTheme,
+      menuItemTheme: menuItemTheme ?? this.menuItemTheme,
+      menuSectionTheme: menuSectionTheme ?? this.menuSectionTheme,
       notificationTheme: notificationTheme ?? this.notificationTheme,
     );
   }
@@ -396,6 +425,7 @@ class ThemeData with Diagnosticable {
       // GENERAL CONFIGURATION
       extensions: _lerpThemeExtensions(a, b, t),
       // COLOR
+      brightness: t < 0.5 ? a.brightness : b.brightness,
       canvasColor: Color.lerp(a.canvasColor, b.canvasColor, t)!,
       primaryColor: Color.lerp(a.primaryColor, b.primaryColor, t)!,
       // TYPOGRAPHY & ICONOGRAPHY
@@ -409,6 +439,11 @@ class ThemeData with Diagnosticable {
       dividerTheme: DividerThemeData.lerp(a.dividerTheme, b.dividerTheme, t),
       kbdTheme: KbdThemeData.lerp(a.kbdTheme, b.kbdTheme, t),
       loaderTheme: LoaderThemeData.lerp(a.loaderTheme, b.loaderTheme, t),
+      menuTheme: MenuThemeData.lerp(a.menuTheme, b.menuTheme, t),
+      menuItemTheme:
+          MenuItemThemeData.lerp(a.menuItemTheme, b.menuItemTheme, t),
+      menuSectionTheme:
+          MenuSectionThemeData.lerp(a.menuSectionTheme, b.menuSectionTheme, t),
       notificationTheme: NotificationThemeData.lerp(
           a.notificationTheme, b.notificationTheme, t),
     );
@@ -429,7 +464,8 @@ class ThemeData with Diagnosticable {
         other.buttonTheme == buttonTheme &&
         other.dividerTheme == dividerTheme &&
         other.kbdTheme == kbdTheme &&
-        other.loaderTheme == loaderTheme;
+        other.loaderTheme == loaderTheme &&
+        other.notificationTheme == notificationTheme;
   }
 
   @override

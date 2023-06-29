@@ -176,10 +176,7 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
 
     if (hoveredBackgroundColor is ShadedColor) {
       if (styledTheme.colorShade != null) {
-        hoveredBackgroundColor =
-            hoveredBackgroundColor[100];
-        print(styledTheme.colorShade);
-        print('>>>> ${hoveredBackgroundColor}');
+        hoveredBackgroundColor = hoveredBackgroundColor[100];
       } else {
         hoveredBackgroundColor = hoveredBackgroundColor[700];
       }

@@ -14,6 +14,7 @@ export 'src/kbd/kbd.dart';
 export 'src/list_section/list_section.dart';
 export 'src/list_tile/list_tile.dart';
 export 'src/loader/loader.dart';
+export 'src/menu/menu.dart';
 export 'src/notification/notification.dart';
 export 'src/switch/switch.dart';
 export 'src/text/text.dart';
