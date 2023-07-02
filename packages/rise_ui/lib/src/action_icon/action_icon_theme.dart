@@ -6,33 +6,39 @@ import 'package:rise_ui/src/theme/theme.dart';
 final _kActionIconBrightnessedCustomizer =
     Customizer<Brightness, ActionIconThemeData>({
   Brightness.light: ActionIconThemeData(
+    colorShade: 600,
+    hoveredColorShade: -1,
+    borderColorShade: -1,
     variantedCustomizer: Customizer<ActionIconVariant, ActionIconThemeData>({
-      ActionIconVariant.light: ActionIconThemeData(
-        colorShade: 50,
-        coloredCustomizer: Customizer<Color, ActionIconThemeData>({
-          Colors.darkGray: ActionIconThemeData(
-            colorShade: 100,
-          ),
-        }),
+      ActionIconVariant.subtle: ActionIconThemeData(
+        colorShade: -1,
+        hoveredColorShade: 50,
       ),
       ActionIconVariant.filled: ActionIconThemeData(
-        coloredCustomizer: Customizer<Color, ActionIconThemeData>({
-          Colors.darkGray: ActionIconThemeData(
-            colorShade: 100,
-          ),
-        }),
+        hoveredColorShade: 700,
+        iconColor: Colors.white,
       ),
       ActionIconVariant.outline: ActionIconThemeData(
         colorShade: -1,
-        coloredCustomizer: Customizer<Color, ActionIconThemeData>({
-          Colors.darkGray: ActionIconThemeData(
-            colorShade: 100,
-          ),
-        }),
+        hoveredColorShade: 50,
+        hoveredColorOpacity: 0.35,
+        borderColorShade: 500,
+      ),
+      ActionIconVariant.light: ActionIconThemeData(
+        colorShade: 50,
+        hoveredColorShade: 100,
+        hoveredColorOpacity: 0.65,
+      ),
+      ActionIconVariant.transparent: ActionIconThemeData(
+        colorShade: -1,
+        hoveredColorShade: -1,
       ),
     }),
   ),
   Brightness.dark: ActionIconThemeData(
+    colorShade: 500,
+    hoveredColorShade: 800,
+    borderColorShade: -1,
     variantedCustomizer: Customizer<ActionIconVariant, ActionIconThemeData>({
       ActionIconVariant.light: ActionIconThemeData(
         colorShade: 800,
@@ -48,18 +54,23 @@ final _kActionIconColoredCustomizer =
 final _kActionIconSizedCustomizer = Customizer<NamedSize, ActionIconThemeData>({
   NamedSize.tiny: ActionIconThemeData(
     size: Size.square(18),
+    iconSize: 12,
   ),
   NamedSize.small: ActionIconThemeData(
     size: Size.square(22),
+    iconSize: 14,
   ),
   NamedSize.medium: ActionIconThemeData(
     size: Size.square(28),
+    iconSize: 18,
   ),
   NamedSize.large: ActionIconThemeData(
-    size: Size.square(4),
+    size: Size.square(32),
+    iconSize: 26,
   ),
   NamedSize.big: ActionIconThemeData(
     size: Size.square(44),
+    iconSize: 34,
   ),
 });
 
@@ -104,11 +115,17 @@ class ActionIconThemeData
   /// Creates the set of color, style, and size properties used to configure [ActionIcon].
   const ActionIconThemeData({
     this.brightness,
+    this.padding,
     this.color,
     this.colorShade,
+    this.hoveredColorShade,
+    this.hoveredColorOpacity,
+    this.borderColorShade,
     this.size,
     this.cornered,
     this.cornerRadius,
+    this.iconColor,
+    this.iconSize,
     Customizer<Brightness, ActionIconThemeData>? brightnessedCustomizer,
     Customizer<ActionIconVariant, ActionIconThemeData>? variantedCustomizer,
     Customizer<Color, ActionIconThemeData>? coloredCustomizer,
@@ -120,20 +137,29 @@ class ActionIconThemeData
         _sizedCustomizer = sizedCustomizer,
         _shapedCustomizer = shapedCustomizer;
 
-  /// Overrides the default value for [ActionIcon.brightness].
   final Brightness? brightness;
 
-  /// Overrides the default value for [ActionIcon.color].
+  final EdgeInsetsGeometry? padding;
+
   final Color? color;
 
   final int? colorShade;
 
-  /// Overrides the default value for [ActionIcon.size].
+  final int? hoveredColorShade;
+
+  final double? hoveredColorOpacity;
+
+  final int? borderColorShade;
+
   final Size? size;
 
   final bool? cornered;
 
   final double? cornerRadius;
+
+  final Color? iconColor;
+
+  final double? iconSize;
 
   /// The [Customizer] for [ActionIconThemeData]s that are brightnessed.
   final Customizer<Brightness, ActionIconThemeData>? _brightnessedCustomizer;
@@ -184,6 +210,10 @@ class ActionIconThemeData
     ActionIconThemeData? brightnessedTheme =
         brightnessedCustomizer.of(brightness);
     return copyWith(
+      colorShade: brightnessedTheme?.colorShade ?? colorShade,
+      hoveredColorShade:
+          brightnessedTheme?.hoveredColorShade ?? hoveredColorShade,
+      borderColorShade: brightnessedTheme?.borderColorShade ?? borderColorShade,
       variantedCustomizer:
           brightnessedTheme?.variantedCustomizer ?? variantedCustomizer,
     );
@@ -194,6 +224,11 @@ class ActionIconThemeData
     ActionIconThemeData? variantedTheme = variantedCustomizer.of(variant);
     return copyWith(
       colorShade: variantedTheme?.colorShade ?? colorShade,
+      hoveredColorShade: variantedTheme?.hoveredColorShade ?? hoveredColorShade,
+      hoveredColorOpacity:
+          variantedTheme?.hoveredColorOpacity ?? hoveredColorOpacity,
+      borderColorShade: variantedTheme?.borderColorShade ?? borderColorShade,
+      iconColor: variantedTheme?.iconColor ?? iconColor,
       coloredCustomizer: variantedTheme?.coloredCustomizer ?? coloredCustomizer,
     );
   }
@@ -201,10 +236,14 @@ class ActionIconThemeData
   @override
   ActionIconThemeData colored(Color? color) {
     ActionIconThemeData? coloredTheme = coloredCustomizer.of(color);
-
     return copyWith(
       color: coloredTheme?.color ?? color ?? this.color,
       colorShade: coloredTheme?.colorShade ?? colorShade,
+      hoveredColorShade: coloredTheme?.hoveredColorShade ?? hoveredColorShade,
+      hoveredColorOpacity:
+          coloredTheme?.hoveredColorOpacity ?? hoveredColorOpacity,
+      borderColorShade: coloredTheme?.borderColorShade ?? borderColorShade,
+      iconColor: coloredTheme?.iconColor ?? iconColor ?? color,
     );
   }
 
@@ -213,6 +252,7 @@ class ActionIconThemeData
     ActionIconThemeData? sizedTheme = sizedCustomizer.of(size);
     return copyWith(
       size: sizedTheme?.size ?? size,
+      iconSize: sizedTheme?.iconSize ?? iconSize,
     );
   }
 
@@ -228,23 +268,36 @@ class ActionIconThemeData
   /// Creates a copy of this object but with the given fields replaced with the
   /// new values.
   ActionIconThemeData copyWith({
+    Brightness? brightness,
     EdgeInsetsGeometry? padding,
-    Size? size,
     Color? color,
     int? colorShade,
+    int? hoveredColorShade,
+    double? hoveredColorOpacity,
+    int? borderColorShade,
+    Size? size,
     bool? cornered,
     double? cornerRadius,
+    Color? iconColor,
+    double? iconSize,
     Customizer<Brightness, ActionIconThemeData>? brightnessedCustomizer,
     Customizer<ActionIconVariant, ActionIconThemeData>? variantedCustomizer,
     Customizer<Color, ActionIconThemeData>? coloredCustomizer,
     Customizer<Size, ActionIconThemeData>? sizedCustomizer,
   }) {
     return ActionIconThemeData(
-      size: size ?? this.size,
+      brightness: brightness ?? this.brightness,
+      padding: padding ?? this.padding,
       color: color ?? this.color,
       colorShade: colorShade ?? this.colorShade,
+      hoveredColorShade: hoveredColorShade ?? this.hoveredColorShade,
+      hoveredColorOpacity: hoveredColorOpacity ?? this.hoveredColorOpacity,
+      borderColorShade: borderColorShade ?? this.borderColorShade,
+      size: size ?? this.size,
       cornered: cornered ?? this.cornered,
       cornerRadius: cornerRadius ?? this.cornerRadius,
+      iconColor: iconColor ?? this.iconColor,
+      iconSize: iconSize ?? this.iconSize,
       brightnessedCustomizer:
           brightnessedCustomizer ?? this.brightnessedCustomizer,
       variantedCustomizer: variantedCustomizer ?? this.variantedCustomizer,

@@ -88,22 +88,19 @@ class _MenuItemState extends State<MenuItem> {
                     child: Row(
                       children: [
                         if (widget.iconBuilder != null || widget.icon != null)
-                          widget.iconBuilder?.call(context) ??
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  right:
-                                      styleGuide.spacing.sized(NamedSize.tiny),
-                                ),
-                                child: IconTheme(
-                                  data: IconThemeData(
-                                    size: styledTheme.iconSize,
-                                    color: styledTheme.iconColor,
-                                  ),
-                                  child: Icon(
-                                    widget.icon,
-                                  ),
-                                ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              right: styleGuide.spacing.sized(NamedSize.tiny),
+                            ),
+                            child: IconTheme(
+                              data: IconThemeData(
+                                size: styledTheme.iconSize,
+                                color: styledTheme.iconColor,
                               ),
+                              child: widget.iconBuilder?.call(context) ??
+                                  Icon(widget.icon),
+                            ),
+                          ),
                         Expanded(
                           child: widget.labelBuilder?.call(context) ??
                               Text(widget.label!),

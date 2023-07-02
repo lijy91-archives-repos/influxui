@@ -6,7 +6,30 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui_test/rise_ui_test.dart';
 
-class MaterialIconLibrary extends IconLibrary {
+final _colors = [
+  Colors.gray,
+  Colors.red,
+  Colors.pink,
+  Colors.grape,
+  Colors.violet,
+  Colors.indigo,
+  Colors.blue,
+  Colors.cyan,
+  Colors.teal,
+  Colors.green,
+  Colors.lime,
+  Colors.yellow,
+];
+
+final _sizes = [
+  ActionIconSize.tiny,
+  ActionIconSize.small,
+  ActionIconSize.medium,
+  ActionIconSize.large,
+  ActionIconSize.big,
+];
+
+class _MaterialIconLibrary extends IconLibrary {
   @override
   IconData get chevron_left => md.Icons.chevron_left;
 
@@ -17,44 +40,101 @@ class MaterialIconLibrary extends IconLibrary {
   IconData get square => md.Icons.square;
 }
 
+class _TestWidget extends StatelessWidget {
+  const _TestWidget({this.variant});
+
+  final ActionIconVariant? variant;
+
+  @override
+  Widget build(md.BuildContext context) {
+    return Container(
+      width: 300,
+      height: 200,
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ActionIcon(
+              md.Icons.wb_sunny_outlined,
+              variant: variant,
+              onPressed: () {},
+            ),
+            SizedBox(height: 20),
+            Wrap(
+              spacing: 10,
+              runSpacing: 10,
+              children: [
+                for (final size in _sizes)
+                  ActionIcon(
+                    md.Icons.wb_sunny_outlined,
+                    variant: variant,
+                    size: size,
+                    onPressed: () {},
+                  ),
+              ],
+            ),
+            SizedBox(height: 20),
+            Container(
+              width: 240,
+              child: Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: [
+                  for (final color in _colors)
+                    ActionIcon(
+                      md.Icons.wb_sunny_outlined,
+                      variant: variant,
+                      color: color,
+                      onPressed: () {},
+                    ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 void main() {
-  Icons.iconLibrary = MaterialIconLibrary();
+  Icons.iconLibrary = _MaterialIconLibrary();
   group('action-icon-goldens', () {
     // Variants
     testGolden(
       'action-icon-variant-transparent',
-      (_) => ActionIcon(
-        Icons.square,
+      (_) => _TestWidget(
         variant: ActionIconVariant.transparent,
       ),
+      size: Size(300, 200),
     );
     testGolden(
       'action-icon-variant-subtle',
-      (_) => ActionIcon(
-        Icons.square,
+      (_) => _TestWidget(
         variant: ActionIconVariant.subtle,
       ),
+      size: Size(300, 200),
     );
     testGolden(
       'action-icon-variant-light',
-      (_) => ActionIcon(
-        Icons.square,
+      (_) => _TestWidget(
         variant: ActionIconVariant.light,
       ),
+      size: Size(300, 200),
     );
     testGolden(
       'action-icon-variant-filled',
-      (_) => ActionIcon(
-        Icons.square,
+      (_) => _TestWidget(
         variant: ActionIconVariant.filled,
       ),
+      size: Size(300, 200),
     );
     testGolden(
       'action-icon-variant-outline',
-      (_) => ActionIcon(
-        Icons.square,
+      (_) => _TestWidget(
         variant: ActionIconVariant.outline,
       ),
+      size: Size(300, 200),
     );
   });
 }

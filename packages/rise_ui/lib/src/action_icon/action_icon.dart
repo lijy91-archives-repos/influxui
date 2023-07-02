@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/action_icon/action_icon_theme.dart';
 import 'package:rise_ui/src/theme/theme.dart';
@@ -11,7 +12,6 @@ enum ActionIconVariant {
   outline,
   light,
   transparent,
-  gradient,
 }
 
 class ActionIconSize extends Size {
@@ -29,18 +29,22 @@ class ActionIcon extends StatefulWidget {
     super.key,
     this.brightness,
     this.variant,
+    this.padding,
     this.color,
     this.shape,
     this.size,
+    this.iconSize,
     this.onPressed,
   }) : assert(size is Size || size is NamedSize || size == null);
 
   final IconData icon;
   final Brightness? brightness;
   final ActionIconVariant? variant;
-  final Shape? shape;
+  final EdgeInsetsGeometry? padding;
   final Color? color;
+  final Shape? shape;
   final Size? size;
+  final double? iconSize;
   final VoidCallback? onPressed;
 
   /// Whether the actionicon is enabled or disabled. ActionIcons are disabled by default. To
@@ -60,6 +64,8 @@ class _ActionIconState extends State<ActionIcon>
 
   late AnimationController _animationController;
   late Animation<double> _opacityAnimation;
+
+  bool _isHovering = false;
 
   @override
   void initState() {
@@ -143,17 +149,23 @@ class _ActionIconState extends State<ActionIcon>
 
     final bool enabled = widget.enabled;
 
-    Color? backgroundColor = styledTheme.color;
+    Color? bgColor = styledTheme.color;
+    Color? hoveredBgColor = styledTheme.color;
     Color? borderColor = styledTheme.color;
 
-    ActionIconVariant variant = widget.variant ?? ActionIconVariant.subtle;
-    switch (variant) {
-      case ActionIconVariant.transparent:
-        backgroundColor = Colors.transparent;
-        borderColor = Colors.transparent;
-        break;
-      default:
-        break;
+    if (bgColor is ShadedColor) {
+      bgColor = bgColor[styledTheme.colorShade!];
+    }
+    if (hoveredBgColor is ShadedColor) {
+      hoveredBgColor = hoveredBgColor[styledTheme.hoveredColorShade!];
+      if (styledTheme.hoveredColorOpacity != null) {
+        hoveredBgColor = hoveredBgColor?.withOpacity(
+          styledTheme.hoveredColorOpacity!,
+        );
+      }
+    }
+    if (borderColor is ShadedColor) {
+      borderColor = borderColor[styledTheme.borderColorShade!];
     }
 
     ShapeBorder? shapeBorder = RoundedRectangleBorder(
@@ -175,6 +187,16 @@ class _ActionIconState extends State<ActionIcon>
 
     return MouseRegion(
       cursor: enabled && kIsWeb ? SystemMouseCursors.click : MouseCursor.defer,
+      onEnter: (PointerEnterEvent event) {
+        setState(() {
+          _isHovering = true;
+        });
+      },
+      onExit: (PointerExitEvent event) {
+        setState(() {
+          _isHovering = false;
+        });
+      },
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTapDown: enabled ? _handleTapDown : null,
@@ -194,13 +216,17 @@ class _ActionIconState extends State<ActionIcon>
               opacity: _opacityAnimation,
               child: DecoratedBox(
                 decoration: ShapeDecoration(
-                  color: backgroundColor,
+                  color: _isHovering ? hoveredBgColor : bgColor,
                   shape: shapeBorder,
                 ),
-                child: Center(
-                  child: Icon(
-                    widget.icon,
-                    size: styledTheme.size!.width,
+                child: Padding(
+                  padding: EdgeInsets.zero,
+                  child: Center(
+                    child: Icon(
+                      widget.icon,
+                      color: styledTheme.iconColor,
+                      size: styledTheme.iconSize,
+                    ),
                   ),
                 ),
               ),

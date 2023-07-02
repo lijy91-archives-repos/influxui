@@ -7,8 +7,13 @@ export 'menu_item/menu_item.dart';
 export 'menu_section/menu_section.dart';
 
 class Menu extends StatelessWidget {
-  const Menu({super.key, required this.children});
+  const Menu({
+    super.key,
+    this.padding,
+    required this.children,
+  });
 
+  final EdgeInsetsGeometry? padding;
   final List<Widget> children;
 
   @override
@@ -16,7 +21,7 @@ class Menu extends StatelessWidget {
     final MenuThemeData styledTheme = MenuTheme.of(context) // styled
         .brightnessed(Theme.of(context).brightness);
     return Padding(
-      padding: styledTheme.padding ?? EdgeInsets.zero,
+      padding: padding ?? styledTheme.padding ?? EdgeInsets.zero,
       child: Column(
         children: children,
       ),

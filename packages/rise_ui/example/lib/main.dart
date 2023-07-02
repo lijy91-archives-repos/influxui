@@ -188,7 +188,40 @@ class _MyAppState extends State<MyApp> {
               ),
             ],
           ),
-
+          Container(
+            padding: const EdgeInsets.all(20),
+            width: 500,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ActionIcon(
+                  md.Icons.wb_sunny_outlined,
+                  variant: ActionIconVariant.subtle,
+                  onPressed: () {},
+                ),
+                ActionIcon(
+                  md.Icons.wb_sunny_outlined,
+                  variant: ActionIconVariant.filled,
+                  onPressed: () {},
+                ),
+                ActionIcon(
+                  md.Icons.wb_sunny_outlined,
+                  variant: ActionIconVariant.outline,
+                  onPressed: () {},
+                ),
+                ActionIcon(
+                  md.Icons.wb_sunny_outlined,
+                  variant: ActionIconVariant.light,
+                  onPressed: () {},
+                ),
+                ActionIcon(
+                  md.Icons.wb_sunny_outlined,
+                  variant: ActionIconVariant.transparent,
+                  onPressed: () {},
+                ),
+              ],
+            ),
+          ),
           Container(
             width: 300,
             padding: const EdgeInsets.all(40),
