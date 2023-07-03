@@ -40,10 +40,33 @@ final _kActionIconBrightnessedCustomizer =
     hoveredColorShade: 800,
     borderColorShade: -1,
     variantedCustomizer: Customizer<ActionIconVariant, ActionIconThemeData>({
-      ActionIconVariant.light: ActionIconThemeData(
-        colorShade: 800,
+      ActionIconVariant.subtle: ActionIconThemeData(
+        colorShade: -1,
+        hoveredColorShade: 800,
+        hoveredColorOpacity: 0.2,
+        coloredCustomizer: Customizer<Color, ActionIconThemeData>({
+          Colors.darkGray: ActionIconThemeData(),
+        }),
       ),
-      ActionIconVariant.filled: ActionIconThemeData(),
+      ActionIconVariant.filled: ActionIconThemeData(
+        hoveredColorShade: 700,
+        iconColor: Colors.white,
+      ),
+      ActionIconVariant.outline: ActionIconThemeData(
+        colorShade: -1,
+        hoveredColorShade: 50,
+        hoveredColorOpacity: 0.35,
+        borderColorShade: 500,
+      ),
+      ActionIconVariant.light: ActionIconThemeData(
+        colorShade: 50,
+        hoveredColorShade: 100,
+        hoveredColorOpacity: 0.65,
+      ),
+      ActionIconVariant.transparent: ActionIconThemeData(
+        colorShade: -1,
+        hoveredColorShade: -1,
+      ),
     }),
   ),
 });

@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/list_tile/list_tile_chevron.dart';
 
 class ListTile extends StatelessWidget {
