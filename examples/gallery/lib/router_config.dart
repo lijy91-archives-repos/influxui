@@ -1,5 +1,5 @@
-import 'package:go_router/go_router.dart';
 import 'package:gallery/pages/pages.dart';
+import 'package:go_router/go_router.dart';
 
 // GoRouter configuration
 final routerConfig = GoRouter(
@@ -9,8 +9,10 @@ final routerConfig = GoRouter(
       builder: (context, state) => const HomePage(),
     ),
     GoRoute(
-      path: '/settings',
-      builder: (context, state) => const SettingsPage(),
+      path: '/demo/:slug',
+      builder: (context, state) => DemoPage(
+        slug: state.params['slug']!,
+      ),
     ),
   ],
 );
