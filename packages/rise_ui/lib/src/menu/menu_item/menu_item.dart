@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/menu/menu_item/menu_item_theme.dart';
 import 'package:rise_ui/src/text/text_theme.dart';
 import 'package:rise_ui/src/theme/theme.dart';
+import 'package:rise_ui/src/web_icon/web_icon.dart';
 
 class MenuItem extends StatefulWidget {
   const MenuItem({
@@ -98,7 +99,9 @@ class _MenuItemState extends State<MenuItem> {
                                 color: styledTheme.iconColor,
                               ),
                               child: widget.iconBuilder?.call(context) ??
-                                  Icon(widget.icon),
+                                  (kIsWeb
+                                      ? WebIcon(widget.icon)
+                                      : Icon(widget.icon)),
                             ),
                           ),
                         Expanded(

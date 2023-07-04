@@ -1,7 +1,7 @@
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart' as md;
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
+import 'package:tabler_icon_library/tabler_icon_library.dart';
 
 class ActionIconDemo extends StatelessWidget {
   @override
@@ -16,16 +16,20 @@ class ActionIconDemo extends StatelessWidget {
           ),
           SizedBox(width: 8),
           ActionIcon(
-            FluentIcons.settings_16_regular,
-            // md.Icons.wb_sunny_outlined,
+            TablerIcons.sun,
+            variant: ActionIconVariant.light,
+            size: NamedSize.big,
+          ),
+          SizedBox(width: 8),
+          ActionIcon(
+            TablerIcons.settings,
             variant: ActionIconVariant.light,
             size: NamedSize.big,
           ),
           Container(
             color: Colors.red,
             child: Icon(
-              FluentIcons.settings_24_regular,
-              // size: 24,
+              TablerIcons.settings,
             ),
           ),
         ],

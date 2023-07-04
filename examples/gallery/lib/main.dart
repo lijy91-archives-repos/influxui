@@ -1,7 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:easy_localization/easy_localization.dart';
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/cupertino.dart' show DefaultCupertinoLocalizations;
 import 'package:flutter/material.dart' as md;
 import 'package:flutter/widgets.dart';
@@ -11,20 +10,21 @@ import 'package:gallery/router_config.dart';
 import 'package:gallery/themes/themes.dart';
 import 'package:gallery/utilities/utilities.dart';
 import 'package:rise_ui/rise_ui.dart';
+import 'package:tabler_icon_library/tabler_icon_library.dart';
 
-class TablerIconLibrary extends IconLibrary {
+class DefaultIconLibrary extends IconLibrary {
   @override
-  IconData get chevron_left => FluentIcons.chevron_left_24_regular;
-
-  @override
-  IconData get chevron_right => FluentIcons.chevron_right_24_regular;
+  IconData get chevron_left => TablerIcons.chevron_left;
 
   @override
-  IconData get square => FluentIcons.square_24_regular;
+  IconData get chevron_right => TablerIcons.chevron_right;
+
+  @override
+  IconData get square => TablerIcons.square;
 }
 
 Future<void> _ensureInitialized() async {
-  Icons.iconLibrary = TablerIconLibrary();
+  Icons.iconLibrary = DefaultIconLibrary();
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 

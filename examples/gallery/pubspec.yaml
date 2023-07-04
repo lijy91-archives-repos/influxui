@@ -11,7 +11,6 @@ dependencies:
   collection: ^1.17.1
   device_info_plus: ^8.1.0
   easy_localization: ^3.0.2
-  fluentui_system_icons: ^1.1.200
   flutter:
     sdk: flutter
   flutter_web_plugins:
@@ -24,6 +23,8 @@ dependencies:
   rise_ui_demos:
     path: ../../packages/rise_ui_demos
   shared_preferences: ^2.1.0
+  tabler_icon_library:
+    path: ../../packages/tabler_icon_library
   url_launcher: ^6.1.10
 
 dev_dependencies:

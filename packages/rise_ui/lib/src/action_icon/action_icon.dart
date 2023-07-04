@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/action_icon/action_icon_theme.dart';
 import 'package:rise_ui/src/theme/theme.dart';
+import 'package:rise_ui/src/web_icon/web_icon.dart';
 
 const _kPressedOpacity = 0.8;
 
@@ -220,14 +221,17 @@ class _ActionIconState extends State<ActionIcon>
                   shape: shapeBorder,
                 ),
                 child: Center(
-                  child: Container(
-                    color: Colors.red,
-                    child: Icon(
-                      widget.icon,
-                      color: styledTheme.iconColor,
-                      // size: styledTheme.iconSize,
-                    ),
-                  ),
+                  child: kIsWeb
+                      ? WebIcon(
+                          widget.icon,
+                          color: styledTheme.iconColor,
+                          size: styledTheme.iconSize,
+                        )
+                      : Icon(
+                          widget.icon,
+                          color: styledTheme.iconColor,
+                          size: styledTheme.iconSize,
+                        ),
                 ),
               ),
             ),

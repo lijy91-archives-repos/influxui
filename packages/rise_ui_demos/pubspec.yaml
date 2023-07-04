@@ -8,9 +8,9 @@ environment:
   flutter: ">=3.3.0"
 
 dependencies:
-  fluentui_system_icons: ^1.1.200
   flutter:
     sdk: flutter
   flutter_test:
     sdk: flutter
   rise_ui: ^0.1.0
+  tabler_icon_library: ^0.1.0

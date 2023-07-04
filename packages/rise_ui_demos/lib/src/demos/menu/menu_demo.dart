@@ -1,6 +1,6 @@
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
+import 'package:tabler_icon_library/tabler_icon_library.dart';
 
 class MenuDemo extends StatelessWidget {
   const MenuDemo({Key? key}) : super(key: key);
@@ -15,19 +15,19 @@ class MenuDemo extends StatelessWidget {
           MenuSection(
             children: [
               MenuItem(
-                icon: FluentIcons.settings_24_regular,
+                icon: TablerIcons.settings,
                 label: 'Settings',
               ),
               MenuItem(
-                icon: FluentIcons.chat_24_regular,
+                icon: TablerIcons.message,
                 label: 'Messages',
               ),
               MenuItem(
-                icon: FluentIcons.photo_filter_24_regular,
+                icon: TablerIcons.photo,
                 label: 'Gallery',
               ),
               MenuItem(
-                icon: FluentIcons.search_24_regular,
+                icon: TablerIcons.search,
                 label: 'Search',
               ),
             ],
