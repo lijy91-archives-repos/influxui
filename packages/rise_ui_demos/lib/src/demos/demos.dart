@@ -55,7 +55,7 @@ export 'notification/notification_demo.dart';
 export 'switch/known_demos.dart';
 export 'switch/switch_demo.dart';
 
-final Map<String, Widget> kKnownDemos = {
+final Map<String, WidgetBuilder> kKnownDemos = {
   ...knownActionIconDemos,
   ...knownAlertDemos,
   ...knownAvatarDemos,

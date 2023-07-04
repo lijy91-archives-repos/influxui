@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart' as md;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:rise_ui/rise_ui.dart';
@@ -14,31 +15,19 @@ void main() {
             MenuSection(
               children: [
                 MenuItem(
+                  icon: md.Icons.wb_sunny_outlined,
                   label: 'Settings',
                 ),
                 MenuItem(
+                  icon: md.Icons.wb_sunny_outlined,
                   label: 'Messages',
                 ),
                 MenuItem(
+                  icon: md.Icons.wb_sunny_outlined,
                   label: 'Gallery',
                 ),
                 MenuItem(
-                  label: 'Search',
-                ),
-              ],
-            ),
-            MenuSection(
-              children: [
-                MenuItem(
-                  label: 'Settings',
-                ),
-                MenuItem(
-                  label: 'Messages',
-                ),
-                MenuItem(
-                  label: 'Gallery',
-                ),
-                MenuItem(
+                  icon: md.Icons.wb_sunny_outlined,
                   label: 'Search',
                 ),
               ],

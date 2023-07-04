@@ -16,11 +16,11 @@ class DemoPage extends StatelessWidget {
       body: Center(
         child: Builder(
           builder: (context) {
-            final demo = kKnownDemos[slug];
-            if (demo == null) {
+            final demoBuilder = kKnownDemos[slug];
+            if (demoBuilder == null) {
               return Text('Demo not found: $slug');
             }
-            return demo;
+            return demoBuilder.call(context);
           },
         ),
       ),

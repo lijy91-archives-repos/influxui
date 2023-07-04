@@ -219,13 +219,13 @@ class _ActionIconState extends State<ActionIcon>
                   color: _isHovering ? hoveredBgColor : bgColor,
                   shape: shapeBorder,
                 ),
-                child: Padding(
-                  padding: EdgeInsets.zero,
-                  child: Center(
+                child: Center(
+                  child: Container(
+                    color: Colors.red,
                     child: Icon(
                       widget.icon,
                       color: styledTheme.iconColor,
-                      size: styledTheme.iconSize,
+                      // size: styledTheme.iconSize,
                     ),
                   ),
                 ),

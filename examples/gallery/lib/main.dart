@@ -41,10 +41,7 @@ void main() async {
     ],
     path: 'resources/langs',
     assetLoader: CodegenLoader(),
-    child: Theme(
-      data: ThemeData.light(),
-      child: const MyApp(),
-    ),
+    child: const MyApp(),
   ));
 }
 
@@ -56,6 +53,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final md.ThemeMode _themeMode = md.ThemeMode.light;
+
   @override
   Widget build(BuildContext context) {
     return md.MaterialApp.router(
@@ -70,7 +69,18 @@ class _MyAppState extends State<MyApp> {
         ...context.localizationDelegates,
       ],
       debugShowCheckedModeBanner: false,
-      themeMode: md.ThemeMode.light,
+      themeMode: _themeMode,
+      builder: (context, child) {
+        child = Theme(
+          data: ThemeData(
+            brightness: _themeMode == md.ThemeMode.dark
+                ? Brightness.dark
+                : Brightness.light,
+          ),
+          child: child!,
+        );
+        return child;
+      },
     );
   }
 }
