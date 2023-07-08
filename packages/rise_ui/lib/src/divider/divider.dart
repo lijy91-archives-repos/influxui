@@ -8,17 +8,18 @@ export 'package:rise_ui/src/divider/divider_theme.dart';
 /// Controls divider appearance
 enum DividerVariant { dashed, dotted, solid }
 
+enum DividerLabelPosition { left, center, right }
+
 class Divider extends StatelessWidget {
   const Divider({
     super.key,
     this.variant,
     this.direction = Axis.horizontal,
     this.color,
-    this.size,
-    this.indent,
-    this.endIndent,
+    this.size = NamedSize.tiny,
     this.label,
     this.labelBuilder,
+    this.labelPosition = DividerLabelPosition.center,
   });
 
   final DividerVariant? variant;
@@ -29,19 +30,18 @@ class Divider extends StatelessWidget {
 
   final Size? size;
 
-  final double? indent;
-
-  final double? endIndent;
-
   /// Badge label
   final String? label;
 
   /// Badge label builder
   final WidgetBuilder? labelBuilder;
 
+  final DividerLabelPosition? labelPosition;
+
   @override
   Widget build(BuildContext context) {
     DividerThemeData styledTheme = DividerTheme.of(context) // styled
+        .brightnessed(Theme.of(context).brightness)
         .varianted(variant)
         .sized(size);
 
@@ -50,14 +50,14 @@ class Divider extends StatelessWidget {
       case DividerVariant.dashed:
         painter = _DashedLinePainter(
           direction: direction,
-          color: color ?? Colors.black,
+          color: color ?? styledTheme.color!,
           width: 1.0,
         );
         break;
       case DividerVariant.dotted:
         painter = _DottedLinePainter(
           direction: direction,
-          color: color ?? Colors.black,
+          color: color ?? styledTheme.color!,
           width: 1.0,
         );
         break;
@@ -65,40 +65,34 @@ class Divider extends StatelessWidget {
       default:
         painter = _SolidLinePainter(
           direction: direction,
-          color: color ?? Colors.black,
+          color: color ?? styledTheme.color!,
           width: 1.0,
         );
     }
 
-    final TextStyle textStyle = TextTheme.of(context).textStyle.copyWith(
+    final TextStyle textStyle = TextTheme.of(context) //
+        .textStyle
+        .copyWith(
           color: styledTheme.labelColor,
           fontSize: styledTheme.labelFontSize,
         );
+
+    bool showLabel = label != null || labelBuilder != null;
+    bool showLineOnLeft =
+        showLabel && labelPosition != DividerLabelPosition.left;
+    bool showLineOnRight =
+        showLabel && labelPosition != DividerLabelPosition.right;
+
+    if (!showLabel) {
+      showLineOnLeft = true;
+      showLineOnRight = false;
+    }
 
     return Container(
       child: Flex(
         direction: direction,
         children: [
-          if (indent != null) SizedBox(width: indent),
-          Expanded(
-            child: Container(
-              height: 1,
-              child: CustomPaint(
-                painter: painter,
-              ),
-            ),
-          ),
-          if (label != null || labelBuilder != null)
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 8.0),
-              child: DefaultTextStyle(
-                style: textStyle,
-                child: labelBuilder != null
-                    ? labelBuilder!(context)
-                    : Text(label!),
-              ),
-            ),
-          if (label != null || labelBuilder != null)
+          if (showLineOnLeft)
             Expanded(
               child: Container(
                 height: 1,
@@ -107,7 +101,28 @@ class Divider extends StatelessWidget {
                 ),
               ),
             ),
-          if (endIndent != null) SizedBox(width: endIndent),
+          if (showLabel)
+            Container(
+              margin: EdgeInsets.only(
+                left: labelPosition == DividerLabelPosition.left ? 0 : 10,
+                right: labelPosition == DividerLabelPosition.right ? 0 : 10,
+              ),
+              child: DefaultTextStyle(
+                style: textStyle,
+                child: labelBuilder != null
+                    ? labelBuilder!(context)
+                    : Text(label!),
+              ),
+            ),
+          if (showLineOnRight)
+            Expanded(
+              child: Container(
+                height: 1,
+                child: CustomPaint(
+                  painter: painter,
+                ),
+              ),
+            ),
         ],
       ),
     );

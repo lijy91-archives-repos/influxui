@@ -38,7 +38,9 @@ final _kBadgeBrightnessedCustomizer = Customizer<Brightness, BadgeThemeData>({
       BadgeVariant.light: BadgeThemeData(
         colorShade: 800,
       ),
-      BadgeVariant.filled: BadgeThemeData(),
+      BadgeVariant.filled: BadgeThemeData(
+        labelColor: Colors.white,
+      ),
     }),
   ),
 });

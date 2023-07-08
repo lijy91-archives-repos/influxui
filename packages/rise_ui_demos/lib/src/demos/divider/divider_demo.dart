@@ -7,7 +7,23 @@ class DividerDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Divider(),
+      width: 500,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Divider(
+            variant: DividerVariant.solid,
+          ),
+          SizedBox(height: 20),
+          Divider(
+            variant: DividerVariant.dashed,
+          ),
+          SizedBox(height: 20),
+          Divider(
+            variant: DividerVariant.dotted,
+          ),
+        ],
+      ),
     );
   }
 }

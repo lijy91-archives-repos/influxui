@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui/src/loader/loader_theme.dart';
 import 'package:rise_ui/src/loader/loaders/oval_loader.dart';
 
@@ -13,7 +14,7 @@ class Loader extends StatelessWidget {
     super.key,
     this.variant = LoaderVariant.oval,
     this.color,
-    this.size,
+    this.size = NamedSize.medium,
   });
 
   final LoaderVariant variant;

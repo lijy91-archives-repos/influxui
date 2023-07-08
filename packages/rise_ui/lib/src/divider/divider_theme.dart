@@ -5,26 +5,42 @@ import 'package:rise_ui/src/theme/theme.dart';
 
 // final _kDividerColoredCustomizer = Customizer<Color, DividerThemeData>({});
 
+final _kDividerBrightnessedCustomizer =
+    Customizer<Brightness, DividerThemeData>({
+  Brightness.light: DividerThemeData(
+    color: Colors.gray,
+    colorShade: 400,
+    labelColor: Colors.darkGray,
+    labelColorShade: 400,
+  ),
+  Brightness.dark: DividerThemeData(
+    color: Colors.darkGray,
+    colorShade: 400,
+    labelColor: Colors.gray,
+    labelColorShade: 400,
+  ),
+});
+
 final _kDividerSizedCustomizer = Customizer<NamedSize, DividerThemeData>({
   NamedSize.tiny: DividerThemeData(
     size: Size(0, 16),
-    labelFontSize: 9,
+    labelFontSize: styleGuide.fontSizes.sized(NamedSize.tiny),
   ),
   NamedSize.small: DividerThemeData(
     size: Size(0, 18),
-    labelFontSize: 10,
+    labelFontSize: styleGuide.fontSizes.sized(NamedSize.small),
   ),
   NamedSize.medium: DividerThemeData(
     size: Size(0, 20),
-    labelFontSize: 11,
+    labelFontSize: styleGuide.fontSizes.sized(NamedSize.medium),
   ),
   NamedSize.large: DividerThemeData(
     size: Size(0, 26),
-    labelFontSize: 13,
+    labelFontSize: styleGuide.fontSizes.sized(NamedSize.large),
   ),
   NamedSize.big: DividerThemeData(
     size: Size(0, 32),
-    labelFontSize: 26,
+    labelFontSize: styleGuide.fontSizes.sized(NamedSize.big),
   ),
 });
 
@@ -52,6 +68,7 @@ final _kDividerSizedCustomizer = Customizer<NamedSize, DividerThemeData>({
 class DividerThemeData
     with
         Diagnosticable,
+        BrightnessedCustomizable<DividerThemeData>,
         VariantedCustomizable<DividerVariant, DividerThemeData>,
         SizedCustomizable<DividerThemeData> {
   /// Creates the set of color, style, and size properties used to configure [Divider].
@@ -62,10 +79,12 @@ class DividerThemeData
     this.labelColor,
     this.labelColorShade,
     this.labelFontSize,
+    Customizer<Brightness, DividerThemeData>? brightnessedCustomizer,
     Customizer<DividerVariant, DividerThemeData>? variantedCustomizer,
     Customizer<Color, DividerThemeData>? coloredCustomizer,
     Customizer<Size, DividerThemeData>? sizedCustomizer,
-  })  : _variantedCustomizer = variantedCustomizer,
+  })  : _brightnessedCustomizer = brightnessedCustomizer,
+        _variantedCustomizer = variantedCustomizer,
         _sizedCustomizer = sizedCustomizer;
 
   /// Overrides the default value for [Divider.color].
@@ -84,11 +103,19 @@ class DividerThemeData
   /// Overrides the default value for [Divider.labelFontSize].
   final double? labelFontSize;
 
+  /// The [Customizer] for [DividerThemeData]s that are brightnessed.
+  final Customizer<Brightness, DividerThemeData>? _brightnessedCustomizer;
+
   /// The [Customizer] for [DividerThemeData]s that are varianted.
   final Customizer<DividerVariant, DividerThemeData>? _variantedCustomizer;
 
   /// The [Customizer] for [DividerThemeData]s that are sized.
   final Customizer<Size, DividerThemeData>? _sizedCustomizer;
+
+  @override
+  Customizer<Brightness, DividerThemeData> get brightnessedCustomizer {
+    return _brightnessedCustomizer ?? _kDividerBrightnessedCustomizer;
+  }
 
   @override
   Customizer<DividerVariant, DividerThemeData> get variantedCustomizer {
@@ -99,6 +126,19 @@ class DividerThemeData
   @override
   Customizer<Size, DividerThemeData> get sizedCustomizer {
     return _sizedCustomizer ?? _kDividerSizedCustomizer;
+  }
+
+  @override
+  DividerThemeData brightnessed(Brightness? brightness) {
+    DividerThemeData? brightnessedTheme = brightnessedCustomizer.of(brightness);
+    return copyWith(
+      color: brightnessedTheme?.color ?? color,
+      colorShade: brightnessedTheme?.colorShade ?? colorShade,
+      labelColor: brightnessedTheme?.labelColor ?? labelColor,
+      labelColorShade: brightnessedTheme?.labelColorShade ?? labelColorShade,
+      variantedCustomizer:
+          brightnessedTheme?.variantedCustomizer ?? variantedCustomizer,
+    );
   }
 
   @override

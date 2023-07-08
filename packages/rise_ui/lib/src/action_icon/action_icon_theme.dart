@@ -59,9 +59,9 @@ final _kActionIconBrightnessedCustomizer =
         borderColorShade: 500,
       ),
       ActionIconVariant.light: ActionIconThemeData(
-        colorShade: 50,
-        hoveredColorShade: 100,
-        hoveredColorOpacity: 0.65,
+        colorShade: 800,
+        hoveredColorShade: 700,
+        hoveredColorOpacity: 0.25,
       ),
       ActionIconVariant.transparent: ActionIconThemeData(
         colorShade: -1,

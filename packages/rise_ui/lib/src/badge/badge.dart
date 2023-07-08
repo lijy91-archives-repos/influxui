@@ -10,7 +10,6 @@ enum BadgeVariant {
   light,
   filled,
   outline,
-  gradient,
 }
 
 class BadgeSize extends Size {

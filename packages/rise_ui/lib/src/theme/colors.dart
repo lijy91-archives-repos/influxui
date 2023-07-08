@@ -628,3 +628,18 @@ class Colors {
   );
   static const int _darkGrayPrimaryValue = 0xFF2C2E33;
 }
+
+final kAllColors = [
+  Colors.gray,
+  Colors.red,
+  Colors.pink,
+  Colors.grape,
+  Colors.violet,
+  Colors.indigo,
+  Colors.blue,
+  Colors.cyan,
+  Colors.teal,
+  Colors.green,
+  Colors.lime,
+  Colors.yellow,
+];
