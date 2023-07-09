@@ -4731,6 +4731,12 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData brand_minecraft = IconData(
+    0xfaef,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData brand_miniprogram = IconData(
     0xf602,
     fontFamily: iconFont,
@@ -7107,6 +7113,30 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData chevron_compact_down = IconData(
+    0xfaf0,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData chevron_compact_left = IconData(
+    0xfaf1,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData chevron_compact_right = IconData(
+    0xfaf2,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData chevron_compact_up = IconData(
+    0xfaf3,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData chevron_down = IconData(
     0xea5f,
     fontFamily: iconFont,
@@ -8661,6 +8691,12 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData column_remove = IconData(
+    0xfaf4,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData columns = IconData(
     0xeb83,
     fontFamily: iconFont,
@@ -9317,6 +9353,12 @@ class TablerIcons {
 
   static const IconData currency_euro_off = IconData(
     0xf3dd,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData currency_florin = IconData(
+    0xfaf5,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );
@@ -12543,6 +12585,12 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData fire_extinguisher = IconData(
+    0xfaf6,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData fire_hydrant = IconData(
     0xf3a9,
     fontFamily: iconFont,
@@ -12869,6 +12917,12 @@ class TablerIcons {
 
   static const IconData folder_off = IconData(
     0xed14,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData folder_open = IconData(
+    0xfaf7,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );
@@ -13661,6 +13715,12 @@ class TablerIcons {
 
   static const IconData haze = IconData(
     0xefaa,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData haze_moon = IconData(
+    0xfaf8,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );
@@ -15123,6 +15183,12 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData lane = IconData(
+    0xfaf9,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData language = IconData(
     0xebbe,
     fontFamily: iconFont,
@@ -15731,6 +15797,12 @@ class TablerIcons {
 
   static const IconData list_search = IconData(
     0xeea9,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData list_tree = IconData(
+    0xfafa,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );
@@ -16793,6 +16865,12 @@ class TablerIcons {
 
   static const IconData menu_2 = IconData(
     0xec42,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData menu_deep = IconData(
+    0xfafb,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );
@@ -18765,6 +18843,12 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData pick = IconData(
+    0xfafc,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData picture_in_picture = IconData(
     0xed35,
     fontFamily: iconFont,
@@ -20025,6 +20109,12 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData restore = IconData(
+    0xfafd,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData rewind_backward_10 = IconData(
     0xfaba,
     fontFamily: iconFont,
@@ -20357,6 +20447,12 @@ class TablerIcons {
 
   static const IconData row_insert_top = IconData(
     0xeed1,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData row_remove = IconData(
+    0xfafe,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );
@@ -23199,6 +23295,12 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData table_column = IconData(
+    0xfaff,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData table_down = IconData(
     0xfa1c,
     fontFamily: iconFont,
@@ -23249,6 +23351,12 @@ class TablerIcons {
 
   static const IconData table_plus = IconData(
     0xfa1f,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData table_row = IconData(
+    0xfb00,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );

@@ -8,6 +8,7 @@ class ActionIconDemo extends StatelessWidget {
     return ActionIcon(
       TablerIcons.sun,
       variant: ActionIconVariant.light,
+      onPressed: () {},
     );
   }
 }

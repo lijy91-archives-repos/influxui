@@ -7,6 +7,7 @@ class ButtonDemo extends StatelessWidget {
     return Container(
       child: Button(
         label: 'Settings',
+        onPressed: () {},
       ),
     );
   }

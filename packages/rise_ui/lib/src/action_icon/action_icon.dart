@@ -8,10 +8,10 @@ import 'package:rise_ui/src/web_icon/web_icon.dart';
 const _kPressedOpacity = 0.8;
 
 enum ActionIconVariant {
-  subtle,
   filled,
-  outline,
   light,
+  outline,
+  subtle,
   transparent,
 }
 
@@ -29,7 +29,7 @@ class ActionIcon extends StatefulWidget {
     this.icon, {
     super.key,
     this.brightness,
-    this.variant,
+    this.variant = ActionIconVariant.filled,
     this.padding,
     this.color,
     this.shape,
@@ -140,13 +140,12 @@ class _ActionIconState extends State<ActionIcon>
 
   @override
   Widget build(BuildContext context) {
-    final ActionIconThemeData styledTheme =
-        ActionIconTheme.of(context) // styled
-            .brightnessed(widget.brightness ?? Theme.of(context).brightness)
-            .varianted(widget.variant)
-            .colored(widget.color ?? Theme.of(context).primaryColor)
-            .sized(widget.size ?? ActionIconSize.medium)
-            .shaped(widget.shape);
+    final styledTheme = ActionIconTheme.of(context) // styled
+        .brightnessed(widget.brightness ?? Theme.of(context).brightness)
+        .varianted(widget.variant)
+        .colored(widget.color ?? Theme.of(context).primaryColor)
+        .sized(widget.size ?? ActionIconSize.medium)
+        .shaped(widget.shape);
 
     final bool enabled = widget.enabled;
 
@@ -156,6 +155,11 @@ class _ActionIconState extends State<ActionIcon>
 
     if (bgColor is ShadedColor) {
       bgColor = bgColor[styledTheme.colorShade!];
+      if (styledTheme.colorOpacity != null) {
+        bgColor = bgColor?.withOpacity(
+          styledTheme.colorOpacity!,
+        );
+      }
     }
     if (hoveredBgColor is ShadedColor) {
       hoveredBgColor = hoveredBgColor[styledTheme.hoveredColorShade!];

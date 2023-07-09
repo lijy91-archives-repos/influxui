@@ -14,6 +14,7 @@ class MenuItem extends StatefulWidget {
     this.label,
     this.labelBuilder,
     this.color,
+    this.onPressed,
   });
 
   final IconData? icon;
@@ -21,6 +22,7 @@ class MenuItem extends StatefulWidget {
   final String? label;
   final WidgetBuilder? labelBuilder;
   final Color? color;
+  final VoidCallback? onPressed;
 
   @override
   State<MenuItem> createState() => _MenuItemState();
@@ -63,7 +65,9 @@ class _MenuItemState extends State<MenuItem> {
       },
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTap: () {},
+        onTap: () {
+          widget.onPressed?.call();
+        },
         child: Semantics(
           button: true,
           child: ConstrainedBox(

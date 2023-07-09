@@ -10,10 +10,11 @@ class ActionIconWithColorDemo extends StatelessWidget {
       spacing: 10,
       children: [
         for (final variant in [
-          ActionIconVariant.subtle,
-          ActionIconVariant.outline,
-          ActionIconVariant.light,
           ActionIconVariant.filled,
+          ActionIconVariant.light,
+          ActionIconVariant.outline,
+          ActionIconVariant.subtle,
+          ActionIconVariant.transparent,
         ])
           Wrap(
             spacing: 10,
@@ -23,6 +24,7 @@ class ActionIconWithColorDemo extends StatelessWidget {
                   TablerIcons.sun,
                   variant: variant,
                   color: color,
+                  onPressed: () {},
                 ),
             ],
           ),

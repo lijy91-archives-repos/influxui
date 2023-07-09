@@ -8,17 +8,16 @@ import 'package:rise_ui/src/theme/theme.dart';
 
 export 'package:rise_ui/src/button/button_theme.dart';
 
-const EdgeInsets _kButtonPadding = EdgeInsets.all(16.0);
+const EdgeInsets _kButtonPadding = EdgeInsets.all(10.0);
 const _kPressedOpacity = 0.8;
 
 /// Controls button appearance
 enum ButtonVariant {
   filled,
-  outline,
   light,
-  white,
+  outline,
   subtle,
-  gradient,
+  transparent,
 }
 
 class ButtonSize extends Size {
@@ -154,44 +153,37 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonThemeData styledTheme = ButtonTheme.of(context) // styled
+    final styledTheme = ButtonTheme.of(context) // styled
         .brightnessed(widget.brightness ?? Theme.of(context).brightness)
         .varianted(widget.variant)
         .colored(widget.color ?? Theme.of(context).primaryColor)
-        .sized(widget.size)
+        .sized(widget.size ?? ButtonSize.medium)
         .shaped(widget.shape);
 
     final bool enabled = widget.enabled;
 
-    Color? backgroundColor = styledTheme.color;
-    Color? hoveredBackgroundColor = styledTheme.color;
+    Color? bgColor = styledTheme.color;
+    Color? hoveredBgColor = styledTheme.color;
     Color? borderColor = styledTheme.color;
-    Color? labelColor = styledTheme.labelColor;
 
-    if (backgroundColor is ShadedColor) {
-      if (styledTheme.colorShade != null) {
-        backgroundColor = backgroundColor[styledTheme.colorShade!];
+    if (bgColor is ShadedColor) {
+      bgColor = bgColor[styledTheme.colorShade!];
+      if (styledTheme.colorOpacity != null) {
+        bgColor = bgColor?.withOpacity(
+          styledTheme.colorOpacity!,
+        );
       }
     }
-
-    if (hoveredBackgroundColor is ShadedColor) {
-      if (styledTheme.colorShade != null) {
-        hoveredBackgroundColor = hoveredBackgroundColor[100];
-      } else {
-        hoveredBackgroundColor = hoveredBackgroundColor[700];
+    if (hoveredBgColor is ShadedColor) {
+      hoveredBgColor = hoveredBgColor[styledTheme.hoveredColorShade!];
+      if (styledTheme.hoveredColorOpacity != null) {
+        hoveredBgColor = hoveredBgColor?.withOpacity(
+          styledTheme.hoveredColorOpacity!,
+        );
       }
     }
-
     if (borderColor is ShadedColor) {
-      if (widget.variant != ButtonVariant.outline) {
-        borderColor = null;
-      }
-    }
-
-    if (labelColor is ShadedColor) {
-      if (styledTheme.labelColorShade != null) {
-        labelColor = labelColor[styledTheme.labelColorShade!];
-      }
+      borderColor = borderColor[styledTheme.borderColorShade!];
     }
 
     ShapeBorder? shapeBorder = RoundedRectangleBorder(
@@ -238,15 +230,17 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
             //         minWidth: widget.minSize!,
             //         minHeight: widget.minSize!,
             //       ),
-            constraints: const BoxConstraints(),
+            constraints: BoxConstraints(
+              // minHeight: styledTheme.size!.height,
+            ),
             child: FadeTransition(
               opacity: _opacityAnimation,
               child: DecoratedBox(
                 decoration: ShapeDecoration(
-                  color: _isHovering ? hoveredBackgroundColor : backgroundColor,
+                  color: _isHovering ? hoveredBgColor : bgColor,
                   shape: shapeBorder,
                 ),
-                child: Padding(
+                child: Container(
                   padding: widget.padding ?? _kButtonPadding,
                   child: Align(
                     alignment: Alignment.center,
@@ -256,7 +250,7 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
                       style: TextTheme.of(context).textStyle.copyWith(
                             color: styledTheme.labelColor,
                             fontSize: styledTheme.labelFontSize,
-                            overflow: TextOverflow.ellipsis,
+                            fontWeight: FontWeight.w600,
                           ),
                       child: widget.labelBuilder?.call(context) ??
                           Text(widget.label!),

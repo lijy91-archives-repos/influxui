@@ -9,10 +9,11 @@ class ButtonWithColorDemo extends StatelessWidget {
       spacing: 10,
       children: [
         for (final variant in [
-          ButtonVariant.subtle,
-          ButtonVariant.outline,
-          ButtonVariant.light,
           ButtonVariant.filled,
+          ButtonVariant.light,
+          ButtonVariant.outline,
+          ButtonVariant.subtle,
+          ButtonVariant.transparent,
         ])
           Wrap(
             spacing: 10,
@@ -22,6 +23,7 @@ class ButtonWithColorDemo extends StatelessWidget {
                   label: 'Button',
                   variant: variant,
                   color: color,
+                  onPressed: () {},
                 ),
             ],
           ),

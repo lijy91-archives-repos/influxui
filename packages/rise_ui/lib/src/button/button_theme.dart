@@ -5,64 +5,72 @@ import 'package:rise_ui/src/theme/theme.dart';
 
 final _kButtonBrightnessedCustomizer = Customizer<Brightness, ButtonThemeData>({
   Brightness.light: ButtonThemeData(
+    colorShade: 600,
+    hoveredColorShade: -1,
+    borderColorShade: -1,
     variantedCustomizer: Customizer<ButtonVariant, ButtonThemeData>({
       ButtonVariant.filled: ButtonThemeData(
+        hoveredColorShade: 700,
+        iconColor: Colors.white,
         labelColor: Colors.white,
-        coloredCustomizer: Customizer<Color, ButtonThemeData>({
-          Colors.darkGray: ButtonThemeData(
-            colorShade: 100,
-          ),
-        }),
-      ),
-      ButtonVariant.outline: ButtonThemeData(
-        colorShade: -1,
-        labelColorShade: 700,
-        coloredCustomizer: Customizer<Color, ButtonThemeData>({
-          Colors.darkGray: ButtonThemeData(
-            colorShade: 100,
-          ),
-        }),
       ),
       ButtonVariant.light: ButtonThemeData(
         colorShade: 50,
-        coloredCustomizer: Customizer<Color, ButtonThemeData>({
-          Colors.darkGray: ButtonThemeData(
-            colorShade: 100,
-          ),
-        }),
+        hoveredColorShade: 100,
+        hoveredColorOpacity: 0.65,
       ),
-      ButtonVariant.white: ButtonThemeData(
-        labelColor: Colors.white,
-        coloredCustomizer: Customizer<Color, ButtonThemeData>({
-          Colors.darkGray: ButtonThemeData(
-            colorShade: 100,
-          ),
-        }),
+      ButtonVariant.outline: ButtonThemeData(
+        colorShade: -1,
+        hoveredColorShade: 50,
+        hoveredColorOpacity: 0.35,
+        borderColorShade: 500,
       ),
       ButtonVariant.subtle: ButtonThemeData(
-        colorShade: 50,
-        coloredCustomizer: Customizer<Color, ButtonThemeData>({
-          Colors.darkGray: ButtonThemeData(
-            colorShade: 100,
-          ),
-        }),
+        colorShade: -1,
+        hoveredColorShade: 50,
       ),
-      ButtonVariant.gradient: ButtonThemeData(
-        labelColor: Colors.white,
-        coloredCustomizer: Customizer<Color, ButtonThemeData>({
-          Colors.darkGray: ButtonThemeData(
-            colorShade: 100,
-          ),
-        }),
+      ButtonVariant.transparent: ButtonThemeData(
+        colorShade: -1,
+        hoveredColorShade: -1,
       ),
     }),
   ),
   Brightness.dark: ButtonThemeData(
+    colorShade: 500,
+    hoveredColorShade: 800,
+    borderColorShade: -1,
     variantedCustomizer: Customizer<ButtonVariant, ButtonThemeData>({
+      ButtonVariant.filled: ButtonThemeData(
+        colorShade: 800,
+        hoveredColorShade: 900,
+        iconColor: Colors.white,
+        labelColor: Colors.white,
+      ),
       ButtonVariant.light: ButtonThemeData(
         colorShade: 800,
+        colorOpacity: 0.25,
+        hoveredColorShade: 700,
+        hoveredColorOpacity: 0.25,
+        iconColor: Colors.white,
       ),
-      ButtonVariant.filled: ButtonThemeData(),
+      ButtonVariant.outline: ButtonThemeData(
+        colorShade: -1,
+        hoveredColorShade: 50,
+        hoveredColorOpacity: 0.35,
+        borderColorShade: 500,
+      ),
+      ButtonVariant.subtle: ButtonThemeData(
+        colorShade: -1,
+        hoveredColorShade: 800,
+        hoveredColorOpacity: 0.2,
+        coloredCustomizer: Customizer<Color, ButtonThemeData>({
+          Colors.darkGray: ButtonThemeData(),
+        }),
+      ),
+      ButtonVariant.transparent: ButtonThemeData(
+        colorShade: -1,
+        hoveredColorShade: -1,
+      ),
     }),
   ),
 });
@@ -141,9 +149,15 @@ class ButtonThemeData
       this.padding,
       this.color,
       this.colorShade,
+    this.colorOpacity,
+      this.hoveredColorShade,
+      this.hoveredColorOpacity,
+      this.borderColorShade,
       this.size,
       this.cornered,
       this.cornerRadius,
+      this.iconColor,
+      this.iconSize,
       this.labelColor,
       this.labelColorShade,
       this.labelFontSize,
@@ -158,20 +172,31 @@ class ButtonThemeData
         _sizedCustomizer = sizedCustomizer,
         _shapedCustomizer = shapedCustomizer;
 
-  /// Overrides the default value for [Button.brightness].
   final Brightness? brightness;
 
-  /// Overrides the default value for [Button.color].
+  final EdgeInsetsGeometry? padding;
+
   final Color? color;
 
   final int? colorShade;
 
-  /// Overrides the default value for [Button.size].
+  final double? colorOpacity;
+
+  final int? hoveredColorShade;
+
+  final double? hoveredColorOpacity;
+
+  final int? borderColorShade;
+
   final Size? size;
 
   final bool? cornered;
 
   final double? cornerRadius;
+
+  final Color? iconColor;
+
+  final double? iconSize;
 
   /// Overrides the default value for [Button.labelColor].
   final Color? labelColor;
@@ -180,9 +205,6 @@ class ButtonThemeData
 
   /// Overrides the default value for [Button.labelFontSize].
   final double? labelFontSize;
-
-  /// Overrides the default value for [Button.padding].
-  final EdgeInsetsGeometry? padding;
 
   /// The [Customizer] for [ButtonThemeData]s that are brightnessed.
   final Customizer<Brightness, ButtonThemeData>? _brightnessedCustomizer;
@@ -231,6 +253,10 @@ class ButtonThemeData
   ButtonThemeData brightnessed(Brightness? brightness) {
     ButtonThemeData? brightnessedTheme = brightnessedCustomizer.of(brightness);
     return copyWith(
+      colorShade: brightnessedTheme?.colorShade ?? colorShade,
+      hoveredColorShade:
+          brightnessedTheme?.hoveredColorShade ?? hoveredColorShade,
+      borderColorShade: brightnessedTheme?.borderColorShade ?? borderColorShade,
       variantedCustomizer:
           brightnessedTheme?.variantedCustomizer ?? variantedCustomizer,
     );
@@ -240,7 +266,14 @@ class ButtonThemeData
   ButtonThemeData varianted(ButtonVariant? variant) {
     ButtonThemeData? variantedTheme = variantedCustomizer.of(variant);
     return copyWith(
+      color: variantedTheme?.color ?? color,
       colorShade: variantedTheme?.colorShade ?? colorShade,
+      colorOpacity: variantedTheme?.colorOpacity ?? colorOpacity,
+      hoveredColorShade: variantedTheme?.hoveredColorShade ?? hoveredColorShade,
+      hoveredColorOpacity:
+          variantedTheme?.hoveredColorOpacity ?? hoveredColorOpacity,
+      borderColorShade: variantedTheme?.borderColorShade ?? borderColorShade,
+      iconColor: variantedTheme?.iconColor ?? iconColor,
       labelColor: variantedTheme?.labelColor ?? labelColor,
       labelColorShade: variantedTheme?.labelColorShade ?? labelColorShade,
       coloredCustomizer: variantedTheme?.coloredCustomizer ?? coloredCustomizer,
@@ -254,6 +287,11 @@ class ButtonThemeData
     return copyWith(
       color: coloredTheme?.color ?? color ?? this.color,
       colorShade: coloredTheme?.colorShade ?? colorShade,
+      hoveredColorShade: coloredTheme?.hoveredColorShade ?? hoveredColorShade,
+      hoveredColorOpacity:
+          coloredTheme?.hoveredColorOpacity ?? hoveredColorOpacity,
+      borderColorShade: coloredTheme?.borderColorShade ?? borderColorShade,
+      iconColor: coloredTheme?.iconColor ?? iconColor ?? color,
       labelColor: coloredTheme?.labelColor ?? labelColor ?? color,
       labelColorShade: coloredTheme?.labelColorShade ?? labelColorShade,
     );
@@ -281,12 +319,19 @@ class ButtonThemeData
   /// Creates a copy of this object but with the given fields replaced with the
   /// new values.
   ButtonThemeData copyWith({
+    Brightness? brightness,
     EdgeInsetsGeometry? padding,
-    Size? size,
     Color? color,
     int? colorShade,
+    double? colorOpacity,
+    int? hoveredColorShade,
+    double? hoveredColorOpacity,
+    int? borderColorShade,
+    Size? size,
     bool? cornered,
     double? cornerRadius,
+    Color? iconColor,
+    double? iconSize,
     Color? labelColor,
     int? labelColorShade,
     double? labelFontSize,
@@ -296,12 +341,19 @@ class ButtonThemeData
     Customizer<Size, ButtonThemeData>? sizedCustomizer,
   }) {
     return ButtonThemeData(
+      brightness: brightness ?? this.brightness,
       padding: padding ?? this.padding,
-      size: size ?? this.size,
       color: color ?? this.color,
       colorShade: colorShade ?? this.colorShade,
+      colorOpacity: colorOpacity ?? this.colorOpacity,
+      hoveredColorShade: hoveredColorShade ?? this.hoveredColorShade,
+      hoveredColorOpacity: hoveredColorOpacity ?? this.hoveredColorOpacity,
+      borderColorShade: borderColorShade ?? this.borderColorShade,
+      size: size ?? this.size,
       cornered: cornered ?? this.cornered,
       cornerRadius: cornerRadius ?? this.cornerRadius,
+      iconColor: iconColor ?? this.iconColor,
+      iconSize: iconSize ?? this.iconSize,
       labelColor: labelColor ?? this.labelColor,
       labelColorShade: labelColorShade ?? this.labelColorShade,
       labelFontSize: labelFontSize ?? this.labelFontSize,

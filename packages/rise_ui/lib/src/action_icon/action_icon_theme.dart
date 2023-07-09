@@ -10,13 +10,14 @@ final _kActionIconBrightnessedCustomizer =
     hoveredColorShade: -1,
     borderColorShade: -1,
     variantedCustomizer: Customizer<ActionIconVariant, ActionIconThemeData>({
-      ActionIconVariant.subtle: ActionIconThemeData(
-        colorShade: -1,
-        hoveredColorShade: 50,
-      ),
       ActionIconVariant.filled: ActionIconThemeData(
         hoveredColorShade: 700,
         iconColor: Colors.white,
+      ),
+      ActionIconVariant.light: ActionIconThemeData(
+        colorShade: 50,
+        hoveredColorShade: 100,
+        hoveredColorOpacity: 0.65,
       ),
       ActionIconVariant.outline: ActionIconThemeData(
         colorShade: -1,
@@ -24,10 +25,9 @@ final _kActionIconBrightnessedCustomizer =
         hoveredColorOpacity: 0.35,
         borderColorShade: 500,
       ),
-      ActionIconVariant.light: ActionIconThemeData(
-        colorShade: 50,
-        hoveredColorShade: 100,
-        hoveredColorOpacity: 0.65,
+      ActionIconVariant.subtle: ActionIconThemeData(
+        colorShade: -1,
+        hoveredColorShade: 50,
       ),
       ActionIconVariant.transparent: ActionIconThemeData(
         colorShade: -1,
@@ -40,17 +40,16 @@ final _kActionIconBrightnessedCustomizer =
     hoveredColorShade: 800,
     borderColorShade: -1,
     variantedCustomizer: Customizer<ActionIconVariant, ActionIconThemeData>({
-      ActionIconVariant.subtle: ActionIconThemeData(
-        colorShade: -1,
-        hoveredColorShade: 800,
-        hoveredColorOpacity: 0.2,
-        coloredCustomizer: Customizer<Color, ActionIconThemeData>({
-          Colors.darkGray: ActionIconThemeData(),
-        }),
-      ),
       ActionIconVariant.filled: ActionIconThemeData(
-        hoveredColorShade: 700,
+        colorShade: 800,
+        hoveredColorShade: 900,
         iconColor: Colors.white,
+      ),
+      ActionIconVariant.light: ActionIconThemeData(
+        colorShade: 800,
+        colorOpacity: 0.25,
+        hoveredColorShade: 700,
+        hoveredColorOpacity: 0.25,
       ),
       ActionIconVariant.outline: ActionIconThemeData(
         colorShade: -1,
@@ -58,10 +57,13 @@ final _kActionIconBrightnessedCustomizer =
         hoveredColorOpacity: 0.35,
         borderColorShade: 500,
       ),
-      ActionIconVariant.light: ActionIconThemeData(
-        colorShade: 800,
-        hoveredColorShade: 700,
-        hoveredColorOpacity: 0.25,
+      ActionIconVariant.subtle: ActionIconThemeData(
+        colorShade: -1,
+        hoveredColorShade: 800,
+        hoveredColorOpacity: 0.2,
+        coloredCustomizer: Customizer<Color, ActionIconThemeData>({
+          Colors.darkGray: ActionIconThemeData(),
+        }),
       ),
       ActionIconVariant.transparent: ActionIconThemeData(
         colorShade: -1,
@@ -141,6 +143,7 @@ class ActionIconThemeData
     this.padding,
     this.color,
     this.colorShade,
+    this.colorOpacity,
     this.hoveredColorShade,
     this.hoveredColorOpacity,
     this.borderColorShade,
@@ -167,6 +170,8 @@ class ActionIconThemeData
   final Color? color;
 
   final int? colorShade;
+
+  final double? colorOpacity;
 
   final int? hoveredColorShade;
 
@@ -246,7 +251,9 @@ class ActionIconThemeData
   ActionIconThemeData varianted(ActionIconVariant? variant) {
     ActionIconThemeData? variantedTheme = variantedCustomizer.of(variant);
     return copyWith(
+      color: variantedTheme?.color ?? color,
       colorShade: variantedTheme?.colorShade ?? colorShade,
+      colorOpacity: variantedTheme?.colorOpacity ?? colorOpacity,
       hoveredColorShade: variantedTheme?.hoveredColorShade ?? hoveredColorShade,
       hoveredColorOpacity:
           variantedTheme?.hoveredColorOpacity ?? hoveredColorOpacity,
@@ -295,6 +302,7 @@ class ActionIconThemeData
     EdgeInsetsGeometry? padding,
     Color? color,
     int? colorShade,
+    double? colorOpacity,
     int? hoveredColorShade,
     double? hoveredColorOpacity,
     int? borderColorShade,
@@ -313,6 +321,7 @@ class ActionIconThemeData
       padding: padding ?? this.padding,
       color: color ?? this.color,
       colorShade: colorShade ?? this.colorShade,
+      colorOpacity: colorOpacity ?? this.colorOpacity,
       hoveredColorShade: hoveredColorShade ?? this.hoveredColorShade,
       hoveredColorOpacity: hoveredColorOpacity ?? this.hoveredColorOpacity,
       borderColorShade: borderColorShade ?? this.borderColorShade,

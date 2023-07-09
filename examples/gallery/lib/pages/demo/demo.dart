@@ -17,47 +17,18 @@ class DemoPage extends md.StatefulWidget {
 }
 
 class _DemoPageState extends md.State<DemoPage> {
-  Brightness _brightness = Brightness.light;
-
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData(
-        brightness: _brightness,
-      ),
-      child: md.Scaffold(
-        backgroundColor:
-            _brightness == Brightness.light ? Colors.white : Colors.black,
-        body: Stack(
-          children: [
-            Center(
-              child: Builder(
-                builder: (context) {
-                  final demoBuilder = kKnownDemos[widget.slug];
-                  if (demoBuilder == null) {
-                    return Text('Demo not found: ${widget.slug}');
-                  }
-                  return demoBuilder.call(context);
-                },
-              ),
-            ),
-            Positioned(
-              right: 20,
-              bottom: 20,
-              child: ActionIcon(
-                _brightness == Brightness.light
-                    ? TablerIcons.sun
-                    : TablerIcons.moon,
-                variant: ActionIconVariant.filled,
-                onPressed: () {
-                  _brightness = _brightness == Brightness.light
-                      ? Brightness.dark
-                      : Brightness.light;
-                  setState(() {});
-                },
-              ),
-            ),
-          ],
+    return md.Scaffold(
+      body: Center(
+        child: Builder(
+          builder: (context) {
+            final demoBuilder = kKnownDemos[widget.slug];
+            if (demoBuilder == null) {
+              return Text('Demo not found: ${widget.slug}');
+            }
+            return demoBuilder.call(context);
+          },
         ),
       ),
     );

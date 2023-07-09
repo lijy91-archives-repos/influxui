@@ -8,26 +8,18 @@ class ActionIconWithVariantDemo extends StatelessWidget {
     return Wrap(
       spacing: 10,
       children: [
-        ActionIcon(
-          TablerIcons.sun,
-          variant: ActionIconVariant.transparent,
-        ),
-        ActionIcon(
-          TablerIcons.sun,
-          variant: ActionIconVariant.subtle,
-        ),
-        ActionIcon(
-          TablerIcons.sun,
-          variant: ActionIconVariant.outline,
-        ),
-        ActionIcon(
-          TablerIcons.sun,
-          variant: ActionIconVariant.filled,
-        ),
-        ActionIcon(
-          TablerIcons.sun,
-          variant: ActionIconVariant.light,
-        ),
+        for (final variant in [
+          ActionIconVariant.filled,
+          ActionIconVariant.light,
+          ActionIconVariant.outline,
+          ActionIconVariant.subtle,
+          ActionIconVariant.transparent,
+        ])
+          ActionIcon(
+            TablerIcons.sun,
+            variant: variant,
+            onPressed: () {},
+          ),
       ],
     );
   }

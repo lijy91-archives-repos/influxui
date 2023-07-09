@@ -8,14 +8,16 @@ class ButtonWithVariantDemo extends StatelessWidget {
       spacing: 10,
       children: [
         for (final variant in [
-          ButtonVariant.subtle,
-          ButtonVariant.outline,
-          ButtonVariant.light,
           ButtonVariant.filled,
+          ButtonVariant.light,
+          ButtonVariant.outline,
+          ButtonVariant.subtle,
+          ButtonVariant.transparent,
         ])
           Button(
             variant: variant,
             label: 'Button',
+            onPressed: () {},
           ),
       ],
     );
