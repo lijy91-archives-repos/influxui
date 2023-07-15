@@ -10,7 +10,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_test:
-    sdk: flutter
   rise_ui: ^0.1.0
   tabler_icon_library: ^0.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  rise_ui_test:
+    path: ../rise_ui_test

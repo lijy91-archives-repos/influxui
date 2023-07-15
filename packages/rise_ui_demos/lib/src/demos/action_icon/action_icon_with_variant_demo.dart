@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
-import 'package:tabler_icon_library/tabler_icon_library.dart';
 
 class ActionIconWithVariantDemo extends StatelessWidget {
   @override
@@ -16,7 +15,7 @@ class ActionIconWithVariantDemo extends StatelessWidget {
           ActionIconVariant.transparent,
         ])
           ActionIcon(
-            TablerIcons.sun,
+            Icons.light_mode,
             variant: variant,
             onPressed: () {},
           ),

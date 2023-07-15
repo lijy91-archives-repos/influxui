@@ -190,9 +190,9 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
       side: BorderSide(
         color: borderColor ?? Colors.transparent,
       ),
-      borderRadius: BorderRadius.circular(
-        styledTheme.cornerRadius ?? 0,
-      ),
+      borderRadius: styledTheme.cornered == true
+          ? BorderRadius.circular(styledTheme.cornerRadius!)
+          : BorderRadius.zero,
     );
 
     if (widget.shape == Shape.circle) {
@@ -231,8 +231,8 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
             //         minHeight: widget.minSize!,
             //       ),
             constraints: BoxConstraints(
-              // minHeight: styledTheme.size!.height,
-            ),
+                // minHeight: styledTheme.size!.height,
+                ),
             child: FadeTransition(
               opacity: _opacityAnimation,
               child: DecoratedBox(

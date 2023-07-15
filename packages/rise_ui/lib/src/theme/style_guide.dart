@@ -20,15 +20,15 @@ class _FontSizes with SizedCustomizable<double> {
   }
 }
 
-class _Radius with SizedCustomizable<int> {
+class _Radius with SizedCustomizable<double> {
   @override
-  int sized(Size? size) {
+  double sized(Size? size) {
     return sizedCustomizer.of(size)!;
   }
 
   @override
-  Customizer<Size, int> get sizedCustomizer {
-    return Customizer<Size, int>({
+  Customizer<Size, double> get sizedCustomizer {
+    return Customizer<Size, double>({
       NamedSize.tiny: 2,
       NamedSize.small: 4,
       NamedSize.medium: 8,

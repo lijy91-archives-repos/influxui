@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
-import 'package:tabler_icon_library/tabler_icon_library.dart';
 
 class ActionIconWithColorDemo extends StatelessWidget {
   @override
@@ -21,7 +20,7 @@ class ActionIconWithColorDemo extends StatelessWidget {
             children: [
               for (final color in kAllColors)
                 ActionIcon(
-                  TablerIcons.sun,
+                  Icons.light_mode,
                   variant: variant,
                   color: color,
                   onPressed: () {},

@@ -9,6 +9,8 @@ final _kActionIconBrightnessedCustomizer =
     colorShade: 600,
     hoveredColorShade: -1,
     borderColorShade: -1,
+    cornered: true,
+    cornerRadius: styleGuide.radius.sized(NamedSize.small),
     variantedCustomizer: Customizer<ActionIconVariant, ActionIconThemeData>({
       ActionIconVariant.filled: ActionIconThemeData(
         hoveredColorShade: 700,
@@ -39,6 +41,8 @@ final _kActionIconBrightnessedCustomizer =
     colorShade: 500,
     hoveredColorShade: 800,
     borderColorShade: -1,
+    cornered: true,
+    cornerRadius: styleGuide.radius.sized(NamedSize.small),
     variantedCustomizer: Customizer<ActionIconVariant, ActionIconThemeData>({
       ActionIconVariant.filled: ActionIconThemeData(
         colorShade: 800,
@@ -238,10 +242,20 @@ class ActionIconThemeData
     ActionIconThemeData? brightnessedTheme =
         brightnessedCustomizer.of(brightness);
     return copyWith(
+      padding: brightnessedTheme?.padding ?? padding,
+      color: brightnessedTheme?.color ?? color,
       colorShade: brightnessedTheme?.colorShade ?? colorShade,
+      colorOpacity: brightnessedTheme?.colorOpacity ?? colorOpacity,
       hoveredColorShade:
           brightnessedTheme?.hoveredColorShade ?? hoveredColorShade,
+      hoveredColorOpacity:
+          brightnessedTheme?.hoveredColorOpacity ?? hoveredColorOpacity,
       borderColorShade: brightnessedTheme?.borderColorShade ?? borderColorShade,
+      size: brightnessedTheme?.size ?? size,
+      cornered: brightnessedTheme?.cornered ?? cornered,
+      cornerRadius: brightnessedTheme?.cornerRadius ?? cornerRadius,
+      iconColor: brightnessedTheme?.iconColor ?? iconColor,
+      iconSize: brightnessedTheme?.iconSize ?? iconSize,
       variantedCustomizer:
           brightnessedTheme?.variantedCustomizer ?? variantedCustomizer,
     );

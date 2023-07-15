@@ -5,6 +5,8 @@ import 'package:rise_ui/src/action_icon/action_icon_theme.dart';
 import 'package:rise_ui/src/theme/theme.dart';
 import 'package:rise_ui/src/web_icon/web_icon.dart';
 
+export 'action_icon_theme.dart';
+
 const _kPressedOpacity = 0.8;
 
 enum ActionIconVariant {
@@ -177,9 +179,9 @@ class _ActionIconState extends State<ActionIcon>
       side: BorderSide(
         color: borderColor ?? Colors.transparent,
       ),
-      borderRadius: BorderRadius.circular(
-        styledTheme.cornerRadius ?? 0,
-      ),
+      borderRadius: styledTheme.cornered == true
+          ? BorderRadius.circular(styledTheme.cornerRadius!)
+          : BorderRadius.zero,
     );
 
     if (widget.shape == Shape.circle) {

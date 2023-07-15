@@ -8,6 +8,8 @@ final _kButtonBrightnessedCustomizer = Customizer<Brightness, ButtonThemeData>({
     colorShade: 600,
     hoveredColorShade: -1,
     borderColorShade: -1,
+    cornered: true,
+    cornerRadius: styleGuide.radius.sized(NamedSize.small),
     variantedCustomizer: Customizer<ButtonVariant, ButtonThemeData>({
       ButtonVariant.filled: ButtonThemeData(
         hoveredColorShade: 700,
@@ -39,6 +41,8 @@ final _kButtonBrightnessedCustomizer = Customizer<Brightness, ButtonThemeData>({
     colorShade: 500,
     hoveredColorShade: 800,
     borderColorShade: -1,
+    cornered: true,
+    cornerRadius: styleGuide.radius.sized(NamedSize.small),
     variantedCustomizer: Customizer<ButtonVariant, ButtonThemeData>({
       ButtonVariant.filled: ButtonThemeData(
         colorShade: 800,
@@ -149,7 +153,7 @@ class ButtonThemeData
       this.padding,
       this.color,
       this.colorShade,
-    this.colorOpacity,
+      this.colorOpacity,
       this.hoveredColorShade,
       this.hoveredColorOpacity,
       this.borderColorShade,
@@ -253,10 +257,22 @@ class ButtonThemeData
   ButtonThemeData brightnessed(Brightness? brightness) {
     ButtonThemeData? brightnessedTheme = brightnessedCustomizer.of(brightness);
     return copyWith(
+      padding: brightnessedTheme?.padding ?? padding,
+      color: brightnessedTheme?.color ?? color,
       colorShade: brightnessedTheme?.colorShade ?? colorShade,
+      colorOpacity: brightnessedTheme?.colorOpacity ?? colorOpacity,
       hoveredColorShade:
           brightnessedTheme?.hoveredColorShade ?? hoveredColorShade,
+      hoveredColorOpacity:
+          brightnessedTheme?.hoveredColorOpacity ?? hoveredColorOpacity,
       borderColorShade: brightnessedTheme?.borderColorShade ?? borderColorShade,
+      size: brightnessedTheme?.size ?? size,
+      cornered: brightnessedTheme?.cornered ?? cornered,
+      cornerRadius: brightnessedTheme?.cornerRadius ?? cornerRadius,
+      iconColor: brightnessedTheme?.iconColor ?? iconColor,
+      iconSize: brightnessedTheme?.iconSize ?? iconSize,
+      labelColor: brightnessedTheme?.labelColor ?? labelColor,
+      labelColorShade: brightnessedTheme?.labelColorShade ?? labelColorShade,
       variantedCustomizer:
           brightnessedTheme?.variantedCustomizer ?? variantedCustomizer,
     );

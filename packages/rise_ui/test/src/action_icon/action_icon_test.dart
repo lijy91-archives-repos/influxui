@@ -38,6 +38,12 @@ class _MaterialIconLibrary extends IconLibrary {
 
   @override
   IconData get square => md.Icons.square;
+
+  @override
+  IconData get light_mode => throw UnimplementedError();
+
+  @override
+  IconData get dark_mode => throw UnimplementedError();
 }
 
 class _TestWidget extends StatelessWidget {
