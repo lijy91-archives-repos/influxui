@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart' as md;
 import 'package:flutter/widgets.dart';
-import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui_demos/rise_ui_demos.dart';
-import 'package:tabler_icon_library/tabler_icon_library.dart';
 
 class DemoPage extends md.StatefulWidget {
   const DemoPage({

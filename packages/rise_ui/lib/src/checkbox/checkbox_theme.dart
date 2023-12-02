@@ -1,3 +1,0 @@
-class BaseCheckboxTheme {}
-
-class BaseCheckboxThemeData {}

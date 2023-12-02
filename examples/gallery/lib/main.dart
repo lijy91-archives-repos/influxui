@@ -21,6 +21,12 @@ class DefaultIconLibrary extends IconLibrary {
 
   @override
   IconData get square => TablerIcons.square;
+
+  @override
+  IconData get light_mode => TablerIcons.sun;
+
+  @override
+  IconData get dark_mode => TablerIcons.moon;
 }
 
 Future<void> _ensureInitialized() async {

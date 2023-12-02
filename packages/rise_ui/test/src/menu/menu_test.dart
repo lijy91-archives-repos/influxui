@@ -11,26 +11,22 @@ void main() {
       (_) => Container(
         padding: EdgeInsets.all(40),
         child: Menu(
-          children: [
-            MenuSection(
-              children: [
-                MenuItem(
-                  icon: md.Icons.wb_sunny_outlined,
-                  label: 'Settings',
-                ),
-                MenuItem(
-                  icon: md.Icons.wb_sunny_outlined,
-                  label: 'Messages',
-                ),
-                MenuItem(
-                  icon: md.Icons.wb_sunny_outlined,
-                  label: 'Gallery',
-                ),
-                MenuItem(
-                  icon: md.Icons.wb_sunny_outlined,
-                  label: 'Search',
-                ),
-              ],
+          items: [
+            MenuItem(
+              icon: md.Icons.wb_sunny_outlined,
+              label: 'Settings',
+            ),
+            MenuItem(
+              icon: md.Icons.wb_sunny_outlined,
+              label: 'Messages',
+            ),
+            MenuItem(
+              icon: md.Icons.wb_sunny_outlined,
+              label: 'Gallery',
+            ),
+            MenuItem(
+              icon: md.Icons.wb_sunny_outlined,
+              label: 'Search',
             ),
           ],
         ),

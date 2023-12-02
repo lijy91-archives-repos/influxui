@@ -4,6 +4,7 @@ import 'package:rise_ui_demos/src/demos/alert/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/avatar/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/badge/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/blockquote/known_demos.dart';
+import 'package:rise_ui_demos/src/demos/box/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/breadcrumb/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/button/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/card/known_demos.dart';
@@ -15,6 +16,7 @@ import 'package:rise_ui_demos/src/demos/list_section/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/list_tile/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/loader/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/menu/known_demos.dart';
+import 'package:rise_ui_demos/src/demos/navigation_rail/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/notification/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/switch/known_demos.dart';
 
@@ -50,6 +52,8 @@ export 'loader/known_demos.dart';
 export 'loader/loader_demo.dart';
 export 'menu/known_demos.dart';
 export 'menu/menu_demo.dart';
+export 'navigation_rail/known_demos.dart';
+export 'navigation_rail/navigation_rail_demo.dart';
 export 'notification/known_demos.dart';
 export 'notification/notification_demo.dart';
 export 'switch/known_demos.dart';
@@ -61,6 +65,7 @@ final Map<String, WidgetBuilder> kKnownDemos = {
   ...knownAvatarDemos,
   ...knownBadgeDemos,
   ...knownBlockquoteDemos,
+  ...knownBoxDemos,
   ...knownBreadcrumbDemos,
   ...knownButtonDemos,
   ...knownCardDemos,
@@ -72,6 +77,7 @@ final Map<String, WidgetBuilder> kKnownDemos = {
   ...knownListTileDemos,
   ...knownLoaderDemos,
   ...knownMenuDemos,
+  ...knownNavigationRailDemos,
   ...knownNotificationDemos,
   ...knownSwitchDemos,
 };

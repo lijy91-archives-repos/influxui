@@ -11,26 +11,22 @@ class MenuDemo extends StatelessWidget {
       width: 300,
       padding: const EdgeInsets.all(40),
       child: const Menu(
-        children: [
-          MenuSection(
-            children: [
-              MenuItem(
-                icon: TablerIcons.settings,
-                label: 'Settings',
-              ),
-              MenuItem(
-                icon: TablerIcons.message,
-                label: 'Messages',
-              ),
-              MenuItem(
-                icon: TablerIcons.photo,
-                label: 'Gallery',
-              ),
-              MenuItem(
-                icon: TablerIcons.search,
-                label: 'Search',
-              ),
-            ],
+        items: [
+          MenuItem(
+            icon: TablerIcons.settings,
+            label: 'Settings',
+          ),
+          MenuItem(
+            icon: TablerIcons.message,
+            label: 'Messages',
+          ),
+          MenuItem(
+            icon: TablerIcons.photo,
+            label: 'Gallery',
+          ),
+          MenuItem(
+            icon: TablerIcons.search,
+            label: 'Search',
           ),
         ],
       ),

@@ -1,21 +1,5 @@
 library rise_ui;
 
-export 'src/action_icon/action_icon.dart';
-export 'src/alert/alert.dart';
-export 'src/avatar/avatar.dart';
-export 'src/badge/badge.dart';
-export 'src/blockquote/blockquote.dart';
-export 'src/breadcrumb/breadcrumb.dart';
-export 'src/button/button.dart';
-export 'src/card/card.dart';
-export 'src/checkbox/checkbox.dart';
-export 'src/divider/divider.dart';
-export 'src/kbd/kbd.dart';
-export 'src/list_section/list_section.dart';
-export 'src/list_tile/list_tile.dart';
-export 'src/loader/loader.dart';
-export 'src/menu/menu.dart';
-export 'src/notification/notification.dart';
-export 'src/switch/switch.dart';
-export 'src/text/text.dart';
-export 'src/theme/theme.dart';
+
+export 'themes.dart';
+export 'widgets.dart';

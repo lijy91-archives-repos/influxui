@@ -12,9 +12,12 @@ dependencies:
     sdk: flutter
   flutter_svg: ^2.0.3
   non_uniform_border: ^1.0.0
+  theme_tailor_annotation: ^2.0.2
 
 dev_dependencies:
+  build_runner: ^2.4.7
   flutter_test:
     sdk: flutter
   rise_ui_test:
     path: ../rise_ui_test
+  theme_tailor: ^2.0.2

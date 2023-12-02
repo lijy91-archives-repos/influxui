@@ -27,3 +27,12 @@ scripts:
   test:
     exec: flutter test
     description: Run `flutter test` for all packages.
+
+  codegen:
+    run: dart run build_runner build --delete-conflicting-outputs
+    exec:
+      concurrency: 1
+      failFast: true
+    packageFilters:
+      dependsOn:
+        - build_runner
