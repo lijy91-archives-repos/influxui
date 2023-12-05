@@ -17,13 +17,18 @@ class BoxWithVariantDemo extends StatelessWidget {
         ])
           Box(
             variant: variant,
-            child: Container(
-              width: 100,
-              height: 100,
-              child: Center(
-                child: Text(variant.name),
-              ),
-            ),
+            builder: (context, foregroundColor) {
+              return Container(
+                width: 100,
+                height: 100,
+                child: DefaultTextStyle(
+                  style: TextStyle(color: foregroundColor),
+                  child: Center(
+                    child: Text(variant.name),
+                  ),
+                ),
+              );
+            },
           ),
       ],
     );

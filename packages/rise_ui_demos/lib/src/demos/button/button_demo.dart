@@ -4,11 +4,15 @@ import 'package:rise_ui/rise_ui.dart';
 class ButtonDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Button(
-        label: 'Settings',
-        onPressed: () {},
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Button(
+          label: 'Settings',
+          onPressed: () {},
+        ),
+      ],
     );
   }
 }

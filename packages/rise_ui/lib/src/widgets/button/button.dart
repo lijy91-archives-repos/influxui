@@ -1,22 +1,21 @@
-// import 'package:rise_ui/src/button/button_theme.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
+import 'package:rise_ui/src/widgets/box/box.dart';
+import 'package:rise_ui/src/widgets/button/button_style.dart';
 import 'package:rise_ui/src/widgets/button/button_theme.dart';
-import 'package:rise_ui/src/widgets/text/text_theme.dart';
 import 'package:rise_ui/src/widgets/theme/theme.dart';
 
+export 'package:rise_ui/src/widgets/button/button_style.dart';
 export 'package:rise_ui/src/widgets/button/button_theme.dart';
+export 'package:rise_ui/src/widgets/button/button_theme_defaults.dart';
 
-const _kPressedOpacity = 0.8;
-
-/// Controls button appearance
 enum ButtonVariant {
   filled,
   light,
   outline,
   subtle,
   transparent,
+  white;
 }
 
 class ButtonSize extends Size {
@@ -31,233 +30,102 @@ class ButtonSize extends Size {
 class Button extends StatefulWidget {
   const Button({
     super.key,
-    this.brightness,
     this.variant = ButtonVariant.filled,
     this.label,
     this.labelBuilder,
+    this.style,
     this.padding,
     this.color,
-    this.shape,
     this.size,
-    this.compact = false,
-    this.uppercase = false,
+    this.iconSize,
     this.onPressed,
   }) : assert(size is Size || size is NamedSize || size == null);
 
-  final Brightness? brightness;
   final ButtonVariant? variant;
-  final Shape? shape;
   final String? label;
   final WidgetBuilder? labelBuilder;
-
-  /// The amount of space to surround the child inside the bounds of the button.
-  ///
-  /// Defaults to 16.0 pixels.
+  final ButtonStyle? style;
   final EdgeInsetsGeometry? padding;
-
   final Color? color;
   final Size? size;
-  final bool compact;
-  final bool uppercase;
+  final double? iconSize;
   final VoidCallback? onPressed;
 
-  /// Whether the button is enabled or disabled. Buttons are disabled by default. To
-  /// enable a button, set its [onPressed] property to a non-null value.
   bool get enabled => onPressed != null;
 
   @override
   State<Button> createState() => _ButtonState();
 }
 
-class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
-  // Eyeballed values. Feel free to tweak.
-  static const Duration kFadeOutDuration = Duration(milliseconds: 120);
-  static const Duration kFadeInDuration = Duration(milliseconds: 180);
-  final Tween<double> _opacityTween = Tween<double>(begin: 1.0);
-
-  late AnimationController _animationController;
-  late Animation<double> _opacityAnimation;
-
-  bool _isHovering = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-      duration: const Duration(milliseconds: 200),
-      value: 0.0,
-      vsync: this,
-    );
-    _opacityAnimation = _animationController
-        .drive(CurveTween(curve: Curves.decelerate))
-        .drive(_opacityTween);
-    _setTween();
-  }
-
-  @override
-  void didUpdateWidget(Button old) {
-    super.didUpdateWidget(old);
-    _setTween();
-  }
-
-  void _setTween() {
-    _opacityTween.end = _kPressedOpacity;
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-
-  bool _buttonHeldDown = false;
-
-  void _handleTapDown(TapDownDetails event) {
-    if (!_buttonHeldDown) {
-      _buttonHeldDown = true;
-      _animate();
-    }
-  }
-
-  void _handleTapUp(TapUpDetails event) {
-    if (_buttonHeldDown) {
-      _buttonHeldDown = false;
-      _animate();
-    }
-  }
-
-  void _handleTapCancel() {
-    if (_buttonHeldDown) {
-      _buttonHeldDown = false;
-      _animate();
-    }
-  }
-
-  void _animate() {
-    if (_animationController.isAnimating) {
-      return;
-    }
-    final bool wasHeldDown = _buttonHeldDown;
-    final TickerFuture ticker = _buttonHeldDown
-        ? _animationController.animateTo(1.0,
-            duration: kFadeOutDuration, curve: Curves.easeInOutCubicEmphasized)
-        : _animationController.animateTo(0.0,
-            duration: kFadeInDuration, curve: Curves.easeOutCubic);
-    ticker.then<void>((void value) {
-      if (mounted && wasHeldDown != _buttonHeldDown) {
-        _animate();
-      }
-    });
-  }
-
+class _ButtonState extends State<Button> {
   @override
   Widget build(BuildContext context) {
-    final styledTheme = ButtonTheme.of(context) // styled
-        .brightnessed(widget.brightness ?? Theme.of(context).brightness)
-        .varianted(widget.variant)
-        .colored(widget.color ?? Theme.of(context).primaryColor)
-        .sized(widget.size ?? ButtonSize.medium)
-        .shaped(widget.shape);
+    final themeData = ButtonTheme.of(context);
+    ButtonStyle mergedStyle = widget.style ?? themeData.mediumStyle;
 
-    final bool enabled = widget.enabled;
-
-    Color? bgColor = styledTheme.color;
-    Color? hoveredBgColor = styledTheme.color;
-    Color? borderColor = styledTheme.color;
-
-    if (bgColor is ShadedColor) {
-      bgColor = bgColor[styledTheme.colorShade!];
-      if (styledTheme.colorOpacity != null) {
-        bgColor = bgColor?.withOpacity(
-          styledTheme.colorOpacity!,
-        );
+    if (widget.size is NamedSize) {
+      switch (widget.size) {
+        case NamedSize.tiny:
+          mergedStyle = themeData.tinyStyle.merge(mergedStyle);
+          break;
+        case NamedSize.small:
+          mergedStyle = themeData.smallStyle.merge(mergedStyle);
+          break;
+        case NamedSize.medium:
+          mergedStyle = themeData.mediumStyle.merge(mergedStyle);
+          break;
+        case NamedSize.large:
+          mergedStyle = themeData.largeStyle.merge(mergedStyle);
+          break;
+        case NamedSize.big:
+          mergedStyle = themeData.bigStyle.merge(mergedStyle);
+          break;
       }
     }
-    if (hoveredBgColor is ShadedColor) {
-      hoveredBgColor = hoveredBgColor[styledTheme.hoveredColorShade!];
-      if (styledTheme.hoveredColorOpacity != null) {
-        hoveredBgColor = hoveredBgColor?.withOpacity(
-          styledTheme.hoveredColorOpacity!,
-        );
-      }
-    }
-    if (borderColor is ShadedColor) {
-      borderColor = borderColor[styledTheme.borderColorShade!];
+    if (widget.iconSize != null) {
+      mergedStyle = mergedStyle.copyWith(iconSize: widget.iconSize);
     }
 
-    ShapeBorder? shapeBorder = RoundedRectangleBorder(
-      side: BorderSide(
-        color: borderColor ?? Colors.transparent,
-      ),
-      borderRadius: styledTheme.cornered == true
-          ? BorderRadius.circular(styledTheme.cornerRadius!)
-          : BorderRadius.zero,
-    );
-
-    if (widget.shape == Shape.circle) {
-      shapeBorder = CircleBorder(
-        side: BorderSide(
-          color: borderColor ?? Colors.transparent,
-        ),
-      );
-    }
-
-    return MouseRegion(
-      cursor: enabled && kIsWeb ? SystemMouseCursors.click : MouseCursor.defer,
-      onEnter: (PointerEnterEvent event) {
-        setState(() {
-          _isHovering = true;
-        });
-      },
-      onExit: (PointerExitEvent event) {
-        setState(() {
-          _isHovering = false;
-        });
-      },
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTapDown: enabled ? _handleTapDown : null,
-        onTapUp: enabled ? _handleTapUp : null,
-        onTapCancel: enabled ? _handleTapCancel : null,
-        onTap: widget.onPressed,
-        child: Semantics(
-          button: true,
-          child: ConstrainedBox(
-            constraints: BoxConstraints(),
-            child: FadeTransition(
-              opacity: _opacityAnimation,
-              child: DecoratedBox(
-                decoration: ShapeDecoration(
-                  color: _isHovering ? hoveredBgColor : bgColor,
-                  shape: shapeBorder,
-                ),
-                child: Container(
-                  padding: widget.padding ??
-                      EdgeInsets.symmetric(
-                        vertical:
-                            styleGuide.spacing.sized(NamedSize.tiny) * 0.8,
-                        horizontal: styleGuide.spacing.sized(NamedSize.small),
-                      ),
-                  child: Align(
-                    alignment: Alignment.center,
-                    widthFactor: 1.0,
-                    heightFactor: 1.0,
-                    child: DefaultTextStyle(
-                      style: TextTheme.of(context).textStyle.copyWith(
-                            color: styledTheme.labelColor,
-                            fontSize: styledTheme.labelFontSize,
-                            fontWeight: FontWeight.w600,
-                          ),
-                      child: widget.labelBuilder?.call(context) ??
-                          Text(widget.label!),
-                    ),
-                  ),
-                ),
+    return Box(
+      variant: BoxVariant.valueOf(widget.variant?.name),
+      padding: widget.padding,
+      color: widget.color,
+      borderRadius: themeData.borderRadius,
+      pressedOpacity: themeData.pressedOpacity,
+      mouseCursor: widget.enabled && kIsWeb
+          ? SystemMouseCursors.click
+          : SystemMouseCursors.forbidden,
+      onPressed: widget.onPressed,
+      builder: (context, foregroundColor) {
+        return Container(
+          padding: mergedStyle.padding,
+          constraints: BoxConstraints(
+            minWidth: mergedStyle.minimumSize?.width ?? 0,
+            minHeight: mergedStyle.minimumSize?.height ?? 0,
+            maxWidth: mergedStyle.maximumSize?.width ?? double.infinity,
+            maxHeight: mergedStyle.maximumSize?.height ?? double.infinity,
+          ),
+          child: DefaultTextStyle(
+            style: (mergedStyle.labelStyle ?? TextStyle()).copyWith(
+              color: foregroundColor,
+            ),
+            child: IconTheme(
+              data: IconThemeData(
+                color: foregroundColor,
+                size: mergedStyle.iconSize,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  widget.labelBuilder?.call(context) ?? Text(widget.label!),
+                ],
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -14,6 +14,7 @@ class BoxWithColorDemo extends StatelessWidget {
           BoxVariant.outline,
           BoxVariant.subtle,
           BoxVariant.transparent,
+          BoxVariant.white,
         ])
           Wrap(
             spacing: 10,
@@ -21,11 +22,13 @@ class BoxWithColorDemo extends StatelessWidget {
               for (final color in kAllColors)
                 Box(
                   variant: variant,
-                  child: Container(
-                    width: 100,
-                    height: 100,
-                    color: color,
-                  ),
+                  builder: (context, foregroundColor) {
+                    return Container(
+                      width: 100,
+                      height: 100,
+                      color: color,
+                    );
+                  },
                 ),
             ],
           ),

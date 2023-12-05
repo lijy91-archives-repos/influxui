@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:rise_ui/src/widgets/theme/sizes.dart';
-import 'package:rise_ui/src/widgets/web_icon/web_icon.dart';
 import 'package:rise_ui/src/widgets/action_icon/action_icon_style.dart';
 import 'package:rise_ui/src/widgets/action_icon/action_icon_theme.dart';
 import 'package:rise_ui/src/widgets/box/box.dart';
+import 'package:rise_ui/src/widgets/theme/sizes.dart';
+import 'package:rise_ui/src/widgets/web_icon/web_icon.dart';
 
 export 'package:rise_ui/src/widgets/action_icon/action_icon_style.dart';
 export 'package:rise_ui/src/widgets/action_icon/action_icon_theme.dart';
@@ -102,21 +102,29 @@ class _ActionIconState extends State<ActionIcon> {
           ? SystemMouseCursors.click
           : SystemMouseCursors.forbidden,
       onPressed: widget.onPressed,
-      child: SizedBox(
-        width: widgetWidth,
-        height: widgetHeight,
-        child: Center(
-          child: kIsWeb
-              ? WebIcon(
-                  widget.icon,
-                  size: iconSize,
-                )
-              : Icon(
-                  widget.icon,
-                  size: iconSize,
-                ),
-        ),
-      ),
+      builder: (context, foregroundColor) {
+        return IconTheme(
+          data: IconThemeData(
+            color: foregroundColor,
+            size: iconSize,
+          ),
+          child: SizedBox(
+            width: widgetWidth,
+            height: widgetHeight,
+            child: Center(
+              child: kIsWeb
+                  ? WebIcon(
+                      widget.icon,
+                      size: iconSize,
+                    )
+                  : Icon(
+                      widget.icon,
+                      size: iconSize,
+                    ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

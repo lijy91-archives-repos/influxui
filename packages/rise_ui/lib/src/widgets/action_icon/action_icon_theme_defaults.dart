@@ -6,23 +6,23 @@ const _defaults = ActionIconThemeData(
   borderRadius: BorderRadius.all(Radius.circular(4)),
   pressedOpacity: 0.8,
   tinyStyle: ActionIconStyle(
-    size: Size(16, 16),
+    size: Size(18, 18),
     iconSize: 12,
   ),
   smallStyle: ActionIconStyle(
-    size: Size(20, 20),
+    size: Size(22, 22),
     iconSize: 16,
   ),
   mediumStyle: ActionIconStyle(
-    size: Size(24, 24),
+    size: Size(28, 28),
     iconSize: 20,
   ),
   largeStyle: ActionIconStyle(
-    size: Size(32, 32),
+    size: Size(34, 34),
     iconSize: 24,
   ),
   bigStyle: ActionIconStyle(
-    size: Size(40, 40),
+    size: Size(44, 44),
     iconSize: 32,
   ),
 );

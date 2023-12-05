@@ -1,7 +1,8 @@
 // ignore_for_file: annotate_overrides
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show Theme, ThemeExtension;
+import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/widgets/action_icon/action_icon_style.dart';
 import 'package:theme_tailor_annotation/theme_tailor_annotation.dart';
 

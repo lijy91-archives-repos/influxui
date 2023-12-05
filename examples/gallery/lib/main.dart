@@ -82,6 +82,7 @@ class _MyAppState extends State<MyApp> {
             brightness: _themeMode == md.ThemeMode.dark
                 ? Brightness.dark
                 : Brightness.light,
+            primaryColor: Colors.indigo,
           ),
           child: child!,
         );

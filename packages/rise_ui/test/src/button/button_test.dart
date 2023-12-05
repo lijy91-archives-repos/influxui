@@ -13,35 +13,35 @@ void main() {
     testGolden(
       'button-shape-rectangle',
       (_) => Button(
-        shape: Shape.rectangle,
+        // shape: Shape.rectangle,
         label: 'Round shape',
       ),
     );
     testGolden(
       'button-shape-square',
       (_) => Button(
-        shape: Shape.square,
+        // shape: Shape.square,
         label: 'Circle square',
       ),
     );
     testGolden(
       'button-shape-circle',
       (_) => Button(
-        shape: Shape.circle,
+        // shape: Shape.circle,
         label: 'Circle shape',
       ),
     );
     testGolden(
       'button-shape-round',
       (_) => Button(
-        shape: Shape.round,
+        // shape: Shape.round,
         label: 'Circle round',
       ),
     );
     testGolden(
       'button-shape-pill',
       (_) => Button(
-        shape: Shape.pill,
+        // shape: Shape.pill,
         label: 'Circle round',
       ),
     );

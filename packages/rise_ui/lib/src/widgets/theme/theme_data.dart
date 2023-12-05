@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart' hide Notification;
 import 'package:rise_ui/src/widgets/badge/badge_theme.dart';
-import 'package:rise_ui/src/widgets/button/button_theme.dart';
 import 'package:rise_ui/src/widgets/divider/divider_theme.dart';
 import 'package:rise_ui/src/widgets/loader/loader_theme.dart';
 import 'package:rise_ui/src/widgets/menu/menu_theme.dart';
@@ -9,7 +8,6 @@ import 'package:rise_ui/src/widgets/navigation_rail/navigation_rail_theme.dart';
 import 'package:rise_ui/src/widgets/notification/notification.dart';
 import 'package:rise_ui/src/widgets/text/text_theme.dart';
 import 'package:rise_ui/src/widgets/theme/colors.dart';
-import 'package:rise_ui/src/widgets/kbd/kbd_theme.dart';
 
 export 'package:flutter/services.dart' show Brightness;
 
@@ -148,9 +146,7 @@ class ThemeData with Diagnosticable {
     TextThemeData? textTheme,
     // COMPONENT THEMES
     BadgeThemeData? badgeTheme,
-    ButtonThemeData? buttonTheme,
     DividerThemeData? dividerTheme,
-    KbdThemeData? kbdTheme,
     LoaderThemeData? loaderTheme,
     MenuThemeData? menuTheme,
     NavigationRailThemeData? navigationRailTheme,
@@ -169,9 +165,8 @@ class ThemeData with Diagnosticable {
 
     // COMPONENT THEMES
     badgeTheme ??= const BadgeThemeData();
-    buttonTheme ??= const ButtonThemeData();
     dividerTheme ??= const DividerThemeData();
-    kbdTheme ??= const KbdThemeData();
+
     loaderTheme ??= const LoaderThemeData();
     menuTheme ??= const MenuThemeData();
     navigationRailTheme ??= const NavigationRailThemeData();
@@ -189,9 +184,8 @@ class ThemeData with Diagnosticable {
       textTheme: textTheme ?? TextThemeData(),
       // COMPONENT THEMES
       badgeTheme: badgeTheme,
-      buttonTheme: buttonTheme,
       dividerTheme: dividerTheme,
-      kbdTheme: kbdTheme,
+
       loaderTheme: loaderTheme,
       menuTheme: menuTheme,
       navigationRailTheme: navigationRailTheme,
@@ -218,9 +212,7 @@ class ThemeData with Diagnosticable {
     required this.textTheme,
     // COMPONENT THEMES
     required this.badgeTheme,
-    required this.buttonTheme,
     required this.dividerTheme,
-    required this.kbdTheme,
     required this.loaderTheme,
     required this.menuTheme,
     required this.navigationRailTheme,
@@ -302,11 +294,7 @@ class ThemeData with Diagnosticable {
   /// A theme for customizing the color of [Badge]s.
   final BadgeThemeData badgeTheme;
 
-  final ButtonThemeData buttonTheme;
-
   final DividerThemeData dividerTheme;
-
-  final KbdThemeData kbdTheme;
 
   final LoaderThemeData loaderTheme;
 
@@ -333,9 +321,7 @@ class ThemeData with Diagnosticable {
     TextThemeData? textTheme,
     // COMPONENT THEMES
     BadgeThemeData? badgeTheme,
-    ButtonThemeData? buttonTheme,
     DividerThemeData? dividerTheme,
-    KbdThemeData? kbdTheme,
     LoaderThemeData? loaderTheme,
     MenuThemeData? menuTheme,
     NavigationRailThemeData? navigationRailTheme,
@@ -355,9 +341,7 @@ class ThemeData with Diagnosticable {
       textTheme: textTheme ?? this.textTheme,
       // COMPONENT THEMES
       badgeTheme: badgeTheme ?? this.badgeTheme,
-      buttonTheme: buttonTheme ?? this.buttonTheme,
       dividerTheme: dividerTheme ?? this.dividerTheme,
-      kbdTheme: kbdTheme ?? this.kbdTheme,
       loaderTheme: loaderTheme ?? this.loaderTheme,
       menuTheme: menuTheme ?? this.menuTheme,
       navigationRailTheme: navigationRailTheme ?? this.navigationRailTheme,
@@ -417,9 +401,8 @@ class ThemeData with Diagnosticable {
       textTheme: TextThemeData.lerp(a.textTheme, b.textTheme, t),
       // COMPONENT THEMES
       badgeTheme: BadgeThemeData.lerp(a.badgeTheme, b.badgeTheme, t),
-      buttonTheme: ButtonThemeData.lerp(a.buttonTheme, b.buttonTheme, t),
       dividerTheme: DividerThemeData.lerp(a.dividerTheme, b.dividerTheme, t),
-      kbdTheme: KbdThemeData.lerp(a.kbdTheme, b.kbdTheme, t),
+
       loaderTheme: LoaderThemeData.lerp(a.loaderTheme, b.loaderTheme, t),
       menuTheme: MenuThemeData.lerp(a.menuTheme, b.menuTheme, t),
       navigationRailTheme: NavigationRailThemeData.lerp(
@@ -441,9 +424,7 @@ class ThemeData with Diagnosticable {
         other.canvasColor == canvasColor &&
         // COMPONENT THEMES
         other.badgeTheme == badgeTheme &&
-        other.buttonTheme == buttonTheme &&
         other.dividerTheme == dividerTheme &&
-        other.kbdTheme == kbdTheme &&
         other.loaderTheme == loaderTheme &&
         other.notificationTheme == notificationTheme;
   }
@@ -458,9 +439,8 @@ class ThemeData with Diagnosticable {
       canvasColor,
       // COMPONENT THEMES
       badgeTheme,
-      buttonTheme,
       dividerTheme,
-      kbdTheme,
+
       loaderTheme,
       notificationTheme,
     ];
@@ -492,22 +472,10 @@ class ThemeData with Diagnosticable {
       defaultValue: defaultData.badgeTheme,
       level: DiagnosticLevel.debug,
     ));
-    properties.add(DiagnosticsProperty<ButtonThemeData>(
-      'buttonTheme',
-      buttonTheme,
-      defaultValue: defaultData.buttonTheme,
-      level: DiagnosticLevel.debug,
-    ));
     properties.add(DiagnosticsProperty<DividerThemeData>(
       'dividerTheme',
       dividerTheme,
       defaultValue: defaultData.dividerTheme,
-      level: DiagnosticLevel.debug,
-    ));
-    properties.add(DiagnosticsProperty<KbdThemeData>(
-      'kbdTheme',
-      kbdTheme,
-      defaultValue: defaultData.kbdTheme,
       level: DiagnosticLevel.debug,
     ));
     properties.add(DiagnosticsProperty<LoaderThemeData>(

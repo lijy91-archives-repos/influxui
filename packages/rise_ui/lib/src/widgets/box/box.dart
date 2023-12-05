@@ -1,11 +1,10 @@
 import 'package:collection/collection.dart';
-
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/foundation/customizable_property.dart';
-import 'package:rise_ui/src/widgets/theme/theme.dart';
 import 'package:rise_ui/src/widgets/box/box_state.dart';
 import 'package:rise_ui/src/widgets/box/box_style.dart';
 import 'package:rise_ui/src/widgets/box/box_theme.dart';
+import 'package:rise_ui/src/widgets/theme/theme.dart';
 
 export 'package:rise_ui/src/widgets/box/box_state.dart';
 export 'package:rise_ui/src/widgets/box/box_style.dart';
@@ -27,6 +26,11 @@ enum BoxVariant {
   }
 }
 
+typedef BoxWidgetBuilder = Widget Function(
+  BuildContext context,
+  Color foregroundColor,
+);
+
 class Box extends StatefulWidget {
   const Box({
     super.key,
@@ -39,7 +43,7 @@ class Box extends StatefulWidget {
     this.mouseCursor,
     this.disabled = false,
     this.onPressed,
-    required this.child,
+    required this.builder,
   });
 
   final BoxVariant? variant;
@@ -51,7 +55,7 @@ class Box extends StatefulWidget {
   final MouseCursor? mouseCursor;
   final bool disabled;
   final VoidCallback? onPressed;
-  final Widget child;
+  final BoxWidgetBuilder builder;
 
   @override
   State<Box> createState() => _BoxState();
@@ -195,8 +199,6 @@ class _BoxState extends State<Box> with SingleTickerProviderStateMixin {
       widget.color ?? primaryColor,
     );
 
-    final textStyle = TextStyle(color: foregroundColor);
-
     return MouseRegion(
       onEnter: (event) {
         if (_isHovered) return;
@@ -233,13 +235,7 @@ class _BoxState extends State<Box> with SingleTickerProviderStateMixin {
                 ),
                 child: Padding(
                   padding: widget.padding ?? EdgeInsets.zero,
-                  child: DefaultTextStyle(
-                    style: textStyle,
-                    child: IconTheme(
-                      data: IconThemeData(color: foregroundColor),
-                      child: widget.child,
-                    ),
-                  ),
+                  child: widget.builder(context, foregroundColor!),
                 ),
               ),
             ),

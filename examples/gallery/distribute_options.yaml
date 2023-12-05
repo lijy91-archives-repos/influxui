@@ -1,0 +1,17 @@
+output: dist/
+variables:
+  FLUTTER_ROOT: ~/fvm/versions/3.16.0
+releases:
+  - name: prod
+    jobs:
+      - name: web-direct
+        package:
+          platform: web
+          target: direct
+          build_args:
+            web-renderer: html
+        publish:
+          target: vercel
+          args:
+            org-id: "iFnLrpwSiN3PgnTuFNylM3S9"
+            project-id: "prj_TCsB4tFOnofJHYHjVO5ghxLTdC82"

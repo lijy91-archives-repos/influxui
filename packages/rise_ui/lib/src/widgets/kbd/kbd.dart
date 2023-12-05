@@ -1,62 +1,85 @@
 import 'package:flutter/widgets.dart';
 import 'package:non_uniform_border/non_uniform_border.dart';
+import 'package:rise_ui/src/widgets/kbd/kbd_style.dart';
+import 'package:rise_ui/src/widgets/kbd/kbd_theme.dart';
 import 'package:rise_ui/src/widgets/text/text_theme.dart';
 import 'package:rise_ui/src/widgets/theme/theme.dart';
-import 'package:rise_ui/src/widgets/kbd/kbd_theme.dart';
 
 export 'kbd_theme.dart';
 
 /// Display keyboard button or keys combination
-class Kbd extends StatelessWidget {
+class Kbd extends StatefulWidget {
   const Kbd(
     this.label, {
     super.key,
-    this.brightness,
+    this.style,
     this.size,
   });
 
   final String label;
 
-  final Brightness? brightness;
+  final KbdStyle? style;
   final Size? size;
 
   @override
+  State<Kbd> createState() => _KbdState();
+}
+
+class _KbdState extends State<Kbd> {
+  @override
   Widget build(BuildContext context) {
-    final KbdThemeData theme = KbdTheme.of(context);
+    final themeData = KbdTheme.of(context);
+    KbdStyle mergedStyle = widget.style ?? themeData.mediumStyle;
 
-    final Brightness brightness =
-        this.brightness ?? theme.brightness ?? Theme.of(context).brightness;
+    if (widget.size is NamedSize) {
+      switch (widget.size) {
+        case NamedSize.tiny:
+          mergedStyle = themeData.tinyStyle.merge(mergedStyle);
+          break;
+        case NamedSize.small:
+          mergedStyle = themeData.smallStyle.merge(mergedStyle);
+          break;
+        case NamedSize.medium:
+          mergedStyle = themeData.mediumStyle.merge(mergedStyle);
+          break;
+        case NamedSize.large:
+          mergedStyle = themeData.largeStyle.merge(mergedStyle);
+          break;
+        case NamedSize.big:
+          mergedStyle = themeData.bigStyle.merge(mergedStyle);
+          break;
+      }
+    }
 
-    final KbdThemeData styledTheme = KbdTheme.of(context) // styled
-        .brightnessed(brightness)
-        .sized(size);
-
-    final TextStyle textStyle = TextTheme.of(context).textStyle.copyWith(
-      color: styledTheme.labelColor,
-      fontSize: styledTheme.labelFontSize,
+    final TextStyle? textStyle = mergedStyle.labelStyle?.copyWith(
+      color: themeData.labelColor,
       fontWeight: FontWeight.w700,
       fontFamily: 'Roboto Mono',
       fontFamilyFallback: ['Roboto'],
     );
 
     return Container(
+      constraints: BoxConstraints(
+        minWidth: mergedStyle.size!.width,
+        minHeight: mergedStyle.size!.height,
+      ),
       decoration: ShapeDecoration(
-        color: styledTheme.color,
+        color: themeData.color,
         shape: NonUniformBorder(
           leftWidth: 1,
           rightWidth: 1,
           topWidth: 1,
           bottomWidth: 3,
-          color: styledTheme.borderColor!,
+          color: themeData.borderColor!,
           strokeAlign: BorderSide.strokeAlignInside,
-          borderRadius: styledTheme.borderRadius ?? BorderRadius.zero,
+          borderRadius: themeData.borderRadius ?? BorderRadius.zero,
         ),
       ),
       child: Padding(
-        padding: styledTheme.padding ?? EdgeInsets.zero,
+        padding: mergedStyle.padding ?? EdgeInsets.zero,
         child: DefaultTextStyle(
-          style: textStyle,
-          child: Text(label),
+          style: textStyle!,
+          child: Text(widget.label),
         ),
       ),
     );

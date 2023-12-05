@@ -6,10 +6,13 @@ class BoxDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Box(
-        child: Container(
-          width: 100,
-          height: 100,
-        ),
+        variant: BoxVariant.filled,
+        builder: (context, foregroundColor) {
+          return Container(
+            width: 100,
+            height: 100,
+          );
+        },
       ),
     );
   }

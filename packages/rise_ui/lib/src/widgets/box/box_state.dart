@@ -63,7 +63,7 @@ class BoxStateColor extends CustomizableProperty<Color, Set<BoxState>> {
       seedColorShade = colorShade;
       seedColorOpacity = colorOpacity;
     }
-    Color resolvedColor = seedColor!;
+    Color resolvedColor = seedColor ?? Colors.black;
     if (seedColor is ShadedColor && seedColorShade != null) {
       if (seedColorShade != -1) {
         resolvedColor = seedColor.withShade(seedColorShade);

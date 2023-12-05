@@ -14,6 +14,7 @@ class ActionIconWithColorDemo extends StatelessWidget {
           ActionIconVariant.outline,
           ActionIconVariant.subtle,
           ActionIconVariant.transparent,
+          ActionIconVariant.white,
         ])
           Wrap(
             spacing: 10,

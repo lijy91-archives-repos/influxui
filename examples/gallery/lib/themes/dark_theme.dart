@@ -6,5 +6,7 @@ final darkThemeData = md.ThemeData.dark().copyWith(
   extensions: [
     kDarkActionIconThemeDefaults,
     kDarkBoxThemeDefaults,
+    kDarkButtonThemeDefaults,
+    kDarkKbdThemeDefaults,
   ],
 );

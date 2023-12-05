@@ -13,6 +13,7 @@ class ActionIconWithVariantDemo extends StatelessWidget {
           ActionIconVariant.outline,
           ActionIconVariant.subtle,
           ActionIconVariant.transparent,
+          ActionIconVariant.white,
         ])
           ActionIcon(
             Icons.light_mode,
