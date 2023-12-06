@@ -397,14 +397,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.4"
-  non_uniform_border:
-    dependency: transitive
-    description:
-      name: non_uniform_border
-      sha256: a2676d171f7493cb3faf6339552570dba96512a90b5955b921602782153f3c81
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.0.0"
   package_config:
     dependency: transitive
     description:

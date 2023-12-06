@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
-import 'package:rise_ui/src/widgets/loader/loader_theme.dart';
 import 'package:rise_ui/src/widgets/loader/loaders/oval_loader.dart';
+
+export 'package:rise_ui/src/widgets/loader/loader_theme.dart';
 
 enum LoaderVariant {
   bars,
@@ -23,12 +24,38 @@ class Loader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LoaderThemeData styledTheme = LoaderTheme.of(context) // styled
-        .colored(color)
-        .sized(size);
-    return OvalLoader(
-      size: styledTheme.size!.width,
-      color: styledTheme.color ?? Theme.of(context).primaryColor,
+    final themeData = LoaderTheme.of(context);
+    Color resolvedColor =
+        color ?? themeData.color ?? Theme.of(context).primaryColor;
+    Size resolvedSize = size ?? themeData.mediumSize;
+
+    if (size is NamedSize) {
+      switch (size) {
+        case NamedSize.tiny:
+          resolvedSize = themeData.tinySize;
+          break;
+        case NamedSize.small:
+          resolvedSize = themeData.smallSize;
+          break;
+        case NamedSize.medium:
+          resolvedSize = themeData.mediumSize;
+          break;
+        case NamedSize.large:
+          resolvedSize = themeData.largeSize;
+          break;
+        case NamedSize.big:
+          resolvedSize = themeData.bigSize;
+          break;
+      }
+    }
+
+    return SizedBox(
+      width: resolvedSize.width,
+      height: resolvedSize.height,
+      child: OvalLoader(
+        size: resolvedSize.width,
+        color: resolvedColor,
+      ),
     );
   }
 }

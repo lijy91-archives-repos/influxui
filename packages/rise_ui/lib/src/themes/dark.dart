@@ -6,3 +6,5 @@ export 'package:rise_ui/src/widgets/button/button_theme_defaults.dart'
     show kDarkButtonThemeDefaults;
 export 'package:rise_ui/src/widgets/kbd/kbd_theme_defaults.dart'
     show kDarkKbdThemeDefaults;
+export 'package:rise_ui/src/widgets/loader/loader_theme_defaults.dart'
+    show kDarkLoaderThemeDefaults;

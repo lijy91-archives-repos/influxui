@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart' hide Notification;
 import 'package:rise_ui/src/widgets/badge/badge_theme.dart';
 import 'package:rise_ui/src/widgets/divider/divider_theme.dart';
-import 'package:rise_ui/src/widgets/loader/loader_theme.dart';
 import 'package:rise_ui/src/widgets/menu/menu_theme.dart';
 import 'package:rise_ui/src/widgets/navigation_rail/navigation_rail_theme.dart';
 import 'package:rise_ui/src/widgets/notification/notification.dart';
@@ -147,7 +146,6 @@ class ThemeData with Diagnosticable {
     // COMPONENT THEMES
     BadgeThemeData? badgeTheme,
     DividerThemeData? dividerTheme,
-    LoaderThemeData? loaderTheme,
     MenuThemeData? menuTheme,
     NavigationRailThemeData? navigationRailTheme,
     NotificationThemeData? notificationTheme,
@@ -167,7 +165,6 @@ class ThemeData with Diagnosticable {
     badgeTheme ??= const BadgeThemeData();
     dividerTheme ??= const DividerThemeData();
 
-    loaderTheme ??= const LoaderThemeData();
     menuTheme ??= const MenuThemeData();
     navigationRailTheme ??= const NavigationRailThemeData();
     notificationTheme ??= const NotificationThemeData();
@@ -186,7 +183,6 @@ class ThemeData with Diagnosticable {
       badgeTheme: badgeTheme,
       dividerTheme: dividerTheme,
 
-      loaderTheme: loaderTheme,
       menuTheme: menuTheme,
       navigationRailTheme: navigationRailTheme,
       notificationTheme: notificationTheme,
@@ -213,7 +209,6 @@ class ThemeData with Diagnosticable {
     // COMPONENT THEMES
     required this.badgeTheme,
     required this.dividerTheme,
-    required this.loaderTheme,
     required this.menuTheme,
     required this.navigationRailTheme,
     required this.notificationTheme,
@@ -296,8 +291,6 @@ class ThemeData with Diagnosticable {
 
   final DividerThemeData dividerTheme;
 
-  final LoaderThemeData loaderTheme;
-
   final MenuThemeData menuTheme;
 
   final NavigationRailThemeData navigationRailTheme;
@@ -322,7 +315,6 @@ class ThemeData with Diagnosticable {
     // COMPONENT THEMES
     BadgeThemeData? badgeTheme,
     DividerThemeData? dividerTheme,
-    LoaderThemeData? loaderTheme,
     MenuThemeData? menuTheme,
     NavigationRailThemeData? navigationRailTheme,
     NotificationThemeData? notificationTheme,
@@ -342,7 +334,6 @@ class ThemeData with Diagnosticable {
       // COMPONENT THEMES
       badgeTheme: badgeTheme ?? this.badgeTheme,
       dividerTheme: dividerTheme ?? this.dividerTheme,
-      loaderTheme: loaderTheme ?? this.loaderTheme,
       menuTheme: menuTheme ?? this.menuTheme,
       navigationRailTheme: navigationRailTheme ?? this.navigationRailTheme,
       notificationTheme: notificationTheme ?? this.notificationTheme,
@@ -403,7 +394,6 @@ class ThemeData with Diagnosticable {
       badgeTheme: BadgeThemeData.lerp(a.badgeTheme, b.badgeTheme, t),
       dividerTheme: DividerThemeData.lerp(a.dividerTheme, b.dividerTheme, t),
 
-      loaderTheme: LoaderThemeData.lerp(a.loaderTheme, b.loaderTheme, t),
       menuTheme: MenuThemeData.lerp(a.menuTheme, b.menuTheme, t),
       navigationRailTheme: NavigationRailThemeData.lerp(
           a.navigationRailTheme, b.navigationRailTheme, t),
@@ -425,7 +415,6 @@ class ThemeData with Diagnosticable {
         // COMPONENT THEMES
         other.badgeTheme == badgeTheme &&
         other.dividerTheme == dividerTheme &&
-        other.loaderTheme == loaderTheme &&
         other.notificationTheme == notificationTheme;
   }
 
@@ -441,7 +430,6 @@ class ThemeData with Diagnosticable {
       badgeTheme,
       dividerTheme,
 
-      loaderTheme,
       notificationTheme,
     ];
     return Object.hashAll(values);
@@ -476,12 +464,6 @@ class ThemeData with Diagnosticable {
       'dividerTheme',
       dividerTheme,
       defaultValue: defaultData.dividerTheme,
-      level: DiagnosticLevel.debug,
-    ));
-    properties.add(DiagnosticsProperty<LoaderThemeData>(
-      'loaderTheme',
-      loaderTheme,
-      defaultValue: defaultData.loaderTheme,
       level: DiagnosticLevel.debug,
     ));
     properties.add(DiagnosticsProperty<NotificationThemeData>(

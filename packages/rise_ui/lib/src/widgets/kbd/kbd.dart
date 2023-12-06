@@ -1,8 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:non_uniform_border/non_uniform_border.dart';
 import 'package:rise_ui/src/widgets/kbd/kbd_style.dart';
 import 'package:rise_ui/src/widgets/kbd/kbd_theme.dart';
-import 'package:rise_ui/src/widgets/text/text_theme.dart';
 import 'package:rise_ui/src/widgets/theme/theme.dart';
 
 export 'kbd_theme.dart';
@@ -63,17 +61,27 @@ class _KbdState extends State<Kbd> {
         minWidth: mergedStyle.size!.width,
         minHeight: mergedStyle.size!.height,
       ),
-      decoration: ShapeDecoration(
+      decoration: BoxDecoration(
         color: themeData.color,
-        shape: NonUniformBorder(
-          leftWidth: 1,
-          rightWidth: 1,
-          topWidth: 1,
-          bottomWidth: 3,
-          color: themeData.borderColor!,
-          strokeAlign: BorderSide.strokeAlignInside,
-          borderRadius: themeData.borderRadius ?? BorderRadius.zero,
+        border: BorderDirectional(
+          start: BorderSide(
+            color: themeData.borderColor!,
+            width: 1,
+          ),
+          top: BorderSide(
+            color: themeData.borderColor!,
+            width: 1,
+          ),
+          end: BorderSide(
+            color: themeData.borderColor!,
+            width: 1,
+          ),
+          bottom: BorderSide(
+            color: themeData.borderColor!,
+            width: 3,
+          ),
         ),
+        borderRadius: themeData.borderRadius ?? BorderRadius.zero,
       ),
       child: Padding(
         padding: mergedStyle.padding ?? EdgeInsets.zero,

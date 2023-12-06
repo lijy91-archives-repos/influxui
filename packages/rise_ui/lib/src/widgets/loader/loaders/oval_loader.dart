@@ -55,7 +55,7 @@ class _OvalLoaderState extends State<OvalLoader>
                   shape: BoxShape.circle,
                   border: Border.all(
                     color: widget.color.withOpacity(0.5),
-                    width: 5,
+                    width: widget.size / 8,
                   ),
                 ),
               ),
@@ -68,7 +68,7 @@ class _OvalLoaderState extends State<OvalLoader>
                 size: Size.square(widget.size),
                 painter: _QuarterOvalPainter(
                   color: widget.color,
-                  strokeWidth: 5,
+                  strokeWidth: widget.size / 8,
                 ),
               ),
             ),
