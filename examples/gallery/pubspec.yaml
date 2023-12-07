@@ -24,10 +24,10 @@ dependencies:
   rise_ui_demos:
     path: ../../packages/rise_ui_demos
   shared_preferences: ^2.1.0
-  storybook_flutter_web:
-    path: ../../packages/storybook_flutter_web
-  storybook_flutter_web_annotation:
-    path: ../../packages/storybook_flutter_web_annotation
+  storybook_dart:
+    path: ../../packages/storybook_dart
+  storybook_dart_annotation:
+    path: ../../packages/storybook_dart_annotation
   tabler_icon_library:
     path: ../../packages/tabler_icon_library
   url_launcher: ^6.1.10
@@ -36,8 +36,8 @@ dev_dependencies:
   build_runner: ^2.3.3
   flutter_test:
     sdk: flutter
-  storybook_flutter_web_generator:
-    path: ../../packages/storybook_flutter_web_generator
+  storybook_dart_generator:
+    path: ../../packages/storybook_dart_generator
 
 flutter:
   uses-material-design: true

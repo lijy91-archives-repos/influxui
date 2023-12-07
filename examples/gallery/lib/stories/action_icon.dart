@@ -1,36 +1,34 @@
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
-import 'package:storybook_flutter_web/storybook_flutter_web.dart';
-import 'package:storybook_flutter_web_annotation/storybook_flutter_web_annotation.dart'
+import 'package:storybook_dart/storybook_dart.dart';
+import 'package:storybook_dart_annotation/storybook_dart_annotation.dart'
     as storybook;
+import 'package:tabler_icon_library/tabler_icon_library.dart';
 
-class ActionIconWidgetMeta extends WidgetMeta {
+part 'action_icon.g.dart';
+
+@storybook.Meta(
+  title: 'Widgets/ActionIcon',
+  argTypes: [
+    storybook.ArgType<IconData>(
+      'icon',
+      defaultValue: TablerIcons.sun,
+    ),
+  ],
+)
+class ActionIconMeta extends Meta with _$ActionIconMeta {}
+
+@storybook.Story('Default')
+class ActionIconDefaultStory extends StoryObj<ActionIconMeta>
+    with _$ActionIconDefaultStory {
   @override
-  String get title => 'Widgets/ActionIcon';
-
-  @override
-  List<ArgType> get argTypes {
-    return [
-      ArgType(),
-      ArgType(),
-    ];
-  }
-}
-
-class ActionIconStory extends Story<ActionIconWidgetMeta> {
-  ActionIconStory({required super.name});
-
-  @override
-  ActionIconWidgetMeta get meta => ActionIconWidgetMeta();
-
-  @override
-  Widget build(BuildContext context, Map<String, dynamic> args) {
+  Widget build(BuildContext context, List<Arg> args) {
     return SizedBox(
       width: 100,
       height: 100,
       child: Center(
         child: ActionIcon(
-          Icons.light_mode,
+          args[0].value as IconData,
           variant: ActionIconVariant.filled,
           onPressed: () {},
         ),
@@ -39,7 +37,15 @@ class ActionIconStory extends Story<ActionIconWidgetMeta> {
   }
 }
 
-@storybook.UseCase()
-final actionIconDefault = ActionIconStory(
-  name: 'Default',
-);
+@storybook.Story(
+  'With Size',
+  args: [
+    storybook.Arg<String>('size'),
+  ],
+)
+class ActionIconWithSizeStory extends StoryObj<ActionIconMeta>
+    with _$ActionIconDefaultStory {}
+
+@storybook.Story('With Size')
+class ActionIconWithColorStory extends StoryObj<ActionIconMeta>
+    with _$ActionIconDefaultStory {}

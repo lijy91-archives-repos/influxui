@@ -36,8 +36,8 @@ void main() {
     );
     testGolden(
       'kdb-dark',
-      (_) => KbdTheme(
-        data: KbdThemeData(brightness: Brightness.dark),
+      (_) => Theme(
+        data: ThemeData(brightness: Brightness.dark),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -53,8 +53,8 @@ void main() {
     );
     testGolden(
       'kdb-dark-sizes',
-      (_) => KbdTheme(
-        data: KbdThemeData(brightness: Brightness.dark),
+      (_) => Theme(
+        data: ThemeData(brightness: Brightness.dark),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

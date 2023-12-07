@@ -6,7 +6,7 @@ import 'package:build/build.dart';
 import 'package:glob/glob.dart';
 import 'package:path/path.dart' as p;
 import 'package:source_gen/source_gen.dart';
-import 'package:storybook_flutter_web_annotation/storybook_flutter_web_annotation.dart';
+import 'package:storybook_dart_annotation/storybook_dart_annotation.dart';
 
 class StoryCaseVisitor extends SimpleElementVisitor {
   @override
@@ -46,7 +46,7 @@ class StorybookFlutterWebBuilder implements Builder {
 
   String _generateStory(BuildStep buildStep, Map<String, String> result) {
     final String name = result['name']!;
-    return name;
+    return '  $name';
   }
 
   @override
@@ -57,7 +57,7 @@ class StorybookFlutterWebBuilder implements Builder {
       final library = LibraryReader(await buildStep.resolver.libraryFor(input));
 
       for (var annotatedElement
-          in library.annotatedWith(TypeChecker.fromRuntime(UseCase))) {
+          in library.annotatedWith(TypeChecker.fromRuntime(Story))) {
         final Element element = annotatedElement.element;
         if ((element.name ?? '').isNotEmpty) {
           print('>>>>>');
@@ -73,10 +73,10 @@ class StorybookFlutterWebBuilder implements Builder {
 
     await buildStep.writeAsString(_output(buildStep), '''
 ${results.map((e) => _generateImport(buildStep, e)).join('\n')}
-import 'package:storybook_flutter_web/storybook_flutter_web.dart';
+import 'package:storybook_dart/storybook_dart.dart';
 
-final kStories = <Story>[
-  ${results.map((e) => _generateStory(buildStep, e)).join(', \n')}
+final kStories = <StoryObj>[
+${results.map((e) => _generateStory(buildStep, e)).join(', \n')}
 ];
 ''');
   }

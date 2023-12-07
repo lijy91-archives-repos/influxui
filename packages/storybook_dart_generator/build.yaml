@@ -1,6 +1,6 @@
 builders:
-  storybook_flutter_web:
-    import: "package:storybook_flutter_web_generator/builder.dart"
+  storybook_dart:
+    import: "package:storybook_dart_generator/builder.dart"
     builder_factories: ["storybookFlutterWebBuilder"]
     build_extensions: { ".dart": ["lib/stories.dart"] }
     auto_apply: dependents

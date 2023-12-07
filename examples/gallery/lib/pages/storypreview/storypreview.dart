@@ -2,7 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart' as md;
 import 'package:flutter/widgets.dart';
 import 'package:gallery/stories.dart';
-import 'package:storybook_flutter_web/storybook_flutter_web.dart';
+import 'package:storybook_dart/storybook_dart.dart';
 
 class StoryPreviewPage extends StatefulWidget {
   const StoryPreviewPage({
@@ -19,7 +19,7 @@ class StoryPreviewPage extends StatefulWidget {
 class _StoryPreviewPageState extends md.State<StoryPreviewPage> {
   String? _id;
 
-  List<Story> get _stories {
+  List<StoryObj> get _stories {
     return kStories;
   }
 
@@ -61,12 +61,11 @@ class _StoryPreviewPageState extends md.State<StoryPreviewPage> {
     return Center(
       child: Builder(
         builder: (context) {
-          final Story? story = _stories.firstWhereOrNull((e) => e.id == _id);
+          final StoryObj? story = _stories.firstWhereOrNull((e) => e.id == _id);
           if (story == null) {
             return Text('Not found');
           }
-          print(story.meta);
-          return story.build(context, widget.args);
+          return story.build(context, []);
         },
       ),
     );

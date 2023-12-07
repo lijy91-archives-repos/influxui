@@ -656,24 +656,24 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.11.1"
-  storybook_flutter_web:
+  storybook_dart:
     dependency: "direct main"
     description:
-      path: "../../packages/storybook_flutter_web"
+      path: "../../packages/storybook_dart"
       relative: true
     source: path
     version: "0.1.0"
-  storybook_flutter_web_annotation:
+  storybook_dart_annotation:
     dependency: "direct main"
     description:
-      path: "../../packages/storybook_flutter_web_annotation"
+      path: "../../packages/storybook_dart_annotation"
       relative: true
     source: path
     version: "0.1.0"
-  storybook_flutter_web_generator:
+  storybook_dart_generator:
     dependency: "direct dev"
     description:
-      path: "../../packages/storybook_flutter_web_generator"
+      path: "../../packages/storybook_dart_generator"
       relative: true
     source: path
     version: "0.1.0"

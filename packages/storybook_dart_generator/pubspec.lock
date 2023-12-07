@@ -416,10 +416,10 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.11.1"
-  storybook_flutter_web_annotation:
+  storybook_dart_annotation:
     dependency: "direct main"
     description:
-      path: "../storybook_flutter_web_annotation"
+      path: "../storybook_dart_annotation"
       relative: true
     source: path
     version: "0.1.0"
