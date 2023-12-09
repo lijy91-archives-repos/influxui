@@ -1,7 +1,9 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart' as md;
 import 'package:flutter/widgets.dart';
-import 'package:gallery/stories.dart';
+import 'package:gallery/stories/action_icon_stories.dart';
+import 'package:gallery/stories/box_stories.dart';
+import 'package:gallery/stories/button_stories.dart';
 import 'package:storybook_dart/storybook_dart.dart';
 
 class StoryPreviewPage extends StatefulWidget {
@@ -20,7 +22,18 @@ class _StoryPreviewPageState extends md.State<StoryPreviewPage> {
   String? _id;
 
   List<StoryObj> get _stories {
-    return kStories;
+    return [
+      ActionIconDefaultStory(),
+      ActionIconWithColorStory(),
+      ActionIconWithSizeStory(),
+      BoxDefaultStory(),
+      BoxWithColorStory(),
+      BoxWithSizeStory(),
+      BoxWithVariantStory(),
+      ButtonDefaultStory(),
+      ButtonWithColorStory(),
+      ButtonWithSizeStory(),
+    ];
   }
 
   @override

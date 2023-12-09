@@ -1,10 +1,10 @@
 import React from "react";
 import FlutterRenderer from "../components/FlutterRenderer";
 
-interface ActionIconProps {
+interface ButtonProps {
 }
 
-export const ActionIcon = (props: ActionIconProps) => {
+export const Button = (props: ButtonProps) => {
   return (
     <FlutterRenderer {...props} />
   );

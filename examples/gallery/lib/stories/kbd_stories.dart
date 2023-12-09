@@ -5,10 +5,10 @@ import 'package:storybook_dart_annotation/storybook_dart_annotation.dart'
     as storybook;
 import 'package:tabler_icon_library/tabler_icon_library.dart';
 
-part 'action_icon.g.dart';
+part 'kbd_stories.g.dart';
 
 @storybook.Meta(
-  title: 'Widgets/ActionIcon',
+  title: 'Widgets/Kbd',
   argTypes: [
     storybook.ArgType<IconData>(
       'icon',
@@ -16,22 +16,22 @@ part 'action_icon.g.dart';
     ),
   ],
 )
-class ActionIconMeta extends Meta with _$ActionIconMeta {}
+class KbdMeta extends Meta with _$KbdMeta {
+  @override
+  Widget buildWidget(BuildContext context, List<Arg> args) {
+    return Kbd('Shift');
+  }
+}
 
 @storybook.Story('Default')
-class ActionIconDefaultStory extends StoryObj<ActionIconMeta>
-    with _$ActionIconDefaultStory {
+class KbdDefaultStory extends StoryObj<KbdMeta> with _$KbdDefaultStory {
   @override
   Widget build(BuildContext context, List<Arg> args) {
     return SizedBox(
       width: 100,
       height: 100,
       child: Center(
-        child: ActionIcon(
-          args[0].value as IconData,
-          variant: ActionIconVariant.filled,
-          onPressed: () {},
-        ),
+        child: Kbd('Shift'),
       ),
     );
   }
@@ -43,9 +43,9 @@ class ActionIconDefaultStory extends StoryObj<ActionIconMeta>
     storybook.Arg<String>('size'),
   ],
 )
-class ActionIconWithSizeStory extends StoryObj<ActionIconMeta>
-    with _$ActionIconDefaultStory {}
+class KbdWithSizeStory extends StoryObj<KbdMeta> with _$KbdWithSizeStory {}
 
-@storybook.Story('With Size')
-class ActionIconWithColorStory extends StoryObj<ActionIconMeta>
-    with _$ActionIconDefaultStory {}
+@storybook.Story(
+  'With Color',
+)
+class KbdWithColorStory extends StoryObj<KbdMeta> with _$KbdWithColorStory {}

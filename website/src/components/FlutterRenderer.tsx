@@ -1,12 +1,12 @@
 import React from "react";
 
 export interface FlutterRendererProps {
-  storyId: string;
   storyArgs?: Record<string, any>;
 }
 
 const FlutterRenderer = (props: FlutterRendererProps): React.ReactElement => {
-  const { storyId } = props;
+  const searchParams = new URLSearchParams(window.location.search);
+  const storyId = searchParams.get("id");
   const iframeRef = React.useRef<HTMLIFrameElement>(null);
   const url = `https://rise-ui-gallery.vercel.app/storypreview?id=${storyId}`;
   return (
