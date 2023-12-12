@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui_demos/rise_ui_demos.dart';
 import 'package:rise_ui_demos/src/demos/badge/badge_with_color_demo.dart';
 import 'package:rise_ui_demos/src/demos/badge/badge_with_variant_demo.dart';

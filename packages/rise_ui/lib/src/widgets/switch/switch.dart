@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:rise_ui/rise_ui.dart';
+import 'package:flutter/widgets.dart';
 
 class Switch extends StatelessWidget {
   const Switch({super.key});

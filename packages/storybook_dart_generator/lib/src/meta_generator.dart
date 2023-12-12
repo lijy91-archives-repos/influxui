@@ -6,7 +6,7 @@ import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:storybook_dart_annotation/storybook_dart_annotation.dart';
 import 'package:storybook_dart_generator/src/meta_info.dart';
-import 'package:storybook_dart_generator/src/shared_metas.dart';
+import 'package:storybook_dart_generator/src/utils/resolve_meta_info.dart';
 
 class ReactMetaGenerator {
   const ReactMetaGenerator();
@@ -64,28 +64,7 @@ type Story = StoryObj<typeof meta>
 }
 
 class MetaGenerator extends GeneratorForAnnotation<Meta> {
-  const MetaGenerator(this.metas);
-
-  final SharedMetas metas;
-
-  MetaInfo _resolveMeta(Element element, ConstantReader annotation) {
-    final String className = (element as ClassElement).name;
-    final meta = MetaInfo(
-      widget: className.replaceFirst('Meta', ''),
-      title: annotation.read('title').stringValue,
-      argTypes: annotation
-          .read('argTypes')
-          .listValue
-          .map((e) => ArgType(
-                e.getField('name')!.toStringValue()!,
-                defaultValue: e.getField('defaultValue')!.toSymbolValue(),
-              ))
-          .toList(),
-      className: className,
-    );
-    metas.add(meta);
-    return meta;
-  }
+  const MetaGenerator();
 
   @override
   generateForAnnotatedElement(
@@ -93,7 +72,7 @@ class MetaGenerator extends GeneratorForAnnotation<Meta> {
     ConstantReader annotation,
     BuildStep buildStep,
   ) {
-    final meta = _resolveMeta(element, annotation);
+    final meta = resolveMetaInfo(element, annotation);
     ReactMetaGenerator().generate(meta);
 
     return '''

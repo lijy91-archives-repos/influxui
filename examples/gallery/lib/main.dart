@@ -1,14 +1,10 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart' show DefaultCupertinoLocalizations;
 import 'package:flutter/material.dart' as md;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:gallery/generated/codegen_loader.g.dart';
 import 'package:gallery/router_config.dart';
 import 'package:gallery/themes/themes.dart';
-import 'package:gallery/utilities/utilities.dart';
 import 'package:rise_ui/rise_ui.dart';
 import 'package:tabler_icon_library/tabler_icon_library.dart';
 
@@ -32,23 +28,13 @@ class DefaultIconLibrary extends IconLibrary {
 Future<void> _ensureInitialized() async {
   Icons.iconLibrary = DefaultIconLibrary();
   WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
-
   usePathUrlStrategy();
 }
 
 void main() async {
   await _ensureInitialized();
 
-  runApp(EasyLocalization(
-    supportedLocales: [
-      Locale(kLanguageEN),
-      Locale(kLanguageZH),
-    ],
-    path: 'resources/langs',
-    assetLoader: CodegenLoader(),
-    child: const MyApp(),
-  ));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -64,16 +50,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return md.MaterialApp.router(
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
       theme: lightThemeData,
       darkTheme: darkThemeData,
       routerConfig: routerConfig,
-      localizationsDelegates: [
-        DefaultCupertinoLocalizations.delegate,
-        DefaultWidgetsLocalizations.delegate,
-        ...context.localizationDelegates,
-      ],
       debugShowCheckedModeBanner: false,
       themeMode: _themeMode,
       builder: (context, child) {

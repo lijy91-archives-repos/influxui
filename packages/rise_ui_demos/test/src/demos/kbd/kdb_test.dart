@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui_demos/rise_ui_demos.dart';
 import 'package:rise_ui_demos/src/demos/kbd/kbd_with_size_demo.dart';
 import 'package:rise_ui_test/rise_ui_test.dart';

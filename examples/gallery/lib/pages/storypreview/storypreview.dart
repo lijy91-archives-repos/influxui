@@ -1,9 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart' as md;
 import 'package:flutter/widgets.dart';
-import 'package:gallery/stories/action_icon_stories.dart';
-import 'package:gallery/stories/box_stories.dart';
-import 'package:gallery/stories/button_stories.dart';
+import 'package:gallery/.storybook/main.dart';
 import 'package:storybook_dart/storybook_dart.dart';
 
 class StoryPreviewPage extends StatefulWidget {
@@ -21,20 +19,7 @@ class StoryPreviewPage extends StatefulWidget {
 class _StoryPreviewPageState extends md.State<StoryPreviewPage> {
   String? _id;
 
-  List<StoryObj> get _stories {
-    return [
-      ActionIconDefaultStory(),
-      ActionIconWithColorStory(),
-      ActionIconWithSizeStory(),
-      BoxDefaultStory(),
-      BoxWithColorStory(),
-      BoxWithSizeStory(),
-      BoxWithVariantStory(),
-      ButtonDefaultStory(),
-      ButtonWithColorStory(),
-      ButtonWithSizeStory(),
-    ];
-  }
+  List<StoryObj> get _stories => storybook.stories;
 
   @override
   void initState() {
@@ -74,7 +59,9 @@ class _StoryPreviewPageState extends md.State<StoryPreviewPage> {
     return Center(
       child: Builder(
         builder: (context) {
-          final StoryObj? story = _stories.firstWhereOrNull((e) => e.id == _id);
+          final StoryObj? story = _stories.firstWhereOrNull(
+            (e) => e.id == _id,
+          );
           if (story == null) {
             return Text('Not found');
           }

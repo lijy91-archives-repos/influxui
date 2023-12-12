@@ -8,7 +8,6 @@ import 'package:path_provider/path_provider.dart';
 
 // 请按文件名排序放置
 export './env.dart';
-export './language_util.dart';
 
 final sharedEnv = Env.instance;
 

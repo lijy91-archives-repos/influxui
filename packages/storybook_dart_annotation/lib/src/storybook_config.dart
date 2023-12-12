@@ -1,0 +1,3 @@
+class StorybookConfig {
+  const StorybookConfig();
+}

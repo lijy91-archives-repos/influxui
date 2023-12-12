@@ -5,8 +5,8 @@ import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:storybook_dart_annotation/storybook_dart_annotation.dart';
 import 'package:storybook_dart_generator/src/meta_info.dart';
-import 'package:storybook_dart_generator/src/shared_metas.dart';
 import 'package:storybook_dart_generator/src/story_info.dart';
+import 'package:storybook_dart_generator/src/utils/resolve_story_info.dart';
 
 class ReactStoryGenerator {
   const ReactStoryGenerator();
@@ -32,30 +32,7 @@ export const $storyName: Story = {
 }
 
 class StoryGenerator extends GeneratorForAnnotation<Story> {
-  const StoryGenerator(this.metas);
-
-  final SharedMetas metas;
-
-  MetaInfo _resolveMeta(Element element, ConstantReader annotation) {
-    final firstSupertype = (element as ClassElement).allSupertypes[0];
-    final className = firstSupertype.typeArguments.first.getDisplayString(
-      withNullability: false,
-    );
-    return metas.getMeta(className) ??
-        MetaInfo(
-          widget: className.replaceFirst('Meta', ''),
-          className: className,
-        );
-  }
-
-  StoryInfo _resolveStory(Element element, ConstantReader annotation) {
-    final className = (element as ClassElement).name;
-    return StoryInfo(
-      annotation.read('name').stringValue,
-      meta: _resolveMeta(element, annotation),
-      className: className,
-    );
-  }
+  const StoryGenerator();
 
   @override
   generateForAnnotatedElement(
@@ -63,7 +40,7 @@ class StoryGenerator extends GeneratorForAnnotation<Story> {
     ConstantReader annotation,
     BuildStep buildStep,
   ) {
-    final StoryInfo story = _resolveStory(element, annotation);
+    final StoryInfo story = resolveStoryInfo(element, annotation);
     final MetaInfo meta = story.meta;
     ReactStoryGenerator().generate(story);
 
