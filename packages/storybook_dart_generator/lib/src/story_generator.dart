@@ -12,7 +12,11 @@ class ReactStoryGenerator {
   const ReactStoryGenerator();
 
   File _getOutput(StoryInfo story) {
-    return File('../../website/src/stories/${story.meta.widget}.stories.tsx');
+    final directory = Directory('../../storybook/src/stories');
+    if (!directory.existsSync()) {
+      directory.createSync(recursive: true);
+    }
+    return File('${directory.path}/${story.meta.widget}.stories.tsx');
   }
 
   Future<void> generate(StoryInfo story) async {

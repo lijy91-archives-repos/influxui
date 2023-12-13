@@ -12,7 +12,11 @@ class ReactMetaGenerator {
   const ReactMetaGenerator();
 
   File _getOutputComponent(MetaInfo meta) {
-    return File('../../website/src/stories/${meta.widget}.tsx');
+    final directory = Directory('../../storybook/src/stories');
+    if (!directory.existsSync()) {
+      directory.createSync(recursive: true);
+    }
+    return File('${directory.path}/${meta.widget}.tsx');
   }
 
   Future<void> _generateComponent(MetaInfo meta) async {
@@ -33,7 +37,11 @@ export const ${meta.widget} = (props: ${meta.widget}Props) => {
   }
 
   File _getOutputComponentStories(MetaInfo meta) {
-    return File('../../website/src/stories/${meta.widget}.stories.tsx');
+    final directory = Directory('../../storybook/src/stories');
+    if (!directory.existsSync()) {
+      directory.createSync(recursive: true);
+    }
+    return File('${directory.path}/${meta.widget}.stories.tsx');
   }
 
   Future<void> _generateComponentStories(MetaInfo meta) async {
@@ -48,7 +56,6 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
   argTypes: {},
 } satisfies Meta<typeof ${meta.widget}>;
 
