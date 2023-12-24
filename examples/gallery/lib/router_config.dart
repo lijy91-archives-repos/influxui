@@ -14,11 +14,5 @@ final routerConfig = GoRouter(
         slug: state.params['slug']!,
       ),
     ),
-    GoRoute(
-      path: '/storypreview',
-      builder: (context, state) => StoryPreviewPage(
-        args: state.queryParams,
-      ),
-    ),
   ],
 );

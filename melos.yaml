@@ -4,6 +4,7 @@ repository: https://github.com/leanflutter/rise_ui
 packages:
   - examples/**
   - packages/**
+  - storybook/**
 
 scripts:
   analyze:
