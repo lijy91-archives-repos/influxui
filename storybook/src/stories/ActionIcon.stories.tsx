@@ -7,13 +7,19 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  argTypes: {},
+  argTypes: {
+    icon: { control: { type: "text" } },
+  },
 } satisfies Meta<typeof ActionIcon>;
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+  args: {},
+};
+
+export const With_Variant: Story = {
   args: {},
 };
 

@@ -1,24 +1,20 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Kbd } from "./Kbd";
+import { CloseButton } from "./CloseButton";
 
 const meta = {
-  title: "Widgets/Kbd",
-  component: Kbd,
+  title: "Widgets/CloseButton",
+  component: CloseButton,
   parameters: {
     layout: "centered",
   },
   argTypes: {
-    icon: { control: { type: "text" } },
+    
   },
-} satisfies Meta<typeof Kbd>;
+} satisfies Meta<typeof CloseButton>;
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {},
-};
-
-export const With_Size: Story = {
   args: {},
 };

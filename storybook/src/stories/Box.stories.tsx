@@ -7,7 +7,9 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  argTypes: {},
+  argTypes: {
+    variant: { control: { type: "text" } },
+  },
 } satisfies Meta<typeof Box>;
 
 export default meta
@@ -17,14 +19,14 @@ export const Default: Story = {
   args: {},
 };
 
+export const With_Variant: Story = {
+  args: {},
+};
+
 export const With_Size: Story = {
   args: {},
 };
 
 export const With_Color: Story = {
-  args: {},
-};
-
-export const With_Variant: Story = {
   args: {},
 };

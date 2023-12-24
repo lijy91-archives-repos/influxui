@@ -1,24 +1,20 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Kbd } from "./Kbd";
+import { Menu } from "./Menu";
 
 const meta = {
-  title: "Widgets/Kbd",
-  component: Kbd,
+  title: "Widgets/Menu",
+  component: Menu,
   parameters: {
     layout: "centered",
   },
   argTypes: {
-    icon: { control: { type: "text" } },
+    
   },
-} satisfies Meta<typeof Kbd>;
+} satisfies Meta<typeof Menu>;
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {},
-};
-
-export const With_Size: Story = {
   args: {},
 };
