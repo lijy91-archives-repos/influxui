@@ -17,6 +17,7 @@ export 'src/widgets/loader/loader.dart';
 export 'src/widgets/menu/menu.dart';
 export 'src/widgets/navigation_rail/navigation_rail.dart';
 export 'src/widgets/notification/notification.dart';
+export 'src/widgets/skeleton/skeleton.dart';
 export 'src/widgets/switch/switch.dart';
 export 'src/widgets/text/text.dart';
 export 'src/widgets/theme/theme.dart';
