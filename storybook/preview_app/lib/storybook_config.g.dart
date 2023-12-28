@@ -7,6 +7,7 @@ import 'package:preview_app/stories/button_stories.dart';
 import 'package:preview_app/stories/badge_stories.dart';
 import 'package:preview_app/stories/menu_stories.dart';
 import 'package:preview_app/stories/action_icon_stories.dart';
+import 'package:preview_app/stories/divider_stories.dart';
 import 'package:preview_app/stories/close_button_stories.dart';
 import 'package:preview_app/stories/alert_stories.dart';
 import 'package:preview_app/stories/kbd_stories.dart';
@@ -30,6 +31,7 @@ final StorybookConfig storybookConfig = StorybookConfig(
     ActionIconWithVariantStory(),
     ActionIconWithSizeStory(),
     ActionIconWithColorStory(),
+    DividerDefaultStory(),
     CloseButtonDefaultStory(),
     AlertDefaultStory(),
     KbdDefaultStory(),

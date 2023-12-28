@@ -35,7 +35,22 @@ class ActionIconDefaultStory extends StoryObj<ActionIconMeta>
   'With Variant',
 )
 class ActionIconWithVariantStory extends StoryObj<ActionIconMeta>
-    with _$ActionIconWithVariantStory {}
+    with _$ActionIconWithVariantStory {
+  @override
+  Widget build(BuildContext context, List<Arg> args) {
+    return Wrap(
+      spacing: 10,
+      children: [
+        for (final variant in ActionIconVariant.values)
+          ActionIcon(
+            TablerIcons.sun,
+            variant: variant,
+            onPressed: () {},
+          ),
+      ],
+    );
+  }
+}
 
 @storybook.Story(
   'With Size',
@@ -44,7 +59,28 @@ class ActionIconWithVariantStory extends StoryObj<ActionIconMeta>
   ],
 )
 class ActionIconWithSizeStory extends StoryObj<ActionIconMeta>
-    with _$ActionIconWithSizeStory {}
+    with _$ActionIconWithSizeStory {
+  @override
+  Widget build(BuildContext context, List<Arg> args) {
+    return Wrap(
+      spacing: 10,
+      children: [
+        for (final size in [
+          ActionIconSize.tiny,
+          ActionIconSize.small,
+          ActionIconSize.medium,
+          ActionIconSize.large,
+          ActionIconSize.big,
+        ])
+          ActionIcon(
+            TablerIcons.sun,
+            size: size,
+            onPressed: () {},
+          ),
+      ],
+    );
+  }
+}
 
 @storybook.Story(
   'With Color',
