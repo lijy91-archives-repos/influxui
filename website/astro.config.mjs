@@ -5,7 +5,11 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   integrations: [
     starlight({
-      title: "rise_ui",
+      title: "rise ui",
+      logo: {
+        src: "./src/assets/logo.png",
+        replacesTitle: true,
+      },
       defaultLocale: "root",
       locales: {
         root: {
