@@ -5,25 +5,25 @@ import 'package:rise_ui_demos/rise_ui_demos.dart';
 class DemoPage extends md.StatefulWidget {
   const DemoPage({
     Key? key,
-    required this.slug,
+    required this.demoId,
   }) : super(key: key);
 
-  final String slug;
+  final String demoId;
 
   @override
-  md.State<DemoPage> createState() => _DemoPageState();
+  State<DemoPage> createState() => _DemoPageState();
 }
 
-class _DemoPageState extends md.State<DemoPage> {
+class _DemoPageState extends State<DemoPage> {
   @override
   Widget build(BuildContext context) {
     return md.Scaffold(
       body: Center(
         child: Builder(
           builder: (context) {
-            final demoBuilder = kKnownDemos[widget.slug];
+            final demoBuilder = kKnownDemos[widget.demoId];
             if (demoBuilder == null) {
-              return Text('Demo not found: ${widget.slug}');
+              return Text('Demo not found: ${widget.demoId}');
             }
             return demoBuilder.call(context);
           },

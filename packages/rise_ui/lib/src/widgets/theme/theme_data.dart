@@ -147,7 +147,6 @@ class ThemeData with Diagnosticable {
     BadgeThemeData? badgeTheme,
     DividerThemeData? dividerTheme,
     MenuThemeData? menuTheme,
-    NavigationRailThemeData? navigationRailTheme,
     NotificationThemeData? notificationTheme,
   }) {
     // GENERAL CONFIGURATION
@@ -166,7 +165,6 @@ class ThemeData with Diagnosticable {
     dividerTheme ??= const DividerThemeData();
 
     menuTheme ??= const MenuThemeData();
-    navigationRailTheme ??= const NavigationRailThemeData();
     notificationTheme ??= const NotificationThemeData();
 
     return ThemeData.raw(
@@ -184,7 +182,6 @@ class ThemeData with Diagnosticable {
       dividerTheme: dividerTheme,
 
       menuTheme: menuTheme,
-      navigationRailTheme: navigationRailTheme,
       notificationTheme: notificationTheme,
     );
   }
@@ -210,7 +207,6 @@ class ThemeData with Diagnosticable {
     required this.badgeTheme,
     required this.dividerTheme,
     required this.menuTheme,
-    required this.navigationRailTheme,
     required this.notificationTheme,
   });
 
@@ -293,8 +289,6 @@ class ThemeData with Diagnosticable {
 
   final MenuThemeData menuTheme;
 
-  final NavigationRailThemeData navigationRailTheme;
-
   final NotificationThemeData notificationTheme;
 
   /// Caches localized themes to speed up the [localize] method.
@@ -316,7 +310,6 @@ class ThemeData with Diagnosticable {
     BadgeThemeData? badgeTheme,
     DividerThemeData? dividerTheme,
     MenuThemeData? menuTheme,
-    NavigationRailThemeData? navigationRailTheme,
     NotificationThemeData? notificationTheme,
   }) {
     return ThemeData.raw(
@@ -335,7 +328,6 @@ class ThemeData with Diagnosticable {
       badgeTheme: badgeTheme ?? this.badgeTheme,
       dividerTheme: dividerTheme ?? this.dividerTheme,
       menuTheme: menuTheme ?? this.menuTheme,
-      navigationRailTheme: navigationRailTheme ?? this.navigationRailTheme,
       notificationTheme: notificationTheme ?? this.notificationTheme,
     );
   }
@@ -395,8 +387,6 @@ class ThemeData with Diagnosticable {
       dividerTheme: DividerThemeData.lerp(a.dividerTheme, b.dividerTheme, t),
 
       menuTheme: MenuThemeData.lerp(a.menuTheme, b.menuTheme, t),
-      navigationRailTheme: NavigationRailThemeData.lerp(
-          a.navigationRailTheme, b.navigationRailTheme, t),
       notificationTheme: NotificationThemeData.lerp(
           a.notificationTheme, b.notificationTheme, t),
     );

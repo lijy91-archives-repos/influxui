@@ -7,4 +7,5 @@ final lightThemeData = md.ThemeData.light().copyWith(extensions: [
   kLightButtonThemeDefaults,
   kLightKbdThemeDefaults,
   kLightLoaderThemeDefaults,
+  kLightNavigationRailThemeDefaults,
 ]);

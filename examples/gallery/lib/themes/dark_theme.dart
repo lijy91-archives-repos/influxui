@@ -9,5 +9,6 @@ final darkThemeData = md.ThemeData.dark().copyWith(
     kDarkButtonThemeDefaults,
     kDarkKbdThemeDefaults,
     kDarkLoaderThemeDefaults,
+    kDarkNavigationRailThemeDefaults,
   ],
 );

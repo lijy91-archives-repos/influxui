@@ -11,8 +11,6 @@ export 'src/widgets/checkbox/checkbox.dart';
 export 'src/widgets/close_button/close_button.dart';
 export 'src/widgets/divider/divider.dart';
 export 'src/widgets/kbd/kbd.dart';
-export 'src/widgets/list_section/list_section.dart';
-export 'src/widgets/list_tile/list_tile.dart';
 export 'src/widgets/loader/loader.dart';
 export 'src/widgets/menu/menu.dart';
 export 'src/widgets/navigation_rail/navigation_rail.dart';

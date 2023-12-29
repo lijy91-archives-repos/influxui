@@ -45,7 +45,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final md.ThemeMode _themeMode = md.ThemeMode.light;
+  md.ThemeMode _themeMode = md.ThemeMode.light;
 
   @override
   Widget build(BuildContext context) {
@@ -65,28 +65,28 @@ class _MyAppState extends State<MyApp> {
           ),
           child: child!,
         );
-        return child;
-        // return Stack(
-        //   children: [
-        //     child,
-        //     Positioned(
-        //       right: 20,
-        //       bottom: 20,
-        //       child: ActionIcon(
-        //         _themeMode == md.ThemeMode.light
-        //             ? TablerIcons.sun
-        //             : TablerIcons.moon,
-        //         variant: ActionIconVariant.filled,
-        //         onPressed: () {
-        //           _themeMode = _themeMode == md.ThemeMode.light
-        //               ? md.ThemeMode.dark
-        //               : md.ThemeMode.light;
-        //           setState(() {});
-        //         },
-        //       ),
-        //     ),
-        //   ],
-        // );
+
+        return Stack(
+          children: [
+            child,
+            Positioned(
+              right: 20,
+              bottom: 20,
+              child: ActionIcon(
+                _themeMode == md.ThemeMode.light
+                    ? TablerIcons.sun
+                    : TablerIcons.moon,
+                variant: ActionIconVariant.filled,
+                onPressed: () {
+                  _themeMode = _themeMode == md.ThemeMode.light
+                      ? md.ThemeMode.dark
+                      : md.ThemeMode.light;
+                  setState(() {});
+                },
+              ),
+            ),
+          ],
+        );
       },
     );
   }

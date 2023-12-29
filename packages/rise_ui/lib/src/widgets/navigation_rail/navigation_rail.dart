@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/widgets/navigation_rail/navigation_rail_destination.dart';
@@ -11,7 +10,6 @@ export 'navigation_rail_destination.dart';
 class NavigationRail extends StatelessWidget {
   const NavigationRail({
     Key? key,
-    this.brightness,
     this.leading,
     this.trailing,
     required this.destinations,
@@ -19,7 +17,6 @@ class NavigationRail extends StatelessWidget {
     this.onDestinationSelected,
   }) : super(key: key);
 
-  final Brightness? brightness;
   final Widget? leading;
   final Widget? trailing;
   final List<NavigationRailDestination> destinations;
@@ -28,10 +25,7 @@ class NavigationRail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final styledTheme = NavigationRailTheme.of(context) // styled
-        .brightnessed(brightness ?? Theme.of(context).brightness)
-        .colored(Theme.of(context).primaryColor);
-
+    final themeData = NavigationRailTheme.of(context);
     return Padding(
       padding: EdgeInsets.only(
         bottom: styleGuide.spacing.sized(NamedSize.tiny),
@@ -54,15 +48,14 @@ class NavigationRail extends StatelessWidget {
                       }
                     : null,
                 iconTheme: selected
-                    ? styledTheme.selectedIconTheme
-                    : styledTheme.unselectedIconTheme,
+                    ? themeData.selectedIconTheme
+                    : themeData.unselectedIconTheme,
                 label: destinations[i].label,
                 labelTextStyle: selected
-                    ? styledTheme.selectedLabelTextStyle
-                    : styledTheme.unselectedLabelTextStyle,
-                backgroundColor: selected ? styledTheme.indicatorColor : null,
-                hoveredBackgroundColor: styledTheme.indicatorColor,
-                shape: styledTheme.indicatorShape,
+                    ? themeData.selectedLabelStyle
+                    : themeData.unselectedLabelStyle,
+                backgroundColor: selected ? themeData.indicatorColor : null,
+                shape: themeData.indicatorShape,
                 onTap: () => onDestinationSelected?.call(destination.value),
               );
             }),
@@ -82,7 +75,6 @@ class _RailDestination extends StatefulWidget {
     this.labelTextStyle,
     this.shape,
     this.backgroundColor,
-    this.hoveredBackgroundColor,
     this.onTap,
   });
 
@@ -92,7 +84,6 @@ class _RailDestination extends StatefulWidget {
   final String? label;
   final TextStyle? labelTextStyle;
   final Color? backgroundColor;
-  final Color? hoveredBackgroundColor;
   final ShapeBorder? shape;
   final VoidCallback? onTap;
 
@@ -101,8 +92,6 @@ class _RailDestination extends StatefulWidget {
 }
 
 class __RailDestinationState extends State<_RailDestination> {
-  bool _isHovering = false;
-
   @override
   Widget build(BuildContext context) {
     ShapeBorder? shapeBorder = RoundedRectangleBorder(
@@ -111,16 +100,6 @@ class __RailDestinationState extends State<_RailDestination> {
     );
     return MouseRegion(
       cursor: SystemMouseCursors.click,
-      onEnter: (PointerEnterEvent event) {
-        setState(() {
-          _isHovering = true;
-        });
-      },
-      onExit: (PointerExitEvent event) {
-        setState(() {
-          _isHovering = false;
-        });
-      },
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {
@@ -132,9 +111,7 @@ class __RailDestinationState extends State<_RailDestination> {
             constraints: const BoxConstraints(),
             child: DecoratedBox(
               decoration: ShapeDecoration(
-                color: _isHovering
-                    ? widget.hoveredBackgroundColor
-                    : widget.backgroundColor,
+                color: widget.backgroundColor,
                 shape: shapeBorder,
               ),
               child: Container(

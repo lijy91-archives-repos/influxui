@@ -12,8 +12,6 @@ import 'package:rise_ui_demos/src/demos/checkbox/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/close_button/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/divider/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/kbd/known_demos.dart';
-import 'package:rise_ui_demos/src/demos/list_section/known_demos.dart';
-import 'package:rise_ui_demos/src/demos/list_tile/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/loader/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/menu/known_demos.dart';
 import 'package:rise_ui_demos/src/demos/navigation_rail/known_demos.dart';
@@ -44,10 +42,6 @@ export 'divider/divider_demo.dart';
 export 'divider/known_demos.dart';
 export 'kbd/kbd_demo.dart';
 export 'kbd/known_demos.dart';
-export 'list_section/known_demos.dart';
-export 'list_section/list_section_demo.dart';
-export 'list_tile/known_demos.dart';
-export 'list_tile/list_tile_demo.dart';
 export 'loader/known_demos.dart';
 export 'loader/loader_demo.dart';
 export 'menu/known_demos.dart';
@@ -73,8 +67,6 @@ final Map<String, WidgetBuilder> kKnownDemos = {
   ...knownCloseButtonDemos,
   ...knownDividerDemos,
   ...knownKbdDemos,
-  ...knownListSectionDemos,
-  ...knownListTileDemos,
   ...knownLoaderDemos,
   ...knownMenuDemos,
   ...knownNavigationRailDemos,
