@@ -1,9 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart' hide Notification;
 import 'package:rise_ui/src/widgets/badge/badge_theme.dart';
-import 'package:rise_ui/src/widgets/divider/divider_theme.dart';
 import 'package:rise_ui/src/widgets/menu/menu_theme.dart';
-import 'package:rise_ui/src/widgets/notification/notification.dart';
 import 'package:rise_ui/src/widgets/text/text_theme.dart';
 import 'package:rise_ui/src/widgets/theme/colors.dart';
 
@@ -110,7 +108,6 @@ class ThemeData with Diagnosticable {
     // COMPONENT THEMES
     BadgeThemeData? badgeTheme,
     MenuThemeData? menuTheme,
-    NotificationThemeData? notificationTheme,
   }) {
     // GENERAL CONFIGURATION
     brightness ??= Brightness.light;
@@ -126,7 +123,6 @@ class ThemeData with Diagnosticable {
     badgeTheme ??= const BadgeThemeData();
 
     menuTheme ??= const MenuThemeData();
-    notificationTheme ??= const NotificationThemeData();
 
     return ThemeData.raw(
       // GENERAL CONFIGURATION
@@ -141,7 +137,6 @@ class ThemeData with Diagnosticable {
       badgeTheme: badgeTheme,
 
       menuTheme: menuTheme,
-      notificationTheme: notificationTheme,
     );
   }
 
@@ -163,7 +158,6 @@ class ThemeData with Diagnosticable {
     // COMPONENT THEMES
     required this.badgeTheme,
     required this.menuTheme,
-    required this.notificationTheme,
   });
 
   /// A default light blue theme.
@@ -215,8 +209,6 @@ class ThemeData with Diagnosticable {
 
   final MenuThemeData menuTheme;
 
-  final NotificationThemeData notificationTheme;
-
   /// Caches localized themes to speed up the [localize] method.
 
   /// Creates a copy of this theme but with the given fields replaced with the new values.
@@ -232,9 +224,7 @@ class ThemeData with Diagnosticable {
     TextThemeData? textTheme,
     // COMPONENT THEMES
     BadgeThemeData? badgeTheme,
-    DividerThemeData? dividerTheme,
     MenuThemeData? menuTheme,
-    NotificationThemeData? notificationTheme,
   }) {
     return ThemeData.raw(
       // COLOR
@@ -247,7 +237,6 @@ class ThemeData with Diagnosticable {
       // COMPONENT THEMES
       badgeTheme: badgeTheme ?? this.badgeTheme,
       menuTheme: menuTheme ?? this.menuTheme,
-      notificationTheme: notificationTheme ?? this.notificationTheme,
     );
   }
 
@@ -269,8 +258,6 @@ class ThemeData with Diagnosticable {
       badgeTheme: BadgeThemeData.lerp(a.badgeTheme, b.badgeTheme, t),
 
       menuTheme: MenuThemeData.lerp(a.menuTheme, b.menuTheme, t),
-      notificationTheme: NotificationThemeData.lerp(
-          a.notificationTheme, b.notificationTheme, t),
     );
   }
 
@@ -283,8 +270,7 @@ class ThemeData with Diagnosticable {
         // COLOR
         other.canvasColor == canvasColor &&
         // COMPONENT THEMES
-        other.badgeTheme == badgeTheme &&
-        other.notificationTheme == notificationTheme;
+        other.badgeTheme == badgeTheme;
   }
 
   @override
@@ -294,8 +280,6 @@ class ThemeData with Diagnosticable {
       canvasColor,
       // COMPONENT THEMES
       badgeTheme,
-
-      notificationTheme,
     ];
     return Object.hashAll(values);
   }
@@ -316,12 +300,6 @@ class ThemeData with Diagnosticable {
       'badgeTheme',
       badgeTheme,
       defaultValue: defaultData.badgeTheme,
-      level: DiagnosticLevel.debug,
-    ));
-    properties.add(DiagnosticsProperty<NotificationThemeData>(
-      'notificationTheme',
-      notificationTheme,
-      defaultValue: defaultData.notificationTheme,
       level: DiagnosticLevel.debug,
     ));
   }

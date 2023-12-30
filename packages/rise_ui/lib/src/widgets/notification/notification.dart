@@ -8,15 +8,12 @@ export 'notification_theme.dart';
 class Notification extends StatelessWidget {
   const Notification({
     super.key,
-    this.brightness,
     this.color,
     this.title,
     this.titleBuilder,
     this.body,
     this.bodyBuilder,
   }) : assert(titleBuilder == null && title != null);
-
-  final Brightness? brightness;
 
   /// The notification's fill color.
   final Color? color;
@@ -35,12 +32,7 @@ class Notification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final NotificationThemeData styledTheme =
-        NotificationTheme.of(context) // styled
-            .brightnessed(brightness ?? Theme.of(context).brightness)
-            .colored(color ?? Colors.black);
-
-    Color? backgroundColor = styledTheme.backgroundColor ?? Colors.white;
+    final themeData = NotificationTheme.of(context);
 
     return Container(
       padding: EdgeInsets.only(
@@ -51,7 +43,6 @@ class Notification extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: backgroundColor,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
@@ -84,8 +75,6 @@ class Notification extends StatelessWidget {
           children: [
             DefaultTextStyle(
               style: TextTheme.of(context).textStyle.copyWith(
-                    color: styledTheme.titleColor,
-                    fontSize: styledTheme.titleFontSize,
                     overflow: TextOverflow.ellipsis,
                   ),
               child: titleBuilder?.call(context) ?? Text(title!),
@@ -93,8 +82,6 @@ class Notification extends StatelessWidget {
             if (bodyBuilder != null || body != null)
               DefaultTextStyle(
                 style: TextTheme.of(context).textStyle.copyWith(
-                      color: styledTheme.titleColor,
-                      fontSize: styledTheme.titleFontSize,
                       overflow: TextOverflow.ellipsis,
                     ),
                 child: bodyBuilder?.call(context) ?? Text(body!),

@@ -12,3 +12,5 @@ export 'package:rise_ui/src/widgets/loader/loader_theme_defaults.dart'
     show kDarkLoaderThemeDefaults;
 export 'package:rise_ui/src/widgets/navigation_rail/navigation_rail_theme_defaults.dart'
     show kDarkNavigationRailThemeDefaults;
+export 'package:rise_ui/src/widgets/notification/notification_theme_defaults.dart'
+    show kDarkNotificationThemeDefaults;
