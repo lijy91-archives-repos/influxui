@@ -7,6 +7,7 @@ final darkThemeData = md.ThemeData.dark().copyWith(
     kDarkActionIconThemeDefaults,
     kDarkBoxThemeDefaults,
     kDarkButtonThemeDefaults,
+    kDarkDividerThemeDefaults,
     kDarkKbdThemeDefaults,
     kDarkLoaderThemeDefaults,
     kDarkNavigationRailThemeDefaults,

@@ -4,6 +4,8 @@ export 'package:rise_ui/src/widgets/box/box_theme_defaults.dart'
     show kLightBoxThemeDefaults;
 export 'package:rise_ui/src/widgets/button/button_theme_defaults.dart'
     show kLightButtonThemeDefaults;
+export 'package:rise_ui/src/widgets/divider/divider_theme_defaults.dart'
+    show kLightDividerThemeDefaults;
 export 'package:rise_ui/src/widgets/kbd/kbd_theme_defaults.dart'
     show kLightKbdThemeDefaults;
 export 'package:rise_ui/src/widgets/loader/loader_theme_defaults.dart'

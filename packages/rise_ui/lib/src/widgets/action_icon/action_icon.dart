@@ -98,7 +98,7 @@ class _ActionIconState extends State<ActionIcon> {
       color: widget.color,
       borderRadius: themeData.borderRadius,
       pressedOpacity: themeData.pressedOpacity,
-      mouseCursor: widget.enabled && kIsWeb
+      mouseCursor: widget.enabled
           ? SystemMouseCursors.click
           : SystemMouseCursors.forbidden,
       onPressed: widget.onPressed,

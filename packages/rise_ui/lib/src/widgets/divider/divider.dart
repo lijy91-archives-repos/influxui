@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:rise_ui/src/widgets/divider/divider_style.dart';
 import 'package:rise_ui/src/widgets/divider/divider_theme.dart';
 import 'package:rise_ui/src/widgets/text/text_theme.dart';
 import 'package:rise_ui/src/widgets/theme/theme.dart';
@@ -14,6 +15,7 @@ class Divider extends StatelessWidget {
   const Divider({
     super.key,
     this.variant,
+    this.style,
     this.direction = Axis.horizontal,
     this.color,
     this.size = NamedSize.tiny,
@@ -23,6 +25,8 @@ class Divider extends StatelessWidget {
   });
 
   final DividerVariant? variant;
+
+  final DividerStyle? style;
 
   final Axis direction;
 
@@ -40,24 +44,42 @@ class Divider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DividerThemeData styledTheme = DividerTheme.of(context) // styled
-        .brightnessed(Theme.of(context).brightness)
-        .varianted(variant)
-        .sized(size);
+    final themeData = DividerTheme.of(context);
+    DividerStyle mergedStyle = style ?? themeData.mediumStyle;
+
+    if (size is NamedSize) {
+      switch (size) {
+        case NamedSize.tiny:
+          mergedStyle = themeData.tinyStyle.merge(mergedStyle);
+          break;
+        case NamedSize.small:
+          mergedStyle = themeData.smallStyle.merge(mergedStyle);
+          break;
+        case NamedSize.medium:
+          mergedStyle = themeData.mediumStyle.merge(mergedStyle);
+          break;
+        case NamedSize.large:
+          mergedStyle = themeData.largeStyle.merge(mergedStyle);
+          break;
+        case NamedSize.big:
+          mergedStyle = themeData.bigStyle.merge(mergedStyle);
+          break;
+      }
+    }
 
     CustomPainter painter;
     switch (variant) {
       case DividerVariant.dashed:
         painter = _DashedLinePainter(
           direction: direction,
-          color: color ?? styledTheme.color!,
+          color: color ?? themeData.color!,
           width: 1.0,
         );
         break;
       case DividerVariant.dotted:
         painter = _DottedLinePainter(
           direction: direction,
-          color: color ?? styledTheme.color!,
+          color: color ?? themeData.color!,
           width: 1.0,
         );
         break;
@@ -65,17 +87,12 @@ class Divider extends StatelessWidget {
       default:
         painter = _SolidLinePainter(
           direction: direction,
-          color: color ?? styledTheme.color!,
+          color: color ?? themeData.color!,
           width: 1.0,
         );
     }
 
-    final TextStyle textStyle = TextTheme.of(context) //
-        .textStyle
-        .copyWith(
-          color: styledTheme.labelColor,
-          fontSize: styledTheme.labelFontSize,
-        );
+    final TextStyle textStyle = mergedStyle.labelStyle!;
 
     bool showLabel = label != null || labelBuilder != null;
     bool showLineOnLeft =

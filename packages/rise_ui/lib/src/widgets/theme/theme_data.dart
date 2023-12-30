@@ -3,45 +3,11 @@ import 'package:flutter/widgets.dart' hide Notification;
 import 'package:rise_ui/src/widgets/badge/badge_theme.dart';
 import 'package:rise_ui/src/widgets/divider/divider_theme.dart';
 import 'package:rise_ui/src/widgets/menu/menu_theme.dart';
-import 'package:rise_ui/src/widgets/navigation_rail/navigation_rail_theme.dart';
 import 'package:rise_ui/src/widgets/notification/notification.dart';
 import 'package:rise_ui/src/widgets/text/text_theme.dart';
 import 'package:rise_ui/src/widgets/theme/colors.dart';
 
 export 'package:flutter/services.dart' show Brightness;
-
-// Examples can assume:
-// late BuildContext context;
-
-/// An interface that defines custom additions to a [ThemeData] object.
-///
-/// Typically used for custom colors. To use, subclass [ThemeExtension],
-/// define a number of fields (e.g. [Color]s), and implement the [copyWith] and
-/// [lerp] methods. The latter will ensure smooth transitions of properties when
-/// switching themes.
-///
-/// {@tool dartpad}
-/// This sample shows how to create and use a subclass of [ThemeExtension] that
-/// defines two colors.
-///
-/// ** See code in examples/api/lib/material/theme/theme_extension.1.dart **
-/// {@end-tool}
-abstract class ThemeExtension<T extends ThemeExtension<T>> {
-  /// Enable const constructor for subclasses.
-  const ThemeExtension();
-
-  /// The extension's type.
-  Object get type => T;
-
-  /// Creates a copy of this theme extension with the given fields
-  /// replaced by the non-null parameter values.
-  ThemeExtension<T> copyWith();
-
-  /// Linearly interpolate with another [ThemeExtension] object.
-  ///
-  /// {@macro dart.ui.shadow.lerp}
-  ThemeExtension<T> lerp(covariant ThemeExtension<T>? other, double t);
-}
 
 /// Defines the configuration of the overall visual [Theme] for a [MaterialApp]
 /// or a widget subtree within the app.
@@ -134,8 +100,6 @@ abstract class ThemeExtension<T extends ThemeExtension<T>> {
 class ThemeData with Diagnosticable {
   /// Create a [ThemeData] that's used to configure a [Theme].
   factory ThemeData({
-    // GENERAL CONFIGURATION
-    Iterable<ThemeExtension<dynamic>>? extensions,
     // COLOR
     Brightness? brightness,
     Color? canvasColor,
@@ -145,12 +109,10 @@ class ThemeData with Diagnosticable {
     TextThemeData? textTheme,
     // COMPONENT THEMES
     BadgeThemeData? badgeTheme,
-    DividerThemeData? dividerTheme,
     MenuThemeData? menuTheme,
     NotificationThemeData? notificationTheme,
   }) {
     // GENERAL CONFIGURATION
-    extensions ??= <ThemeExtension<dynamic>>[];
     brightness ??= Brightness.light;
 
     // COLOR
@@ -162,14 +124,12 @@ class ThemeData with Diagnosticable {
 
     // COMPONENT THEMES
     badgeTheme ??= const BadgeThemeData();
-    dividerTheme ??= const DividerThemeData();
 
     menuTheme ??= const MenuThemeData();
     notificationTheme ??= const NotificationThemeData();
 
     return ThemeData.raw(
       // GENERAL CONFIGURATION
-      extensions: _themeExtensionIterableToMap(extensions),
       brightness: brightness,
       // COLOR
       canvasColor: canvasColor,
@@ -179,7 +139,6 @@ class ThemeData with Diagnosticable {
       textTheme: textTheme ?? TextThemeData(),
       // COMPONENT THEMES
       badgeTheme: badgeTheme,
-      dividerTheme: dividerTheme,
 
       menuTheme: menuTheme,
       notificationTheme: notificationTheme,
@@ -194,8 +153,6 @@ class ThemeData with Diagnosticable {
   /// create intermediate themes based on two themes created with the
   /// [ThemeData] constructor.
   const ThemeData.raw({
-    // GENERAL CONFIGURATION
-    required this.extensions,
     // COLOR
     required this.brightness,
     required this.canvasColor,
@@ -205,7 +162,6 @@ class ThemeData with Diagnosticable {
     required this.textTheme,
     // COMPONENT THEMES
     required this.badgeTheme,
-    required this.dividerTheme,
     required this.menuTheme,
     required this.notificationTheme,
   });
@@ -230,34 +186,6 @@ class ThemeData with Diagnosticable {
   // order in every place that they are separated by section comments (e.g.
   // GENERAL CONFIGURATION). Each section except for deprecations should be
   // alphabetical by symbol name.
-
-  // GENERAL CONFIGURATION
-
-  /// Arbitrary additions to this theme.
-  ///
-  /// To define extensions, pass an [Iterable] containing one or more [ThemeExtension]
-  /// subclasses to [ThemeData.new] or [copyWith].
-  ///
-  /// To obtain an extension, use [extension].
-  ///
-  /// {@tool dartpad}
-  /// This sample shows how to create and use a subclass of [ThemeExtension] that
-  /// defines two colors.
-  ///
-  /// ** See code in examples/api/lib/material/theme/theme_extension.1.dart **
-  /// {@end-tool}
-  ///
-  /// See also:
-  ///
-  /// * [extension], a convenience function for obtaining a specific extension.
-  final Map<Object, ThemeExtension<dynamic>> extensions;
-
-  /// Used to obtain a particular [ThemeExtension] from [extensions].
-  ///
-  /// Obtain with `Theme.of(context).extension<MyThemeExtension>()`.
-  ///
-  /// See [extensions] for an interactive example.
-  T? extension<T>() => extensions[T] as T?;
 
   // COLOR
 
@@ -285,8 +213,6 @@ class ThemeData with Diagnosticable {
   /// A theme for customizing the color of [Badge]s.
   final BadgeThemeData badgeTheme;
 
-  final DividerThemeData dividerTheme;
-
   final MenuThemeData menuTheme;
 
   final NotificationThemeData notificationTheme;
@@ -297,8 +223,6 @@ class ThemeData with Diagnosticable {
   ///
   /// The [brightness] value is applied to the [colorScheme].
   ThemeData copyWith({
-    // GENERAL CONFIGURATION
-    Iterable<ThemeExtension<dynamic>>? extensions,
     // COLOR
     Brightness? brightness,
     Color? canvasColor,
@@ -313,10 +237,6 @@ class ThemeData with Diagnosticable {
     NotificationThemeData? notificationTheme,
   }) {
     return ThemeData.raw(
-      // GENERAL CONFIGURATION
-      extensions: (extensions != null)
-          ? _themeExtensionIterableToMap(extensions)
-          : this.extensions,
       // COLOR
       brightness: brightness ?? this.brightness,
       canvasColor: canvasColor ?? this.canvasColor,
@@ -326,44 +246,9 @@ class ThemeData with Diagnosticable {
       textTheme: textTheme ?? this.textTheme,
       // COMPONENT THEMES
       badgeTheme: badgeTheme ?? this.badgeTheme,
-      dividerTheme: dividerTheme ?? this.dividerTheme,
       menuTheme: menuTheme ?? this.menuTheme,
       notificationTheme: notificationTheme ?? this.notificationTheme,
     );
-  }
-
-  /// Linearly interpolate between two [extensions].
-  ///
-  /// Includes all theme extensions in [a] and [b].
-  ///
-  /// {@macro dart.ui.shadow.lerp}
-  static Map<Object, ThemeExtension<dynamic>> _lerpThemeExtensions(
-      ThemeData a, ThemeData b, double t) {
-    // Lerp [a].
-    final Map<Object, ThemeExtension<dynamic>> newExtensions =
-        a.extensions.map((Object id, ThemeExtension<dynamic> extensionA) {
-      final ThemeExtension<dynamic>? extensionB = b.extensions[id];
-      return MapEntry<Object, ThemeExtension<dynamic>>(
-          id, extensionA.lerp(extensionB, t));
-    });
-    // Add [b]-only extensions.
-    newExtensions.addEntries(b.extensions.entries.where(
-        (MapEntry<Object, ThemeExtension<dynamic>> entry) =>
-            !a.extensions.containsKey(entry.key)));
-
-    return newExtensions;
-  }
-
-  /// Convert the [extensionsIterable] passed to [ThemeData.new] or [copyWith]
-  /// to the stored [extensions] map, where each entry's key consists of the extension's type.
-  static Map<Object, ThemeExtension<dynamic>> _themeExtensionIterableToMap(
-      Iterable<ThemeExtension<dynamic>> extensionsIterable) {
-    return Map<Object, ThemeExtension<dynamic>>.unmodifiable(<Object,
-        ThemeExtension<dynamic>>{
-      // Strangely, the cast is necessary for tests to run.
-      for (final ThemeExtension<dynamic> extension in extensionsIterable)
-        extension.type: extension as ThemeExtension<ThemeExtension<dynamic>>,
-    });
   }
 
   /// Linearly interpolate between two themes.
@@ -373,8 +258,6 @@ class ThemeData with Diagnosticable {
   /// {@macro dart.ui.shadow.lerp}
   static ThemeData lerp(ThemeData a, ThemeData b, double t) {
     return ThemeData.raw(
-      // GENERAL CONFIGURATION
-      extensions: _lerpThemeExtensions(a, b, t),
       // COLOR
       brightness: t < 0.5 ? a.brightness : b.brightness,
       canvasColor: Color.lerp(a.canvasColor, b.canvasColor, t)!,
@@ -384,7 +267,6 @@ class ThemeData with Diagnosticable {
       textTheme: TextThemeData.lerp(a.textTheme, b.textTheme, t),
       // COMPONENT THEMES
       badgeTheme: BadgeThemeData.lerp(a.badgeTheme, b.badgeTheme, t),
-      dividerTheme: DividerThemeData.lerp(a.dividerTheme, b.dividerTheme, t),
 
       menuTheme: MenuThemeData.lerp(a.menuTheme, b.menuTheme, t),
       notificationTheme: NotificationThemeData.lerp(
@@ -398,27 +280,20 @@ class ThemeData with Diagnosticable {
       return false;
     }
     return other is ThemeData &&
-        // GENERAL CONFIGURATION
-        mapEquals(other.extensions, extensions) &&
         // COLOR
         other.canvasColor == canvasColor &&
         // COMPONENT THEMES
         other.badgeTheme == badgeTheme &&
-        other.dividerTheme == dividerTheme &&
         other.notificationTheme == notificationTheme;
   }
 
   @override
   int get hashCode {
     final List<Object?> values = <Object?>[
-      // GENERAL CONFIGURATION
-      ...extensions.keys,
-      ...extensions.values,
       // COLOR
       canvasColor,
       // COMPONENT THEMES
       badgeTheme,
-      dividerTheme,
 
       notificationTheme,
     ];
@@ -429,13 +304,6 @@ class ThemeData with Diagnosticable {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     final ThemeData defaultData = ThemeData.fallback();
-    // GENERAL CONFIGURATION
-    properties.add(IterableProperty<ThemeExtension<dynamic>>(
-      'extensions',
-      extensions.values,
-      defaultValue: defaultData.extensions.values,
-      level: DiagnosticLevel.debug,
-    ));
     // COLORS
     properties.add(ColorProperty(
       'canvasColor',
@@ -448,12 +316,6 @@ class ThemeData with Diagnosticable {
       'badgeTheme',
       badgeTheme,
       defaultValue: defaultData.badgeTheme,
-      level: DiagnosticLevel.debug,
-    ));
-    properties.add(DiagnosticsProperty<DividerThemeData>(
-      'dividerTheme',
-      dividerTheme,
-      defaultValue: defaultData.dividerTheme,
       level: DiagnosticLevel.debug,
     ));
     properties.add(DiagnosticsProperty<NotificationThemeData>(

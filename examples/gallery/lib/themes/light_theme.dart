@@ -5,6 +5,7 @@ final lightThemeData = md.ThemeData.light().copyWith(extensions: [
   kLightActionIconThemeDefaults,
   kLightBoxThemeDefaults,
   kLightButtonThemeDefaults,
+  kLightDividerThemeDefaults,
   kLightKbdThemeDefaults,
   kLightLoaderThemeDefaults,
   kLightNavigationRailThemeDefaults,
