@@ -28,16 +28,10 @@ class Menu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final styledTheme = MenuTheme.of(context) // styled
-        .brightnessed(brightness ?? Theme.of(context).brightness)
-        .colored(Theme.of(context).primaryColor);
+    final styledTheme = MenuTheme.of(context);
 
     return Padding(
-      padding: EdgeInsets.only(
-        bottom: styleGuide.spacing.sized(NamedSize.tiny),
-        left: styleGuide.spacing.sized(NamedSize.tiny),
-        right: styleGuide.spacing.sized(NamedSize.tiny),
-      ),
+      padding: EdgeInsets.only(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -60,8 +54,8 @@ class Menu extends StatelessWidget {
                     : styledTheme.unselectedIconTheme,
                 label: items[i].label,
                 labelTextStyle: selected
-                    ? styledTheme.selectedLabelTextStyle
-                    : styledTheme.unselectedLabelTextStyle,
+                    ? styledTheme.selectedLabelStyle
+                    : styledTheme.unselectedLabelStyle,
                 backgroundColor: selected ? styledTheme.indicatorColor : null,
                 hoveredBackgroundColor: styledTheme.indicatorColor,
                 shape: styledTheme.indicatorShape,
@@ -146,10 +140,7 @@ class __RailDestinationState extends State<_RailDestination> {
               ),
               child: Container(
                 width: double.infinity,
-                padding: EdgeInsets.symmetric(
-                  vertical: styleGuide.spacing.sized(NamedSize.tiny) * 0.8,
-                  horizontal: styleGuide.spacing.sized(NamedSize.small),
-                ),
+                padding: EdgeInsets.symmetric(),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   widthFactor: 1.0,
@@ -160,9 +151,7 @@ class __RailDestinationState extends State<_RailDestination> {
                       children: [
                         if (widget.icon != null || widget.iconBuilder != null)
                           Container(
-                            padding: EdgeInsets.only(
-                              right: styleGuide.spacing.sized(NamedSize.tiny),
-                            ),
+                            padding: EdgeInsets.only(),
                             child: IconTheme(
                                 data: widget.iconTheme ?? IconThemeData(),
                                 child: Builder(builder: (_) {

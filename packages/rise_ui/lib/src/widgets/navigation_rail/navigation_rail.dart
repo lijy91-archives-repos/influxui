@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/widgets/navigation_rail/navigation_rail_destination.dart';
 import 'package:rise_ui/src/widgets/navigation_rail/navigation_rail_theme.dart';
@@ -27,11 +26,7 @@ class NavigationRail extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeData = NavigationRailTheme.of(context);
     return Padding(
-      padding: EdgeInsets.only(
-        bottom: styleGuide.spacing.sized(NamedSize.tiny),
-        left: styleGuide.spacing.sized(NamedSize.tiny),
-        right: styleGuide.spacing.sized(NamedSize.tiny),
-      ),
+      padding: EdgeInsets.only(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -116,10 +111,7 @@ class __RailDestinationState extends State<_RailDestination> {
               ),
               child: Container(
                 width: double.infinity,
-                padding: EdgeInsets.symmetric(
-                  vertical: styleGuide.spacing.sized(NamedSize.tiny) * 0.8,
-                  horizontal: styleGuide.spacing.sized(NamedSize.small),
-                ),
+                padding: EdgeInsets.symmetric(),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   widthFactor: 1.0,
@@ -130,9 +122,7 @@ class __RailDestinationState extends State<_RailDestination> {
                       children: [
                         if (widget.icon != null || widget.iconBuilder != null)
                           Container(
-                            padding: EdgeInsets.only(
-                              right: styleGuide.spacing.sized(NamedSize.tiny),
-                            ),
+                            padding: EdgeInsets.only(),
                             child: IconTheme(
                                 data: widget.iconTheme ?? IconThemeData(),
                                 child: Builder(builder: (_) {

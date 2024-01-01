@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:rise_ui/rise_ui.dart';
@@ -36,8 +37,8 @@ void main() {
     );
     testGolden(
       'kdb-dark',
-      (_) => Theme(
-        data: ThemeData(brightness: Brightness.dark),
+      (_) => ExtendedTheme(
+        data: ExtendedThemeData(brightness: Brightness.dark),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -53,8 +54,8 @@ void main() {
     );
     testGolden(
       'kdb-dark-sizes',
-      (_) => Theme(
-        data: ThemeData(brightness: Brightness.dark),
+      (_) => ExtendedTheme(
+        data: ExtendedThemeData(brightness: Brightness.dark),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

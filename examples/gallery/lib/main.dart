@@ -1,14 +1,13 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:flutter/material.dart' as md;
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:gallery/router_config.dart';
 import 'package:gallery/themes/themes.dart';
-import 'package:rise_ui/rise_ui.dart';
+import 'package:rise_ui/rise_ui.dart' hide Colors;
 import 'package:tabler_icon_library/tabler_icon_library.dart';
 
-class DefaultIconLibrary extends IconLibrary {
+class TablerIconLibrary extends IconLibrary {
   @override
   IconData get chevron_left => TablerIcons.chevron_left;
 
@@ -26,7 +25,6 @@ class DefaultIconLibrary extends IconLibrary {
 }
 
 Future<void> _ensureInitialized() async {
-  Icons.iconLibrary = DefaultIconLibrary();
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
 }
@@ -45,11 +43,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  md.ThemeMode _themeMode = md.ThemeMode.light;
+  ThemeMode _themeMode = ThemeMode.light;
 
-  @override
-  Widget build(BuildContext context) {
-    return md.MaterialApp.router(
+  Widget _buildApp(BuildContext context) {
+    return MaterialApp.router(
       theme: lightThemeData,
       darkTheme: darkThemeData,
       routerConfig: routerConfig,
@@ -58,7 +55,7 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) {
         child = Theme(
           data: ThemeData(
-            brightness: _themeMode == md.ThemeMode.dark
+            brightness: _themeMode == ThemeMode.dark
                 ? Brightness.dark
                 : Brightness.light,
             primaryColor: Colors.indigo,
@@ -73,20 +70,30 @@ class _MyAppState extends State<MyApp> {
               right: 20,
               bottom: 20,
               child: ActionIcon(
-                _themeMode == md.ThemeMode.light
+                _themeMode == ThemeMode.light
                     ? TablerIcons.sun
                     : TablerIcons.moon,
                 variant: ActionIconVariant.filled,
                 onPressed: () {
-                  _themeMode = _themeMode == md.ThemeMode.light
-                      ? md.ThemeMode.dark
-                      : md.ThemeMode.light;
+                  _themeMode = _themeMode == ThemeMode.light
+                      ? ThemeMode.dark
+                      : ThemeMode.light;
                   setState(() {});
                 },
               ),
             ),
           ],
         );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ExtendedThemeBuilder(
+      iconLibrary: TablerIconLibrary(),
+      builder: (_, value, child) {
+        return _buildApp(context);
       },
     );
   }

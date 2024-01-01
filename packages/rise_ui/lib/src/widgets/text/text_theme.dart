@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' as md;
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/widgets/theme/theme.dart';
 
@@ -361,7 +362,7 @@ class TextTheme extends InheritedTheme {
   static TextThemeData of(BuildContext context) {
     final TextTheme? badgeTheme =
         context.dependOnInheritedWidgetOfExactType<TextTheme>();
-    return badgeTheme?.data ?? Theme.of(context).textTheme;
+    return badgeTheme?.data ?? TextThemeData();
   }
 
   @override

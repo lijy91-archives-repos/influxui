@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart' hide Notification;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:rise_ui/rise_ui.dart';
@@ -33,8 +34,8 @@ void main() {
     );
     testGolden(
       'notification-dark',
-      (_) => Theme(
-        data: ThemeData(
+      (_) => ExtendedTheme(
+        data: ExtendedThemeData(
           brightness: Brightness.dark,
         ),
         child: Column(

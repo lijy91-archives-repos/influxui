@@ -167,7 +167,7 @@ class _BoxState extends State<Box> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final primaryColor = Theme.of(context).primaryColor;
+    final primaryColor = ExtendedTheme.of(context).primaryColor;
     BoxThemeData themeData = BoxTheme.of(context);
     BoxStyle mergedStyle = widget.style ?? BoxStyle();
     switch (widget.variant) {

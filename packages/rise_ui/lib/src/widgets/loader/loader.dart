@@ -26,7 +26,7 @@ class Loader extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeData = LoaderTheme.of(context);
     Color resolvedColor =
-        color ?? themeData.color ?? Theme.of(context).primaryColor;
+        color ?? themeData.color ?? ExtendedTheme.of(context).primaryColor!;
     Size resolvedSize = size ?? themeData.mediumSize;
 
     if (size is NamedSize) {

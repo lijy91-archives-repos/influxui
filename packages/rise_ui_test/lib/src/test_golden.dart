@@ -56,8 +56,8 @@ void testGolden(
       await tester.pumpWidget(md.MaterialApp(
         key: widgetKey,
         debugShowCheckedModeBanner: false,
-        home: Theme(
-          data: ThemeData(),
+        home: ExtendedTheme(
+          data: ExtendedThemeData(),
           child: md.Scaffold(
             backgroundColor: backgroundColor ?? Colors.transparent,
             body: Center(
