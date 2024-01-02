@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart' hide Notification;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:open_color/open_color.dart';
 import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui_test/rise_ui_test.dart';
 
@@ -12,19 +13,19 @@ void main() {
         mainAxisSize: MainAxisSize.min,
         children: [
           Notification(
-            color: Colors.blue,
+            color: OpenColors.blue,
             title: 'Default notification',
             body: 'This is default notification with title and body',
           ),
           SizedBox(height: 50),
           Notification(
-            color: Colors.teal,
+            color: OpenColors.teal,
             title: 'Teal notification',
             body: 'This is teal notification with icon',
           ),
           SizedBox(height: 50),
           Notification(
-            color: Colors.red,
+            color: OpenColors.red,
             title: 'Bummer! Notification without title',
           ),
         ],
@@ -42,19 +43,19 @@ void main() {
           mainAxisSize: MainAxisSize.min,
           children: [
             Notification(
-              color: Colors.blue,
+              color: OpenColors.blue,
               title: 'Default notification',
               body: 'This is default notification with title and body',
             ),
             SizedBox(height: 10),
             Notification(
-              color: Colors.teal,
+              color: OpenColors.teal,
               title: 'Teal notification',
               body: 'This is teal notification with icon',
             ),
             SizedBox(height: 10),
             Notification(
-              color: Colors.red,
+              color: OpenColors.red,
               title: 'Bummer! Notification without title',
             ),
           ],

@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
+import 'package:rise_ui_demos/src/utils/constants.dart';
 
 class ActionIconWithColorDemo extends StatelessWidget {
   @override
@@ -19,7 +20,7 @@ class ActionIconWithColorDemo extends StatelessWidget {
           Wrap(
             spacing: 10,
             children: [
-              for (final color in kAllColors)
+              for (final color in kOpenColors)
                 ActionIcon(
                   Icons.light_mode,
                   variant: variant,

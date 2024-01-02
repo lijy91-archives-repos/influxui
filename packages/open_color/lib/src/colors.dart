@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show Color, MaterialColor;
 
-class OpenColor {
+abstract final class OpenColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
 
@@ -52,7 +52,7 @@ class OpenColor {
     },
   );
 
-  static const Color grape = MaterialColor(
+  static const MaterialColor grape = MaterialColor(
     0xFFCC5DE8,
     <int, Color>{
       50: Color(0xFFF8F0FC),
@@ -68,7 +68,7 @@ class OpenColor {
     },
   );
 
-  static const Color violet = MaterialColor(
+  static const MaterialColor violet = MaterialColor(
     0xFF845EF7,
     <int, Color>{
       50: Color(0xFFF3F0FF),

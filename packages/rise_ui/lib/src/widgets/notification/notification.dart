@@ -1,7 +1,6 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart' hide TextTheme;
 import 'package:rise_ui/src/widgets/notification/notification_theme.dart';
 import 'package:rise_ui/src/widgets/text/text_theme.dart';
-import 'package:rise_ui/src/widgets/theme/theme.dart';
 
 export 'notification_theme.dart';
 

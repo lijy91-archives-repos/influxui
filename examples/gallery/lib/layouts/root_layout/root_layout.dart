@@ -25,7 +25,7 @@ class _RootLayoutState extends State<RootLayout> {
       decoration: BoxDecoration(
         border: Border(
           right: BorderSide(
-            color: Colors.black.withOpacity(0.1),
+            color: md.Colors.black.withOpacity(0.1),
             width: 1,
           ),
         ),

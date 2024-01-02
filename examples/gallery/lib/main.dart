@@ -53,12 +53,12 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       themeMode: _themeMode,
       builder: (context, child) {
-        child = Theme(
-          data: ThemeData(
+        child = ExtendedTheme(
+          data: ExtendedThemeData(
             brightness: _themeMode == ThemeMode.dark
                 ? Brightness.dark
                 : Brightness.light,
-            primaryColor: Colors.indigo,
+            primaryColor: ExtendedColors.red,
           ),
           child: child!,
         );

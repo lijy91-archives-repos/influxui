@@ -339,6 +339,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  open_color:
+    dependency: "direct overridden"
+    description:
+      path: "../../packages/open_color"
+      relative: true
+    source: path
+    version: "0.1.0"
   package_config:
     dependency: transitive
     description:

@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
+import 'package:rise_ui_demos/src/utils/constants.dart';
 
 class ButtonWithColorDemo extends StatelessWidget {
   @override
@@ -18,7 +19,7 @@ class ButtonWithColorDemo extends StatelessWidget {
           Wrap(
             spacing: 10,
             children: [
-              for (final color in kAllColors)
+              for (final color in kOpenColors)
                 Button(
                   label: 'Button',
                   variant: variant,

@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' show Colors;
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/widgets/menu/menu_item.dart';
 import 'package:rise_ui/src/widgets/menu/menu_theme.dart';
-import 'package:rise_ui/src/widgets/theme/theme.dart';
 import 'package:rise_ui/src/widgets/web_icon/web_icon.dart';
 
 export 'menu_item.dart';

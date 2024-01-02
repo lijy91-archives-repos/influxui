@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
+import 'package:rise_ui_demos/src/utils/constants.dart';
 
 class ButtonWithSizeDemo extends StatelessWidget {
   @override
@@ -19,7 +20,7 @@ class ButtonWithSizeDemo extends StatelessWidget {
           Wrap(
             spacing: 10,
             children: [
-              for (final size in kAllSize)
+              for (final size in kNamedSizes)
                 Button(
                   label: 'Button',
                   variant: variant,

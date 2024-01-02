@@ -3,22 +3,23 @@
 import 'package:flutter/material.dart' as md;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:open_color/open_color.dart';
 import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui_test/rise_ui_test.dart';
 
 final _colors = [
-  Colors.gray,
-  Colors.red,
-  Colors.pink,
-  Colors.grape,
-  Colors.violet,
-  Colors.indigo,
-  Colors.blue,
-  Colors.cyan,
-  Colors.teal,
-  Colors.green,
-  Colors.lime,
-  Colors.yellow,
+  OpenColors.gray,
+  OpenColors.red,
+  OpenColors.pink,
+  OpenColors.grape,
+  OpenColors.violet,
+  OpenColors.indigo,
+  OpenColors.blue,
+  OpenColors.cyan,
+  OpenColors.teal,
+  OpenColors.green,
+  OpenColors.lime,
+  OpenColors.yellow,
 ];
 
 final _sizes = [

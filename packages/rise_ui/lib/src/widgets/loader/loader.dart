@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui/src/widgets/loader/loaders/oval_loader.dart';

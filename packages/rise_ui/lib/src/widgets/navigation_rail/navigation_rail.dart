@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart' show Colors;
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/widgets/navigation_rail/navigation_rail_destination.dart';
 import 'package:rise_ui/src/widgets/navigation_rail/navigation_rail_theme.dart';
-import 'package:rise_ui/src/widgets/theme/theme.dart';
 import 'package:rise_ui/src/widgets/web_icon/web_icon.dart';
 
 export 'navigation_rail_destination.dart';

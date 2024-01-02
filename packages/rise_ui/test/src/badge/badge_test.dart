@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:open_color/open_color.dart';
 import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui_test/rise_ui_test.dart';
 
@@ -11,20 +12,19 @@ void main() {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Badge(label: 'Badge', color: Colors.darkGray),
-          Badge(label: 'Badge', color: Colors.gray),
-          Badge(label: 'Badge', color: Colors.red),
-          Badge(label: 'Badge', color: Colors.pink),
-          Badge(label: 'Badge', color: Colors.grape),
-          Badge(label: 'Badge', color: Colors.violet),
-          Badge(label: 'Badge', color: Colors.indigo),
-          Badge(label: 'Badge', color: Colors.blue),
-          Badge(label: 'Badge', color: Colors.cyan),
-          Badge(label: 'Badge', color: Colors.teal),
-          Badge(label: 'Badge', color: Colors.green),
-          Badge(label: 'Badge', color: Colors.lime),
-          Badge(label: 'Badge', color: Colors.yellow),
-          Badge(label: 'Badge', color: Colors.orange),
+          Badge(label: 'Badge', color: OpenColors.gray),
+          Badge(label: 'Badge', color: OpenColors.red),
+          Badge(label: 'Badge', color: OpenColors.pink),
+          Badge(label: 'Badge', color: OpenColors.grape),
+          Badge(label: 'Badge', color: OpenColors.violet),
+          Badge(label: 'Badge', color: OpenColors.indigo),
+          Badge(label: 'Badge', color: OpenColors.blue),
+          Badge(label: 'Badge', color: OpenColors.cyan),
+          Badge(label: 'Badge', color: OpenColors.teal),
+          Badge(label: 'Badge', color: OpenColors.green),
+          Badge(label: 'Badge', color: OpenColors.lime),
+          Badge(label: 'Badge', color: OpenColors.yellow),
+          Badge(label: 'Badge', color: OpenColors.orange),
         ],
       ),
       size: Size(1200, 60),
@@ -65,7 +65,7 @@ void main() {
       'badge-variant-light',
       (_) => Badge(
         variant: BadgeVariant.light,
-        color: Colors.blue,
+        color: OpenColors.blue,
         label: 'Badge',
       ),
     );
@@ -73,7 +73,7 @@ void main() {
       'badge-variant-filled',
       (_) => Badge(
         variant: BadgeVariant.filled,
-        color: Colors.blue,
+        color: OpenColors.blue,
         label: 'Badge',
       ),
     );
@@ -81,7 +81,7 @@ void main() {
       'badge-variant-outline',
       (_) => Badge(
         variant: BadgeVariant.outline,
-        color: Colors.blue,
+        color: OpenColors.blue,
         label: 'Badge',
       ),
     );

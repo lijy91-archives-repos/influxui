@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/foundation/customizable_property.dart';
-import 'package:rise_ui/src/widgets/theme/theme.dart';
 
 enum BoxState {
   normal,
@@ -64,9 +64,9 @@ class BoxStateColor extends CustomizableProperty<Color, Set<BoxState>> {
       seedColorOpacity = colorOpacity;
     }
     Color resolvedColor = seedColor ?? Colors.black;
-    if (seedColor is ShadedColor && seedColorShade != null) {
+    if (seedColor is MaterialColor && seedColorShade != null) {
       if (seedColorShade != -1) {
-        resolvedColor = seedColor.withShade(seedColorShade);
+        resolvedColor = seedColor[seedColorShade]!;
       } else {
         resolvedColor = Colors.transparent;
       }

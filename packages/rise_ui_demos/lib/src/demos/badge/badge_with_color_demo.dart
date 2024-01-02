@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
+import 'package:rise_ui_demos/src/utils/constants.dart';
 
 class BadgeWithColorDemo extends StatelessWidget {
   @override
@@ -16,7 +17,7 @@ class BadgeWithColorDemo extends StatelessWidget {
           Wrap(
             spacing: 10,
             children: [
-              for (final color in kAllColors)
+              for (final color in kOpenColors)
                 Badge(
                   variant: variant,
                   color: color,

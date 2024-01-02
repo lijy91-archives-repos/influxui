@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
+import 'package:rise_ui_demos/src/utils/constants.dart';
 
 class ActionIconWithSizeDemo extends StatelessWidget {
   @override
@@ -19,7 +20,7 @@ class ActionIconWithSizeDemo extends StatelessWidget {
           Wrap(
             spacing: 10,
             children: [
-              for (final size in kAllSize)
+              for (final size in kNamedSizes)
                 ActionIcon(
                   Icons.light_mode,
                   variant: variant,

@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/material.dart' show Colors;
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/foundation/customizable_property.dart';
 import 'package:rise_ui/src/widgets/box/box_state.dart';

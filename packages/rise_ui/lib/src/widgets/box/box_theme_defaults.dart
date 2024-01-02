@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:rise_ui/src/widgets/box/box_state.dart';
 import 'package:rise_ui/src/widgets/box/box_style.dart';
 import 'package:rise_ui/src/widgets/box/box_theme.dart';
-import 'package:rise_ui/src/widgets/theme/colors.dart';
 
 const kDarkBoxThemeDefaults = BoxThemeData(
   filledStyle: BoxStyle(

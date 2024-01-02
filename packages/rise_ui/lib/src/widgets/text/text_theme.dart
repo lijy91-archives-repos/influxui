@@ -3,9 +3,8 @@
 // found in the LICENSE file.
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart' as md;
+import 'package:flutter/material.dart' show Colors;
 import 'package:flutter/widgets.dart';
-import 'package:rise_ui/src/widgets/theme/theme.dart';
 
 // Please update _TextThemeDefaultsBuilder accordingly after changing the default
 // color here, as their implementation depends on the default value of the color
@@ -46,7 +45,7 @@ const TextStyle _kDefaultTabLabelTextStyle = TextStyle(
   fontSize: 10.0,
   fontWeight: FontWeight.w500,
   letterSpacing: -0.24,
-  color: Colors.gray,
+  color: Colors.grey,
 );
 
 const TextStyle _kDefaultMiddleTitleTextStyle = TextStyle(
@@ -133,7 +132,7 @@ class TextThemeData with Diagnosticable {
     TextStyle? pickerTextStyle,
     TextStyle? dateTimePickerTextStyle,
   }) : this._raw(
-          const _TextThemeDefaultsBuilder(Colors.black, Colors.gray),
+          const _TextThemeDefaultsBuilder(Colors.black, Colors.grey),
           primaryColor,
           textStyle,
           actionTextStyle,
