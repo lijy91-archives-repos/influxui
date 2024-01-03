@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:gallery/router_config.dart';
 import 'package:gallery/themes/themes.dart';
-import 'package:rise_ui/rise_ui.dart' hide Colors;
+import 'package:rise_ui/rise_ui.dart';
 import 'package:tabler_icon_library/tabler_icon_library.dart';
 
 class TablerIconLibrary extends IconLibrary {
@@ -62,7 +62,6 @@ class _MyAppState extends State<MyApp> {
           ),
           child: child!,
         );
-
         return Stack(
           children: [
             child,

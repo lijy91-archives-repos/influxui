@@ -17,7 +17,7 @@ class BadgeWithColorDemo extends StatelessWidget {
           Wrap(
             spacing: 10,
             children: [
-              for (final color in kOpenColors)
+              for (final color in kExtendedColors)
                 Badge(
                   variant: variant,
                   color: color,

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui_demos/src/utils/constants.dart';
@@ -20,14 +21,20 @@ class BoxWithColorDemo extends StatelessWidget {
           Wrap(
             spacing: 10,
             children: [
-              for (final color in kOpenColors)
+              for (final color in kExtendedColors)
                 Box(
                   variant: variant,
+                  color: color,
                   builder: (context, foregroundColor) {
                     return Container(
-                      width: 100,
-                      height: 100,
-                      color: color,
+                      width: 80,
+                      height: 80,
+                      child: DefaultTextStyle(
+                        style: TextStyle(color: foregroundColor),
+                        child: Center(
+                          child: Text(variant.name),
+                        ),
+                      ),
                     );
                   },
                 ),

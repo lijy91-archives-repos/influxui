@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart'
+    hide ActionIconTheme, ActionIconThemeData;
 import 'package:rise_ui/src/widgets/action_icon/action_icon_style.dart';
 import 'package:rise_ui/src/widgets/action_icon/action_icon_theme.dart';
 import 'package:rise_ui/src/widgets/box/box.dart';
@@ -8,7 +9,6 @@ import 'package:rise_ui/src/widgets/web_icon/web_icon.dart';
 
 export 'package:rise_ui/src/widgets/action_icon/action_icon_style.dart';
 export 'package:rise_ui/src/widgets/action_icon/action_icon_theme.dart';
-export 'package:rise_ui/src/widgets/action_icon/action_icon_theme_defaults.dart';
 
 enum ActionIconVariant {
   filled,
@@ -21,11 +21,11 @@ enum ActionIconVariant {
 
 class ActionIconSize extends Size {
   ActionIconSize(super.width, super.height);
-  static NamedSize get tiny => NamedSize.tiny;
-  static NamedSize get small => NamedSize.small;
-  static NamedSize get medium => NamedSize.medium;
-  static NamedSize get large => NamedSize.large;
-  static NamedSize get big => NamedSize.big;
+  static const NamedSize tiny = NamedSize.tiny;
+  static const NamedSize small = NamedSize.small;
+  static const NamedSize medium = NamedSize.medium;
+  static const NamedSize large = NamedSize.large;
+  static const NamedSize big = NamedSize.big;
 }
 
 class ActionIcon extends StatefulWidget {
@@ -60,25 +60,40 @@ class ActionIcon extends StatefulWidget {
 class _ActionIconState extends State<ActionIcon> {
   @override
   Widget build(BuildContext context) {
-    final themeData = ActionIconTheme.of(context);
-    ActionIconStyle mergedStyle = widget.style ?? themeData.mediumStyle;
+    final ActionIconThemeData? themeData = ActionIconTheme.of(context);
+    final ActionIconThemeData defaults = _ActionIconDefaults(context);
+
+    ActionIconStyle mergedStyle = widget.style ??
+        themeData?.mediumStyle ??
+        defaults.mediumStyle ??
+        ActionIconStyle();
 
     if (widget.size is NamedSize) {
       switch (widget.size) {
         case NamedSize.tiny:
-          mergedStyle = themeData.tinyStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle // merge tiny style
+              .merge(themeData?.tinyStyle)
+              .merge(defaults.tinyStyle);
           break;
         case NamedSize.small:
-          mergedStyle = themeData.smallStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle // merge small style
+              .merge(themeData?.smallStyle)
+              .merge(defaults.smallStyle);
           break;
         case NamedSize.medium:
-          mergedStyle = themeData.mediumStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle // merge medium style
+              .merge(themeData?.mediumStyle)
+              .merge(defaults.mediumStyle);
           break;
         case NamedSize.large:
-          mergedStyle = themeData.largeStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle // merge large style
+              .merge(themeData?.largeStyle)
+              .merge(defaults.largeStyle);
           break;
         case NamedSize.big:
-          mergedStyle = themeData.bigStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle // merge big style
+              .merge(themeData?.bigStyle)
+              .merge(defaults.bigStyle);
           break;
       }
     } else if (widget.size is Size) {
@@ -96,8 +111,8 @@ class _ActionIconState extends State<ActionIcon> {
       variant: BoxVariant.valueOf(widget.variant?.name),
       padding: widget.padding,
       color: widget.color,
-      borderRadius: themeData.borderRadius,
-      pressedOpacity: themeData.pressedOpacity,
+      borderRadius: themeData?.borderRadius ?? defaults.borderRadius,
+      pressedOpacity: themeData?.pressedOpacity ?? defaults.pressedOpacity,
       mouseCursor: widget.enabled
           ? SystemMouseCursors.click
           : SystemMouseCursors.forbidden,
@@ -125,6 +140,58 @@ class _ActionIconState extends State<ActionIcon> {
           ),
         );
       },
+    );
+  }
+}
+
+class _ActionIconDefaults extends ActionIconThemeData {
+  _ActionIconDefaults(this.context) : super();
+
+  final BuildContext context;
+
+  @override
+  get borderRadius => BorderRadius.all(Radius.circular(4));
+
+  @override
+  get pressedOpacity => 0.8;
+
+  @override
+  get tinyStyle {
+    return ActionIconStyle(
+      size: Size(18, 18),
+      iconSize: 12,
+    );
+  }
+
+  @override
+  get smallStyle {
+    return ActionIconStyle(
+      size: Size(22, 22),
+      iconSize: 16,
+    );
+  }
+
+  @override
+  get mediumStyle {
+    return ActionIconStyle(
+      size: Size(28, 28),
+      iconSize: 20,
+    );
+  }
+
+  @override
+  get largeStyle {
+    return ActionIconStyle(
+      size: Size(34, 34),
+      iconSize: 24,
+    );
+  }
+
+  @override
+  get bigStyle {
+    return ActionIconStyle(
+      size: Size(44, 44),
+      iconSize: 32,
     );
   }
 }

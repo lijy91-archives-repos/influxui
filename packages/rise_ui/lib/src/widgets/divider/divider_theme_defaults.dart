@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
-import 'package:open_color/open_color.dart';
 import 'package:rise_ui/src/widgets/divider/divider_style.dart';
 import 'package:rise_ui/src/widgets/divider/divider_theme.dart';
+import 'package:rise_ui/src/widgets/theme/extended_colors.dart';
 
 const _defaults = DividerThemeData(
-  color: OpenColors.gray,
+  color: ExtendedColors.gray,
   tinyStyle: DividerStyle(
     padding: EdgeInsets.symmetric(horizontal: 6),
     minimumSize: Size.square(18),

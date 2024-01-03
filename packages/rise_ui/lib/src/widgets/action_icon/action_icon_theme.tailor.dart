@@ -12,11 +12,11 @@ mixin _$ActionIconThemeDataTailorMixin
     on ThemeExtension<ActionIconThemeData>, DiagnosticableTreeMixin {
   BorderRadius? get borderRadius;
   double get pressedOpacity;
-  ActionIconStyle get tinyStyle;
-  ActionIconStyle get smallStyle;
-  ActionIconStyle get mediumStyle;
-  ActionIconStyle get largeStyle;
-  ActionIconStyle get bigStyle;
+  ActionIconStyle? get tinyStyle;
+  ActionIconStyle? get smallStyle;
+  ActionIconStyle? get mediumStyle;
+  ActionIconStyle? get largeStyle;
+  ActionIconStyle? get bigStyle;
 
   @override
   ActionIconThemeData copyWith({
@@ -107,9 +107,9 @@ extension ActionIconThemeDataBuildContextProps on BuildContext {
       Theme.of(this).extension<ActionIconThemeData>()!;
   BorderRadius? get borderRadius => actionIconThemeData.borderRadius;
   double get pressedOpacity => actionIconThemeData.pressedOpacity;
-  ActionIconStyle get tinyStyle => actionIconThemeData.tinyStyle;
-  ActionIconStyle get smallStyle => actionIconThemeData.smallStyle;
-  ActionIconStyle get mediumStyle => actionIconThemeData.mediumStyle;
-  ActionIconStyle get largeStyle => actionIconThemeData.largeStyle;
-  ActionIconStyle get bigStyle => actionIconThemeData.bigStyle;
+  ActionIconStyle? get tinyStyle => actionIconThemeData.tinyStyle;
+  ActionIconStyle? get smallStyle => actionIconThemeData.smallStyle;
+  ActionIconStyle? get mediumStyle => actionIconThemeData.mediumStyle;
+  ActionIconStyle? get largeStyle => actionIconThemeData.largeStyle;
+  ActionIconStyle? get bigStyle => actionIconThemeData.bigStyle;
 }

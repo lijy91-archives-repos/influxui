@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:open_color/open_color.dart';
 import 'package:rise_ui/src/widgets/kbd/kbd_style.dart';
 import 'package:rise_ui/src/widgets/kbd/kbd_theme.dart';
+import 'package:rise_ui/src/widgets/theme/extended_colors.dart';
 
 const _defaults = KbdThemeData(
   tinyStyle: KbdStyle(
@@ -48,13 +48,13 @@ const _defaults = KbdThemeData(
 );
 
 final kDarkKbdThemeDefaults = _defaults.copyWith(
-  color: OpenColors.gray.shade500,
-  borderColor: OpenColors.gray.shade300,
-  labelColor: OpenColors.gray.shade50,
+  color: ExtendedColors.gray.shade500,
+  borderColor: ExtendedColors.gray.shade300,
+  labelColor: ExtendedColors.gray.shade50,
 );
 
 final kLightKbdThemeDefaults = _defaults.copyWith(
-  color: OpenColors.gray.shade50,
-  borderColor: OpenColors.gray.shade300,
-  labelColor: OpenColors.gray.shade700,
+  color: ExtendedColors.gray.shade50,
+  borderColor: ExtendedColors.gray.shade300,
+  labelColor: ExtendedColors.gray.shade700,
 );

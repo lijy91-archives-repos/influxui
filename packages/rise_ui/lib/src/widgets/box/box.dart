@@ -1,5 +1,7 @@
+import 'dart:ui';
+
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart' show Colors;
+import 'package:flutter/material.dart' show Colors, Theme, ThemeData;
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/foundation/customizable_property.dart';
 import 'package:rise_ui/src/widgets/box/box_state.dart';
@@ -10,7 +12,6 @@ import 'package:rise_ui/src/widgets/theme/theme.dart';
 export 'package:rise_ui/src/widgets/box/box_state.dart';
 export 'package:rise_ui/src/widgets/box/box_style.dart';
 export 'package:rise_ui/src/widgets/box/box_theme.dart';
-export 'package:rise_ui/src/widgets/box/box_theme_defaults.dart';
 
 enum BoxVariant {
   filled,
@@ -169,21 +170,36 @@ class _BoxState extends State<Box> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final primaryColor = ExtendedTheme.of(context).primaryColor;
-    BoxThemeData themeData = BoxTheme.of(context);
+
+    final BoxThemeData? themeData = BoxTheme.of(context);
+    final BoxThemeData defaults = _BoxDefaults(context);
+
     BoxStyle mergedStyle = widget.style ?? BoxStyle();
     switch (widget.variant) {
       case BoxVariant.filled:
-        mergedStyle = mergedStyle.merge(themeData.filledStyle);
+        mergedStyle = mergedStyle // merge filled style
+            .merge(themeData?.filledStyle)
+            .merge(defaults.filledStyle);
       case BoxVariant.light:
-        mergedStyle = mergedStyle.merge(themeData.lightStyle);
+        mergedStyle = mergedStyle // merge light style
+            .merge(themeData?.lightStyle)
+            .merge(defaults.lightStyle);
       case BoxVariant.outline:
-        mergedStyle = mergedStyle.merge(themeData.outlineStyle);
-      case BoxVariant.subtle:
-        mergedStyle = mergedStyle.merge(themeData.subtleStyle);
+        mergedStyle = mergedStyle // merge outline style
+            .merge(themeData?.outlineStyle)
+            .merge(defaults.outlineStyle);
+      case BoxVariant.subtle: // merge subtle style
+        mergedStyle = mergedStyle
+            .merge(themeData?.subtleStyle)
+            .merge(defaults.subtleStyle);
       case BoxVariant.transparent:
-        mergedStyle = mergedStyle.merge(themeData.transparentStyle);
+        mergedStyle = mergedStyle // merge transparent style
+            .merge(themeData?.transparentStyle)
+            .merge(defaults.transparentStyle);
       case BoxVariant.white:
-        mergedStyle = mergedStyle.merge(themeData.whiteStyle);
+        mergedStyle = mergedStyle // merge white style
+            .merge(themeData?.whiteStyle)
+            .merge(defaults.whiteStyle);
       default:
     }
 
@@ -243,6 +259,122 @@ class _BoxState extends State<Box> with SingleTickerProviderStateMixin {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _BoxDefaults extends BoxThemeData {
+  _BoxDefaults(this.context) : super();
+
+  final BuildContext context;
+
+  late final ThemeData _theme = Theme.of(context);
+  late final bool _isDark = _theme.brightness == Brightness.dark;
+
+  @override
+  BoxStyle? get filledStyle {
+    return BoxStyle(
+      color: BoxStateColor(
+        colorShade: 600,
+        hoveredColorShade: 700,
+        pressedColorShade: 700,
+      ),
+      foregroundColor: BoxStateColor(
+        color: Colors.white,
+      ),
+    );
+  }
+
+  @override
+  BoxStyle? get lightStyle {
+    if (_isDark) {
+      return BoxStyle(
+        color: BoxStateColor(
+          colorOpacity: 0.15,
+          hoveredColorOpacity: 0.2,
+          pressedColorOpacity: 0.2,
+        ),
+        foregroundColor: BoxStateColor(),
+      );
+    }
+    return BoxStyle(
+      color: BoxStateColor(
+        colorShade: 50,
+        hoveredColorShade: 100,
+        pressedColorShade: 100,
+      ),
+      foregroundColor: BoxStateColor(),
+    );
+  }
+
+  @override
+  BoxStyle? get outlineStyle {
+    if (_isDark) {
+      return BoxStyle(
+        color: BoxStateColor(
+          colorShade: -1,
+          hoveredColorOpacity: 0.2,
+          pressedColorOpacity: 0.2,
+        ),
+        foregroundColor: BoxStateColor(),
+        borderColor: BoxStateColor(
+          colorShade: 600,
+        ),
+      );
+    }
+    return BoxStyle(
+      color: BoxStateColor(
+        colorShade: -1,
+        hoveredColorShade: 50,
+        pressedColorShade: 50,
+      ),
+      foregroundColor: BoxStateColor(),
+      borderColor: BoxStateColor(
+        colorShade: 600,
+      ),
+    );
+  }
+
+  @override
+  BoxStyle? get subtleStyle {
+    if (_isDark) {
+      return BoxStyle(
+        color: BoxStateColor(
+          colorShade: -1,
+          hoveredColorOpacity: 0.2,
+          pressedColorOpacity: 0.2,
+        ),
+        foregroundColor: BoxStateColor(),
+      );
+    }
+    return BoxStyle(
+      color: BoxStateColor(
+        colorShade: -1,
+        hoveredColorShade: 50,
+        pressedColorShade: 50,
+      ),
+      foregroundColor: BoxStateColor(),
+    );
+  }
+
+  @override
+  BoxStyle? get transparentStyle {
+    return BoxStyle(
+      color: BoxStateColor(
+        color: Colors.transparent,
+      ),
+      foregroundColor: BoxStateColor(),
+    );
+  }
+
+  @override
+  BoxStyle? get whiteStyle {
+    return BoxStyle(
+      color: BoxStateColor(
+        color: Colors.white,
+        hoveredColorShade: 100,
+      ),
+      foregroundColor: BoxStateColor(),
     );
   }
 }

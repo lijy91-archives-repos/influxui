@@ -14,22 +14,22 @@ class ActionIconThemeData extends ThemeExtension<ActionIconThemeData>
   const ActionIconThemeData({
     this.borderRadius,
     this.pressedOpacity = 0.8,
-    required this.tinyStyle,
-    required this.smallStyle,
-    required this.mediumStyle,
-    required this.largeStyle,
-    required this.bigStyle,
+    this.tinyStyle,
+    this.smallStyle,
+    this.mediumStyle,
+    this.largeStyle,
+    this.bigStyle,
   });
 
   final BorderRadius? borderRadius;
 
   final double pressedOpacity;
 
-  final ActionIconStyle tinyStyle;
-  final ActionIconStyle smallStyle;
-  final ActionIconStyle mediumStyle;
-  final ActionIconStyle largeStyle;
-  final ActionIconStyle bigStyle;
+  final ActionIconStyle? tinyStyle;
+  final ActionIconStyle? smallStyle;
+  final ActionIconStyle? mediumStyle;
+  final ActionIconStyle? largeStyle;
+  final ActionIconStyle? bigStyle;
 }
 
 class ActionIconTheme extends InheritedTheme {
@@ -41,8 +41,9 @@ class ActionIconTheme extends InheritedTheme {
 
   final ActionIconThemeData data;
 
-  static ActionIconThemeData of(BuildContext context) {
-    return context.actionIconThemeData;
+  static ActionIconThemeData? of(BuildContext context) {
+    final theme = context.dependOnInheritedWidgetOfExactType<ActionIconTheme>();
+    return theme?.data ?? Theme.of(context).extension<ActionIconThemeData>();
   }
 
   @override

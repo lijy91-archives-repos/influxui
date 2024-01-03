@@ -10,8 +10,6 @@ final darkThemeData = md.ThemeData.dark().copyWith(
       brightness: Brightness.light,
       primaryColor: ExtendedColors.blue,
     ),
-    kDarkActionIconThemeDefaults,
-    kDarkBoxThemeDefaults,
     kDarkButtonThemeDefaults,
     kDarkDividerThemeDefaults,
     kDarkKbdThemeDefaults,

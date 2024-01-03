@@ -10,12 +10,12 @@ part of 'box_theme.dart';
 
 mixin _$BoxThemeDataTailorMixin
     on ThemeExtension<BoxThemeData>, DiagnosticableTreeMixin {
-  BoxStyle get filledStyle;
-  BoxStyle get lightStyle;
-  BoxStyle get outlineStyle;
-  BoxStyle get subtleStyle;
-  BoxStyle get transparentStyle;
-  BoxStyle get whiteStyle;
+  BoxStyle? get filledStyle;
+  BoxStyle? get lightStyle;
+  BoxStyle? get outlineStyle;
+  BoxStyle? get subtleStyle;
+  BoxStyle? get transparentStyle;
+  BoxStyle? get whiteStyle;
 
   @override
   BoxThemeData copyWith({
@@ -97,10 +97,10 @@ mixin _$BoxThemeDataTailorMixin
 
 extension BoxThemeDataBuildContextProps on BuildContext {
   BoxThemeData get boxThemeData => Theme.of(this).extension<BoxThemeData>()!;
-  BoxStyle get filledStyle => boxThemeData.filledStyle;
-  BoxStyle get lightStyle => boxThemeData.lightStyle;
-  BoxStyle get outlineStyle => boxThemeData.outlineStyle;
-  BoxStyle get subtleStyle => boxThemeData.subtleStyle;
-  BoxStyle get transparentStyle => boxThemeData.transparentStyle;
-  BoxStyle get whiteStyle => boxThemeData.whiteStyle;
+  BoxStyle? get filledStyle => boxThemeData.filledStyle;
+  BoxStyle? get lightStyle => boxThemeData.lightStyle;
+  BoxStyle? get outlineStyle => boxThemeData.outlineStyle;
+  BoxStyle? get subtleStyle => boxThemeData.subtleStyle;
+  BoxStyle? get transparentStyle => boxThemeData.transparentStyle;
+  BoxStyle? get whiteStyle => boxThemeData.whiteStyle;
 }

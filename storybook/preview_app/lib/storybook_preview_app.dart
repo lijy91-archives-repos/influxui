@@ -16,8 +16,6 @@ class StorybookPreviewApp extends StorybookPreviewer
   ThemeData get theme {
     return ThemeData.light().copyWith(
       extensions: [
-        kLightActionIconThemeDefaults,
-        kLightBoxThemeDefaults,
         kLightButtonThemeDefaults,
         kLightKbdThemeDefaults,
         kLightLoaderThemeDefaults,

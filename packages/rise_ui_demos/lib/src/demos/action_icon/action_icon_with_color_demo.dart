@@ -20,7 +20,7 @@ class ActionIconWithColorDemo extends StatelessWidget {
           Wrap(
             spacing: 10,
             children: [
-              for (final color in kOpenColors)
+              for (final color in kExtendedColors)
                 ActionIcon(
                   Icons.light_mode,
                   variant: variant,

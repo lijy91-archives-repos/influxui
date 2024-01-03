@@ -1,19 +1,18 @@
-import 'package:open_color/open_color.dart';
 import 'package:rise_ui/rise_ui.dart';
 
-final kOpenColors = [
-  OpenColors.gray,
-  OpenColors.red,
-  OpenColors.pink,
-  OpenColors.grape,
-  OpenColors.violet,
-  OpenColors.indigo,
-  OpenColors.blue,
-  OpenColors.cyan,
-  OpenColors.teal,
-  OpenColors.green,
-  OpenColors.lime,
-  OpenColors.yellow,
+final kExtendedColors = [
+  ExtendedColors.gray,
+  ExtendedColors.red,
+  ExtendedColors.pink,
+  ExtendedColors.grape,
+  ExtendedColors.violet,
+  ExtendedColors.indigo,
+  ExtendedColors.blue,
+  ExtendedColors.cyan,
+  ExtendedColors.teal,
+  ExtendedColors.green,
+  ExtendedColors.lime,
+  ExtendedColors.yellow,
 ];
 
 final kNamedSizes = [

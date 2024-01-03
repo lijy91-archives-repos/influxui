@@ -11,20 +11,20 @@ part 'box_theme.tailor.dart';
 class BoxThemeData extends ThemeExtension<BoxThemeData>
     with DiagnosticableTreeMixin, _$BoxThemeDataTailorMixin {
   const BoxThemeData({
-    this.filledStyle = const BoxStyle(),
-    this.lightStyle = const BoxStyle(),
-    this.outlineStyle = const BoxStyle(),
-    this.subtleStyle = const BoxStyle(),
-    this.transparentStyle = const BoxStyle(),
-    this.whiteStyle = const BoxStyle(),
+    this.filledStyle,
+    this.lightStyle,
+    this.outlineStyle,
+    this.subtleStyle,
+    this.transparentStyle,
+    this.whiteStyle,
   });
 
-  final BoxStyle filledStyle;
-  final BoxStyle lightStyle;
-  final BoxStyle outlineStyle;
-  final BoxStyle subtleStyle;
-  final BoxStyle transparentStyle;
-  final BoxStyle whiteStyle;
+  final BoxStyle? filledStyle;
+  final BoxStyle? lightStyle;
+  final BoxStyle? outlineStyle;
+  final BoxStyle? subtleStyle;
+  final BoxStyle? transparentStyle;
+  final BoxStyle? whiteStyle;
 }
 
 class BoxTheme extends InheritedTheme {
@@ -36,8 +36,9 @@ class BoxTheme extends InheritedTheme {
 
   final BoxThemeData data;
 
-  static BoxThemeData of(BuildContext context) {
-    return context.boxThemeData;
+  static BoxThemeData? of(BuildContext context) {
+    final theme = context.dependOnInheritedWidgetOfExactType<BoxTheme>();
+    return theme?.data ?? Theme.of(context).extension<BoxThemeData>();
   }
 
   @override
