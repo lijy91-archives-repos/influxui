@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rise_ui/rise_ui.dart' hide ThemeData;
 import 'package:storybook_dart/storybook_dart.dart';
 import 'package:storybook_dart_annotation/storybook_dart_annotation.dart'
     as storybook;
@@ -15,11 +14,7 @@ class StorybookPreviewApp extends StorybookPreviewer
   @override
   ThemeData get theme {
     return ThemeData.light().copyWith(
-      extensions: [
-        kLightButtonThemeDefaults,
-        kLightKbdThemeDefaults,
-        kLightLoaderThemeDefaults,
-      ],
+      extensions: [],
     );
   }
 }

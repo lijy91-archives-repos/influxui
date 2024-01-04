@@ -14,11 +14,11 @@ mixin _$KbdThemeDataTailorMixin
   Color? get labelColor;
   Color? get borderColor;
   BorderRadius? get borderRadius;
-  KbdStyle get tinyStyle;
-  KbdStyle get smallStyle;
-  KbdStyle get mediumStyle;
-  KbdStyle get largeStyle;
-  KbdStyle get bigStyle;
+  KbdStyle? get tinyStyle;
+  KbdStyle? get smallStyle;
+  KbdStyle? get mediumStyle;
+  KbdStyle? get largeStyle;
+  KbdStyle? get bigStyle;
 
   @override
   KbdThemeData copyWith({
@@ -122,9 +122,9 @@ extension KbdThemeDataBuildContextProps on BuildContext {
   Color? get labelColor => kbdThemeData.labelColor;
   Color? get borderColor => kbdThemeData.borderColor;
   BorderRadius? get borderRadius => kbdThemeData.borderRadius;
-  KbdStyle get tinyStyle => kbdThemeData.tinyStyle;
-  KbdStyle get smallStyle => kbdThemeData.smallStyle;
-  KbdStyle get mediumStyle => kbdThemeData.mediumStyle;
-  KbdStyle get largeStyle => kbdThemeData.largeStyle;
-  KbdStyle get bigStyle => kbdThemeData.bigStyle;
+  KbdStyle? get tinyStyle => kbdThemeData.tinyStyle;
+  KbdStyle? get smallStyle => kbdThemeData.smallStyle;
+  KbdStyle? get mediumStyle => kbdThemeData.mediumStyle;
+  KbdStyle? get largeStyle => kbdThemeData.largeStyle;
+  KbdStyle? get bigStyle => kbdThemeData.bigStyle;
 }

@@ -12,11 +12,11 @@ mixin _$ButtonThemeDataTailorMixin
     on ThemeExtension<ButtonThemeData>, DiagnosticableTreeMixin {
   BorderRadius? get borderRadius;
   double get pressedOpacity;
-  ButtonStyle get tinyStyle;
-  ButtonStyle get smallStyle;
-  ButtonStyle get mediumStyle;
-  ButtonStyle get largeStyle;
-  ButtonStyle get bigStyle;
+  ButtonStyle? get tinyStyle;
+  ButtonStyle? get smallStyle;
+  ButtonStyle? get mediumStyle;
+  ButtonStyle? get largeStyle;
+  ButtonStyle? get bigStyle;
 
   @override
   ButtonThemeData copyWith({
@@ -107,9 +107,9 @@ extension ButtonThemeDataBuildContextProps on BuildContext {
       Theme.of(this).extension<ButtonThemeData>()!;
   BorderRadius? get borderRadius => buttonThemeData.borderRadius;
   double get pressedOpacity => buttonThemeData.pressedOpacity;
-  ButtonStyle get tinyStyle => buttonThemeData.tinyStyle;
-  ButtonStyle get smallStyle => buttonThemeData.smallStyle;
-  ButtonStyle get mediumStyle => buttonThemeData.mediumStyle;
-  ButtonStyle get largeStyle => buttonThemeData.largeStyle;
-  ButtonStyle get bigStyle => buttonThemeData.bigStyle;
+  ButtonStyle? get tinyStyle => buttonThemeData.tinyStyle;
+  ButtonStyle? get smallStyle => buttonThemeData.smallStyle;
+  ButtonStyle? get mediumStyle => buttonThemeData.mediumStyle;
+  ButtonStyle? get largeStyle => buttonThemeData.largeStyle;
+  ButtonStyle? get bigStyle => buttonThemeData.bigStyle;
 }

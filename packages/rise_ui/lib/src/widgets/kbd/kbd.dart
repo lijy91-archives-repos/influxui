@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:rise_ui/src/widgets/kbd/kbd_style.dart';
 import 'package:rise_ui/src/widgets/kbd/kbd_theme.dart';
 import 'package:rise_ui/src/widgets/theme/theme.dart';
@@ -26,31 +26,43 @@ class Kbd extends StatefulWidget {
 class _KbdState extends State<Kbd> {
   @override
   Widget build(BuildContext context) {
-    final themeData = KbdTheme.of(context);
-    KbdStyle mergedStyle = widget.style ?? themeData.mediumStyle;
+    final KbdThemeData? themeData = KbdTheme.of(context);
+    final KbdThemeData defaults = _KbdDefaults(context);
+    final Size size = widget.size ?? NamedSize.medium;
+    KbdStyle mergedStyle = widget.style ?? KbdStyle();
 
-    if (widget.size is NamedSize) {
-      switch (widget.size) {
+    if (size is NamedSize) {
+      switch (size) {
         case NamedSize.tiny:
-          mergedStyle = themeData.tinyStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle //
+              .merge(themeData?.tinyStyle)
+              .merge(defaults.tinyStyle);
           break;
         case NamedSize.small:
-          mergedStyle = themeData.smallStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle //
+              .merge(themeData?.smallStyle)
+              .merge(defaults.smallStyle);
           break;
         case NamedSize.medium:
-          mergedStyle = themeData.mediumStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle //
+              .merge(themeData?.mediumStyle)
+              .merge(defaults.mediumStyle);
           break;
         case NamedSize.large:
-          mergedStyle = themeData.largeStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle //
+              .merge(themeData?.largeStyle)
+              .merge(defaults.largeStyle);
           break;
         case NamedSize.big:
-          mergedStyle = themeData.bigStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle //
+              .merge(themeData?.bigStyle)
+              .merge(defaults.bigStyle);
           break;
       }
     }
 
     final TextStyle? textStyle = mergedStyle.labelStyle?.copyWith(
-      color: themeData.labelColor,
+      color: themeData?.labelColor ?? defaults.labelColor,
       fontWeight: FontWeight.w700,
       fontFamily: 'Roboto Mono',
       fontFamilyFallback: ['Roboto'],
@@ -62,26 +74,28 @@ class _KbdState extends State<Kbd> {
         minHeight: mergedStyle.size!.height,
       ),
       decoration: BoxDecoration(
-        color: themeData.color,
+        color: themeData?.color ?? defaults.color,
         border: BorderDirectional(
           start: BorderSide(
-            color: themeData.borderColor!,
+            color: themeData?.borderColor ?? defaults.borderColor!,
             width: 1,
           ),
           top: BorderSide(
-            color: themeData.borderColor!,
+            color: themeData?.borderColor ?? defaults.borderColor!,
             width: 1,
           ),
           end: BorderSide(
-            color: themeData.borderColor!,
+            color: themeData?.borderColor ?? defaults.borderColor!,
             width: 1,
           ),
           bottom: BorderSide(
-            color: themeData.borderColor!,
+            color: themeData?.borderColor ?? defaults.borderColor!,
             width: 3,
           ),
         ),
-        borderRadius: themeData.borderRadius ?? BorderRadius.zero,
+        borderRadius: themeData?.borderRadius ??
+            defaults.borderRadius ??
+            BorderRadius.zero,
       ),
       child: Padding(
         padding: mergedStyle.padding ?? EdgeInsets.zero,
@@ -89,6 +103,87 @@ class _KbdState extends State<Kbd> {
           style: textStyle!,
           child: Text(widget.label),
         ),
+      ),
+    );
+  }
+}
+
+class _KbdDefaults extends KbdThemeData {
+  _KbdDefaults(this.context) : super();
+
+  final BuildContext context;
+
+  late final ThemeData _theme = Theme.of(context);
+  late final bool _isDark = _theme.brightness == Brightness.dark;
+
+  @override
+  get color =>
+      _isDark ? ExtendedColors.gray.shade500 : ExtendedColors.gray.shade50;
+
+  @override
+  get borderColor =>
+      _isDark ? ExtendedColors.gray.shade300 : ExtendedColors.gray.shade300;
+
+  @override
+  get labelColor =>
+      _isDark ? ExtendedColors.gray.shade50 : ExtendedColors.gray.shade700;
+
+  @override
+  get tinyStyle {
+    return KbdStyle(
+      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+      size: Size.square(10),
+      labelStyle: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  @override
+  get smallStyle {
+    return KbdStyle(
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 3),
+      size: Size.square(12),
+      labelStyle: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  @override
+  get mediumStyle {
+    return KbdStyle(
+      padding: EdgeInsets.symmetric(horizontal: 7, vertical: 4),
+      size: Size.square(14),
+      labelStyle: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  @override
+  get largeStyle {
+    return KbdStyle(
+      padding: EdgeInsets.symmetric(horizontal: 9, vertical: 5),
+      size: Size.square(16),
+      labelStyle: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  @override
+  get bigStyle {
+    return KbdStyle(
+      padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      size: Size.square(20),
+      labelStyle: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
       ),
     );
   }

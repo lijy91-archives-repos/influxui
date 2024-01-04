@@ -14,22 +14,22 @@ class ButtonThemeData extends ThemeExtension<ButtonThemeData>
   const ButtonThemeData({
     this.borderRadius,
     this.pressedOpacity = 0.8,
-    required this.tinyStyle,
-    required this.smallStyle,
-    required this.mediumStyle,
-    required this.largeStyle,
-    required this.bigStyle,
+    this.tinyStyle,
+    this.smallStyle,
+    this.mediumStyle,
+    this.largeStyle,
+    this.bigStyle,
   });
 
   final BorderRadius? borderRadius;
 
   final double pressedOpacity;
 
-  final ButtonStyle tinyStyle;
-  final ButtonStyle smallStyle;
-  final ButtonStyle mediumStyle;
-  final ButtonStyle largeStyle;
-  final ButtonStyle bigStyle;
+  final ButtonStyle? tinyStyle;
+  final ButtonStyle? smallStyle;
+  final ButtonStyle? mediumStyle;
+  final ButtonStyle? largeStyle;
+  final ButtonStyle? bigStyle;
 }
 
 class ButtonTheme extends InheritedTheme {
@@ -41,8 +41,9 @@ class ButtonTheme extends InheritedTheme {
 
   final ButtonThemeData data;
 
-  static ButtonThemeData of(BuildContext context) {
-    return context.buttonThemeData;
+  static ButtonThemeData? of(BuildContext context) {
+    final theme = context.dependOnInheritedWidgetOfExactType<ButtonTheme>();
+    return theme?.data ?? Theme.of(context).extension<ButtonThemeData>();
   }
 
   @override

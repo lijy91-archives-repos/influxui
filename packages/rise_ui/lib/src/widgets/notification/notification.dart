@@ -32,6 +32,7 @@ class Notification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeData = NotificationTheme.of(context);
+    final defaults = _NotificationDefaults(context);
 
     return Container(
       padding: EdgeInsets.only(
@@ -90,4 +91,13 @@ class Notification extends StatelessWidget {
       ),
     );
   }
+}
+
+class _NotificationDefaults extends NotificationThemeData {
+  _NotificationDefaults(this.context) : super();
+
+  final BuildContext context;
+
+  late final ThemeData _theme = Theme.of(context);
+  late final bool _isDark = _theme.brightness == Brightness.dark;
 }

@@ -12,20 +12,20 @@ class LoaderThemeData extends ThemeExtension<LoaderThemeData>
     with DiagnosticableTreeMixin, _$LoaderThemeDataTailorMixin {
   const LoaderThemeData({
     this.color,
-    required this.tinySize,
-    required this.smallSize,
-    required this.mediumSize,
-    required this.largeSize,
-    required this.bigSize,
+    this.tinySize,
+    this.smallSize,
+    this.mediumSize,
+    this.largeSize,
+    this.bigSize,
   });
 
   final Color? color;
 
-  final Size tinySize;
-  final Size smallSize;
-  final Size mediumSize;
-  final Size largeSize;
-  final Size bigSize;
+  final Size? tinySize;
+  final Size? smallSize;
+  final Size? mediumSize;
+  final Size? largeSize;
+  final Size? bigSize;
 }
 
 class LoaderTheme extends InheritedTheme {
@@ -37,8 +37,9 @@ class LoaderTheme extends InheritedTheme {
 
   final LoaderThemeData data;
 
-  static LoaderThemeData of(BuildContext context) {
-    return context.loaderThemeData;
+  static LoaderThemeData? of(BuildContext context) {
+    final theme = context.dependOnInheritedWidgetOfExactType<LoaderTheme>();
+    return theme?.data ?? Theme.of(context).extension<LoaderThemeData>();
   }
 
   @override

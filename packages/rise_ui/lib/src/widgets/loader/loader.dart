@@ -25,27 +25,29 @@ class Loader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeData = LoaderTheme.of(context);
+    final LoaderThemeData? themeData = LoaderTheme.of(context);
+    final LoaderThemeData defaults = _LoaderDefaults(context);
+
     Color resolvedColor =
-        color ?? themeData.color ?? ExtendedTheme.of(context).primaryColor!;
-    Size resolvedSize = size ?? themeData.mediumSize;
+        color ?? themeData?.color ?? ExtendedTheme.of(context).primaryColor!;
+    Size resolvedSize = size ?? themeData?.mediumSize ?? defaults.mediumSize!;
 
     if (size is NamedSize) {
       switch (size) {
         case NamedSize.tiny:
-          resolvedSize = themeData.tinySize;
+          resolvedSize = themeData?.tinySize ?? defaults.tinySize!;
           break;
         case NamedSize.small:
-          resolvedSize = themeData.smallSize;
+          resolvedSize = themeData?.smallSize ?? defaults.smallSize!;
           break;
         case NamedSize.medium:
-          resolvedSize = themeData.mediumSize;
+          resolvedSize = themeData?.mediumSize ?? defaults.mediumSize!;
           break;
         case NamedSize.large:
-          resolvedSize = themeData.largeSize;
+          resolvedSize = themeData?.largeSize ?? defaults.largeSize!;
           break;
         case NamedSize.big:
-          resolvedSize = themeData.bigSize;
+          resolvedSize = themeData?.bigSize ?? defaults.bigSize!;
           break;
       }
     }
@@ -59,4 +61,21 @@ class Loader extends StatelessWidget {
       ),
     );
   }
+}
+
+class _LoaderDefaults extends LoaderThemeData {
+  _LoaderDefaults(this.context) : super();
+
+  final BuildContext context;
+
+  @override
+  Size? get tinySize => Size.square(18);
+  @override
+  Size? get smallSize => Size.square(22);
+  @override
+  Size? get mediumSize => Size.square(36);
+  @override
+  Size? get largeSize => Size.square(44);
+  @override
+  Size? get bigSize => Size.square(58);
 }

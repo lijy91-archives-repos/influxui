@@ -16,11 +16,11 @@ class KbdThemeData extends ThemeExtension<KbdThemeData>
     this.borderColor,
     this.borderRadius = const BorderRadius.all(Radius.circular(4.0)),
     this.labelColor,
-    required this.tinyStyle,
-    required this.smallStyle,
-    required this.mediumStyle,
-    required this.largeStyle,
-    required this.bigStyle,
+    this.tinyStyle,
+    this.smallStyle,
+    this.mediumStyle,
+    this.largeStyle,
+    this.bigStyle,
   });
 
   final Color? color;
@@ -31,11 +31,11 @@ class KbdThemeData extends ThemeExtension<KbdThemeData>
 
   final BorderRadius? borderRadius;
 
-  final KbdStyle tinyStyle;
-  final KbdStyle smallStyle;
-  final KbdStyle mediumStyle;
-  final KbdStyle largeStyle;
-  final KbdStyle bigStyle;
+  final KbdStyle? tinyStyle;
+  final KbdStyle? smallStyle;
+  final KbdStyle? mediumStyle;
+  final KbdStyle? largeStyle;
+  final KbdStyle? bigStyle;
 }
 
 class KbdTheme extends InheritedTheme {
@@ -47,8 +47,9 @@ class KbdTheme extends InheritedTheme {
 
   final KbdThemeData data;
 
-  static KbdThemeData of(BuildContext context) {
-    return context.kbdThemeData;
+  static KbdThemeData? of(BuildContext context) {
+    final theme = context.dependOnInheritedWidgetOfExactType<KbdTheme>();
+    return theme?.data ?? Theme.of(context).extension<KbdThemeData>();
   }
 
   @override

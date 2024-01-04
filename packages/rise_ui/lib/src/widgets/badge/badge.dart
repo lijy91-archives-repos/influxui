@@ -58,7 +58,7 @@ class Badge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeData = BadgeTheme.of(context);
+    final BadgeThemeData themeData = BadgeTheme.of(context);
 
     return Container(
       padding: EdgeInsets.zero,

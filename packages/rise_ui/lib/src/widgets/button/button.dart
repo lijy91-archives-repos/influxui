@@ -1,4 +1,5 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart'
+    hide ButtonStyle, ButtonTheme, ButtonThemeData;
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/widgets/box/box.dart';
 import 'package:rise_ui/src/widgets/button/button_style.dart';
@@ -7,7 +8,6 @@ import 'package:rise_ui/src/widgets/theme/theme.dart';
 
 export 'package:rise_ui/src/widgets/button/button_style.dart';
 export 'package:rise_ui/src/widgets/button/button_theme.dart';
-export 'package:rise_ui/src/widgets/button/button_theme_defaults.dart';
 
 enum ButtonVariant {
   filled,
@@ -60,25 +60,39 @@ class Button extends StatefulWidget {
 class _ButtonState extends State<Button> {
   @override
   Widget build(BuildContext context) {
-    final themeData = ButtonTheme.of(context);
-    ButtonStyle mergedStyle = widget.style ?? themeData.mediumStyle;
+    final ButtonThemeData? themeData = ButtonTheme.of(context);
+    final ButtonThemeData defaults = _ButtonDefaults(context);
+    ButtonStyle mergedStyle = widget.style ??
+        themeData?.mediumStyle ??
+        defaults.mediumStyle ??
+        ButtonStyle();
 
     if (widget.size is NamedSize) {
       switch (widget.size) {
         case NamedSize.tiny:
-          mergedStyle = themeData.tinyStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle // merge tiny style
+              .merge(themeData?.tinyStyle)
+              .merge(defaults.tinyStyle);
           break;
         case NamedSize.small:
-          mergedStyle = themeData.smallStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle // merge small style
+              .merge(themeData?.smallStyle)
+              .merge(defaults.smallStyle);
           break;
         case NamedSize.medium:
-          mergedStyle = themeData.mediumStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle // merge medium style
+              .merge(themeData?.mediumStyle)
+              .merge(defaults.mediumStyle);
           break;
         case NamedSize.large:
-          mergedStyle = themeData.largeStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle // merge large style
+              .merge(themeData?.largeStyle)
+              .merge(defaults.largeStyle);
           break;
         case NamedSize.big:
-          mergedStyle = themeData.bigStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle // merge big style
+              .merge(themeData?.bigStyle)
+              .merge(defaults.bigStyle);
           break;
       }
     }
@@ -90,8 +104,8 @@ class _ButtonState extends State<Button> {
       variant: BoxVariant.valueOf(widget.variant?.name),
       padding: widget.padding,
       color: widget.color,
-      borderRadius: themeData.borderRadius,
-      pressedOpacity: themeData.pressedOpacity,
+      borderRadius: themeData?.borderRadius ?? defaults.borderRadius,
+      pressedOpacity: themeData?.pressedOpacity ?? defaults.pressedOpacity,
       mouseCursor: widget.enabled
           ? SystemMouseCursors.click
           : SystemMouseCursors.forbidden,
@@ -126,6 +140,83 @@ class _ButtonState extends State<Button> {
           ),
         );
       },
+    );
+  }
+}
+
+class _ButtonDefaults extends ButtonThemeData {
+  _ButtonDefaults(this.context) : super();
+
+  final BuildContext context;
+
+  @override
+  BorderRadius? get borderRadius => BorderRadius.all(Radius.circular(4));
+
+  @override
+  double get pressedOpacity => 0.8;
+
+  @override
+  ButtonStyle? get tinyStyle {
+    return ButtonStyle(
+      padding: EdgeInsets.symmetric(horizontal: 6),
+      minimumSize: Size.square(18),
+      iconSize: 12,
+      labelStyle: TextStyle(
+        fontSize: 10,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  @override
+  ButtonStyle? get smallStyle {
+    return ButtonStyle(
+      padding: EdgeInsets.symmetric(horizontal: 8),
+      minimumSize: Size.square(22),
+      iconSize: 16,
+      labelStyle: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  @override
+  ButtonStyle? get mediumStyle {
+    return ButtonStyle(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      minimumSize: Size.square(28),
+      iconSize: 20,
+      labelStyle: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  @override
+  ButtonStyle? get largeStyle {
+    return ButtonStyle(
+      padding: EdgeInsets.symmetric(horizontal: 12),
+      minimumSize: Size.square(34),
+      iconSize: 24,
+      labelStyle: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  @override
+  ButtonStyle? get bigStyle {
+    return ButtonStyle(
+      padding: EdgeInsets.symmetric(horizontal: 14),
+      minimumSize: Size.square(44),
+      iconSize: 32,
+      labelStyle: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+      ),
     );
   }
 }

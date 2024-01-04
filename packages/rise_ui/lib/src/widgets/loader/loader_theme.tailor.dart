@@ -11,11 +11,11 @@ part of 'loader_theme.dart';
 mixin _$LoaderThemeDataTailorMixin
     on ThemeExtension<LoaderThemeData>, DiagnosticableTreeMixin {
   Color? get color;
-  Size get tinySize;
-  Size get smallSize;
-  Size get mediumSize;
-  Size get largeSize;
-  Size get bigSize;
+  Size? get tinySize;
+  Size? get smallSize;
+  Size? get mediumSize;
+  Size? get largeSize;
+  Size? get bigSize;
 
   @override
   LoaderThemeData copyWith({
@@ -95,9 +95,9 @@ extension LoaderThemeDataBuildContextProps on BuildContext {
   LoaderThemeData get loaderThemeData =>
       Theme.of(this).extension<LoaderThemeData>()!;
   Color? get color => loaderThemeData.color;
-  Size get tinySize => loaderThemeData.tinySize;
-  Size get smallSize => loaderThemeData.smallSize;
-  Size get mediumSize => loaderThemeData.mediumSize;
-  Size get largeSize => loaderThemeData.largeSize;
-  Size get bigSize => loaderThemeData.bigSize;
+  Size? get tinySize => loaderThemeData.tinySize;
+  Size? get smallSize => loaderThemeData.smallSize;
+  Size? get mediumSize => loaderThemeData.mediumSize;
+  Size? get largeSize => loaderThemeData.largeSize;
+  Size? get bigSize => loaderThemeData.bigSize;
 }
