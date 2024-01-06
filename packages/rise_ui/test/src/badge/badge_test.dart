@@ -7,7 +7,7 @@ void main() {
   group('badge-goldens', () {
     testGolden(
       'badge-colors',
-      (_) => Row(
+      (_) => const Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -26,12 +26,12 @@ void main() {
           Badge(label: 'Badge', color: ExtendedColors.orange),
         ],
       ),
-      size: Size(1200, 60),
+      size: const Size(1200, 60),
     );
 
     testGolden(
       'badge-shapes',
-      (_) => Row(
+      (_) => const Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -42,11 +42,11 @@ void main() {
           Badge(label: 'Badge'),
         ],
       ),
-      size: Size(400, 60),
+      size: const Size(400, 60),
     );
     testGolden(
       'badge-sizes',
-      (_) => Row(
+      (_) => const Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -57,12 +57,12 @@ void main() {
           Badge(label: 'Badge', size: BadgeSize.big),
         ],
       ),
-      size: Size(400, 60),
+      size: const Size(400, 60),
     );
     // Variants
     testGolden(
       'badge-variant-light',
-      (_) => Badge(
+      (_) => const Badge(
         variant: BadgeVariant.light,
         color: ExtendedColors.blue,
         label: 'Badge',
@@ -70,7 +70,7 @@ void main() {
     );
     testGolden(
       'badge-variant-filled',
-      (_) => Badge(
+      (_) => const Badge(
         variant: BadgeVariant.filled,
         color: ExtendedColors.blue,
         label: 'Badge',
@@ -78,7 +78,7 @@ void main() {
     );
     testGolden(
       'badge-variant-outline',
-      (_) => Badge(
+      (_) => const Badge(
         variant: BadgeVariant.outline,
         color: ExtendedColors.blue,
         label: 'Badge',

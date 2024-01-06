@@ -9,17 +9,17 @@ void main() {
   group('button-demos', () {
     testGolden(
       'button_demo',
-      (_) => ButtonDemo(),
+      (_) => const ButtonDemo(),
     );
     testGolden(
       'button_with_color_demo',
-      (_) => ButtonWithColorDemo(),
-      size: Size(800, 400)
+      (_) => const ButtonWithColorDemo(),
+      size: const Size(800, 400),
     );
     testGolden(
       'button_with_variant_demo',
-      (_) => ButtonWithVariantDemo(),
-      size: Size(800, 400)
+      (_) => const ButtonWithVariantDemo(),
+      size: const Size(800, 400),
     );
   });
 }

@@ -18,7 +18,7 @@ part 'alert_stories.g.dart';
 class AlertMeta extends Meta with _$AlertMeta {
   @override
   Widget buildWidget(BuildContext context, List<Arg> args) {
-    return Alert();
+    return const Alert();
   }
 }
 

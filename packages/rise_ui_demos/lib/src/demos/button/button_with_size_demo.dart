@@ -3,6 +3,8 @@ import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui_demos/src/utils/constants.dart';
 
 class ButtonWithSizeDemo extends StatelessWidget {
+  const ButtonWithSizeDemo({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Wrap(

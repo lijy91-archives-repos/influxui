@@ -7,7 +7,7 @@ void main() {
   group('blockquote-goldens', () {
     testGolden(
       'blockquote',
-      (_) => Blockquote(
+      (_) => const Blockquote(
         cite: 'test-cite',
         child: Text('test-quote'),
       ),

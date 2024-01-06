@@ -5,7 +5,7 @@ import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui_demos/rise_ui_demos.dart';
 
 class BootstrapPage extends StatefulWidget {
-  const BootstrapPage({Key? key}) : super(key: key);
+  const BootstrapPage({super.key});
 
   @override
   State<BootstrapPage> createState() => _BootstrapPageState();
@@ -23,7 +23,7 @@ class _BootstrapPageState extends State<BootstrapPage> {
 
   @override
   Widget build(BuildContext context) {
-    return md.Scaffold(
+    return const md.Scaffold(
       body: Center(
         child: Loader(),
       ),

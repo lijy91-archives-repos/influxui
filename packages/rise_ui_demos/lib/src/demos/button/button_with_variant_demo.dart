@@ -2,6 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
 
 class ButtonWithVariantDemo extends StatelessWidget {
+  const ButtonWithVariantDemo({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Wrap(

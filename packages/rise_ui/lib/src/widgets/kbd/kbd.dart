@@ -29,7 +29,7 @@ class _KbdState extends State<Kbd> {
     final KbdThemeData? themeData = KbdTheme.of(context);
     final KbdThemeData defaults = _KbdDefaults(context);
     final Size size = widget.size ?? NamedSize.medium;
-    KbdStyle mergedStyle = widget.style ?? KbdStyle();
+    KbdStyle mergedStyle = widget.style ?? const KbdStyle();
 
     if (size is NamedSize) {
       switch (size) {
@@ -130,7 +130,7 @@ class _KbdDefaults extends KbdThemeData {
 
   @override
   get tinyStyle {
-    return KbdStyle(
+    return const KbdStyle(
       padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
       size: Size.square(10),
       labelStyle: TextStyle(
@@ -142,7 +142,7 @@ class _KbdDefaults extends KbdThemeData {
 
   @override
   get smallStyle {
-    return KbdStyle(
+    return const KbdStyle(
       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 3),
       size: Size.square(12),
       labelStyle: TextStyle(
@@ -154,7 +154,7 @@ class _KbdDefaults extends KbdThemeData {
 
   @override
   get mediumStyle {
-    return KbdStyle(
+    return const KbdStyle(
       padding: EdgeInsets.symmetric(horizontal: 7, vertical: 4),
       size: Size.square(14),
       labelStyle: TextStyle(
@@ -166,7 +166,7 @@ class _KbdDefaults extends KbdThemeData {
 
   @override
   get largeStyle {
-    return KbdStyle(
+    return const KbdStyle(
       padding: EdgeInsets.symmetric(horizontal: 9, vertical: 5),
       size: Size.square(16),
       labelStyle: TextStyle(
@@ -178,7 +178,7 @@ class _KbdDefaults extends KbdThemeData {
 
   @override
   get bigStyle {
-    return KbdStyle(
+    return const KbdStyle(
       padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       size: Size.square(20),
       labelStyle: TextStyle(

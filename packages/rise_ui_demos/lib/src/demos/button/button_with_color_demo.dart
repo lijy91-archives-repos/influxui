@@ -3,6 +3,8 @@ import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui_demos/src/utils/constants.dart';
 
 class ButtonWithColorDemo extends StatelessWidget {
+  const ButtonWithColorDemo({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Wrap(

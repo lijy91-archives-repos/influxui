@@ -18,7 +18,7 @@ part 'badge_stories.g.dart';
 class BadgeMeta extends Meta with _$BadgeMeta {
   @override
   Widget buildWidget(BuildContext context, List<Arg> args) {
-    return Badge(
+    return const Badge(
       label: 'Badge',
       variant: BadgeVariant.filled,
     );

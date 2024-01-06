@@ -10,19 +10,19 @@ Future<void> _loadFonts() async {
       'name': 'MaterialIcons',
       'files': [
         'packages/rise_ui_test/fonts/MaterialIcons-Regular.otf',
-      ]
+      ],
     },
     {
       'name': 'Roboto',
       'files': [
         'packages/rise_ui_test/fonts/Roboto-Regular.ttf',
-      ]
+      ],
     },
     {
       'name': 'Roboto Mono',
       'files': [
         'packages/rise_ui_test/fonts/RobotoMono-Regular.ttf',
-      ]
+      ],
     },
   ];
 
@@ -46,7 +46,7 @@ void testGolden(
   testWidgets(
     description,
     (tester) async {
-      await tester.binding.setSurfaceSize(size ?? Size(160, 120));
+      await tester.binding.setSurfaceSize(size ?? const Size(160, 120));
       await _loadFonts();
 
       const widgetKey = ValueKey('widget-key');
@@ -57,7 +57,7 @@ void testGolden(
         key: widgetKey,
         debugShowCheckedModeBanner: false,
         home: ExtendedTheme(
-          data: ExtendedThemeData(),
+          data: const ExtendedThemeData(),
           child: md.Scaffold(
             backgroundColor: backgroundColor ?? Colors.transparent,
             body: Center(
@@ -65,7 +65,7 @@ void testGolden(
             ),
           ),
         ),
-      ));
+      ),);
 
       await expectLater(
         find.byKey(widgetKey),

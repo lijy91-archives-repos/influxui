@@ -6,7 +6,7 @@ import 'package:rise_ui/rise_ui.dart';
 final darkThemeData = md.ThemeData.dark().copyWith(
   scaffoldBackgroundColor: md.Colors.black,
   extensions: [
-    ExtendedThemeData(
+    const ExtendedThemeData(
       brightness: Brightness.light,
       primaryColor: ExtendedColors.blue,
     ),

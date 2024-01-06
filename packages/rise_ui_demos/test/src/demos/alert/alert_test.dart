@@ -6,7 +6,7 @@ void main() {
   group('alert-demos', () {
     testGolden(
       'alert_demo',
-      (_) => AlertDemo(),
+      (_) => const AlertDemo(),
     );
   });
 }

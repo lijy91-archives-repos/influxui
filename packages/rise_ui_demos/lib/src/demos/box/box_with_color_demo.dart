@@ -4,6 +4,8 @@ import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui_demos/src/utils/constants.dart';
 
 class BoxWithColorDemo extends StatelessWidget {
+  const BoxWithColorDemo({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -26,7 +28,7 @@ class BoxWithColorDemo extends StatelessWidget {
                   variant: variant,
                   color: color,
                   builder: (context, foregroundColor) {
-                    return Container(
+                    return SizedBox(
                       width: 80,
                       height: 80,
                       child: DefaultTextStyle(

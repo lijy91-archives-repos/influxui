@@ -9,8 +9,8 @@ void main() {
     testGolden(
       'menu',
       (_) => Container(
-        padding: EdgeInsets.all(40),
-        child: Menu(
+        padding: const EdgeInsets.all(40),
+        child: const Menu(
           items: [
             MenuItem(
               icon: md.Icons.wb_sunny_outlined,
@@ -31,7 +31,7 @@ void main() {
           ],
         ),
       ),
-      size: Size(300, 500),
+      size: const Size(300, 500),
     );
   });
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/widgets/divider/divider_style.dart';
 import 'package:rise_ui/src/widgets/divider/divider_theme.dart';
-import 'package:rise_ui/src/widgets/text/text_theme.dart';
 import 'package:rise_ui/src/widgets/theme/theme.dart';
 
 export 'package:rise_ui/src/widgets/divider/divider_theme.dart';
@@ -105,43 +104,40 @@ class Divider extends StatelessWidget {
       showLineOnRight = false;
     }
 
-    return Container(
-      child: Flex(
-        direction: direction,
-        children: [
-          if (showLineOnLeft)
-            Expanded(
-              child: Container(
-                height: 1,
-                child: CustomPaint(
-                  painter: painter,
-                ),
+    return Flex(
+      direction: direction,
+      children: [
+        if (showLineOnLeft)
+          Expanded(
+            child: SizedBox(
+              height: 1,
+              child: CustomPaint(
+                painter: painter,
               ),
             ),
-          if (showLabel)
-            Container(
-              margin: EdgeInsets.only(
-                left: labelPosition == DividerLabelPosition.left ? 0 : 10,
-                right: labelPosition == DividerLabelPosition.right ? 0 : 10,
-              ),
-              child: DefaultTextStyle(
-                style: textStyle,
-                child: labelBuilder != null
-                    ? labelBuilder!(context)
-                    : Text(label!),
+          ),
+        if (showLabel)
+          Container(
+            margin: EdgeInsets.only(
+              left: labelPosition == DividerLabelPosition.left ? 0 : 10,
+              right: labelPosition == DividerLabelPosition.right ? 0 : 10,
+            ),
+            child: DefaultTextStyle(
+              style: textStyle,
+              child:
+                  labelBuilder != null ? labelBuilder!(context) : Text(label!),
+            ),
+          ),
+        if (showLineOnRight)
+          Expanded(
+            child: SizedBox(
+              height: 1,
+              child: CustomPaint(
+                painter: painter,
               ),
             ),
-          if (showLineOnRight)
-            Expanded(
-              child: Container(
-                height: 1,
-                child: CustomPaint(
-                  painter: painter,
-                ),
-              ),
-            ),
-        ],
-      ),
+          ),
+      ],
     );
   }
 }
@@ -160,9 +156,11 @@ class _SolidLinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final path = Path()
-      ..addRect(direction == Axis.vertical
-          ? Rect.fromLTWH(0, 0, width, size.height)
-          : Rect.fromLTWH(0, 0, size.width, width));
+      ..addRect(
+        direction == Axis.vertical
+            ? Rect.fromLTWH(0, 0, width, size.height)
+            : Rect.fromLTWH(0, 0, size.width, width),
+      );
     canvas.drawPath(
       path,
       Paint()

@@ -35,7 +35,7 @@ class Notification extends StatelessWidget {
     final defaults = _NotificationDefaults(context);
 
     return Container(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         top: 20,
         left: 20,
         right: 20,
@@ -47,23 +47,23 @@ class Notification extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
             blurRadius: 3,
-            offset: Offset(0, 1),
+            offset: const Offset(0, 1),
           ),
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
             blurRadius: 28,
             spreadRadius: -7,
-            offset: Offset(0, 35),
+            offset: const Offset(0, 35),
           ),
           BoxShadow(
             color: Colors.black.withOpacity(0.04),
             blurRadius: 15,
             spreadRadius: -7,
-            offset: Offset(0, 15),
+            offset: const Offset(0, 15),
           ),
         ],
         border: Border.all(
-          color: Color(0xffe9ecef),
+          color: const Color(0xffe9ecef),
           width: 1.0,
         ),
       ),

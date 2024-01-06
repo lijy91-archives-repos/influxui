@@ -11,7 +11,9 @@ mixin _$BadgeMeta on Meta {
   String get title => 'Widgets/Badge';
 
   @override
-  List<ArgType> get argTypes => [ArgType('label', defaultValue: null)];
+  List<ArgType> get argTypes {
+    return [const ArgType('label', defaultValue: null)];
+  }
 }
 
 // **************************************************************************

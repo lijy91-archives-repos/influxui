@@ -144,10 +144,16 @@ class _BoxState extends State<Box> with SingleTickerProviderStateMixin {
     }
     final bool wasHeldDown = _isPressed;
     final TickerFuture ticker = _isPressed
-        ? _animationController.animateTo(1.0,
-            duration: kFadeOutDuration, curve: Curves.easeInOutCubicEmphasized)
-        : _animationController.animateTo(0.0,
-            duration: kFadeInDuration, curve: Curves.easeOutCubic);
+        ? _animationController.animateTo(
+            1.0,
+            duration: kFadeOutDuration,
+            curve: Curves.easeInOutCubicEmphasized,
+          )
+        : _animationController.animateTo(
+            0.0,
+            duration: kFadeInDuration,
+            curve: Curves.easeOutCubic,
+          );
     ticker.then<void>((void value) {
       if (mounted && wasHeldDown != _isPressed) {
         _animate();
@@ -174,7 +180,7 @@ class _BoxState extends State<Box> with SingleTickerProviderStateMixin {
     final BoxThemeData? themeData = BoxTheme.of(context);
     final BoxThemeData defaults = _BoxDefaults(context);
 
-    BoxStyle mergedStyle = widget.style ?? BoxStyle();
+    BoxStyle mergedStyle = widget.style ?? const BoxStyle();
     switch (widget.variant) {
       case BoxVariant.filled:
         mergedStyle = mergedStyle // merge filled style
@@ -273,7 +279,7 @@ class _BoxDefaults extends BoxThemeData {
 
   @override
   BoxStyle? get filledStyle {
-    return BoxStyle(
+    return const BoxStyle(
       color: BoxStateColor(
         colorShade: 600,
         hoveredColorShade: 700,
@@ -288,7 +294,7 @@ class _BoxDefaults extends BoxThemeData {
   @override
   BoxStyle? get lightStyle {
     if (_isDark) {
-      return BoxStyle(
+      return const BoxStyle(
         color: BoxStateColor(
           colorOpacity: 0.15,
           hoveredColorOpacity: 0.2,
@@ -297,7 +303,7 @@ class _BoxDefaults extends BoxThemeData {
         foregroundColor: BoxStateColor(),
       );
     }
-    return BoxStyle(
+    return const BoxStyle(
       color: BoxStateColor(
         colorShade: 50,
         hoveredColorShade: 100,
@@ -310,7 +316,7 @@ class _BoxDefaults extends BoxThemeData {
   @override
   BoxStyle? get outlineStyle {
     if (_isDark) {
-      return BoxStyle(
+      return const BoxStyle(
         color: BoxStateColor(
           colorShade: -1,
           hoveredColorOpacity: 0.2,
@@ -322,7 +328,7 @@ class _BoxDefaults extends BoxThemeData {
         ),
       );
     }
-    return BoxStyle(
+    return const BoxStyle(
       color: BoxStateColor(
         colorShade: -1,
         hoveredColorShade: 50,
@@ -338,7 +344,7 @@ class _BoxDefaults extends BoxThemeData {
   @override
   BoxStyle? get subtleStyle {
     if (_isDark) {
-      return BoxStyle(
+      return const BoxStyle(
         color: BoxStateColor(
           colorShade: -1,
           hoveredColorOpacity: 0.2,
@@ -347,7 +353,7 @@ class _BoxDefaults extends BoxThemeData {
         foregroundColor: BoxStateColor(),
       );
     }
-    return BoxStyle(
+    return const BoxStyle(
       color: BoxStateColor(
         colorShade: -1,
         hoveredColorShade: 50,
@@ -359,7 +365,7 @@ class _BoxDefaults extends BoxThemeData {
 
   @override
   BoxStyle? get transparentStyle {
-    return BoxStyle(
+    return const BoxStyle(
       color: BoxStateColor(
         color: Colors.transparent,
       ),
@@ -369,7 +375,7 @@ class _BoxDefaults extends BoxThemeData {
 
   @override
   BoxStyle? get whiteStyle {
-    return BoxStyle(
+    return const BoxStyle(
       color: BoxStateColor(
         color: Colors.white,
         hoveredColorShade: 100,

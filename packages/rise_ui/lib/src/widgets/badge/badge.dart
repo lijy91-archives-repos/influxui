@@ -62,7 +62,7 @@ class Badge extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.zero,
-      constraints: BoxConstraints(),
+      constraints: const BoxConstraints(),
       child: Align(
         alignment: Alignment.center,
         widthFactor: 1.0,

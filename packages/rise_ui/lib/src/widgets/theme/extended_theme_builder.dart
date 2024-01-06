@@ -6,10 +6,10 @@ class BuildedTheme {}
 @immutable
 class ExtendedThemeBuilder extends StatelessWidget {
   ExtendedThemeBuilder({
-    Key? key,
+    super.key,
     IconLibrary? iconLibrary,
     required this.builder,
-  }) : super(key: key) {
+  }) {
     Icons.iconLibrary = iconLibrary;
   }
 

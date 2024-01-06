@@ -11,7 +11,9 @@ mixin _$AlertMeta on Meta {
   String get title => 'Widgets/Alert';
 
   @override
-  List<ArgType> get argTypes => [ArgType('title', defaultValue: null)];
+  List<ArgType> get argTypes {
+    return [const ArgType('title', defaultValue: null)];
+  }
 }
 
 // **************************************************************************

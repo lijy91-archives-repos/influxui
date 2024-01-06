@@ -8,7 +8,7 @@ void main() {
   group('kdb-goldens', () {
     testGolden(
       'kdb-light',
-      (_) => Row(
+      (_) => const Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Kbd('shift'),
@@ -22,7 +22,7 @@ void main() {
     );
     testGolden(
       'kdb-light-sizes',
-      (_) => Row(
+      (_) => const Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -33,11 +33,11 @@ void main() {
           Kbd('shift', size: NamedSize.big),
         ],
       ),
-      size: Size(320, 60),
+      size: const Size(320, 60),
     );
     testGolden(
       'kdb-dark',
-      (_) => ExtendedTheme(
+      (_) => const ExtendedTheme(
         data: ExtendedThemeData(brightness: Brightness.dark),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -54,7 +54,7 @@ void main() {
     );
     testGolden(
       'kdb-dark-sizes',
-      (_) => ExtendedTheme(
+      (_) => const ExtendedTheme(
         data: ExtendedThemeData(brightness: Brightness.dark),
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -68,7 +68,7 @@ void main() {
           ],
         ),
       ),
-      size: Size(320, 60),
+      size: const Size(320, 60),
     );
   });
 }

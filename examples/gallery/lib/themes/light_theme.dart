@@ -5,7 +5,7 @@ import 'package:rise_ui/rise_ui.dart';
 
 final lightThemeData = md.ThemeData.light().copyWith(
   extensions: [
-    ExtendedThemeData(
+    const ExtendedThemeData(
       brightness: Brightness.light,
       primaryColor: ExtendedColors.blue,
     ),

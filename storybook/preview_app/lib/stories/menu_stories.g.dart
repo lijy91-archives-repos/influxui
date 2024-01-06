@@ -11,7 +11,9 @@ mixin _$MenuMeta on Meta {
   String get title => 'Widgets/Menu';
 
   @override
-  List<ArgType> get argTypes => [];
+  List<ArgType> get argTypes {
+    return [];
+  }
 }
 
 // **************************************************************************

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
 import 'package:recase/recase.dart';
@@ -51,6 +53,8 @@ Future<void> main(List<String> args) async {
   File dartFile = File('lib/src/tabler_icons.dart');
   if (dartFile.existsSync()) dartFile.deleteSync();
   await dartFile.writeAsString('''
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/widgets.dart';
 
 class TablerIcons {

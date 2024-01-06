@@ -6,7 +6,7 @@ void main() {
   group('alert-goldens', () {
     testGolden(
       'alert',
-      (_) => Alert(
+      (_) => const Alert(
         title: 'title',
         message: 'message',
       ),

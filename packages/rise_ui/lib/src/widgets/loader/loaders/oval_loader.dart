@@ -4,10 +4,10 @@ import 'package:flutter/widgets.dart';
 
 class OvalLoader extends StatefulWidget {
   const OvalLoader({
-    Key? key,
+    super.key,
     required this.size,
     required this.color,
-  }) : super(key: key);
+  });
 
   final double size;
   final Color color;

@@ -11,7 +11,7 @@ final routerConfig = GoRouter(
       pageBuilder: (context, state) {
         return FadeTransitionPage(
           key: state.pageKey,
-          child: BootstrapPage(),
+          child: const BootstrapPage(),
         );
       },
     ),
@@ -55,8 +55,8 @@ class FadeTransitionPage extends CustomTransitionPage<void> {
             opacity: animation.drive(_curveTween),
             child: child,
           ),
-          transitionDuration: Duration(milliseconds: 100),
-          reverseTransitionDuration: Duration(milliseconds: 100),
+          transitionDuration: const Duration(milliseconds: 100),
+          reverseTransitionDuration: const Duration(milliseconds: 100),
         );
 
   static final CurveTween _curveTween = CurveTween(curve: Curves.easeIn);

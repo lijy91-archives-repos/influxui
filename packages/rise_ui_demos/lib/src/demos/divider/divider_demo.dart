@@ -2,11 +2,11 @@ import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
 
 class DividerDemo extends StatelessWidget {
-  const DividerDemo({Key? key}) : super(key: key);
+  const DividerDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
       width: 500,
       child: Column(
         mainAxisSize: MainAxisSize.min,

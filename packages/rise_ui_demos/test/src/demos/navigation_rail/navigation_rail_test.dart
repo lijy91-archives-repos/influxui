@@ -6,7 +6,7 @@ void main() {
   group('navigation_rail-goldens', () {
     testGolden(
       'navigation_rail_demo',
-      (_) => NavigationRailDemo(),
+      (_) => const NavigationRailDemo(),
     );
   });
 }

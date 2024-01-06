@@ -14,6 +14,8 @@ class Breadcrumb extends StatelessWidget {
 }
 
 class BreadcrumbItem extends StatelessWidget {
+  const BreadcrumbItem({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container();

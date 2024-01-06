@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
           final demoKey = kKnownDemos.keys.toList()[index];
           return GestureDetector(
             child: Container(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 left: 16,
                 right: 16,
                 top: 10,
@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
           );
         },
         separatorBuilder: (_, index) {
-          return Divider();
+          return const Divider();
         },
         itemCount: kKnownDemos.length,
       ),

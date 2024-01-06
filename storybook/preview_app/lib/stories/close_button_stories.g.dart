@@ -11,7 +11,9 @@ mixin _$CloseButtonMeta on Meta {
   String get title => 'Widgets/CloseButton';
 
   @override
-  List<ArgType> get argTypes => [];
+  List<ArgType> get argTypes {
+    return [];
+  }
 }
 
 // **************************************************************************

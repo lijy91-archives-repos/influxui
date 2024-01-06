@@ -6,28 +6,28 @@ void main() {
   group('checkbox-goldens', () {
     testGolden(
       'checkbox',
-      (_) => Checkbox(
+      (_) => const Checkbox(
         value: true,
         label: 'Checkbox',
       ),
     );
     testGolden(
       'checkbox-value-true',
-      (_) => Checkbox(
+      (_) => const Checkbox(
         value: false,
         label: 'Checkbox',
       ),
     );
     testGolden(
       'checkbox-value-false',
-      (_) => Checkbox(
+      (_) => const Checkbox(
         value: false,
         label: 'Checkbox',
       ),
     );
     testGolden(
       'checkbox-value-null',
-      (_) => Checkbox(
+      (_) => const Checkbox(
         value: null,
         tristate: true,
         label: 'Checkbox',

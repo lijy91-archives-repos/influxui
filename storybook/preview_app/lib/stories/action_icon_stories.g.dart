@@ -11,7 +11,9 @@ mixin _$ActionIconMeta on Meta {
   String get title => 'Widgets/ActionIcon';
 
   @override
-  List<ArgType> get argTypes => [ArgType('icon', defaultValue: null)];
+  List<ArgType> get argTypes {
+    return [const ArgType('icon', defaultValue: null)];
+  }
 }
 
 // **************************************************************************

@@ -31,18 +31,18 @@ void main() {
   group('action-icon-demos', () {
     testGolden(
       'action_icon_demo',
-      (_) => ActionIconDemo(),
-      size: Size(60, 60),
+      (_) => const ActionIconDemo(),
+      size: const Size(60, 60),
     );
     testGolden(
       'action_icon_with_color_demo',
-      (_) => ActionIconWithColorDemo(),
-      size: Size(520, 200),
+      (_) => const ActionIconWithColorDemo(),
+      size: const Size(520, 200),
     );
     testGolden(
       'action_icon_with_variant_demo',
-      (_) => ActionIconWithVariantDemo(),
-      size: Size(200, 60),
+      (_) => const ActionIconWithVariantDemo(),
+      size: const Size(200, 60),
     );
   });
 }

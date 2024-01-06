@@ -3,7 +3,7 @@ import 'package:rise_ui/rise_ui.dart';
 import 'package:tabler_icon_library/tabler_icon_library.dart';
 
 class NavigationRailDemo extends StatefulWidget {
-  const NavigationRailDemo({Key? key}) : super(key: key);
+  const NavigationRailDemo({super.key});
 
   @override
   State<NavigationRailDemo> createState() => _NavigationRailDemoState();
@@ -18,7 +18,7 @@ class _NavigationRailDemoState extends State<NavigationRailDemo> {
       width: 300,
       padding: const EdgeInsets.all(40),
       child: NavigationRail(
-        destinations: [
+        destinations: const [
           NavigationRailDestination(
             value: 'settings',
             icon: TablerIcons.settings,

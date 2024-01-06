@@ -11,7 +11,9 @@ mixin _$KbdMeta on Meta {
   String get title => 'Widgets/Kbd';
 
   @override
-  List<ArgType> get argTypes => [ArgType('icon', defaultValue: null)];
+  List<ArgType> get argTypes {
+    return [const ArgType('icon', defaultValue: null)];
+  }
 }
 
 // **************************************************************************

@@ -35,7 +35,7 @@ class _RootLayoutState extends State<RootLayout> {
           final demoKey = kKnownDemos.keys.toList()[index];
           return GestureDetector(
             child: Container(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 left: 16,
                 right: 16,
                 top: 10,
@@ -50,7 +50,7 @@ class _RootLayoutState extends State<RootLayout> {
           );
         },
         separatorBuilder: (_, index) {
-          return Divider();
+          return const Divider();
         },
         itemCount: kKnownDemos.length,
       ),
@@ -74,7 +74,7 @@ class _RootLayoutState extends State<RootLayout> {
             Breakpoints.smallAndUp: SlotLayout.from(
               key: const Key('body-medium-and-up'),
               builder: (_) => widget.child,
-            )
+            ),
           },
         ),
         internalAnimations: false,

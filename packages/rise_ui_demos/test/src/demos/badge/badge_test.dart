@@ -9,18 +9,18 @@ void main() {
   group('badge-goldens', () {
     testGolden(
       'badge_demo',
-      (_) => BadgeDemo(),
-      size: Size(100, 60),
+      (_) => const BadgeDemo(),
+      size: const Size(100, 60),
     );
     testGolden(
       'badge_with_color_demo',
-      (_) => BadgeWithColorDemo(),
-      size: Size(800, 200),
+      (_) => const BadgeWithColorDemo(),
+      size: const Size(800, 200),
     );
     testGolden(
       'badge_with_variant_demo',
-      (_) => BadgeWithVariantDemo(),
-      size: Size(800, 200),
+      (_) => const BadgeWithVariantDemo(),
+      size: const Size(800, 200),
     );
   });
 }

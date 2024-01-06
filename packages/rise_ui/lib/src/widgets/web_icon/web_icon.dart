@@ -314,7 +314,8 @@ class WebIcon extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(
-        IconDataProperty('icon', icon, ifNull: '<empty>', showName: false));
+      IconDataProperty('icon', icon, ifNull: '<empty>', showName: false),
+    );
     properties.add(DoubleProperty('size', size, defaultValue: null));
     properties.add(DoubleProperty('fill', fill, defaultValue: null));
     properties.add(DoubleProperty('weight', weight, defaultValue: null));
@@ -325,8 +326,14 @@ class WebIcon extends StatelessWidget {
     properties
         .add(IterableProperty<Shadow>('shadows', shadows, defaultValue: null));
     properties.add(
-        StringProperty('semanticLabel', semanticLabel, defaultValue: null));
-    properties.add(EnumProperty<TextDirection>('textDirection', textDirection,
-        defaultValue: null));
+      StringProperty('semanticLabel', semanticLabel, defaultValue: null),
+    );
+    properties.add(
+      EnumProperty<TextDirection>(
+        'textDirection',
+        textDirection,
+        defaultValue: null,
+      ),
+    );
   }
 }

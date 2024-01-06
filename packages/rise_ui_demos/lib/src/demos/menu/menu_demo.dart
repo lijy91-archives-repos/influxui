@@ -3,7 +3,7 @@ import 'package:rise_ui/rise_ui.dart';
 import 'package:tabler_icon_library/tabler_icon_library.dart';
 
 class MenuDemo extends StatelessWidget {
-  const MenuDemo({Key? key}) : super(key: key);
+  const MenuDemo({super.key});
 
   @override
   Widget build(BuildContext context) {

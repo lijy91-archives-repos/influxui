@@ -11,7 +11,9 @@ mixin _$AvatarMeta on Meta {
   String get title => 'Widgets/Avatar';
 
   @override
-  List<ArgType> get argTypes => [];
+  List<ArgType> get argTypes {
+    return [];
+  }
 }
 
 // **************************************************************************

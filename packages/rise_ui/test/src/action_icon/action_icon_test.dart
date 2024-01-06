@@ -53,7 +53,7 @@ class _TestWidget extends StatelessWidget {
 
   @override
   Widget build(md.BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 300,
       height: 200,
       child: Center(
@@ -65,7 +65,7 @@ class _TestWidget extends StatelessWidget {
               variant: variant,
               onPressed: () {},
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Wrap(
               spacing: 10,
               runSpacing: 10,
@@ -79,8 +79,8 @@ class _TestWidget extends StatelessWidget {
                   ),
               ],
             ),
-            SizedBox(height: 20),
-            Container(
+            const SizedBox(height: 20),
+            SizedBox(
               width: 240,
               child: Wrap(
                 spacing: 10,
@@ -109,38 +109,38 @@ void main() {
     // Variants
     testGolden(
       'action-icon-variant-transparent',
-      (_) => _TestWidget(
+      (_) => const _TestWidget(
         variant: ActionIconVariant.transparent,
       ),
-      size: Size(300, 200),
+      size: const Size(300, 200),
     );
     testGolden(
       'action-icon-variant-subtle',
-      (_) => _TestWidget(
+      (_) => const _TestWidget(
         variant: ActionIconVariant.subtle,
       ),
-      size: Size(300, 200),
+      size: const Size(300, 200),
     );
     testGolden(
       'action-icon-variant-light',
-      (_) => _TestWidget(
+      (_) => const _TestWidget(
         variant: ActionIconVariant.light,
       ),
-      size: Size(300, 200),
+      size: const Size(300, 200),
     );
     testGolden(
       'action-icon-variant-filled',
-      (_) => _TestWidget(
+      (_) => const _TestWidget(
         variant: ActionIconVariant.filled,
       ),
-      size: Size(300, 200),
+      size: const Size(300, 200),
     );
     testGolden(
       'action-icon-variant-outline',
-      (_) => _TestWidget(
+      (_) => const _TestWidget(
         variant: ActionIconVariant.outline,
       ),
-      size: Size(300, 200),
+      size: const Size(300, 200),
     );
   });
 }

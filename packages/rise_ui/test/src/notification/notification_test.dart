@@ -8,7 +8,7 @@ void main() {
   group('badge-goldens', () {
     testGolden(
       'notification-light',
-      (_) => Column(
+      (_) => const Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Notification(
@@ -29,12 +29,12 @@ void main() {
           ),
         ],
       ),
-      backgroundColor: Color(0xfff8f9fa),
-      size: Size(620, 480),
+      backgroundColor: const Color(0xfff8f9fa),
+      size: const Size(620, 480),
     );
     testGolden(
       'notification-dark',
-      (_) => ExtendedTheme(
+      (_) => const ExtendedTheme(
         data: ExtendedThemeData(
           brightness: Brightness.dark,
         ),
@@ -60,7 +60,7 @@ void main() {
           ],
         ),
       ),
-      size: Size(620, 480),
+      size: const Size(620, 480),
     );
   });
 }

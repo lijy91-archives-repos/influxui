@@ -25,21 +25,21 @@ const kDarkNavigationRailThemeDefaults = NavigationRailThemeData(
 );
 
 final kLightNavigationRailThemeDefaults = NavigationRailThemeData(
-  unselectedIconTheme: IconThemeData(
+  unselectedIconTheme: const IconThemeData(
     color: ExtendedColors.black,
     size: 16,
   ),
-  unselectedLabelStyle: TextStyle(
+  unselectedLabelStyle: const TextStyle(
     color: ExtendedColors.black,
     fontSize: 14,
     fontWeight: FontWeight.w500,
   ),
-  selectedLabelStyle: TextStyle(
+  selectedLabelStyle: const TextStyle(
     color: ExtendedColors.black,
     fontSize: 14,
     fontWeight: FontWeight.w500,
   ),
-  selectedIconTheme: IconThemeData(
+  selectedIconTheme: const IconThemeData(
     color: ExtendedColors.black,
     size: 16,
   ),

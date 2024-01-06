@@ -155,8 +155,10 @@ class TextThemeData with Diagnosticable {
     this._navActionTextStyle,
     this._pickerTextStyle,
     this._dateTimePickerTextStyle,
-  ) : assert((_navActionTextStyle != null && _actionTextStyle != null) ||
-            _primaryColor != null);
+  ) : assert(
+          (_navActionTextStyle != null && _actionTextStyle != null) ||
+              _primaryColor != null,
+        );
 
   final _TextThemeDefaultsBuilder _defaults;
   final Color? _primaryColor;
@@ -273,29 +275,62 @@ class TextThemeData with Diagnosticable {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     final TextThemeData defaultData = TextThemeData();
-    properties.add(DiagnosticsProperty<TextStyle>('textStyle', textStyle,
-        defaultValue: defaultData.textStyle));
-    properties.add(DiagnosticsProperty<TextStyle>(
-        'actionTextStyle', actionTextStyle,
-        defaultValue: defaultData.actionTextStyle));
-    properties.add(DiagnosticsProperty<TextStyle>(
-        'tabLabelTextStyle', tabLabelTextStyle,
-        defaultValue: defaultData.tabLabelTextStyle));
-    properties.add(DiagnosticsProperty<TextStyle>(
-        'navTitleTextStyle', navTitleTextStyle,
-        defaultValue: defaultData.navTitleTextStyle));
-    properties.add(DiagnosticsProperty<TextStyle>(
-        'navLargeTitleTextStyle', navLargeTitleTextStyle,
-        defaultValue: defaultData.navLargeTitleTextStyle));
-    properties.add(DiagnosticsProperty<TextStyle>(
-        'navActionTextStyle', navActionTextStyle,
-        defaultValue: defaultData.navActionTextStyle));
-    properties.add(DiagnosticsProperty<TextStyle>(
-        'pickerTextStyle', pickerTextStyle,
-        defaultValue: defaultData.pickerTextStyle));
-    properties.add(DiagnosticsProperty<TextStyle>(
-        'dateTimePickerTextStyle', dateTimePickerTextStyle,
-        defaultValue: defaultData.dateTimePickerTextStyle));
+    properties.add(
+      DiagnosticsProperty<TextStyle>(
+        'textStyle',
+        textStyle,
+        defaultValue: defaultData.textStyle,
+      ),
+    );
+    properties.add(
+      DiagnosticsProperty<TextStyle>(
+        'actionTextStyle',
+        actionTextStyle,
+        defaultValue: defaultData.actionTextStyle,
+      ),
+    );
+    properties.add(
+      DiagnosticsProperty<TextStyle>(
+        'tabLabelTextStyle',
+        tabLabelTextStyle,
+        defaultValue: defaultData.tabLabelTextStyle,
+      ),
+    );
+    properties.add(
+      DiagnosticsProperty<TextStyle>(
+        'navTitleTextStyle',
+        navTitleTextStyle,
+        defaultValue: defaultData.navTitleTextStyle,
+      ),
+    );
+    properties.add(
+      DiagnosticsProperty<TextStyle>(
+        'navLargeTitleTextStyle',
+        navLargeTitleTextStyle,
+        defaultValue: defaultData.navLargeTitleTextStyle,
+      ),
+    );
+    properties.add(
+      DiagnosticsProperty<TextStyle>(
+        'navActionTextStyle',
+        navActionTextStyle,
+        defaultValue: defaultData.navActionTextStyle,
+      ),
+    );
+    properties.add(
+      DiagnosticsProperty<TextStyle>(
+        'pickerTextStyle',
+        pickerTextStyle,
+        defaultValue: defaultData.pickerTextStyle,
+      ),
+    );
+    properties.add(
+      DiagnosticsProperty<TextStyle>(
+        'dateTimePickerTextStyle',
+        dateTimePickerTextStyle,
+        defaultValue: defaultData.dateTimePickerTextStyle,
+      ),
+    );
   }
 }
 

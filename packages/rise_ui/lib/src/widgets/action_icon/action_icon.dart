@@ -66,7 +66,7 @@ class _ActionIconState extends State<ActionIcon> {
     ActionIconStyle mergedStyle = widget.style ??
         themeData?.mediumStyle ??
         defaults.mediumStyle ??
-        ActionIconStyle();
+        const ActionIconStyle();
 
     if (widget.size is NamedSize) {
       switch (widget.size) {
@@ -150,14 +150,14 @@ class _ActionIconDefaults extends ActionIconThemeData {
   final BuildContext context;
 
   @override
-  get borderRadius => BorderRadius.all(Radius.circular(4));
+  get borderRadius => const BorderRadius.all(Radius.circular(4));
 
   @override
   get pressedOpacity => 0.8;
 
   @override
   get tinyStyle {
-    return ActionIconStyle(
+    return const ActionIconStyle(
       size: Size(18, 18),
       iconSize: 12,
     );
@@ -165,7 +165,7 @@ class _ActionIconDefaults extends ActionIconThemeData {
 
   @override
   get smallStyle {
-    return ActionIconStyle(
+    return const ActionIconStyle(
       size: Size(22, 22),
       iconSize: 16,
     );
@@ -173,7 +173,7 @@ class _ActionIconDefaults extends ActionIconThemeData {
 
   @override
   get mediumStyle {
-    return ActionIconStyle(
+    return const ActionIconStyle(
       size: Size(28, 28),
       iconSize: 20,
     );
@@ -181,7 +181,7 @@ class _ActionIconDefaults extends ActionIconThemeData {
 
   @override
   get largeStyle {
-    return ActionIconStyle(
+    return const ActionIconStyle(
       size: Size(34, 34),
       iconSize: 24,
     );
@@ -189,7 +189,7 @@ class _ActionIconDefaults extends ActionIconThemeData {
 
   @override
   get bigStyle {
-    return ActionIconStyle(
+    return const ActionIconStyle(
       size: Size(44, 44),
       iconSize: 32,
     );

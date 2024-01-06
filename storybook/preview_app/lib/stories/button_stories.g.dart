@@ -11,7 +11,9 @@ mixin _$ButtonMeta on Meta {
   String get title => 'Widgets/Button';
 
   @override
-  List<ArgType> get argTypes => [ArgType('label', defaultValue: null)];
+  List<ArgType> get argTypes {
+    return [const ArgType('label', defaultValue: null)];
+  }
 }
 
 // **************************************************************************

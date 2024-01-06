@@ -12,7 +12,7 @@ part 'avatar_stories.g.dart';
 class AvatarMeta extends Meta with _$AvatarMeta {
   @override
   Widget buildWidget(BuildContext context, List<Arg> args) {
-    return Avatar();
+    return const Avatar();
   }
 }
 

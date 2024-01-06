@@ -11,7 +11,9 @@ mixin _$BoxMeta on Meta {
   String get title => 'Widgets/Box';
 
   @override
-  List<ArgType> get argTypes => [ArgType('variant', defaultValue: null)];
+  List<ArgType> get argTypes {
+    return [const ArgType('variant', defaultValue: null)];
+  }
 }
 
 // **************************************************************************

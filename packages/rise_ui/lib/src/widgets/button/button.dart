@@ -65,7 +65,7 @@ class _ButtonState extends State<Button> {
     ButtonStyle mergedStyle = widget.style ??
         themeData?.mediumStyle ??
         defaults.mediumStyle ??
-        ButtonStyle();
+        const ButtonStyle();
 
     if (widget.size is NamedSize) {
       switch (widget.size) {
@@ -120,7 +120,7 @@ class _ButtonState extends State<Button> {
             maxHeight: mergedStyle.maximumSize?.height ?? double.infinity,
           ),
           child: DefaultTextStyle(
-            style: (mergedStyle.labelStyle ?? TextStyle()).copyWith(
+            style: (mergedStyle.labelStyle ?? const TextStyle()).copyWith(
               color: foregroundColor,
             ),
             child: IconTheme(
@@ -150,14 +150,14 @@ class _ButtonDefaults extends ButtonThemeData {
   final BuildContext context;
 
   @override
-  BorderRadius? get borderRadius => BorderRadius.all(Radius.circular(4));
+  BorderRadius? get borderRadius => const BorderRadius.all(Radius.circular(4));
 
   @override
   double get pressedOpacity => 0.8;
 
   @override
   ButtonStyle? get tinyStyle {
-    return ButtonStyle(
+    return const ButtonStyle(
       padding: EdgeInsets.symmetric(horizontal: 6),
       minimumSize: Size.square(18),
       iconSize: 12,
@@ -170,7 +170,7 @@ class _ButtonDefaults extends ButtonThemeData {
 
   @override
   ButtonStyle? get smallStyle {
-    return ButtonStyle(
+    return const ButtonStyle(
       padding: EdgeInsets.symmetric(horizontal: 8),
       minimumSize: Size.square(22),
       iconSize: 16,
@@ -183,7 +183,7 @@ class _ButtonDefaults extends ButtonThemeData {
 
   @override
   ButtonStyle? get mediumStyle {
-    return ButtonStyle(
+    return const ButtonStyle(
       padding: EdgeInsets.symmetric(horizontal: 10),
       minimumSize: Size.square(28),
       iconSize: 20,
@@ -196,7 +196,7 @@ class _ButtonDefaults extends ButtonThemeData {
 
   @override
   ButtonStyle? get largeStyle {
-    return ButtonStyle(
+    return const ButtonStyle(
       padding: EdgeInsets.symmetric(horizontal: 12),
       minimumSize: Size.square(34),
       iconSize: 24,
@@ -209,7 +209,7 @@ class _ButtonDefaults extends ButtonThemeData {
 
   @override
   ButtonStyle? get bigStyle {
-    return ButtonStyle(
+    return const ButtonStyle(
       padding: EdgeInsets.symmetric(horizontal: 14),
       minimumSize: Size.square(44),
       iconSize: 32,

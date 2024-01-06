@@ -4,7 +4,7 @@ import 'package:rise_ui_demos/src/demos/box/box_with_color_demo.dart';
 import 'package:rise_ui_demos/src/demos/box/box_with_variant_demo.dart';
 
 Map<String, WidgetBuilder> knownBoxDemos = {
-  'box': (_) => BoxDemo(),
-  'box_with_color': (_) => BoxWithColorDemo(),
-  'box_with_variant': (_) => BoxWithVariantDemo(),
+  'box': (_) => const BoxDemo(),
+  'box_with_color': (_) => const BoxWithColorDemo(),
+  'box_with_variant': (_) => const BoxWithVariantDemo(),
 };

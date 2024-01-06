@@ -3,6 +3,6 @@ import 'package:rise_ui_demos/src/demos/kbd/kbd_demo.dart';
 import 'package:rise_ui_demos/src/demos/kbd/kbd_with_size_demo.dart';
 
 Map<String, WidgetBuilder> knownKbdDemos = {
-  'kbd': (_) => KbdDemo(),
-  'kbd_with_size': (_) => KbdWithSizeDemo(),
+  'kbd': (_) => const KbdDemo(),
+  'kbd_with_size': (_) => const KbdWithSizeDemo(),
 };

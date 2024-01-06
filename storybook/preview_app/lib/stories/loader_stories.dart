@@ -12,7 +12,7 @@ part 'loader_stories.g.dart';
 class LoaderMeta extends Meta with _$LoaderMeta {
   @override
   Widget buildWidget(BuildContext context, List<Arg> args) {
-    return Loader();
+    return const Loader();
   }
 }
 

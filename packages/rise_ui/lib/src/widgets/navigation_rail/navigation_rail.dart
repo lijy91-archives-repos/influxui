@@ -8,13 +8,13 @@ export 'navigation_rail_destination.dart';
 
 class NavigationRail extends StatelessWidget {
   const NavigationRail({
-    Key? key,
+    super.key,
     this.leading,
     this.trailing,
     required this.destinations,
     this.selectedValue,
     this.onDestinationSelected,
-  }) : super(key: key);
+  });
 
   final Widget? leading;
   final Widget? trailing;
@@ -26,34 +26,36 @@ class NavigationRail extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeData = NavigationRailTheme.of(context);
     return Padding(
-      padding: EdgeInsets.only(),
+      padding: const EdgeInsets.only(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (leading != null) leading!,
           for (var i = 0; i < destinations.length; i++)
-            Builder(builder: (_) {
-              final destination = destinations[i];
-              final bool selected = destination.value == selectedValue;
-              return _RailDestination(
-                icon: destination.icon,
-                iconBuilder: destination.iconBuilder != null
-                    ? (ctx) {
-                        return destination.iconBuilder!.call(ctx, selected);
-                      }
-                    : null,
-                iconTheme: selected
-                    ? themeData.selectedIconTheme
-                    : themeData.unselectedIconTheme,
-                label: destinations[i].label,
-                labelTextStyle: selected
-                    ? themeData.selectedLabelStyle
-                    : themeData.unselectedLabelStyle,
-                backgroundColor: selected ? themeData.indicatorColor : null,
-                shape: themeData.indicatorShape,
-                onTap: () => onDestinationSelected?.call(destination.value),
-              );
-            }),
+            Builder(
+              builder: (_) {
+                final destination = destinations[i];
+                final bool selected = destination.value == selectedValue;
+                return _RailDestination(
+                  icon: destination.icon,
+                  iconBuilder: destination.iconBuilder != null
+                      ? (ctx) {
+                          return destination.iconBuilder!.call(ctx, selected);
+                        }
+                      : null,
+                  iconTheme: selected
+                      ? themeData.selectedIconTheme
+                      : themeData.unselectedIconTheme,
+                  label: destinations[i].label,
+                  labelTextStyle: selected
+                      ? themeData.selectedLabelStyle
+                      : themeData.unselectedLabelStyle,
+                  backgroundColor: selected ? themeData.indicatorColor : null,
+                  shape: themeData.indicatorShape,
+                  onTap: () => onDestinationSelected?.call(destination.value),
+                );
+              },
+            ),
           if (trailing != null) trailing!,
         ],
       ),
@@ -90,7 +92,7 @@ class __RailDestinationState extends State<_RailDestination> {
   @override
   Widget build(BuildContext context) {
     ShapeBorder? shapeBorder = RoundedRectangleBorder(
-      side: BorderSide(color: Colors.transparent),
+      side: const BorderSide(color: Colors.transparent),
       borderRadius: BorderRadius.circular(4),
     );
     return MouseRegion(
@@ -111,29 +113,32 @@ class __RailDestinationState extends State<_RailDestination> {
               ),
               child: Container(
                 width: double.infinity,
-                padding: EdgeInsets.symmetric(),
+                padding: const EdgeInsets.symmetric(),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   widthFactor: 1.0,
                   heightFactor: 1.0,
                   child: DefaultTextStyle(
-                    style: widget.labelTextStyle ?? TextStyle(),
+                    style: widget.labelTextStyle ?? const TextStyle(),
                     child: Row(
                       children: [
                         if (widget.icon != null || widget.iconBuilder != null)
                           Container(
-                            padding: EdgeInsets.only(),
+                            padding: const EdgeInsets.only(),
                             child: IconTheme(
-                                data: widget.iconTheme ?? IconThemeData(),
-                                child: Builder(builder: (_) {
+                              data: widget.iconTheme ?? const IconThemeData(),
+                              child: Builder(
+                                builder: (_) {
                                   if (widget.iconBuilder != null) {
                                     return widget.iconBuilder!(context);
                                   }
                                   return WebIcon(widget.icon);
-                                })),
+                                },
+                              ),
+                            ),
                           ),
                         Expanded(
-                          child: Container(
+                          child: SizedBox(
                             child: Text(widget.label!),
                           ),
                         ),

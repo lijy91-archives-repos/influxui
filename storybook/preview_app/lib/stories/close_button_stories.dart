@@ -12,7 +12,7 @@ part 'close_button_stories.g.dart';
 class CloseButtonMeta extends Meta with _$CloseButtonMeta {
   @override
   Widget buildWidget(BuildContext context, List<Arg> args) {
-    return CloseButton();
+    return const CloseButton();
   }
 }
 

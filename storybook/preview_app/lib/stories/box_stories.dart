@@ -21,7 +21,7 @@ class BoxMeta extends Meta with _$BoxMeta {
     return Box(
       variant: BoxVariant.filled,
       builder: (context, foregroundColor) {
-        return Container(
+        return const SizedBox(
           width: 100,
           height: 100,
         );
@@ -53,7 +53,7 @@ class BoxWithVariantStory extends StoryObj<BoxMeta> with _$BoxWithVariantStory {
           Box(
             variant: variant,
             builder: (context, foregroundColor) {
-              return Container(
+              return SizedBox(
                 width: 100,
                 height: 100,
                 child: DefaultTextStyle(

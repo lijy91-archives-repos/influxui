@@ -12,7 +12,7 @@ part 'menu_stories.g.dart';
 class MenuMeta extends Meta with _$MenuMeta {
   @override
   Widget buildWidget(BuildContext context, List<Arg> args) {
-    return Menu(
+    return const Menu(
       items: [],
     );
   }

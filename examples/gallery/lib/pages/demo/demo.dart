@@ -4,9 +4,9 @@ import 'package:rise_ui_demos/rise_ui_demos.dart';
 
 class DemoPage extends md.StatefulWidget {
   const DemoPage({
-    Key? key,
+    super.key,
     required this.demoId,
-  }) : super(key: key);
+  });
 
   final String demoId;
 

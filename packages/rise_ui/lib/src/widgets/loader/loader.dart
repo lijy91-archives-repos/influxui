@@ -69,13 +69,17 @@ class _LoaderDefaults extends LoaderThemeData {
   final BuildContext context;
 
   @override
-  Size? get tinySize => Size.square(18);
+  Size? get tinySize => const Size.square(18);
+
   @override
-  Size? get smallSize => Size.square(22);
+  Size? get smallSize => const Size.square(22);
+
   @override
-  Size? get mediumSize => Size.square(36);
+  Size? get mediumSize => const Size.square(36);
+
   @override
-  Size? get largeSize => Size.square(44);
+  Size? get largeSize => const Size.square(44);
+
   @override
-  Size? get bigSize => Size.square(58);
+  Size? get bigSize => const Size.square(58);
 }

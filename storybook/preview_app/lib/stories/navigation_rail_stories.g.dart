@@ -11,7 +11,9 @@ mixin _$NavigationRailMeta on Meta {
   String get title => 'Widgets/NavigationRail';
 
   @override
-  List<ArgType> get argTypes => [];
+  List<ArgType> get argTypes {
+    return [];
+  }
 }
 
 // **************************************************************************

@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/widgets.dart';
 
 class TablerIcons {
@@ -4053,6 +4055,12 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData brand_apple_filled = IconData(
+    0xfd74,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData brand_apple_podcast = IconData(
     0xf1e6,
     fontFamily: iconFont,
@@ -4169,6 +4177,12 @@ class TablerIcons {
 
   static const IconData brand_blogger = IconData(
     0xf35a,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData brand_bluesky = IconData(
+    0xfd75,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );
@@ -4965,6 +4979,12 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData brand_livewire = IconData(
+    0xfd76,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData brand_loom = IconData(
     0xef70,
     fontFamily: iconFont,
@@ -5295,6 +5315,12 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData brand_pnpm = IconData(
+    0xfd77,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData brand_pocket = IconData(
     0xed00,
     fontFamily: iconFont,
@@ -5543,6 +5569,12 @@ class TablerIcons {
 
   static const IconData brand_steam = IconData(
     0xed6f,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData brand_stocktwits = IconData(
+    0xfd78,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );
@@ -6017,6 +6049,12 @@ class TablerIcons {
 
   static const IconData brand_yandex = IconData(
     0xfae1,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData brand_yarn = IconData(
+    0xfd79,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );
@@ -8169,6 +8207,12 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData circle_dashed_percentage = IconData(
+    0xfd7a,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData circle_dashed_x = IconData(
     0xfc75,
     fontFamily: iconFont,
@@ -8459,6 +8503,12 @@ class TablerIcons {
 
   static const IconData circle_off = IconData(
     0xee40,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData circle_percentage = IconData(
+    0xfd7b,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );
@@ -19599,6 +19649,18 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData meter_cube = IconData(
+    0xfd7c,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData meter_square = IconData(
+    0xfd7d,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData metronome = IconData(
     0xfd25,
     fontFamily: iconFont,
@@ -21273,6 +21335,12 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData paywall = IconData(
+    0xfd7e,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData pdf = IconData(
     0xf7ac,
     fontFamily: iconFont,
@@ -21923,6 +21991,18 @@ class TablerIcons {
 
   static const IconData pilcrow = IconData(
     0xf5f6,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData pilcrow_left = IconData(
+    0xfd7f,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData pilcrow_right = IconData(
+    0xfd80,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );
@@ -22689,6 +22769,12 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData protocol = IconData(
+    0xfd81,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData pumpkin_scary = IconData(
     0xf587,
     fontFamily: iconFont,
@@ -22943,6 +23029,12 @@ class TablerIcons {
 
   static const IconData receipt_refund = IconData(
     0xedfc,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData receipt_rupee = IconData(
+    0xfd82,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );
@@ -25833,6 +25925,12 @@ class TablerIcons {
     fontPackage: iconFontPackage,
   );
 
+  static const IconData square_percentage = IconData(
+    0xfd83,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
   static const IconData square_plus = IconData(
     0xeb2a,
     fontFamily: iconFont,
@@ -26345,6 +26443,12 @@ class TablerIcons {
 
   static const IconData square_rounded_number_9_filled = IconData(
     0xf781,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData square_rounded_percentage = IconData(
+    0xfd84,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );
@@ -27683,6 +27787,12 @@ class TablerIcons {
 
   static const IconData transaction_pound = IconData(
     0xfd71,
+    fontFamily: iconFont,
+    fontPackage: iconFontPackage,
+  );
+
+  static const IconData transaction_rupee = IconData(
+    0xfd85,
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );

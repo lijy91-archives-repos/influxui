@@ -11,16 +11,16 @@ dependencies:
   flutter:
     sdk: flutter
   rise_ui: ^0.1.0
-  storybook_dart: ^0.1.0
-  storybook_dart_annotation: ^0.1.0
+  storybook_dart: ^0.1.1
+  storybook_dart_annotation: ^0.1.1
   tabler_icon_library: ^0.1.0
 
 dev_dependencies:
   build_runner: ^2.3.3
-  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-  storybook_dart_generator: ^0.1.0
+  mostly_reasonable_lints: ^0.1.1
+  storybook_dart_generator: ^0.1.1
 
 dependency_overrides:
   storybook_dart:

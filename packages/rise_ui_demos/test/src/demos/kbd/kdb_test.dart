@@ -8,12 +8,12 @@ void main() {
   group('kdb-goldens', () {
     testGolden(
       'kdb_demo',
-      (_) => KbdDemo(),
+      (_) => const KbdDemo(),
     );
     testGolden(
       'kdb_with_size_demo',
-      (_) => KbdWithSizeDemo(),
-      size: Size(320, 60),
+      (_) => const KbdWithSizeDemo(),
+      size: const Size(320, 60),
     );
   });
 }

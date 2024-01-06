@@ -19,7 +19,7 @@ part 'kbd_stories.g.dart';
 class KbdMeta extends Meta with _$KbdMeta {
   @override
   Widget buildWidget(BuildContext context, List<Arg> args) {
-    return Kbd('Shift');
+    return const Kbd('Shift');
   }
 }
 
@@ -27,7 +27,7 @@ class KbdMeta extends Meta with _$KbdMeta {
 class KbdDefaultStory extends StoryObj<KbdMeta> with _$KbdDefaultStory {
   @override
   Widget build(BuildContext context, List<Arg> args) {
-    return SizedBox(
+    return const SizedBox(
       width: 100,
       height: 100,
       child: Center(

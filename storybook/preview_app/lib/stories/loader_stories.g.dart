@@ -11,7 +11,9 @@ mixin _$LoaderMeta on Meta {
   String get title => 'Widgets/Loader';
 
   @override
-  List<ArgType> get argTypes => [];
+  List<ArgType> get argTypes {
+    return [];
+  }
 }
 
 // **************************************************************************
