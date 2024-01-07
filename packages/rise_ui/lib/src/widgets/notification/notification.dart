@@ -34,6 +34,8 @@ class Notification extends StatelessWidget {
     final themeData = NotificationTheme.of(context);
     final defaults = _NotificationDefaults(context);
 
+    final borderRadius = themeData.borderRadius ?? defaults.borderRadius;
+
     return Container(
       padding: const EdgeInsets.only(
         top: 20,
@@ -42,7 +44,7 @@ class Notification extends StatelessWidget {
         bottom: 20,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: borderRadius,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
@@ -98,6 +100,6 @@ class _NotificationDefaults extends NotificationThemeData {
 
   final BuildContext context;
 
-  late final ThemeData _theme = Theme.of(context);
-  late final bool _isDark = _theme.brightness == Brightness.dark;
+  @override
+  get borderRadius => const BorderRadius.all(Radius.circular(4));
 }

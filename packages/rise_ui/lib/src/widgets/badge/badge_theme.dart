@@ -3,7 +3,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' show Theme, ThemeExtension;
 import 'package:flutter/widgets.dart';
-import 'package:rise_ui/src/widgets/action_icon/action_icon_style.dart';
+import 'package:rise_ui/src/widgets/badge/badge_style.dart';
 import 'package:theme_tailor_annotation/theme_tailor_annotation.dart';
 
 part 'badge_theme.tailor.dart';
@@ -14,22 +14,22 @@ class BadgeThemeData extends ThemeExtension<BadgeThemeData>
   const BadgeThemeData({
     this.borderRadius,
     this.pressedOpacity = 0.8,
-    required this.tinyStyle,
-    required this.smallStyle,
-    required this.mediumStyle,
-    required this.largeStyle,
-    required this.bigStyle,
+    this.tinyStyle,
+    this.smallStyle,
+    this.mediumStyle,
+    this.largeStyle,
+    this.bigStyle,
   });
 
   final BorderRadius? borderRadius;
 
   final double pressedOpacity;
 
-  final ActionIconStyle tinyStyle;
-  final ActionIconStyle smallStyle;
-  final ActionIconStyle mediumStyle;
-  final ActionIconStyle largeStyle;
-  final ActionIconStyle bigStyle;
+  final BadgeStyle? tinyStyle;
+  final BadgeStyle? smallStyle;
+  final BadgeStyle? mediumStyle;
+  final BadgeStyle? largeStyle;
+  final BadgeStyle? bigStyle;
 }
 
 class BadgeTheme extends InheritedTheme {
@@ -41,8 +41,9 @@ class BadgeTheme extends InheritedTheme {
 
   final BadgeThemeData data;
 
-  static BadgeThemeData of(BuildContext context) {
-    return context.badgeThemeData;
+  static BadgeThemeData? of(BuildContext context) {
+    final theme = context.dependOnInheritedWidgetOfExactType<BadgeTheme>();
+    return theme?.data ?? Theme.of(context).extension<BadgeThemeData>();
   }
 
   @override

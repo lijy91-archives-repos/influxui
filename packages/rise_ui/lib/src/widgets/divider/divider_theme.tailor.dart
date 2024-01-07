@@ -11,11 +11,11 @@ part of 'divider_theme.dart';
 mixin _$DividerThemeDataTailorMixin
     on ThemeExtension<DividerThemeData>, DiagnosticableTreeMixin {
   Color? get color;
-  DividerStyle get tinyStyle;
-  DividerStyle get smallStyle;
-  DividerStyle get mediumStyle;
-  DividerStyle get largeStyle;
-  DividerStyle get bigStyle;
+  DividerStyle? get tinyStyle;
+  DividerStyle? get smallStyle;
+  DividerStyle? get mediumStyle;
+  DividerStyle? get largeStyle;
+  DividerStyle? get bigStyle;
 
   @override
   DividerThemeData copyWith({
@@ -97,9 +97,9 @@ extension DividerThemeDataBuildContextProps on BuildContext {
   DividerThemeData get dividerThemeData =>
       Theme.of(this).extension<DividerThemeData>()!;
   Color? get color => dividerThemeData.color;
-  DividerStyle get tinyStyle => dividerThemeData.tinyStyle;
-  DividerStyle get smallStyle => dividerThemeData.smallStyle;
-  DividerStyle get mediumStyle => dividerThemeData.mediumStyle;
-  DividerStyle get largeStyle => dividerThemeData.largeStyle;
-  DividerStyle get bigStyle => dividerThemeData.bigStyle;
+  DividerStyle? get tinyStyle => dividerThemeData.tinyStyle;
+  DividerStyle? get smallStyle => dividerThemeData.smallStyle;
+  DividerStyle? get mediumStyle => dividerThemeData.mediumStyle;
+  DividerStyle? get largeStyle => dividerThemeData.largeStyle;
+  DividerStyle? get bigStyle => dividerThemeData.bigStyle;
 }

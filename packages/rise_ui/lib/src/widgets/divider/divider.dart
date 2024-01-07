@@ -43,25 +43,38 @@ class Divider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeData = DividerTheme.of(context);
-    DividerStyle mergedStyle = style ?? themeData.mediumStyle;
+    final DividerThemeData? themeData = DividerTheme.of(context);
+    final DividerThemeData defaults = _DividerDefaults(context);
+
+    DividerStyle mergedStyle =
+        style ?? themeData?.mediumStyle ?? defaults.mediumStyle!;
 
     if (size is NamedSize) {
       switch (size) {
         case NamedSize.tiny:
-          mergedStyle = themeData.tinyStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle
+              .merge(themeData?.tinyStyle)
+              .merge(defaults.tinyStyle!);
           break;
         case NamedSize.small:
-          mergedStyle = themeData.smallStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle
+              .merge(themeData?.smallStyle)
+              .merge(defaults.smallStyle!);
           break;
         case NamedSize.medium:
-          mergedStyle = themeData.mediumStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle
+              .merge(themeData?.mediumStyle)
+              .merge(defaults.mediumStyle!);
           break;
         case NamedSize.large:
-          mergedStyle = themeData.largeStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle
+              .merge(themeData?.largeStyle)
+              .merge(defaults.largeStyle!);
           break;
         case NamedSize.big:
-          mergedStyle = themeData.bigStyle.merge(mergedStyle);
+          mergedStyle = mergedStyle //
+              .merge(themeData?.bigStyle)
+              .merge(defaults.bigStyle!);
           break;
       }
     }
@@ -71,14 +84,14 @@ class Divider extends StatelessWidget {
       case DividerVariant.dashed:
         painter = _DashedLinePainter(
           direction: direction,
-          color: color ?? themeData.color!,
+          color: color ?? themeData?.color ?? defaults.color!,
           width: 1.0,
         );
         break;
       case DividerVariant.dotted:
         painter = _DottedLinePainter(
           direction: direction,
-          color: color ?? themeData.color!,
+          color: color ?? themeData?.color ?? defaults.color!,
           width: 1.0,
         );
         break;
@@ -86,7 +99,7 @@ class Divider extends StatelessWidget {
       default:
         painter = _SolidLinePainter(
           direction: direction,
-          color: color ?? themeData.color!,
+          color: color ?? themeData?.color ?? defaults.color!,
           width: 1.0,
         );
     }
@@ -262,5 +275,79 @@ class _DottedLinePainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return false;
+  }
+}
+
+class _DividerDefaults extends DividerThemeData {
+  _DividerDefaults(this.context) : super();
+
+  final BuildContext context;
+
+  @override
+  get color => ExtendedColors.gray;
+
+  @override
+  get tinyStyle {
+    return const DividerStyle(
+      padding: EdgeInsets.symmetric(horizontal: 6),
+      minimumSize: Size.square(18),
+      iconSize: 12,
+      labelStyle: TextStyle(
+        fontSize: 10,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  @override
+  get smallStyle {
+    return const DividerStyle(
+      padding: EdgeInsets.symmetric(horizontal: 8),
+      minimumSize: Size.square(22),
+      iconSize: 16,
+      labelStyle: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  @override
+  get mediumStyle {
+    return const DividerStyle(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      minimumSize: Size.square(28),
+      iconSize: 20,
+      labelStyle: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  @override
+  get largeStyle {
+    return const DividerStyle(
+      padding: EdgeInsets.symmetric(horizontal: 12),
+      minimumSize: Size.square(34),
+      iconSize: 24,
+      labelStyle: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  @override
+  get bigStyle {
+    return const DividerStyle(
+      padding: EdgeInsets.symmetric(horizontal: 14),
+      minimumSize: Size.square(44),
+      iconSize: 32,
+      labelStyle: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+      ),
+    );
   }
 }

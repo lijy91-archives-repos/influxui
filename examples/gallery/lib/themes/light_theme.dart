@@ -9,7 +9,5 @@ final lightThemeData = md.ThemeData.light().copyWith(
       brightness: Brightness.light,
       primaryColor: ExtendedColors.blue,
     ),
-    kLightDividerThemeDefaults,
-    kLightNavigationRailThemeDefaults,
   ],
 );

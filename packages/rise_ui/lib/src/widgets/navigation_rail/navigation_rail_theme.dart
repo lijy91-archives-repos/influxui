@@ -41,8 +41,11 @@ class NavigationRailTheme extends InheritedTheme {
 
   final NavigationRailThemeData data;
 
-  static NavigationRailThemeData of(BuildContext context) {
-    return context.navigationRailThemeData;
+  static NavigationRailThemeData? of(BuildContext context) {
+    final theme =
+        context.dependOnInheritedWidgetOfExactType<NavigationRailTheme>();
+    return theme?.data ??
+        Theme.of(context).extension<NavigationRailThemeData>();
   }
 
   @override

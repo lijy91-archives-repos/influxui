@@ -12,21 +12,21 @@ mixin _$BadgeThemeDataTailorMixin
     on ThemeExtension<BadgeThemeData>, DiagnosticableTreeMixin {
   BorderRadius? get borderRadius;
   double get pressedOpacity;
-  ActionIconStyle get tinyStyle;
-  ActionIconStyle get smallStyle;
-  ActionIconStyle get mediumStyle;
-  ActionIconStyle get largeStyle;
-  ActionIconStyle get bigStyle;
+  BadgeStyle? get tinyStyle;
+  BadgeStyle? get smallStyle;
+  BadgeStyle? get mediumStyle;
+  BadgeStyle? get largeStyle;
+  BadgeStyle? get bigStyle;
 
   @override
   BadgeThemeData copyWith({
     BorderRadius? borderRadius,
     double? pressedOpacity,
-    ActionIconStyle? tinyStyle,
-    ActionIconStyle? smallStyle,
-    ActionIconStyle? mediumStyle,
-    ActionIconStyle? largeStyle,
-    ActionIconStyle? bigStyle,
+    BadgeStyle? tinyStyle,
+    BadgeStyle? smallStyle,
+    BadgeStyle? mediumStyle,
+    BadgeStyle? largeStyle,
+    BadgeStyle? bigStyle,
   }) {
     return BadgeThemeData(
       borderRadius: borderRadius ?? this.borderRadius,
@@ -107,9 +107,9 @@ extension BadgeThemeDataBuildContextProps on BuildContext {
       Theme.of(this).extension<BadgeThemeData>()!;
   BorderRadius? get borderRadius => badgeThemeData.borderRadius;
   double get pressedOpacity => badgeThemeData.pressedOpacity;
-  ActionIconStyle get tinyStyle => badgeThemeData.tinyStyle;
-  ActionIconStyle get smallStyle => badgeThemeData.smallStyle;
-  ActionIconStyle get mediumStyle => badgeThemeData.mediumStyle;
-  ActionIconStyle get largeStyle => badgeThemeData.largeStyle;
-  ActionIconStyle get bigStyle => badgeThemeData.bigStyle;
+  BadgeStyle? get tinyStyle => badgeThemeData.tinyStyle;
+  BadgeStyle? get smallStyle => badgeThemeData.smallStyle;
+  BadgeStyle? get mediumStyle => badgeThemeData.mediumStyle;
+  BadgeStyle? get largeStyle => badgeThemeData.largeStyle;
+  BadgeStyle? get bigStyle => badgeThemeData.bigStyle;
 }
