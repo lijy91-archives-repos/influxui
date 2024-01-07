@@ -53,19 +53,21 @@ void testGolden(
       goldenFile ??= '../_goldens/$description.png';
 
       debugDisableShadows = false;
-      await tester.pumpWidget(md.MaterialApp(
-        key: widgetKey,
-        debugShowCheckedModeBanner: false,
-        home: ExtendedTheme(
-          data: const ExtendedThemeData(),
-          child: md.Scaffold(
-            backgroundColor: backgroundColor ?? Colors.transparent,
-            body: Center(
-              child: Builder(builder: builder),
+      await tester.pumpWidget(
+        md.MaterialApp(
+          key: widgetKey,
+          debugShowCheckedModeBanner: false,
+          home: ExtendedTheme(
+            data: const ExtendedThemeData(),
+            child: md.Scaffold(
+              backgroundColor: backgroundColor ?? Colors.transparent,
+              body: Center(
+                child: Builder(builder: builder),
+              ),
             ),
           ),
         ),
-      ),);
+      );
 
       await expectLater(
         find.byKey(widgetKey),

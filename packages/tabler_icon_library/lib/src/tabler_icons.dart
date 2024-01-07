@@ -29560,5 +29560,4 @@ class TablerIcons {
     fontFamily: iconFont,
     fontPackage: iconFontPackage,
   );
-
 }

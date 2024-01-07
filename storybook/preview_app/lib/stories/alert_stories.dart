@@ -23,5 +23,4 @@ class AlertMeta extends Meta with _$AlertMeta {
 }
 
 @storybook.Story('Default')
-class AlertDefaultStory extends StoryObj<AlertMeta>
-    with _$AlertDefaultStory {}
+class AlertDefaultStory extends StoryObj<AlertMeta> with _$AlertDefaultStory {}

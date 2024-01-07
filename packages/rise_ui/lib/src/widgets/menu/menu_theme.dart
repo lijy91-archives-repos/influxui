@@ -51,6 +51,5 @@ class MenuTheme extends InheritedTheme {
   }
 
   @override
-  bool updateShouldNotify(MenuTheme oldWidget) =>
-      data != oldWidget.data;
+  bool updateShouldNotify(MenuTheme oldWidget) => data != oldWidget.data;
 }

@@ -466,23 +466,26 @@ packages:
   storybook_dart:
     dependency: "direct main"
     description:
-      path: "../../../storybook_dart/packages/storybook_dart"
-      relative: true
-    source: path
+      name: storybook_dart
+      sha256: f2ca2388ed79f9d947066a2343df7db04b2d7ff1ea4a9ed0429fb4801120ffc0
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.2"
   storybook_dart_annotation:
     dependency: "direct main"
     description:
-      path: "../../../storybook_dart/packages/storybook_dart_annotation"
-      relative: true
-    source: path
+      name: storybook_dart_annotation
+      sha256: "499ff669c927b3ccfd21e312317f8345c6481850c160870d1a2ffd2e9b9fc73e"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.2"
   storybook_dart_generator:
     dependency: "direct dev"
     description:
-      path: "../../../storybook_dart/packages/storybook_dart_generator"
-      relative: true
-    source: path
+      name: storybook_dart_generator
+      sha256: "88376db8f98fadd5d5a86d5e51758ffbdb4b9e3392837240f2b93f3716f8f850"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.2"
   stream_channel:
     dependency: transitive
