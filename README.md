@@ -1,6 +1,6 @@
 # rise_ui
 
-[![pub version][pub-image]][pub-url] [![][discord-image]][discord-url] ![][visits-count-image] 
+[![pub version][pub-image]][pub-url] [![][discord-image]][discord-url]
 
 [pub-image]: https://img.shields.io/pub/v/rise_ui.svg
 [pub-url]: https://pub.dev/packages/rise_ui

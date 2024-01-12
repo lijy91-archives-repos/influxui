@@ -116,8 +116,14 @@ class __RailDestinationState extends State<_RailDestination> {
         },
         child: Semantics(
           button: true,
-          child: ConstrainedBox(
+          child: Container(
             constraints: const BoxConstraints(),
+            margin: const EdgeInsets.only(
+              top: 2,
+              bottom: 2,
+              left: 12,
+              right: 12,
+            ),
             child: DecoratedBox(
               decoration: ShapeDecoration(
                 color: widget.backgroundColor,
@@ -125,7 +131,10 @@ class __RailDestinationState extends State<_RailDestination> {
               ),
               child: Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 6,
+                  horizontal: 8,
+                ),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   widthFactor: 1.0,
@@ -133,10 +142,13 @@ class __RailDestinationState extends State<_RailDestination> {
                   child: DefaultTextStyle(
                     style: widget.labelTextStyle ?? const TextStyle(),
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         if (widget.icon != null || widget.iconBuilder != null)
                           Container(
-                            padding: const EdgeInsets.only(),
+                            padding: const EdgeInsets.only(
+                              right: 8,
+                            ),
                             child: IconTheme(
                               data: widget.iconTheme ?? const IconThemeData(),
                               child: Builder(
@@ -151,7 +163,10 @@ class __RailDestinationState extends State<_RailDestination> {
                           ),
                         Expanded(
                           child: SizedBox(
-                            child: Text(widget.label!),
+                            child: Text(
+                              widget.label!,
+                              style: widget.labelTextStyle,
+                            ),
                           ),
                         ),
                       ],
@@ -194,13 +209,13 @@ class _NavigationRailDefaults extends NavigationRailThemeData {
     if (_isDark) {
       return const TextStyle(
         color: ExtendedColors.white,
-        fontSize: 14,
+        fontSize: 12,
         fontWeight: FontWeight.w500,
       );
     }
     return const TextStyle(
       color: ExtendedColors.black,
-      fontSize: 14,
+      fontSize: 12,
       fontWeight: FontWeight.w500,
     );
   }
@@ -224,13 +239,13 @@ class _NavigationRailDefaults extends NavigationRailThemeData {
     if (_isDark) {
       return const TextStyle(
         color: ExtendedColors.white,
-        fontSize: 14,
+        fontSize: 12,
         fontWeight: FontWeight.w500,
       );
     }
     return const TextStyle(
       color: ExtendedColors.black,
-      fontSize: 14,
+      fontSize: 12,
       fontWeight: FontWeight.w500,
     );
   }
