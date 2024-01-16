@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rise_ui/src/widgets/extended_theme/extended_theme.dart';
 import 'package:rise_ui/src/widgets/kbd/kbd_style.dart';
 import 'package:rise_ui/src/widgets/kbd/kbd_theme.dart';
-import 'package:rise_ui/src/widgets/theme/theme.dart';
 
 export 'kbd_theme.dart';
 

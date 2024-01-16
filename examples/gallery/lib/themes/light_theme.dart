@@ -7,7 +7,6 @@ final lightThemeData = md.ThemeData.light().copyWith(
   extensions: [
     const ExtendedThemeData(
       brightness: Brightness.light,
-      primaryColor: ExtendedColors.blue,
     ),
   ],
 );

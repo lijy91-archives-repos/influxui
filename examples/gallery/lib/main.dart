@@ -58,7 +58,6 @@ class _MyAppState extends State<MyApp> {
             brightness: _themeMode == ThemeMode.dark
                 ? Brightness.dark
                 : Brightness.light,
-            primaryColor: ExtendedColors.red,
           ),
           child: child!,
         );

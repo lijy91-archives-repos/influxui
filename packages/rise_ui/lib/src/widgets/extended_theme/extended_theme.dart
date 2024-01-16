@@ -5,6 +5,12 @@ import 'package:flutter/material.dart' show Theme, ThemeExtension;
 import 'package:flutter/widgets.dart';
 import 'package:theme_tailor_annotation/theme_tailor_annotation.dart';
 
+export './extended_colors.dart';
+export './extended_icons.dart';
+export './extended_shapes.dart';
+export './extended_sizes.dart';
+export './extended_theme_builder.dart';
+
 part 'extended_theme.tailor.dart';
 
 @TailorMixin()
@@ -12,11 +18,9 @@ class ExtendedThemeData extends ThemeExtension<ExtendedThemeData>
     with DiagnosticableTreeMixin, _$ExtendedThemeDataTailorMixin {
   const ExtendedThemeData({
     this.brightness,
-    this.primaryColor,
   });
 
   final Brightness? brightness;
-  final Color? primaryColor;
 }
 
 class ExtendedTheme extends InheritedTheme {

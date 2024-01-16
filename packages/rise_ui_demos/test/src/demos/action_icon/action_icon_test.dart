@@ -27,7 +27,7 @@ class _MaterialIconLibrary extends IconLibrary {
 }
 
 void main() {
-  Icons.iconLibrary = _MaterialIconLibrary();
+  ExtendedIcons.iconLibrary = _MaterialIconLibrary();
   group('action-icon-demos', () {
     testGolden(
       'action_icon_demo',

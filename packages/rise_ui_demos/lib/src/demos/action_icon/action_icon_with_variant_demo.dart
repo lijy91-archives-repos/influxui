@@ -18,7 +18,7 @@ class ActionIconWithVariantDemo extends StatelessWidget {
           ActionIconVariant.white,
         ])
           ActionIcon(
-            Icons.light_mode,
+            ExtendedIcons.light_mode,
             variant: variant,
             onPressed: () {},
           ),

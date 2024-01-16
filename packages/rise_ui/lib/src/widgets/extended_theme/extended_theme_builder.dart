@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:rise_ui/src/widgets/theme/theme.dart';
+import 'package:rise_ui/src/widgets/extended_theme/extended_icons.dart';
 
 class BuildedTheme {}
 
@@ -10,7 +10,7 @@ class ExtendedThemeBuilder extends StatelessWidget {
     IconLibrary? iconLibrary,
     required this.builder,
   }) {
-    Icons.iconLibrary = iconLibrary;
+    ExtendedIcons.iconLibrary = iconLibrary;
   }
 
   final ValueWidgetBuilder<BuildedTheme> builder;

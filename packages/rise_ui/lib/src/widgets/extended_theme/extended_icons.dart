@@ -10,7 +10,7 @@ abstract class IconLibrary {
   IconData get dark_mode;
 }
 
-class Icons {
+class ExtendedIcons {
   static IconLibrary? _iconLibrary;
 
   static IconLibrary get iconLibrary {

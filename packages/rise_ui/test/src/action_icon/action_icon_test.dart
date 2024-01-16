@@ -104,7 +104,7 @@ class _TestWidget extends StatelessWidget {
 }
 
 void main() {
-  Icons.iconLibrary = _MaterialIconLibrary();
+  ExtendedIcons.iconLibrary = _MaterialIconLibrary();
   group('action-icon-goldens', () {
     // Variants
     testGolden(

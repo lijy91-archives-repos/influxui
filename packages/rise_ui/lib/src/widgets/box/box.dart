@@ -7,7 +7,6 @@ import 'package:rise_ui/src/foundation/customizable_property.dart';
 import 'package:rise_ui/src/widgets/box/box_state.dart';
 import 'package:rise_ui/src/widgets/box/box_style.dart';
 import 'package:rise_ui/src/widgets/box/box_theme.dart';
-import 'package:rise_ui/src/widgets/theme/theme.dart';
 
 export 'package:rise_ui/src/widgets/box/box_state.dart';
 export 'package:rise_ui/src/widgets/box/box_style.dart';
@@ -175,7 +174,7 @@ class _BoxState extends State<Box> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final primaryColor = ExtendedTheme.of(context).primaryColor;
+    final primaryColor = Theme.of(context).primaryColor;
 
     final BoxThemeData? themeData = BoxTheme.of(context);
     final BoxThemeData defaults = _BoxDefaults(context);

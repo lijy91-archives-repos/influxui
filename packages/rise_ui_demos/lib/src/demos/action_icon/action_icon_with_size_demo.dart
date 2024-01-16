@@ -24,7 +24,7 @@ class ActionIconWithSizeDemo extends StatelessWidget {
             children: [
               for (final size in kNamedSizes)
                 ActionIcon(
-                  Icons.light_mode,
+                  ExtendedIcons.light_mode,
                   variant: variant,
                   size: size,
                   onPressed: () {},

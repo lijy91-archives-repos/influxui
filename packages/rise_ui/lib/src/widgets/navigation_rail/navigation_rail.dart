@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart'
     show Brightness, Colors, Theme, ThemeData;
 import 'package:flutter/widgets.dart';
+import 'package:rise_ui/src/widgets/extended_theme/extended_colors.dart';
 import 'package:rise_ui/src/widgets/navigation_rail/navigation_rail_destination.dart';
 import 'package:rise_ui/src/widgets/navigation_rail/navigation_rail_theme.dart';
-import 'package:rise_ui/src/widgets/theme/extended_colors.dart';
 import 'package:rise_ui/src/widgets/web_icon/web_icon.dart';
 
 export 'navigation_rail_destination.dart';
@@ -192,70 +192,37 @@ class _NavigationRailDefaults extends NavigationRailThemeData {
 
   @override
   IconThemeData? get unselectedIconTheme {
-    if (_isDark) {
-      return const IconThemeData(
-        color: ExtendedColors.white,
-        size: 16,
-      );
-    }
-    return const IconThemeData(
-      color: ExtendedColors.black,
+    return IconThemeData(
+      color: _isDark ? ExtendedColors.white : ExtendedColors.black,
       size: 16,
     );
   }
 
   @override
   TextStyle? get unselectedLabelStyle {
-    if (_isDark) {
-      return const TextStyle(
-        color: ExtendedColors.white,
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-      );
-    }
-    return const TextStyle(
-      color: ExtendedColors.black,
-      fontSize: 12,
-      fontWeight: FontWeight.w500,
+    return _theme.textTheme.bodyMedium?.copyWith(
+      color: _isDark ? ExtendedColors.white : ExtendedColors.black,
     );
   }
 
   @override
   IconThemeData? get selectedIconTheme {
-    if (_isDark) {
-      return const IconThemeData(
-        color: ExtendedColors.white,
-        size: 16,
-      );
-    }
-    return const IconThemeData(
-      color: ExtendedColors.black,
+    return IconThemeData(
+      color: _isDark ? ExtendedColors.white : ExtendedColors.black,
       size: 16,
     );
   }
 
   @override
   TextStyle? get selectedLabelStyle {
-    if (_isDark) {
-      return const TextStyle(
-        color: ExtendedColors.white,
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-      );
-    }
-    return const TextStyle(
-      color: ExtendedColors.black,
-      fontSize: 12,
-      fontWeight: FontWeight.w500,
+    return _theme.textTheme.bodyMedium?.copyWith(
+      color: _isDark ? ExtendedColors.white : ExtendedColors.black,
     );
   }
 
   @override
   Color? get indicatorColor {
-    if (_isDark) {
-      return ExtendedColors.gray;
-    }
-    return ExtendedColors.gray.shade300;
+    return _isDark ? ExtendedColors.gray : ExtendedColors.gray.shade300;
   }
 
   @override

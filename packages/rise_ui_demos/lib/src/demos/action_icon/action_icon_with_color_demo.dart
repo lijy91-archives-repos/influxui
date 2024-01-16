@@ -24,7 +24,7 @@ class ActionIconWithColorDemo extends StatelessWidget {
             children: [
               for (final color in kExtendedColors)
                 ActionIcon(
-                  Icons.light_mode,
+                  ExtendedIcons.light_mode,
                   variant: variant,
                   color: color,
                   onPressed: () {},

@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/widgets/badge/badge_style.dart';
 import 'package:rise_ui/src/widgets/badge/badge_theme.dart';
+import 'package:rise_ui/src/widgets/extended_theme/extended_sizes.dart';
 import 'package:rise_ui/src/widgets/text/text_theme.dart';
-import 'package:rise_ui/src/widgets/theme/theme.dart';
 
 export 'badge_theme.dart';
 

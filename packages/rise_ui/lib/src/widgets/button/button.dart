@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:rise_ui/src/widgets/box/box.dart';
 import 'package:rise_ui/src/widgets/button/button_style.dart';
 import 'package:rise_ui/src/widgets/button/button_theme.dart';
-import 'package:rise_ui/src/widgets/theme/theme.dart';
+import 'package:rise_ui/src/widgets/extended_theme/extended_sizes.dart';
 
 export 'package:rise_ui/src/widgets/button/button_style.dart';
 export 'package:rise_ui/src/widgets/button/button_theme.dart';

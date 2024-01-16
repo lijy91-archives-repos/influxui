@@ -7,7 +7,7 @@ class ActionIconDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ActionIcon(
-      Icons.light_mode,
+      ExtendedIcons.light_mode,
       variant: ActionIconVariant.light,
       onPressed: () {},
     );

@@ -11,16 +11,13 @@ part of 'extended_theme.dart';
 mixin _$ExtendedThemeDataTailorMixin
     on ThemeExtension<ExtendedThemeData>, DiagnosticableTreeMixin {
   Brightness? get brightness;
-  Color? get primaryColor;
 
   @override
   ExtendedThemeData copyWith({
     Brightness? brightness,
-    Color? primaryColor,
   }) {
     return ExtendedThemeData(
       brightness: brightness ?? this.brightness,
-      primaryColor: primaryColor ?? this.primaryColor,
     );
   }
 
@@ -30,7 +27,6 @@ mixin _$ExtendedThemeDataTailorMixin
     if (other is! ExtendedThemeData) return this as ExtendedThemeData;
     return ExtendedThemeData(
       brightness: t < 0.5 ? brightness : other.brightness,
-      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
     );
   }
 
@@ -40,9 +36,7 @@ mixin _$ExtendedThemeDataTailorMixin
         (other.runtimeType == runtimeType &&
             other is ExtendedThemeData &&
             const DeepCollectionEquality()
-                .equals(brightness, other.brightness) &&
-            const DeepCollectionEquality()
-                .equals(primaryColor, other.primaryColor));
+                .equals(brightness, other.brightness));
   }
 
   @override
@@ -50,7 +44,6 @@ mixin _$ExtendedThemeDataTailorMixin
     return Object.hash(
       runtimeType.hashCode,
       const DeepCollectionEquality().hash(brightness),
-      const DeepCollectionEquality().hash(primaryColor),
     );
   }
 
@@ -59,8 +52,7 @@ mixin _$ExtendedThemeDataTailorMixin
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ExtendedThemeData'))
-      ..add(DiagnosticsProperty('brightness', brightness))
-      ..add(DiagnosticsProperty('primaryColor', primaryColor));
+      ..add(DiagnosticsProperty('brightness', brightness));
   }
 }
 
@@ -68,5 +60,4 @@ extension ExtendedThemeDataBuildContextProps on BuildContext {
   ExtendedThemeData get extendedThemeData =>
       Theme.of(this).extension<ExtendedThemeData>()!;
   Brightness? get brightness => extendedThemeData.brightness;
-  Color? get primaryColor => extendedThemeData.primaryColor;
 }

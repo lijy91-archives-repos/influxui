@@ -4,11 +4,16 @@ import 'package:flutter/material.dart'
 import 'package:rise_ui/src/widgets/action_icon/action_icon_style.dart';
 import 'package:rise_ui/src/widgets/action_icon/action_icon_theme.dart';
 import 'package:rise_ui/src/widgets/box/box.dart';
-import 'package:rise_ui/src/widgets/theme/sizes.dart';
+import 'package:rise_ui/src/widgets/extended_theme/extended_sizes.dart';
 import 'package:rise_ui/src/widgets/web_icon/web_icon.dart';
 
 export 'package:rise_ui/src/widgets/action_icon/action_icon_style.dart';
 export 'package:rise_ui/src/widgets/action_icon/action_icon_theme.dart';
+
+typedef IconWidgetBuilder = Widget Function(
+  BuildContext context,
+  IconData icon,
+);
 
 enum ActionIconVariant {
   filled,
@@ -33,6 +38,7 @@ class ActionIcon extends StatefulWidget {
     this.icon, {
     super.key,
     this.variant = ActionIconVariant.filled,
+    this.iconBuilder,
     this.style,
     this.padding,
     this.color,
@@ -41,8 +47,9 @@ class ActionIcon extends StatefulWidget {
     this.onPressed,
   }) : assert(size is Size || size is NamedSize || size == null);
 
-  final IconData icon;
   final ActionIconVariant? variant;
+  final IconData icon;
+  final IconWidgetBuilder? iconBuilder;
   final ActionIconStyle? style;
   final EdgeInsetsGeometry? padding;
   final Color? color;
@@ -107,6 +114,13 @@ class _ActionIconState extends State<ActionIcon> {
     final widgetHeight = mergedStyle.size?.height;
     final iconSize = mergedStyle.iconSize;
 
+    Widget? iconWidget = kIsWeb
+        ? WebIcon(widget.icon, size: iconSize)
+        : Icon(widget.icon, size: iconSize);
+    if (widget.iconBuilder != null) {
+      iconWidget = widget.iconBuilder!(context, widget.icon);
+    }
+
     return Box(
       variant: BoxVariant.valueOf(widget.variant?.name),
       padding: widget.padding,
@@ -127,15 +141,7 @@ class _ActionIconState extends State<ActionIcon> {
             width: widgetWidth,
             height: widgetHeight,
             child: Center(
-              child: kIsWeb
-                  ? WebIcon(
-                      widget.icon,
-                      size: iconSize,
-                    )
-                  : Icon(
-                      widget.icon,
-                      size: iconSize,
-                    ),
+              child: iconWidget,
             ),
           ),
         );
