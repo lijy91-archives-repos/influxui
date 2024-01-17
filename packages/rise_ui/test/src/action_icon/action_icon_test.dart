@@ -22,11 +22,9 @@ final _colors = [
 ];
 
 final _sizes = [
-  ActionIconSize.tiny,
   ActionIconSize.small,
   ActionIconSize.medium,
   ActionIconSize.large,
-  ActionIconSize.big,
 ];
 
 class _MaterialIconLibrary extends IconLibrary {

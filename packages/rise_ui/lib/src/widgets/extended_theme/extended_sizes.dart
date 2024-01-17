@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-class NamedSize extends Size {
-  const NamedSize(this.name) : super(0.0, 0.0);
+class ExtendedSize extends Size {
+  const ExtendedSize(this.name) : super(0.0, 0.0);
 
   final String name;
 
@@ -16,12 +16,10 @@ class NamedSize extends Size {
     if (other.runtimeType != runtimeType) {
       return false;
     }
-    return other is NamedSize && other.name == name;
+    return other is ExtendedSize && other.name == name;
   }
 
-  static const NamedSize tiny = NamedSize('tiny');
-  static const NamedSize small = NamedSize('small');
-  static const NamedSize medium = NamedSize('medium');
-  static const NamedSize large = NamedSize('large');
-  static const NamedSize big = NamedSize('big');
+  static const ExtendedSize small = ExtendedSize('small');
+  static const ExtendedSize medium = ExtendedSize('medium');
+  static const ExtendedSize large = ExtendedSize('large');
 }

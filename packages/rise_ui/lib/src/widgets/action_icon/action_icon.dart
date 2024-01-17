@@ -26,11 +26,9 @@ enum ActionIconVariant {
 
 class ActionIconSize extends Size {
   ActionIconSize(super.width, super.height);
-  static const NamedSize tiny = NamedSize.tiny;
-  static const NamedSize small = NamedSize.small;
-  static const NamedSize medium = NamedSize.medium;
-  static const NamedSize large = NamedSize.large;
-  static const NamedSize big = NamedSize.big;
+  static const ExtendedSize small = ExtendedSize.small;
+  static const ExtendedSize medium = ExtendedSize.medium;
+  static const ExtendedSize large = ExtendedSize.large;
 }
 
 class ActionIcon extends StatefulWidget {
@@ -45,7 +43,7 @@ class ActionIcon extends StatefulWidget {
     this.size,
     this.iconSize,
     this.onPressed,
-  }) : assert(size is Size || size is NamedSize || size == null);
+  }) : assert(size is Size || size is ExtendedSize || size == null);
 
   final ActionIconVariant? variant;
   final IconData icon;
@@ -75,32 +73,22 @@ class _ActionIconState extends State<ActionIcon> {
         defaults.mediumStyle ??
         const ActionIconStyle();
 
-    if (widget.size is NamedSize) {
+    if (widget.size is ExtendedSize) {
       switch (widget.size) {
-        case NamedSize.tiny:
-          mergedStyle = mergedStyle // merge tiny style
-              .merge(themeData?.tinyStyle)
-              .merge(defaults.tinyStyle);
-          break;
-        case NamedSize.small:
+        case ExtendedSize.small:
           mergedStyle = mergedStyle // merge small style
               .merge(themeData?.smallStyle)
               .merge(defaults.smallStyle);
           break;
-        case NamedSize.medium:
+        case ExtendedSize.medium:
           mergedStyle = mergedStyle // merge medium style
               .merge(themeData?.mediumStyle)
               .merge(defaults.mediumStyle);
           break;
-        case NamedSize.large:
+        case ExtendedSize.large:
           mergedStyle = mergedStyle // merge large style
               .merge(themeData?.largeStyle)
               .merge(defaults.largeStyle);
-          break;
-        case NamedSize.big:
-          mergedStyle = mergedStyle // merge big style
-              .merge(themeData?.bigStyle)
-              .merge(defaults.bigStyle);
           break;
       }
     } else if (widget.size is Size) {
@@ -162,14 +150,6 @@ class _ActionIconDefaults extends ActionIconThemeData {
   get pressedOpacity => 0.8;
 
   @override
-  get tinyStyle {
-    return const ActionIconStyle(
-      size: Size(18, 18),
-      iconSize: 12,
-    );
-  }
-
-  @override
   get smallStyle {
     return const ActionIconStyle(
       size: Size(22, 22),
@@ -190,14 +170,6 @@ class _ActionIconDefaults extends ActionIconThemeData {
     return const ActionIconStyle(
       size: Size(34, 34),
       iconSize: 24,
-    );
-  }
-
-  @override
-  get bigStyle {
-    return const ActionIconStyle(
-      size: Size(44, 44),
-      iconSize: 32,
     );
   }
 }

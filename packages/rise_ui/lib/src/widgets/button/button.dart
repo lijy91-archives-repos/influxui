@@ -20,11 +20,9 @@ enum ButtonVariant {
 
 class ButtonSize extends Size {
   ButtonSize(super.width, super.height);
-  static NamedSize get tiny => NamedSize.tiny;
-  static NamedSize get small => NamedSize.small;
-  static NamedSize get medium => NamedSize.medium;
-  static NamedSize get large => NamedSize.large;
-  static NamedSize get big => NamedSize.big;
+  static ExtendedSize get small => ExtendedSize.small;
+  static ExtendedSize get medium => ExtendedSize.medium;
+  static ExtendedSize get large => ExtendedSize.large;
 }
 
 class Button extends StatefulWidget {
@@ -39,7 +37,7 @@ class Button extends StatefulWidget {
     this.size,
     this.iconSize,
     this.onPressed,
-  }) : assert(size is Size || size is NamedSize || size == null);
+  }) : assert(size is Size || size is ExtendedSize || size == null);
 
   final ButtonVariant? variant;
   final String? label;
@@ -67,32 +65,22 @@ class _ButtonState extends State<Button> {
         defaults.mediumStyle ??
         const ButtonStyle();
 
-    if (widget.size is NamedSize) {
+    if (widget.size is ExtendedSize) {
       switch (widget.size) {
-        case NamedSize.tiny:
-          mergedStyle = mergedStyle // merge tiny style
-              .merge(themeData?.tinyStyle)
-              .merge(defaults.tinyStyle);
-          break;
-        case NamedSize.small:
+        case ExtendedSize.small:
           mergedStyle = mergedStyle // merge small style
               .merge(themeData?.smallStyle)
               .merge(defaults.smallStyle);
           break;
-        case NamedSize.medium:
+        case ExtendedSize.medium:
           mergedStyle = mergedStyle // merge medium style
               .merge(themeData?.mediumStyle)
               .merge(defaults.mediumStyle);
           break;
-        case NamedSize.large:
+        case ExtendedSize.large:
           mergedStyle = mergedStyle // merge large style
               .merge(themeData?.largeStyle)
               .merge(defaults.largeStyle);
-          break;
-        case NamedSize.big:
-          mergedStyle = mergedStyle // merge big style
-              .merge(themeData?.bigStyle)
-              .merge(defaults.bigStyle);
           break;
       }
     }
@@ -148,6 +136,7 @@ class _ButtonDefaults extends ButtonThemeData {
   _ButtonDefaults(this.context) : super();
 
   final BuildContext context;
+  late final ThemeData _theme = Theme.of(context);
 
   @override
   BorderRadius? get borderRadius => const BorderRadius.all(Radius.circular(4));
@@ -156,67 +145,32 @@ class _ButtonDefaults extends ButtonThemeData {
   double get pressedOpacity => 0.8;
 
   @override
-  ButtonStyle? get tinyStyle {
-    return const ButtonStyle(
-      padding: EdgeInsets.symmetric(horizontal: 6),
-      minimumSize: Size.square(18),
-      iconSize: 12,
-      labelStyle: TextStyle(
-        fontSize: 10,
-        fontWeight: FontWeight.w600,
-      ),
-    );
-  }
-
-  @override
   ButtonStyle? get smallStyle {
-    return const ButtonStyle(
-      padding: EdgeInsets.symmetric(horizontal: 8),
-      minimumSize: Size.square(22),
+    return ButtonStyle(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      minimumSize: const Size.square(22),
       iconSize: 16,
-      labelStyle: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w600,
-      ),
+      labelStyle: _theme.textTheme.bodySmall,
     );
   }
 
   @override
   ButtonStyle? get mediumStyle {
-    return const ButtonStyle(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      minimumSize: Size.square(28),
+    return ButtonStyle(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      minimumSize: const Size.square(28),
       iconSize: 20,
-      labelStyle: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w600,
-      ),
+      labelStyle: _theme.textTheme.bodyMedium,
     );
   }
 
   @override
   ButtonStyle? get largeStyle {
-    return const ButtonStyle(
-      padding: EdgeInsets.symmetric(horizontal: 12),
-      minimumSize: Size.square(34),
+    return ButtonStyle(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      minimumSize: const Size.square(34),
       iconSize: 24,
-      labelStyle: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-      ),
-    );
-  }
-
-  @override
-  ButtonStyle? get bigStyle {
-    return const ButtonStyle(
-      padding: EdgeInsets.symmetric(horizontal: 14),
-      minimumSize: Size.square(44),
-      iconSize: 32,
-      labelStyle: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.w600,
-      ),
+      labelStyle: _theme.textTheme.bodyLarge,
     );
   }
 }

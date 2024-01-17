@@ -18,20 +18,24 @@ class PageScaffold extends StatelessWidget {
     if (title != null) {
       titleWidget = Text(
         title!,
-        style: Theme.of(context).textTheme.titleLarge,
+        style: Theme.of(context).textTheme.titleMedium,
       );
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: titleWidget,
-        centerTitle: false,
-        elevation: 0,
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        iconTheme: Theme.of(context).iconTheme.copyWith(
-              color: Theme.of(context).colorScheme.onSurface,
-            ),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(44),
+        child: AppBar(
+          title: titleWidget,
+          centerTitle: false,
+          elevation: 0,
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          iconTheme: Theme.of(context).iconTheme.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+        ),
       ),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

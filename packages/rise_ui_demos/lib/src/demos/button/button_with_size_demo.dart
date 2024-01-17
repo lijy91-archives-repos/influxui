@@ -22,7 +22,7 @@ class ButtonWithSizeDemo extends StatelessWidget {
           Wrap(
             spacing: 10,
             children: [
-              for (final size in kNamedSizes)
+              for (final size in kExtendedSizes)
                 Button(
                   label: 'Button',
                   variant: variant,

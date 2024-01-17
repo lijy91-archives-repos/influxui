@@ -22,7 +22,7 @@ class ActionIconWithSizeDemo extends StatelessWidget {
           Wrap(
             spacing: 10,
             children: [
-              for (final size in kNamedSizes)
+              for (final size in kExtendedSizes)
                 ActionIcon(
                   ExtendedIcons.light_mode,
                   variant: variant,

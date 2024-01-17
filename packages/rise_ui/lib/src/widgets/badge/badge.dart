@@ -15,11 +15,9 @@ enum BadgeVariant {
 
 class BadgeSize extends Size {
   const BadgeSize(super.width, super.height);
-  static const NamedSize tiny = NamedSize.tiny;
-  static const NamedSize small = NamedSize.small;
-  static const NamedSize medium = NamedSize.medium;
-  static const NamedSize large = NamedSize.large;
-  static const NamedSize big = NamedSize.big;
+  static const ExtendedSize small = ExtendedSize.small;
+  static const ExtendedSize medium = ExtendedSize.medium;
+  static const ExtendedSize large = ExtendedSize.large;
 }
 
 /// Display badge, pill or tag
@@ -65,32 +63,22 @@ class Badge extends StatelessWidget {
     BadgeStyle mergedStyle =
         themeData?.mediumStyle ?? defaults.mediumStyle ?? const BadgeStyle();
 
-    if (size is NamedSize) {
+    if (size is ExtendedSize) {
       switch (size) {
-        case NamedSize.tiny:
-          mergedStyle = mergedStyle // merge tiny style
-              .merge(themeData?.tinyStyle)
-              .merge(defaults.tinyStyle);
-          break;
-        case NamedSize.small:
+        case ExtendedSize.small:
           mergedStyle = mergedStyle // merge small style
               .merge(themeData?.smallStyle)
               .merge(defaults.smallStyle);
           break;
-        case NamedSize.medium:
+        case ExtendedSize.medium:
           mergedStyle = mergedStyle // merge medium style
               .merge(themeData?.mediumStyle)
               .merge(defaults.mediumStyle);
           break;
-        case NamedSize.large:
+        case ExtendedSize.large:
           mergedStyle = mergedStyle // merge large style
               .merge(themeData?.largeStyle)
               .merge(defaults.largeStyle);
-          break;
-        case NamedSize.big:
-          mergedStyle = mergedStyle // merge big style
-              .merge(themeData?.bigStyle)
-              .merge(defaults.bigStyle);
           break;
       }
     }
@@ -130,19 +118,6 @@ class _BadgeDefaults extends BadgeThemeData {
   get pressedOpacity => 0.8;
 
   @override
-  BadgeStyle? get tinyStyle {
-    return const BadgeStyle(
-      padding: EdgeInsets.symmetric(horizontal: 6),
-      minimumSize: Size.square(18),
-      iconSize: 12,
-      labelStyle: TextStyle(
-        fontSize: 10,
-        fontWeight: FontWeight.w600,
-      ),
-    );
-  }
-
-  @override
   BadgeStyle? get smallStyle {
     return const BadgeStyle(
       padding: EdgeInsets.symmetric(horizontal: 8),
@@ -176,19 +151,6 @@ class _BadgeDefaults extends BadgeThemeData {
       iconSize: 24,
       labelStyle: TextStyle(
         fontSize: 16,
-        fontWeight: FontWeight.w600,
-      ),
-    );
-  }
-
-  @override
-  BadgeStyle? get bigStyle {
-    return const BadgeStyle(
-      padding: EdgeInsets.symmetric(horizontal: 14),
-      minimumSize: Size.square(44),
-      iconSize: 32,
-      labelStyle: TextStyle(
-        fontSize: 18,
         fontWeight: FontWeight.w600,
       ),
     );

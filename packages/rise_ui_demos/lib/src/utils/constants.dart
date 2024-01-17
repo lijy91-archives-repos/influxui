@@ -15,10 +15,8 @@ final kExtendedColors = [
   ExtendedColors.yellow,
 ];
 
-final kNamedSizes = [
-  NamedSize.tiny,
-  NamedSize.small,
-  NamedSize.medium,
-  NamedSize.large,
-  NamedSize.big,
+final kExtendedSizes = [
+  ExtendedSize.small,
+  ExtendedSize.medium,
+  ExtendedSize.large,
 ];

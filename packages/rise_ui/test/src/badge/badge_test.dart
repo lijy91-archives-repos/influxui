@@ -50,11 +50,9 @@ void main() {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Badge(label: 'Badge', size: BadgeSize.tiny),
           Badge(label: 'Badge', size: BadgeSize.small),
           Badge(label: 'Badge', size: BadgeSize.medium),
           Badge(label: 'Badge', size: BadgeSize.large),
-          Badge(label: 'Badge', size: BadgeSize.big),
         ],
       ),
       size: const Size(400, 60),

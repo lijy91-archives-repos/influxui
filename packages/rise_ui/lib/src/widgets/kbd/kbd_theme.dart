@@ -16,11 +16,9 @@ class KbdThemeData extends ThemeExtension<KbdThemeData>
     this.borderColor,
     this.borderRadius = const BorderRadius.all(Radius.circular(4.0)),
     this.labelColor,
-    this.tinyStyle,
     this.smallStyle,
     this.mediumStyle,
     this.largeStyle,
-    this.bigStyle,
   });
 
   final Color? color;
@@ -31,11 +29,9 @@ class KbdThemeData extends ThemeExtension<KbdThemeData>
 
   final BorderRadius? borderRadius;
 
-  final KbdStyle? tinyStyle;
   final KbdStyle? smallStyle;
   final KbdStyle? mediumStyle;
   final KbdStyle? largeStyle;
-  final KbdStyle? bigStyle;
 }
 
 class KbdTheme extends InheritedTheme {

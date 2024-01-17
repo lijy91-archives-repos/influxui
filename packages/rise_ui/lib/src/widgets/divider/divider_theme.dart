@@ -13,20 +13,16 @@ class DividerThemeData extends ThemeExtension<DividerThemeData>
     with DiagnosticableTreeMixin, _$DividerThemeDataTailorMixin {
   const DividerThemeData({
     this.color,
-    this.tinyStyle,
     this.smallStyle,
     this.mediumStyle,
     this.largeStyle,
-    this.bigStyle,
   });
 
   final Color? color;
 
-  final DividerStyle? tinyStyle;
   final DividerStyle? smallStyle;
   final DividerStyle? mediumStyle;
   final DividerStyle? largeStyle;
-  final DividerStyle? bigStyle;
 }
 
 class DividerTheme extends InheritedTheme {

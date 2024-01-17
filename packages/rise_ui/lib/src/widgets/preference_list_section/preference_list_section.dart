@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 // Margin on top of the list section. This was eyeballed from iOS 14.4 Simulator
 // and should be always present on top of the edge-to-edge variant.
@@ -208,7 +209,6 @@ class PreferenceListSection extends StatelessWidget {
     this.header,
     this.footer,
     this.margin = _kDefaultRowsMargin,
-    this.backgroundColor = CupertinoColors.systemGroupedBackground,
     this.decoration,
     this.clipBehavior = Clip.none,
     this.dividerMargin = _kBaseDividerMargin,
@@ -272,7 +272,6 @@ class PreferenceListSection extends StatelessWidget {
     this.header,
     this.footer,
     EdgeInsetsGeometry? margin,
-    this.backgroundColor = CupertinoColors.systemGroupedBackground,
     this.decoration,
     this.clipBehavior = Clip.hardEdge,
     this.dividerMargin = _kInsetDividerMargin,
@@ -331,11 +330,6 @@ class PreferenceListSection extends StatelessWidget {
   /// standard [PreferenceListSection] constructor.
   final BoxDecoration? decoration;
 
-  /// Sets the background color behind the section.
-  ///
-  /// Defaults to [CupertinoColors.systemGroupedBackground].
-  final Color backgroundColor;
-
   /// {@macro flutter.material.Material.clipBehavior}
   ///
   /// Defaults to [Clip.hardEdge].
@@ -362,7 +356,7 @@ class PreferenceListSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color dividerColor =
-        separatorColor ?? CupertinoColors.separator.resolveFrom(context);
+        separatorColor ?? Theme.of(context).colorScheme.outline;
     final double dividerHeight = 1.0 / MediaQuery.devicePixelRatioOf(context);
 
     // Long divider is used for wrapping the top and bottom of rows.
@@ -375,7 +369,8 @@ class PreferenceListSection extends StatelessWidget {
     // Short divider is used between rows.
     final Widget shortDivider = Container(
       margin: EdgeInsetsDirectional.only(
-          start: dividerMargin + additionalDividerMargin),
+        start: dividerMargin + additionalDividerMargin,
+      ),
       color: dividerColor,
       height: dividerHeight,
     );
@@ -383,14 +378,18 @@ class PreferenceListSection extends StatelessWidget {
     Widget? headerWidget;
     if (header != null) {
       headerWidget = DefaultTextStyle(
-        style: CupertinoTheme.of(context).textTheme.textStyle.merge(
+        style: Theme.of(context).textTheme.labelMedium!.merge(
               type == PreferenceListSectionType.base
                   ? TextStyle(
                       fontSize: 13.0,
                       color: CupertinoDynamicColor.resolve(
-                          _kHeaderFooterColor, context))
+                        _kHeaderFooterColor,
+                        context,
+                      ),
+                    )
                   : const TextStyle(
-                      fontSize: 20.0, fontWeight: FontWeight.bold),
+                      fontSize: 12.0,
+                    ),
             ),
         child: header!,
       );
@@ -400,11 +399,15 @@ class PreferenceListSection extends StatelessWidget {
     if (footer != null) {
       footerWidget = DefaultTextStyle(
         style: type == PreferenceListSectionType.base
-            ? CupertinoTheme.of(context).textTheme.textStyle.merge(TextStyle(
-                  fontSize: 13.0,
-                  color: CupertinoDynamicColor.resolve(
-                      _kHeaderFooterColor, context),
-                ))
+            ? CupertinoTheme.of(context).textTheme.textStyle.merge(
+                  TextStyle(
+                    fontSize: 13.0,
+                    color: CupertinoDynamicColor.resolve(
+                      _kHeaderFooterColor,
+                      context,
+                    ),
+                  ),
+                )
             : CupertinoTheme.of(context).textTheme.textStyle,
         child: footer!,
       );
@@ -442,9 +445,10 @@ class PreferenceListSection extends StatelessWidget {
         decoration: decoration ??
             BoxDecoration(
               color: CupertinoDynamicColor.resolve(
-                  decoration?.color ??
-                      CupertinoColors.secondarySystemGroupedBackground,
-                  context),
+                decoration?.color ??
+                    CupertinoColors.secondarySystemGroupedBackground,
+                context,
+              ),
               borderRadius: childrenGroupBorderRadius,
             ),
         child: Column(children: childrenWithDividers),
@@ -463,9 +467,7 @@ class PreferenceListSection extends StatelessWidget {
     }
 
     return DecoratedBox(
-      decoration: BoxDecoration(
-        color: CupertinoDynamicColor.resolve(backgroundColor, context),
-      ),
+      decoration: const BoxDecoration(),
       child: Column(
         children: <Widget>[
           if (type == PreferenceListSectionType.base)

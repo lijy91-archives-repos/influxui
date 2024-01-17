@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:rise_ui/rise_ui.dart';
 import 'package:rise_ui/src/widgets/loader/loaders/oval_loader.dart';
 
@@ -16,7 +15,7 @@ class Loader extends StatelessWidget {
     super.key,
     this.variant = LoaderVariant.oval,
     this.color,
-    this.size = NamedSize.medium,
+    this.size = ExtendedSize.medium,
   });
 
   final LoaderVariant variant;
@@ -32,22 +31,16 @@ class Loader extends StatelessWidget {
         color ?? themeData?.color ?? Theme.of(context).primaryColor;
     Size resolvedSize = size ?? themeData?.mediumSize ?? defaults.mediumSize!;
 
-    if (size is NamedSize) {
+    if (size is ExtendedSize) {
       switch (size) {
-        case NamedSize.tiny:
-          resolvedSize = themeData?.tinySize ?? defaults.tinySize!;
-          break;
-        case NamedSize.small:
+        case ExtendedSize.small:
           resolvedSize = themeData?.smallSize ?? defaults.smallSize!;
           break;
-        case NamedSize.medium:
+        case ExtendedSize.medium:
           resolvedSize = themeData?.mediumSize ?? defaults.mediumSize!;
           break;
-        case NamedSize.large:
+        case ExtendedSize.large:
           resolvedSize = themeData?.largeSize ?? defaults.largeSize!;
-          break;
-        case NamedSize.big:
-          resolvedSize = themeData?.bigSize ?? defaults.bigSize!;
           break;
       }
     }

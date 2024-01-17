@@ -14,11 +14,9 @@ mixin _$KbdThemeDataTailorMixin
   Color? get labelColor;
   Color? get borderColor;
   BorderRadius? get borderRadius;
-  KbdStyle? get tinyStyle;
   KbdStyle? get smallStyle;
   KbdStyle? get mediumStyle;
   KbdStyle? get largeStyle;
-  KbdStyle? get bigStyle;
 
   @override
   KbdThemeData copyWith({
@@ -26,22 +24,18 @@ mixin _$KbdThemeDataTailorMixin
     Color? labelColor,
     Color? borderColor,
     BorderRadius? borderRadius,
-    KbdStyle? tinyStyle,
     KbdStyle? smallStyle,
     KbdStyle? mediumStyle,
     KbdStyle? largeStyle,
-    KbdStyle? bigStyle,
   }) {
     return KbdThemeData(
       color: color ?? this.color,
       labelColor: labelColor ?? this.labelColor,
       borderColor: borderColor ?? this.borderColor,
       borderRadius: borderRadius ?? this.borderRadius,
-      tinyStyle: tinyStyle ?? this.tinyStyle,
       smallStyle: smallStyle ?? this.smallStyle,
       mediumStyle: mediumStyle ?? this.mediumStyle,
       largeStyle: largeStyle ?? this.largeStyle,
-      bigStyle: bigStyle ?? this.bigStyle,
     );
   }
 
@@ -53,11 +47,9 @@ mixin _$KbdThemeDataTailorMixin
       labelColor: Color.lerp(labelColor, other.labelColor, t),
       borderColor: Color.lerp(borderColor, other.borderColor, t),
       borderRadius: t < 0.5 ? borderRadius : other.borderRadius,
-      tinyStyle: t < 0.5 ? tinyStyle : other.tinyStyle,
       smallStyle: t < 0.5 ? smallStyle : other.smallStyle,
       mediumStyle: t < 0.5 ? mediumStyle : other.mediumStyle,
       largeStyle: t < 0.5 ? largeStyle : other.largeStyle,
-      bigStyle: t < 0.5 ? bigStyle : other.bigStyle,
     );
   }
 
@@ -73,14 +65,12 @@ mixin _$KbdThemeDataTailorMixin
                 .equals(borderColor, other.borderColor) &&
             const DeepCollectionEquality()
                 .equals(borderRadius, other.borderRadius) &&
-            const DeepCollectionEquality().equals(tinyStyle, other.tinyStyle) &&
             const DeepCollectionEquality()
                 .equals(smallStyle, other.smallStyle) &&
             const DeepCollectionEquality()
                 .equals(mediumStyle, other.mediumStyle) &&
             const DeepCollectionEquality()
-                .equals(largeStyle, other.largeStyle) &&
-            const DeepCollectionEquality().equals(bigStyle, other.bigStyle));
+                .equals(largeStyle, other.largeStyle));
   }
 
   @override
@@ -91,11 +81,9 @@ mixin _$KbdThemeDataTailorMixin
       const DeepCollectionEquality().hash(labelColor),
       const DeepCollectionEquality().hash(borderColor),
       const DeepCollectionEquality().hash(borderRadius),
-      const DeepCollectionEquality().hash(tinyStyle),
       const DeepCollectionEquality().hash(smallStyle),
       const DeepCollectionEquality().hash(mediumStyle),
       const DeepCollectionEquality().hash(largeStyle),
-      const DeepCollectionEquality().hash(bigStyle),
     );
   }
 
@@ -108,11 +96,9 @@ mixin _$KbdThemeDataTailorMixin
       ..add(DiagnosticsProperty('labelColor', labelColor))
       ..add(DiagnosticsProperty('borderColor', borderColor))
       ..add(DiagnosticsProperty('borderRadius', borderRadius))
-      ..add(DiagnosticsProperty('tinyStyle', tinyStyle))
       ..add(DiagnosticsProperty('smallStyle', smallStyle))
       ..add(DiagnosticsProperty('mediumStyle', mediumStyle))
-      ..add(DiagnosticsProperty('largeStyle', largeStyle))
-      ..add(DiagnosticsProperty('bigStyle', bigStyle));
+      ..add(DiagnosticsProperty('largeStyle', largeStyle));
   }
 }
 
@@ -122,9 +108,7 @@ extension KbdThemeDataBuildContextProps on BuildContext {
   Color? get labelColor => kbdThemeData.labelColor;
   Color? get borderColor => kbdThemeData.borderColor;
   BorderRadius? get borderRadius => kbdThemeData.borderRadius;
-  KbdStyle? get tinyStyle => kbdThemeData.tinyStyle;
   KbdStyle? get smallStyle => kbdThemeData.smallStyle;
   KbdStyle? get mediumStyle => kbdThemeData.mediumStyle;
   KbdStyle? get largeStyle => kbdThemeData.largeStyle;
-  KbdStyle? get bigStyle => kbdThemeData.bigStyle;
 }

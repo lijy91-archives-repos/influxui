@@ -66,11 +66,9 @@ class ActionIconWithSizeStory extends StoryObj<ActionIconMeta>
       spacing: 10,
       children: [
         for (final size in [
-          ActionIconSize.tiny,
           ActionIconSize.small,
           ActionIconSize.medium,
           ActionIconSize.large,
-          ActionIconSize.big,
         ])
           ActionIcon(
             TablerIcons.sun,

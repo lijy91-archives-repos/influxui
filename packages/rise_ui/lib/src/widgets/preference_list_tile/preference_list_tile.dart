@@ -5,6 +5,7 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 // These constants were eyeballed from iOS 14.4 Settings app for base, Notes for
 // notched without leading, and Reminders app for notched with leading.
@@ -249,8 +250,8 @@ class _PreferenceListTileState extends State<PreferenceListTile> {
   Widget build(BuildContext context) {
     final TextStyle titleTextStyle =
         widget._type == _PreferenceListTileType.base || widget.subtitle == null
-            ? CupertinoTheme.of(context).textTheme.textStyle
-            : CupertinoTheme.of(context).textTheme.textStyle.merge(
+            ? Theme.of(context).textTheme.bodyMedium!
+            : Theme.of(context).textTheme.bodyMedium!.merge(
                   TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: widget.leading == null ? _kNotchedTitleWithSubtitleFontSize : null,

@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart' hide DividerTheme, DividerThemeData;
 import 'package:rise_ui/src/widgets/divider/divider_style.dart';
 import 'package:rise_ui/src/widgets/divider/divider_theme.dart';
 import 'package:rise_ui/src/widgets/extended_theme/extended_theme.dart';
@@ -17,7 +17,7 @@ class Divider extends StatelessWidget {
     this.style,
     this.direction = Axis.horizontal,
     this.color,
-    this.size = NamedSize.tiny,
+    this.size = ExtendedSize.small,
     this.label,
     this.labelBuilder,
     this.labelPosition = DividerLabelPosition.center,
@@ -49,32 +49,22 @@ class Divider extends StatelessWidget {
     DividerStyle mergedStyle =
         style ?? themeData?.mediumStyle ?? defaults.mediumStyle!;
 
-    if (size is NamedSize) {
+    if (size is ExtendedSize) {
       switch (size) {
-        case NamedSize.tiny:
-          mergedStyle = mergedStyle
-              .merge(themeData?.tinyStyle)
-              .merge(defaults.tinyStyle!);
-          break;
-        case NamedSize.small:
+        case ExtendedSize.small:
           mergedStyle = mergedStyle
               .merge(themeData?.smallStyle)
               .merge(defaults.smallStyle!);
           break;
-        case NamedSize.medium:
+        case ExtendedSize.medium:
           mergedStyle = mergedStyle
               .merge(themeData?.mediumStyle)
               .merge(defaults.mediumStyle!);
           break;
-        case NamedSize.large:
+        case ExtendedSize.large:
           mergedStyle = mergedStyle
               .merge(themeData?.largeStyle)
               .merge(defaults.largeStyle!);
-          break;
-        case NamedSize.big:
-          mergedStyle = mergedStyle //
-              .merge(themeData?.bigStyle)
-              .merge(defaults.bigStyle!);
           break;
       }
     }
@@ -282,22 +272,10 @@ class _DividerDefaults extends DividerThemeData {
   _DividerDefaults(this.context) : super();
 
   final BuildContext context;
+  late final ThemeData _theme = Theme.of(context);
 
   @override
-  get color => ExtendedColors.gray;
-
-  @override
-  get tinyStyle {
-    return const DividerStyle(
-      padding: EdgeInsets.symmetric(horizontal: 6),
-      minimumSize: Size.square(18),
-      iconSize: 12,
-      labelStyle: TextStyle(
-        fontSize: 10,
-        fontWeight: FontWeight.w600,
-      ),
-    );
-  }
+  get color => _theme.dividerColor;
 
   @override
   get smallStyle {
@@ -333,19 +311,6 @@ class _DividerDefaults extends DividerThemeData {
       iconSize: 24,
       labelStyle: TextStyle(
         fontSize: 16,
-        fontWeight: FontWeight.w600,
-      ),
-    );
-  }
-
-  @override
-  get bigStyle {
-    return const DividerStyle(
-      padding: EdgeInsets.symmetric(horizontal: 14),
-      minimumSize: Size.square(44),
-      iconSize: 32,
-      labelStyle: TextStyle(
-        fontSize: 18,
         fontWeight: FontWeight.w600,
       ),
     );

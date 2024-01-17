@@ -10,11 +10,9 @@ class KbdWithSizeDemo extends StatelessWidget {
       spacing: 10,
       children: [
         for (final size in [
-          NamedSize.tiny,
-          NamedSize.small,
-          NamedSize.medium,
-          NamedSize.large,
-          NamedSize.big,
+          ExtendedSize.small,
+          ExtendedSize.medium,
+          ExtendedSize.large,
         ])
           Kbd('Shift', size: size),
       ],

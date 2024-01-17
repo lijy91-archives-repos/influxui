@@ -14,22 +14,18 @@ class ButtonThemeData extends ThemeExtension<ButtonThemeData>
   const ButtonThemeData({
     this.borderRadius,
     this.pressedOpacity = 0.8,
-    this.tinyStyle,
     this.smallStyle,
     this.mediumStyle,
     this.largeStyle,
-    this.bigStyle,
   });
 
   final BorderRadius? borderRadius;
 
   final double pressedOpacity;
 
-  final ButtonStyle? tinyStyle;
   final ButtonStyle? smallStyle;
   final ButtonStyle? mediumStyle;
   final ButtonStyle? largeStyle;
-  final ButtonStyle? bigStyle;
 }
 
 class ButtonTheme extends InheritedTheme {

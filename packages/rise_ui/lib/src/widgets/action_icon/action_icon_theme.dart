@@ -14,22 +14,18 @@ class ActionIconThemeData extends ThemeExtension<ActionIconThemeData>
   const ActionIconThemeData({
     this.borderRadius,
     this.pressedOpacity = 0.8,
-    this.tinyStyle,
     this.smallStyle,
     this.mediumStyle,
     this.largeStyle,
-    this.bigStyle,
   });
 
   final BorderRadius? borderRadius;
 
   final double pressedOpacity;
 
-  final ActionIconStyle? tinyStyle;
   final ActionIconStyle? smallStyle;
   final ActionIconStyle? mediumStyle;
   final ActionIconStyle? largeStyle;
-  final ActionIconStyle? bigStyle;
 }
 
 class ActionIconTheme extends InheritedTheme {

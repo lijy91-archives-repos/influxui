@@ -28,35 +28,25 @@ class _KbdState extends State<Kbd> {
   Widget build(BuildContext context) {
     final KbdThemeData? themeData = KbdTheme.of(context);
     final KbdThemeData defaults = _KbdDefaults(context);
-    final Size size = widget.size ?? NamedSize.medium;
+    final Size size = widget.size ?? ExtendedSize.medium;
     KbdStyle mergedStyle = widget.style ?? const KbdStyle();
 
-    if (size is NamedSize) {
+    if (size is ExtendedSize) {
       switch (size) {
-        case NamedSize.tiny:
-          mergedStyle = mergedStyle //
-              .merge(themeData?.tinyStyle)
-              .merge(defaults.tinyStyle);
-          break;
-        case NamedSize.small:
+        case ExtendedSize.small:
           mergedStyle = mergedStyle //
               .merge(themeData?.smallStyle)
               .merge(defaults.smallStyle);
           break;
-        case NamedSize.medium:
+        case ExtendedSize.medium:
           mergedStyle = mergedStyle //
               .merge(themeData?.mediumStyle)
               .merge(defaults.mediumStyle);
           break;
-        case NamedSize.large:
+        case ExtendedSize.large:
           mergedStyle = mergedStyle //
               .merge(themeData?.largeStyle)
               .merge(defaults.largeStyle);
-          break;
-        case NamedSize.big:
-          mergedStyle = mergedStyle //
-              .merge(themeData?.bigStyle)
-              .merge(defaults.bigStyle);
           break;
       }
     }
@@ -129,18 +119,6 @@ class _KbdDefaults extends KbdThemeData {
       _isDark ? ExtendedColors.gray.shade50 : ExtendedColors.gray.shade700;
 
   @override
-  get tinyStyle {
-    return const KbdStyle(
-      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-      size: Size.square(10),
-      labelStyle: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w600,
-      ),
-    );
-  }
-
-  @override
   get smallStyle {
     return const KbdStyle(
       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 3),
@@ -171,18 +149,6 @@ class _KbdDefaults extends KbdThemeData {
       size: Size.square(16),
       labelStyle: TextStyle(
         fontSize: 18,
-        fontWeight: FontWeight.w600,
-      ),
-    );
-  }
-
-  @override
-  get bigStyle {
-    return const KbdStyle(
-      padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-      size: Size.square(20),
-      labelStyle: TextStyle(
-        fontSize: 20,
         fontWeight: FontWeight.w600,
       ),
     );
