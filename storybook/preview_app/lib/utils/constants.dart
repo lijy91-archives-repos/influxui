@@ -1,4 +1,4 @@
-import 'package:rise_ui/rise_ui.dart';
+import 'package:influxui/influxui.dart';
 
 final kAllColors = [
   ExtendedColors.gray,

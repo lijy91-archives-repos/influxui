@@ -18,8 +18,8 @@ dependencies:
   path: ^1.8.3
   path_provider: ^2.0.15
   pointer_interceptor: ^0.9.3+7
-  rise_ui: ^0.1.0
-  rise_ui_demos: ^0.1.0
+  influxui: ^0.1.0
+  influxui_demos: ^0.1.0
   shared_preferences: ^2.1.0
   tabler_icon_library: ^0.1.0
   url_launcher: ^6.1.10

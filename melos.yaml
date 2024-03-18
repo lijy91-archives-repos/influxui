@@ -1,5 +1,5 @@
-name: rise_ui_workspace
-repository: https://github.com/leanflutter/rise_ui
+name: influxui_workspace
+repository: https://github.com/leanflutter/influxui
 
 packages:
   - examples/**

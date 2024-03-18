@@ -5,7 +5,7 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   integrations: [
     starlight({
-      title: "rise ui",
+      title: "influxui",
       logo: {
         src: "./src/assets/logo.png",
         replacesTitle: true,
@@ -22,7 +22,7 @@ export default defineConfig({
         },
       },
       social: {
-        github: "https://github.com/leanflutter/rise_ui",
+        github: "https://github.com/leanflutter/influxui",
       },
       sidebar: [
         {

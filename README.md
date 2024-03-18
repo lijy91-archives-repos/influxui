@@ -1,9 +1,9 @@
-# rise_ui
+# influxui
 
 [![pub version][pub-image]][pub-url] [![][discord-image]][discord-url]
 
-[pub-image]: https://img.shields.io/pub/v/rise_ui.svg
-[pub-url]: https://pub.dev/packages/rise_ui
+[pub-image]: https://img.shields.io/pub/v/influxui.svg
+[pub-url]: https://pub.dev/packages/influxui
 
 [discord-image]: https://img.shields.io/discord/884679008049037342.svg
 [discord-url]: https://discord.gg/zPa6EZ2jqb
@@ -35,13 +35,13 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  rise_ui: ^0.1.0
+  influxui: ^0.1.0
 ```
 
 ### Usage
 
 ```dart
-import 'package:rise_ui/rise_ui.dart';
+import 'package:influxui/influxui.dart';
 
 void main() async {
   runApp(MyApp());

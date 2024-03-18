@@ -3,8 +3,8 @@ import 'package:flutter/material.dart' as md;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
 import 'package:go_router/go_router.dart';
-import 'package:rise_ui/rise_ui.dart';
-import 'package:rise_ui_demos/rise_ui_demos.dart';
+import 'package:influxui/influxui.dart';
+import 'package:influxui_demos/influxui_demos.dart';
 
 class RootLayout extends StatefulWidget {
   const RootLayout({

@@ -1,4 +1,4 @@
-name: rise_ui_workspace
+name: influxui_workspace
 publish_to: "none"
 
 environment:

@@ -1,7 +1,7 @@
 name: tabler_icon_library
 description: tabler_icon_library
 version: 0.1.0
-homepage: https://github.com/leanflutter/rise_ui/tree/main/packages/tabler_icon_library
+homepage: https://github.com/leanflutter/influxui/tree/main/packages/tabler_icon_library
 
 environment:
   sdk: ">=3.0.0 <4.0.0"

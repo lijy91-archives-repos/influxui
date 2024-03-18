@@ -10,5 +10,5 @@ title: 入门
 
 ```yaml
 dependencies:
-  rise_ui: ^0.0.1
+  influxui: ^0.0.1
 ```

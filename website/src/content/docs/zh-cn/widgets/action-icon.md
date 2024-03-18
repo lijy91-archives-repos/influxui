@@ -6,7 +6,7 @@ title: ActionIcon
 
 ```dart
 import 'package:flutter/widgets.dart';
-import 'package:rise_ui/rise_ui.dart';
+import 'package:influxui/influxui.dart';
 
 class ActionIconDemo extends StatelessWidget {
   @override

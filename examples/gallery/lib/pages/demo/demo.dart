@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' as md;
 import 'package:flutter/widgets.dart';
-import 'package:rise_ui_demos/rise_ui_demos.dart';
+import 'package:influxui_demos/influxui_demos.dart';
 
 class DemoPage extends md.StatefulWidget {
   const DemoPage({
