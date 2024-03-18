@@ -16,7 +16,9 @@ final kAllColors = [
 ];
 
 final kExtendedSizes = [
+  ExtendedSize.tiny,
   ExtendedSize.small,
   ExtendedSize.medium,
   ExtendedSize.large,
+  ExtendedSize.big,
 ];

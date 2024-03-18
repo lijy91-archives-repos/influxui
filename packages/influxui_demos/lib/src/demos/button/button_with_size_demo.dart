@@ -21,6 +21,7 @@ class ButtonWithSizeDemo extends StatelessWidget {
         ])
           Wrap(
             spacing: 10,
+            crossAxisAlignment: WrapCrossAlignment.end,
             children: [
               for (final size in kExtendedSizes)
                 Button(

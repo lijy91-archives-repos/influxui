@@ -41,7 +41,6 @@ const EdgeInsetsDirectional _kDefaultInsetGroupedRowsMarginWithHeader =
 
 // Used for iOS "Inset Grouped" border radius, estimated from SwiftUI's Forms in
 // iOS 14.2 SDK.
-// TODO(edrisian): This should be a rounded rectangle once that shape is added.
 const BorderRadius _kDefaultInsetGroupedBorderRadius =
     BorderRadius.all(Radius.circular(10.0));
 

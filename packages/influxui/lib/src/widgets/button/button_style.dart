@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 class ButtonStyle with Diagnosticable {
   const ButtonStyle({
     this.padding,
+    this.borderRadius,
     this.minimumSize,
     this.maximumSize,
     this.iconSize,
@@ -11,6 +12,8 @@ class ButtonStyle with Diagnosticable {
   });
 
   final EdgeInsetsGeometry? padding;
+
+  final BorderRadius? borderRadius;
 
   final Size? minimumSize;
 
@@ -21,18 +24,20 @@ class ButtonStyle with Diagnosticable {
   final TextStyle? labelStyle;
 
   ButtonStyle copyWith({
+    EdgeInsetsGeometry? padding,
+    BorderRadius? borderRadius,
     Size? minimumSize,
     Size? maximumSize,
     double? iconSize,
     TextStyle? labelStyle,
-    EdgeInsetsGeometry? padding,
   }) {
     return ButtonStyle(
+      padding: padding ?? this.padding,
+      borderRadius: borderRadius ?? this.borderRadius,
       minimumSize: minimumSize ?? this.minimumSize,
       maximumSize: maximumSize ?? this.maximumSize,
       iconSize: iconSize ?? this.iconSize,
       labelStyle: labelStyle ?? this.labelStyle,
-      padding: padding ?? this.padding,
     );
   }
 
@@ -46,11 +51,12 @@ class ButtonStyle with Diagnosticable {
       return this;
     }
     return copyWith(
+      padding: padding ?? style.padding,
+      borderRadius: borderRadius ?? style.borderRadius,
       minimumSize: minimumSize ?? style.minimumSize,
       maximumSize: maximumSize ?? style.maximumSize,
       iconSize: iconSize ?? style.iconSize,
       labelStyle: labelStyle ?? style.labelStyle,
-      padding: padding ?? style.padding,
     );
   }
 }

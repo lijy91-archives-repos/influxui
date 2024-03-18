@@ -15,10 +15,13 @@ const double _kMinHeight = _kLeadingSize + 2 * 8.0;
 const double _kMinHeightWithSubtitle = _kLeadingSize + 2 * 10.0;
 const double _kNotchedMinHeight = _kNotchedLeadingSize + 2 * 12.0;
 const double _kNotchedMinHeightWithoutLeading = _kNotchedLeadingSize + 2 * 10.0;
-const EdgeInsetsDirectional _kPadding = EdgeInsetsDirectional.only(start: 20.0, end: 14.0);
-const EdgeInsetsDirectional _kPaddingWithSubtitle = EdgeInsetsDirectional.only(start: 20.0, end: 14.0);
+const EdgeInsetsDirectional _kPadding =
+    EdgeInsetsDirectional.only(start: 20.0, end: 14.0);
+const EdgeInsetsDirectional _kPaddingWithSubtitle =
+    EdgeInsetsDirectional.only(start: 20.0, end: 14.0);
 const EdgeInsets _kNotchedPadding = EdgeInsets.symmetric(horizontal: 14.0);
-const EdgeInsetsDirectional _kNotchedPaddingWithoutLeading = EdgeInsetsDirectional.fromSTEB(28.0, 10.0, 14.0, 10.0);
+const EdgeInsetsDirectional _kNotchedPaddingWithoutLeading =
+    EdgeInsetsDirectional.fromSTEB(28.0, 10.0, 14.0, 10.0);
 const double _kLeadingToTitle = 16.0;
 const double _kNotchedLeadingToTitle = 12.0;
 const double _kNotchedTitleToSubtitle = 3.0;
@@ -254,27 +257,33 @@ class _PreferenceListTileState extends State<PreferenceListTile> {
             : Theme.of(context).textTheme.bodyMedium!.merge(
                   TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: widget.leading == null ? _kNotchedTitleWithSubtitleFontSize : null,
+                    fontSize: widget.leading == null
+                        ? _kNotchedTitleWithSubtitleFontSize
+                        : null,
                   ),
                 );
 
-    final TextStyle subtitleTextStyle = widget._type == _PreferenceListTileType.base
-        ? CupertinoTheme.of(context).textTheme.textStyle.merge(
-              TextStyle(
-                fontSize: _kSubtitleFontSize,
-                color: CupertinoColors.secondaryLabel.resolveFrom(context),
-              ),
-            )
-        : CupertinoTheme.of(context).textTheme.textStyle.merge(
-              TextStyle(
-                fontSize: _kNotchedSubtitleFontSize,
-                color: CupertinoColors.secondaryLabel.resolveFrom(context),
-              ),
-            );
+    final TextStyle subtitleTextStyle =
+        widget._type == _PreferenceListTileType.base
+            ? CupertinoTheme.of(context).textTheme.textStyle.merge(
+                  TextStyle(
+                    fontSize: _kSubtitleFontSize,
+                    color: CupertinoColors.secondaryLabel.resolveFrom(context),
+                  ),
+                )
+            : CupertinoTheme.of(context).textTheme.textStyle.merge(
+                  TextStyle(
+                    fontSize: _kNotchedSubtitleFontSize,
+                    color: CupertinoColors.secondaryLabel.resolveFrom(context),
+                  ),
+                );
 
     final TextStyle? additionalInfoTextStyle = widget.additionalInfo != null
         ? CupertinoTheme.of(context).textTheme.textStyle.merge(
-            TextStyle(color: CupertinoColors.secondaryLabel.resolveFrom(context)))
+              TextStyle(
+                color: CupertinoColors.secondaryLabel.resolveFrom(context),
+              ),
+            )
         : null;
 
     final Widget title = DefaultTextStyle(
@@ -290,7 +299,9 @@ class _PreferenceListTileState extends State<PreferenceListTile> {
         case _PreferenceListTileType.base:
           padding = widget.subtitle == null ? _kPadding : _kPaddingWithSubtitle;
         case _PreferenceListTileType.notched:
-          padding = widget.leading == null ? _kNotchedPaddingWithoutLeading : _kNotchedPadding;
+          padding = widget.leading == null
+              ? _kNotchedPaddingWithoutLeading
+              : _kNotchedPadding;
       }
     }
 
@@ -319,7 +330,8 @@ class _PreferenceListTileState extends State<PreferenceListTile> {
     // default color that matched the iOS-style.
     Color? backgroundColor = widget.backgroundColor;
     if (_tapped) {
-      backgroundColor = widget.backgroundColorActivated ?? CupertinoColors.systemGrey4.resolveFrom(context);
+      backgroundColor = widget.backgroundColorActivated ??
+          CupertinoColors.systemGrey4.resolveFrom(context);
     }
 
     double minHeight;
@@ -327,11 +339,14 @@ class _PreferenceListTileState extends State<PreferenceListTile> {
       case _PreferenceListTileType.base:
         minHeight = subtitle == null ? _kMinHeight : _kMinHeightWithSubtitle;
       case _PreferenceListTileType.notched:
-        minHeight = widget.leading == null ? _kNotchedMinHeightWithoutLeading : _kNotchedMinHeight;
+        minHeight = widget.leading == null
+            ? _kNotchedMinHeightWithoutLeading
+            : _kNotchedMinHeight;
     }
 
     final Widget child = Container(
-      constraints: BoxConstraints(minWidth: double.infinity, minHeight: minHeight),
+      constraints:
+          BoxConstraints(minWidth: double.infinity, minHeight: minHeight),
       color: backgroundColor,
       child: Padding(
         padding: padding,
@@ -366,7 +381,7 @@ class _PreferenceListTileState extends State<PreferenceListTile> {
               if (widget.trailing != null)
                 const SizedBox(width: _kAdditionalInfoToTrailing),
             ],
-            if (widget.trailing != null) widget.trailing!
+            if (widget.trailing != null) widget.trailing!,
           ],
         ),
       ),
@@ -377,12 +392,18 @@ class _PreferenceListTileState extends State<PreferenceListTile> {
     }
 
     return GestureDetector(
-      onTapDown: (_) => setState(() { _tapped = true; }),
-      onTapCancel: () => setState(() { _tapped = false; }),
+      onTapDown: (_) => setState(() {
+        _tapped = true;
+      }),
+      onTapCancel: () => setState(() {
+        _tapped = false;
+      }),
       onTap: () async {
         await widget.onTap!();
         if (mounted) {
-          setState(() { _tapped = false; });
+          setState(() {
+            _tapped = false;
+          });
         }
       },
       behavior: HitTestBehavior.opaque,

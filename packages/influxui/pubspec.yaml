@@ -18,7 +18,7 @@ dev_dependencies:
   build_runner: ^2.4.7
   flutter_test:
     sdk: flutter
-  mostly_reasonable_lints: ^0.1.1
   influxui_test:
     path: ../influxui_test
+  mostly_reasonable_lints: ^0.1.1
   theme_tailor: ^2.0.2

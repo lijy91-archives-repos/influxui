@@ -19,7 +19,9 @@ class ExtendedSize extends Size {
     return other is ExtendedSize && other.name == name;
   }
 
+  static const ExtendedSize tiny = ExtendedSize('tiny');
   static const ExtendedSize small = ExtendedSize('small');
   static const ExtendedSize medium = ExtendedSize('medium');
   static const ExtendedSize large = ExtendedSize('large');
+  static const ExtendedSize big = ExtendedSize('big');
 }

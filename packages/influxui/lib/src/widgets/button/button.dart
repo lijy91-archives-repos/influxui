@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart'
     hide ButtonStyle, ButtonTheme, ButtonThemeData;
-import 'package:flutter/widgets.dart';
 import 'package:influxui/src/widgets/box/box.dart';
 import 'package:influxui/src/widgets/button/button_style.dart';
 import 'package:influxui/src/widgets/button/button_theme.dart';
@@ -20,9 +19,11 @@ enum ButtonVariant {
 
 class ButtonSize extends Size {
   ButtonSize(super.width, super.height);
+  static ExtendedSize get tiny => ExtendedSize.tiny;
   static ExtendedSize get small => ExtendedSize.small;
   static ExtendedSize get medium => ExtendedSize.medium;
   static ExtendedSize get large => ExtendedSize.large;
+  static ExtendedSize get big => ExtendedSize.big;
 }
 
 class Button extends StatefulWidget {
@@ -60,13 +61,15 @@ class _ButtonState extends State<Button> {
   Widget build(BuildContext context) {
     final ButtonThemeData? themeData = ButtonTheme.of(context);
     final ButtonThemeData defaults = _ButtonDefaults(context);
-    ButtonStyle mergedStyle = widget.style ??
-        themeData?.mediumStyle ??
-        defaults.mediumStyle ??
-        const ButtonStyle();
+    ButtonStyle mergedStyle = widget.style ?? const ButtonStyle();
 
     if (widget.size is ExtendedSize) {
       switch (widget.size) {
+        case ExtendedSize.tiny:
+          mergedStyle = mergedStyle // merge tiny style
+              .merge(themeData?.tinyStyle)
+              .merge(defaults.tinyStyle);
+          break;
         case ExtendedSize.small:
           mergedStyle = mergedStyle // merge small style
               .merge(themeData?.smallStyle)
@@ -81,6 +84,10 @@ class _ButtonState extends State<Button> {
           mergedStyle = mergedStyle // merge large style
               .merge(themeData?.largeStyle)
               .merge(defaults.largeStyle);
+        case ExtendedSize.big:
+          mergedStyle = mergedStyle // merge big style
+              .merge(themeData?.bigStyle)
+              .merge(defaults.bigStyle);
           break;
       }
     }
@@ -92,7 +99,7 @@ class _ButtonState extends State<Button> {
       variant: BoxVariant.valueOf(widget.variant?.name),
       padding: widget.padding,
       color: widget.color,
-      borderRadius: themeData?.borderRadius ?? defaults.borderRadius,
+      borderRadius: mergedStyle.borderRadius,
       pressedOpacity: themeData?.pressedOpacity ?? defaults.pressedOpacity,
       mouseCursor: widget.enabled
           ? SystemMouseCursors.click
@@ -139,27 +146,37 @@ class _ButtonDefaults extends ButtonThemeData {
   late final ThemeData _theme = Theme.of(context);
 
   @override
-  BorderRadius? get borderRadius => const BorderRadius.all(Radius.circular(4));
+  double get pressedOpacity => 0.8;
 
   @override
-  double get pressedOpacity => 0.8;
+  ButtonStyle? get tinyStyle {
+    return ButtonStyle(
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+      borderRadius: const BorderRadius.all(Radius.circular(4)),
+      // minimumSize: const Size.square(22),
+      // iconSize: 16,
+      labelStyle: _theme.textTheme.bodySmall,
+    );
+  }
 
   @override
   ButtonStyle? get smallStyle {
     return ButtonStyle(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      minimumSize: const Size.square(22),
-      iconSize: 16,
-      labelStyle: _theme.textTheme.bodySmall,
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+      borderRadius: const BorderRadius.all(Radius.circular(4)),
+      // minimumSize: const Size.square(22),
+      // iconSize: 16,
+      labelStyle: _theme.textTheme.bodyMedium,
     );
   }
 
   @override
   ButtonStyle? get mediumStyle {
     return ButtonStyle(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      minimumSize: const Size.square(28),
-      iconSize: 20,
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+      borderRadius: const BorderRadius.all(Radius.circular(6)),
+      // minimumSize: const Size.square(28),
+      // iconSize: 20,
       labelStyle: _theme.textTheme.bodyMedium,
     );
   }
@@ -167,10 +184,22 @@ class _ButtonDefaults extends ButtonThemeData {
   @override
   ButtonStyle? get largeStyle {
     return ButtonStyle(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      minimumSize: const Size.square(34),
-      iconSize: 24,
-      labelStyle: _theme.textTheme.bodyLarge,
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+      borderRadius: const BorderRadius.all(Radius.circular(6)),
+      // minimumSize: const Size.square(34),
+      // iconSize: 24,
+      labelStyle: _theme.textTheme.bodyMedium,
+    );
+  }
+
+  @override
+  ButtonStyle? get bigStyle {
+    return ButtonStyle(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+      borderRadius: const BorderRadius.all(Radius.circular(6)),
+      // minimumSize: const Size.square(34),
+      // iconSize: 24,
+      labelStyle: _theme.textTheme.bodyMedium,
     );
   }
 }
