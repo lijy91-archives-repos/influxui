@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:influxui/influxui.dart';
 import 'package:preview_app/storybook_config.g.dart';
 import 'package:storybook_dart/storybook_dart.dart';
 import 'package:storybook_dart_annotation/storybook_dart_annotation.dart'

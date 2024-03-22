@@ -1,10 +1,7 @@
-import 'dart:ui';
-
-import 'package:flutter/material.dart' as md;
 import 'package:influxui/influxui.dart';
 
-final lightThemeData = md.ThemeData(
-  colorScheme: md.ColorScheme.light(
+final lightThemeData = ThemeData(
+  colorScheme: ColorScheme.light(
     primary: ExtendedColors.indigo,
     background: ExtendedColors.gray.shade100,
     surface: ExtendedColors.white,

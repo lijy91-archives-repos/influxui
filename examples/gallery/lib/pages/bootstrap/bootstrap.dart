@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart' as md;
 import 'package:go_router/go_router.dart';
 import 'package:influxui/influxui.dart';
 import 'package:influxui_demos/influxui_demos.dart';
@@ -22,7 +21,7 @@ class _BootstrapPageState extends State<BootstrapPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const md.Scaffold(
+    return const Scaffold(
       body: Center(
         child: Loader(),
       ),

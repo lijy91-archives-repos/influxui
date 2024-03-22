@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:gallery/utilities/env.dart';
-import 'package:gallery/utilities/platform_util.dart';
+import 'package:influxui_gallery/utilities/env.dart';
+import 'package:influxui_gallery/utilities/platform_util.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 

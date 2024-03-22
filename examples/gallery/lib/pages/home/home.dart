@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart' as md;
 import 'package:go_router/go_router.dart';
 import 'package:influxui/influxui.dart';
 import 'package:influxui_demos/influxui_demos.dart';
@@ -8,7 +7,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return md.Scaffold(
+    return Scaffold(
       body: ListView.separated(
         itemBuilder: (_, index) {
           final demoKey = kKnownDemos.keys.toList()[index];

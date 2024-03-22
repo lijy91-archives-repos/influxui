@@ -1,10 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:flutter/material.dart' hide IconButton;
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:gallery/router_config.dart';
-import 'package:gallery/themes/themes.dart';
 import 'package:influxui/influxui.dart';
+import 'package:influxui_gallery/router_config.dart';
+import 'package:influxui_gallery/themes/themes.dart';
 import 'package:tabler_icon_library/tabler_icon_library.dart';
 
 class TablerIconLibrary extends IconLibrary {

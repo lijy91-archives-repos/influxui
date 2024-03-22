@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:flutter/material.dart' as md;
+import 'package:flutter/material.dart' hide IconButton;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:influxui/influxui.dart';
 import 'package:influxui_test/influxui_test.dart';
@@ -40,13 +40,13 @@ final _sizes = [
 
 class _MaterialIconLibrary extends IconLibrary {
   @override
-  IconData get chevron_left => md.Icons.chevron_left;
+  IconData get chevron_left => Icons.chevron_left;
 
   @override
-  IconData get chevron_right => md.Icons.chevron_right;
+  IconData get chevron_right => Icons.chevron_right;
 
   @override
-  IconData get square => md.Icons.square;
+  IconData get square => Icons.square;
 
   @override
   IconData get light_mode => throw UnimplementedError();
@@ -61,7 +61,7 @@ class _TestWidget extends StatelessWidget {
   final IconButtonVariant? variant;
 
   @override
-  Widget build(md.BuildContext context) {
+  Widget build(BuildContext context) {
     return SizedBox(
       width: 300,
       height: 200,
@@ -70,7 +70,7 @@ class _TestWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
-              md.Icons.wb_sunny_outlined,
+              Icons.wb_sunny_outlined,
               variant: variant,
               onPressed: () {},
             ),
@@ -81,7 +81,7 @@ class _TestWidget extends StatelessWidget {
               children: [
                 for (final size in _sizes)
                   IconButton(
-                    md.Icons.wb_sunny_outlined,
+                    Icons.wb_sunny_outlined,
                     variant: variant,
                     size: size,
                     onPressed: () {},
@@ -97,7 +97,7 @@ class _TestWidget extends StatelessWidget {
                 children: [
                   for (final color in _colors)
                     IconButton(
-                      md.Icons.wb_sunny_outlined,
+                      Icons.wb_sunny_outlined,
                       variant: variant,
                       color: color,
                       onPressed: () {},

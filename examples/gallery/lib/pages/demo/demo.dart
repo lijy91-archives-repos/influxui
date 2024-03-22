@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart' as md;
-import 'package:flutter/widgets.dart';
+import 'package:influxui/influxui.dart';
 import 'package:influxui_demos/influxui_demos.dart';
 
-class DemoPage extends md.StatefulWidget {
+class DemoPage extends StatefulWidget {
   const DemoPage({
     super.key,
     required this.demoId,
@@ -17,7 +16,7 @@ class DemoPage extends md.StatefulWidget {
 class _DemoPageState extends State<DemoPage> {
   @override
   Widget build(BuildContext context) {
-    return md.Scaffold(
+    return Scaffold(
       body: Center(
         child: Builder(
           builder: (context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:gallery/layouts/layouts.dart';
-import 'package:gallery/pages/pages.dart';
 import 'package:go_router/go_router.dart';
+import 'package:influxui_gallery/layouts/layouts.dart';
+import 'package:influxui_gallery/pages/pages.dart';
 
 // GoRouter configuration
 final routerConfig = GoRouter(

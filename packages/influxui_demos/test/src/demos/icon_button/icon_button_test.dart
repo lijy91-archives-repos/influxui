@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:flutter/material.dart' as md;
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:influxui/influxui.dart';
 import 'package:influxui_demos/influxui_demos.dart';
@@ -10,19 +10,19 @@ import 'package:influxui_test/influxui_test.dart';
 
 class _MaterialIconLibrary extends IconLibrary {
   @override
-  IconData get chevron_left => md.Icons.chevron_left;
+  IconData get chevron_left => Icons.chevron_left;
 
   @override
-  IconData get chevron_right => md.Icons.chevron_right;
+  IconData get chevron_right => Icons.chevron_right;
 
   @override
-  IconData get square => md.Icons.square;
+  IconData get square => Icons.square;
 
   @override
-  IconData get light_mode => md.Icons.light_mode_outlined;
+  IconData get light_mode => Icons.light_mode_outlined;
 
   @override
-  IconData get dark_mode => md.Icons.dark_mode_outlined;
+  IconData get dark_mode => Icons.dark_mode_outlined;
 }
 
 void main() {

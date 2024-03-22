@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart' as md;
 import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
 import 'package:go_router/go_router.dart';
 import 'package:influxui/influxui.dart';
@@ -23,7 +22,7 @@ class _RootLayoutState extends State<RootLayout> {
       decoration: BoxDecoration(
         border: Border(
           right: BorderSide(
-            color: md.Colors.black.withOpacity(0.1),
+            color: ExtendedColors.black.withOpacity(0.1),
             width: 1,
           ),
         ),
@@ -57,7 +56,7 @@ class _RootLayoutState extends State<RootLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return md.Scaffold(
+    return Scaffold(
       body: AdaptiveLayout(
         primaryNavigation: SlotLayout(
           config: <Breakpoint, SlotLayoutConfig>{

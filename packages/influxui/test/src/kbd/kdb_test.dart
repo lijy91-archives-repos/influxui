@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:influxui/influxui.dart';
 import 'package:influxui_test/influxui_test.dart';
