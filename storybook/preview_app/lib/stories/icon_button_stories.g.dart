@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'action_icon_stories.dart';
+part of 'icon_button_stories.dart';
 
 // **************************************************************************
 // MetaGenerator
 // **************************************************************************
 
-mixin _$ActionIconMeta on Meta {
+mixin _$IconButtonMeta on Meta {
   @override
-  String get title => 'Widgets/ActionIcon';
+  String get title => 'Widgets/IconButton';
 
   @override
   List<ArgType> get argTypes {
@@ -20,34 +20,34 @@ mixin _$ActionIconMeta on Meta {
 // StoryGenerator
 // **************************************************************************
 
-mixin _$ActionIconDefaultStory on StoryObj<ActionIconMeta> {
+mixin _$IconButtonDefaultStory on StoryObj<IconButtonMeta> {
   @override
   String get name => 'Default';
 
   @override
-  ActionIconMeta get meta => ActionIconMeta();
+  IconButtonMeta get meta => IconButtonMeta();
 }
 
-mixin _$ActionIconWithVariantStory on StoryObj<ActionIconMeta> {
+mixin _$IconButtonWithVariantStory on StoryObj<IconButtonMeta> {
   @override
   String get name => 'With Variant';
 
   @override
-  ActionIconMeta get meta => ActionIconMeta();
+  IconButtonMeta get meta => IconButtonMeta();
 }
 
-mixin _$ActionIconWithSizeStory on StoryObj<ActionIconMeta> {
+mixin _$IconButtonWithSizeStory on StoryObj<IconButtonMeta> {
   @override
   String get name => 'With Size';
 
   @override
-  ActionIconMeta get meta => ActionIconMeta();
+  IconButtonMeta get meta => IconButtonMeta();
 }
 
-mixin _$ActionIconWithColorStory on StoryObj<ActionIconMeta> {
+mixin _$IconButtonWithColorStory on StoryObj<IconButtonMeta> {
   @override
   String get name => 'With Color';
 
   @override
-  ActionIconMeta get meta => ActionIconMeta();
+  IconButtonMeta get meta => IconButtonMeta();
 }

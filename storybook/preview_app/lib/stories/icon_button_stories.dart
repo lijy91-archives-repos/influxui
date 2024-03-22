@@ -1,14 +1,13 @@
-import 'package:flutter/widgets.dart';
 import 'package:influxui/influxui.dart';
 import 'package:storybook_dart/storybook_dart.dart';
 import 'package:storybook_dart_annotation/storybook_dart_annotation.dart'
     as storybook;
 import 'package:tabler_icon_library/tabler_icon_library.dart';
 
-part 'action_icon_stories.g.dart';
+part 'icon_button_stories.g.dart';
 
 @storybook.Meta(
-  title: 'Widgets/ActionIcon',
+  title: 'Widgets/IconButton',
   argTypes: [
     storybook.ArgType<IconData>(
       'icon',
@@ -16,33 +15,33 @@ part 'action_icon_stories.g.dart';
     ),
   ],
 )
-class ActionIconMeta extends Meta with _$ActionIconMeta {
+class IconButtonMeta extends Meta with _$IconButtonMeta {
   @override
   Widget buildWidget(BuildContext context, List<Arg> args) {
-    return ActionIcon(
+    return IconButton(
       TablerIcons.sun,
-      variant: ActionIconVariant.filled,
+      variant: IconButtonVariant.filled,
       onPressed: () {},
     );
   }
 }
 
 @storybook.Story('Default')
-class ActionIconDefaultStory extends StoryObj<ActionIconMeta>
-    with _$ActionIconDefaultStory {}
+class IconButtonDefaultStory extends StoryObj<IconButtonMeta>
+    with _$IconButtonDefaultStory {}
 
 @storybook.Story(
   'With Variant',
 )
-class ActionIconWithVariantStory extends StoryObj<ActionIconMeta>
-    with _$ActionIconWithVariantStory {
+class IconButtonWithVariantStory extends StoryObj<IconButtonMeta>
+    with _$IconButtonWithVariantStory {
   @override
   Widget build(BuildContext context, List<Arg> args) {
     return Wrap(
       spacing: 10,
       children: [
-        for (final variant in ActionIconVariant.values)
-          ActionIcon(
+        for (final variant in IconButtonVariant.values)
+          IconButton(
             TablerIcons.sun,
             variant: variant,
             onPressed: () {},
@@ -58,19 +57,19 @@ class ActionIconWithVariantStory extends StoryObj<ActionIconMeta>
     storybook.Arg<String>('size'),
   ],
 )
-class ActionIconWithSizeStory extends StoryObj<ActionIconMeta>
-    with _$ActionIconWithSizeStory {
+class IconButtonWithSizeStory extends StoryObj<IconButtonMeta>
+    with _$IconButtonWithSizeStory {
   @override
   Widget build(BuildContext context, List<Arg> args) {
     return Wrap(
       spacing: 10,
       children: [
         for (final size in [
-          ActionIconSize.small,
-          ActionIconSize.medium,
-          ActionIconSize.large,
+          IconButtonSize.small,
+          IconButtonSize.medium,
+          IconButtonSize.large,
         ])
-          ActionIcon(
+          IconButton(
             TablerIcons.sun,
             size: size,
             onPressed: () {},
@@ -83,5 +82,5 @@ class ActionIconWithSizeStory extends StoryObj<ActionIconMeta>
 @storybook.Story(
   'With Color',
 )
-class ActionIconWithColorStory extends StoryObj<ActionIconMeta>
-    with _$ActionIconWithColorStory {}
+class IconButtonWithColorStory extends StoryObj<IconButtonMeta>
+    with _$IconButtonWithColorStory {}

@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide IconButton;
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:gallery/router_config.dart';
 import 'package:gallery/themes/themes.dart';
@@ -67,11 +67,11 @@ class _MyAppState extends State<MyApp> {
             Positioned(
               right: 20,
               bottom: 20,
-              child: ActionIcon(
+              child: IconButton(
                 _themeMode == ThemeMode.light
                     ? TablerIcons.sun
                     : TablerIcons.moon,
-                variant: ActionIconVariant.filled,
+                variant: IconButtonVariant.filled,
                 onPressed: () {
                   _themeMode = _themeMode == ThemeMode.light
                       ? ThemeMode.dark

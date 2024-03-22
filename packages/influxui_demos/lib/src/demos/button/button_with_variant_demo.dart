@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:influxui/influxui.dart';
 
 class ButtonWithVariantDemo extends StatelessWidget {

@@ -22,8 +22,7 @@ mixin _$CardThemeDataTailorMixin
   }
 
   @override
-  CardThemeData lerp(
-      covariant ThemeExtension<CardThemeData>? other, double t) {
+  CardThemeData lerp(covariant ThemeExtension<CardThemeData>? other, double t) {
     if (other is! CardThemeData) return this as CardThemeData;
     return CardThemeData(
       borderRadius: t < 0.5 ? borderRadius : other.borderRadius,

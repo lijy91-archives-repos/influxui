@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart'
     hide ButtonStyle, ButtonTheme, ButtonThemeData;
-import 'package:influxui/src/widgets/box/box.dart';
+import 'package:influxui/src/widgets/button/button_base.dart';
 import 'package:influxui/src/widgets/button/button_style.dart';
 import 'package:influxui/src/widgets/button/button_theme.dart';
 import 'package:influxui/src/widgets/extended_theme/extended_sizes.dart';
@@ -97,8 +97,8 @@ class _ButtonState extends State<Button> {
       mergedStyle = mergedStyle.copyWith(iconSize: widget.iconSize);
     }
 
-    return Box(
-      variant: BoxVariant.valueOf(widget.variant?.name),
+    return ButtonBase(
+      variant: ButtonBaseVariant.valueOf(widget.variant?.name),
       padding: widget.padding,
       color: widget.color,
       borderRadius: mergedStyle.borderRadius,

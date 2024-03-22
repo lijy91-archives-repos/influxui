@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart' as md;
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:influxui/influxui.dart';
 import 'package:influxui_demos/influxui_demos.dart';

@@ -1,7 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart' as md;
-import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:influxui/influxui.dart';
 import 'package:influxui_test/influxui_test.dart';
@@ -34,9 +33,9 @@ final _colors = [
 ];
 
 final _sizes = [
-  ActionIconSize.small,
-  ActionIconSize.medium,
-  ActionIconSize.large,
+  IconButtonSize.small,
+  IconButtonSize.medium,
+  IconButtonSize.large,
 ];
 
 class _MaterialIconLibrary extends IconLibrary {
@@ -59,7 +58,7 @@ class _MaterialIconLibrary extends IconLibrary {
 class _TestWidget extends StatelessWidget {
   const _TestWidget({this.variant});
 
-  final ActionIconVariant? variant;
+  final IconButtonVariant? variant;
 
   @override
   Widget build(md.BuildContext context) {
@@ -70,7 +69,7 @@ class _TestWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ActionIcon(
+            IconButton(
               md.Icons.wb_sunny_outlined,
               variant: variant,
               onPressed: () {},
@@ -81,7 +80,7 @@ class _TestWidget extends StatelessWidget {
               runSpacing: 10,
               children: [
                 for (final size in _sizes)
-                  ActionIcon(
+                  IconButton(
                     md.Icons.wb_sunny_outlined,
                     variant: variant,
                     size: size,
@@ -97,7 +96,7 @@ class _TestWidget extends StatelessWidget {
                 runSpacing: 10,
                 children: [
                   for (final color in _colors)
-                    ActionIcon(
+                    IconButton(
                       md.Icons.wb_sunny_outlined,
                       variant: variant,
                       color: color,
@@ -115,40 +114,40 @@ class _TestWidget extends StatelessWidget {
 
 void main() {
   ExtendedIcons.iconLibrary = _MaterialIconLibrary();
-  group('action-icon-goldens', () {
+  group('icon-button-goldens', () {
     // Variants
     testGolden(
-      'action-icon-variant-transparent',
+      'icon-button-variant-transparent',
       (_) => const _TestWidget(
-        variant: ActionIconVariant.transparent,
+        variant: IconButtonVariant.transparent,
       ),
       size: const Size(300, 200),
     );
     testGolden(
-      'action-icon-variant-subtle',
+      'icon-button-variant-subtle',
       (_) => const _TestWidget(
-        variant: ActionIconVariant.subtle,
+        variant: IconButtonVariant.subtle,
       ),
       size: const Size(300, 200),
     );
     testGolden(
-      'action-icon-variant-light',
+      'icon-button-variant-light',
       (_) => const _TestWidget(
-        variant: ActionIconVariant.light,
+        variant: IconButtonVariant.light,
       ),
       size: const Size(300, 200),
     );
     testGolden(
-      'action-icon-variant-filled',
+      'icon-button-variant-filled',
       (_) => const _TestWidget(
-        variant: ActionIconVariant.filled,
+        variant: IconButtonVariant.filled,
       ),
       size: const Size(300, 200),
     );
     testGolden(
-      'action-icon-variant-outline',
+      'icon-button-variant-outline',
       (_) => const _TestWidget(
-        variant: ActionIconVariant.outline,
+        variant: IconButtonVariant.outline,
       ),
       size: const Size(300, 200),
     );

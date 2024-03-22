@@ -1,9 +1,8 @@
-import 'package:flutter/widgets.dart';
 import 'package:influxui/influxui.dart';
 import 'package:influxui_demos/src/utils/constants.dart';
 
-class ActionIconWithSizeDemo extends StatelessWidget {
-  const ActionIconWithSizeDemo({super.key});
+class IconButtonWithSizeDemo extends StatelessWidget {
+  const IconButtonWithSizeDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,18 +11,18 @@ class ActionIconWithSizeDemo extends StatelessWidget {
       spacing: 10,
       children: [
         for (final variant in [
-          ActionIconVariant.filled,
-          ActionIconVariant.light,
-          ActionIconVariant.outline,
-          ActionIconVariant.subtle,
-          ActionIconVariant.transparent,
-          ActionIconVariant.white,
+          IconButtonVariant.filled,
+          IconButtonVariant.light,
+          IconButtonVariant.outline,
+          IconButtonVariant.subtle,
+          IconButtonVariant.transparent,
+          IconButtonVariant.white,
         ])
           Wrap(
             spacing: 10,
             children: [
               for (final size in kExtendedSizes)
-                ActionIcon(
+                IconButton(
                   ExtendedIcons.light_mode,
                   variant: variant,
                   size: size,

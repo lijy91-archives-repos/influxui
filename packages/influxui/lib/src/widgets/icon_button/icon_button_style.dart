@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
-class ActionIconStyle with Diagnosticable {
-  const ActionIconStyle({
+class IconButtonStyle with Diagnosticable {
+  const IconButtonStyle({
     this.size,
     this.iconSize,
   });
@@ -11,22 +11,22 @@ class ActionIconStyle with Diagnosticable {
 
   final double? iconSize;
 
-  ActionIconStyle copyWith({
+  IconButtonStyle copyWith({
     Size? size,
     double? iconSize,
   }) {
-    return ActionIconStyle(
+    return IconButtonStyle(
       size: size ?? this.size,
       iconSize: iconSize ?? this.iconSize,
     );
   }
 
-  /// Returns a copy of this ActionIconStyle where the non-null fields in [style]
-  /// have replaced the corresponding null fields in this ActionIconStyle.
+  /// Returns a copy of this IconButtonStyle where the non-null fields in [style]
+  /// have replaced the corresponding null fields in this IconButtonStyle.
   ///
   /// In other words, [style] is used to fill in unspecified (null) fields
-  /// this ActionIconStyle.
-  ActionIconStyle merge(ActionIconStyle? style) {
+  /// this IconButtonStyle.
+  IconButtonStyle merge(IconButtonStyle? style) {
     if (style == null) {
       return this;
     }

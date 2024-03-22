@@ -2,29 +2,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, unused_element, unnecessary_cast
 
-part of 'action_icon_theme.dart';
+part of 'icon_button_theme.dart';
 
 // **************************************************************************
 // TailorAnnotationsGenerator
 // **************************************************************************
 
-mixin _$ActionIconThemeDataTailorMixin
-    on ThemeExtension<ActionIconThemeData>, DiagnosticableTreeMixin {
+mixin _$IconButtonThemeDataTailorMixin
+    on ThemeExtension<IconButtonThemeData>, DiagnosticableTreeMixin {
   BorderRadius? get borderRadius;
   double get pressedOpacity;
-  ActionIconStyle? get smallStyle;
-  ActionIconStyle? get mediumStyle;
-  ActionIconStyle? get largeStyle;
+  IconButtonStyle? get smallStyle;
+  IconButtonStyle? get mediumStyle;
+  IconButtonStyle? get largeStyle;
 
   @override
-  ActionIconThemeData copyWith({
+  IconButtonThemeData copyWith({
     BorderRadius? borderRadius,
     double? pressedOpacity,
-    ActionIconStyle? smallStyle,
-    ActionIconStyle? mediumStyle,
-    ActionIconStyle? largeStyle,
+    IconButtonStyle? smallStyle,
+    IconButtonStyle? mediumStyle,
+    IconButtonStyle? largeStyle,
   }) {
-    return ActionIconThemeData(
+    return IconButtonThemeData(
       borderRadius: borderRadius ?? this.borderRadius,
       pressedOpacity: pressedOpacity ?? this.pressedOpacity,
       smallStyle: smallStyle ?? this.smallStyle,
@@ -34,10 +34,10 @@ mixin _$ActionIconThemeDataTailorMixin
   }
 
   @override
-  ActionIconThemeData lerp(
-      covariant ThemeExtension<ActionIconThemeData>? other, double t) {
-    if (other is! ActionIconThemeData) return this as ActionIconThemeData;
-    return ActionIconThemeData(
+  IconButtonThemeData lerp(
+      covariant ThemeExtension<IconButtonThemeData>? other, double t) {
+    if (other is! IconButtonThemeData) return this as IconButtonThemeData;
+    return IconButtonThemeData(
       borderRadius: t < 0.5 ? borderRadius : other.borderRadius,
       pressedOpacity: t < 0.5 ? pressedOpacity : other.pressedOpacity,
       smallStyle: t < 0.5 ? smallStyle : other.smallStyle,
@@ -50,7 +50,7 @@ mixin _$ActionIconThemeDataTailorMixin
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ActionIconThemeData &&
+            other is IconButtonThemeData &&
             const DeepCollectionEquality()
                 .equals(borderRadius, other.borderRadius) &&
             const DeepCollectionEquality()
@@ -79,7 +79,7 @@ mixin _$ActionIconThemeDataTailorMixin
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ActionIconThemeData'))
+      ..add(DiagnosticsProperty('type', 'IconButtonThemeData'))
       ..add(DiagnosticsProperty('borderRadius', borderRadius))
       ..add(DiagnosticsProperty('pressedOpacity', pressedOpacity))
       ..add(DiagnosticsProperty('smallStyle', smallStyle))
@@ -88,12 +88,12 @@ mixin _$ActionIconThemeDataTailorMixin
   }
 }
 
-extension ActionIconThemeDataBuildContextProps on BuildContext {
-  ActionIconThemeData get actionIconThemeData =>
-      Theme.of(this).extension<ActionIconThemeData>()!;
+extension IconButtonThemeDataBuildContextProps on BuildContext {
+  IconButtonThemeData get actionIconThemeData =>
+      Theme.of(this).extension<IconButtonThemeData>()!;
   BorderRadius? get borderRadius => actionIconThemeData.borderRadius;
   double get pressedOpacity => actionIconThemeData.pressedOpacity;
-  ActionIconStyle? get smallStyle => actionIconThemeData.smallStyle;
-  ActionIconStyle? get mediumStyle => actionIconThemeData.mediumStyle;
-  ActionIconStyle? get largeStyle => actionIconThemeData.largeStyle;
+  IconButtonStyle? get smallStyle => actionIconThemeData.smallStyle;
+  IconButtonStyle? get mediumStyle => actionIconThemeData.mediumStyle;
+  IconButtonStyle? get largeStyle => actionIconThemeData.largeStyle;
 }

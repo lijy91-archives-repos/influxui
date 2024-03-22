@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:influxui/src/foundation/customizable_property.dart';
 
-enum BoxState {
+enum ButtonBaseState {
   normal,
   hovered,
   pressed,
   disabled,
 }
 
-class BoxStateColor extends CustomizableProperty<Color, Set<BoxState>> {
-  const BoxStateColor({
+class ButtonBaseStateColor
+    extends CustomizableProperty<Color, Set<ButtonBaseState>> {
+  const ButtonBaseStateColor({
     this.color,
     this.colorShade,
     this.colorOpacity,
@@ -41,19 +42,19 @@ class BoxStateColor extends CustomizableProperty<Color, Set<BoxState>> {
   final double? disabledColorOpacity;
 
   @override
-  Color resolve(Set<BoxState> states) {
+  Color resolve(Set<ButtonBaseState> states) {
     Color? seedColor;
     int? seedColorShade;
     double? seedColorOpacity;
-    if (states.contains(BoxState.disabled)) {
+    if (states.contains(ButtonBaseState.disabled)) {
       seedColor = disabledColor ?? color;
       seedColorShade = disabledColorShade;
       seedColorOpacity = disabledColorOpacity;
-    } else if (states.contains(BoxState.pressed)) {
+    } else if (states.contains(ButtonBaseState.pressed)) {
       seedColor = pressedColor ?? color;
       seedColorShade = pressedColorShade;
       seedColorOpacity = pressedColorOpacity;
-    } else if (states.contains(BoxState.hovered)) {
+    } else if (states.contains(ButtonBaseState.hovered)) {
       seedColor = hoveredColor ?? color;
       seedColorShade = hoveredColorShade;
       seedColorOpacity = hoveredColorOpacity;
@@ -76,7 +77,7 @@ class BoxStateColor extends CustomizableProperty<Color, Set<BoxState>> {
     return resolvedColor;
   }
 
-  BoxStateColor copyWith({
+  ButtonBaseStateColor copyWith({
     Color? color,
     int? colorShade,
     double? colorOpacity,
@@ -90,7 +91,7 @@ class BoxStateColor extends CustomizableProperty<Color, Set<BoxState>> {
     int? disabledColorShade,
     double? disabledColorOpacity,
   }) {
-    return BoxStateColor(
+    return ButtonBaseStateColor(
       color: color ?? this.color,
       colorShade: colorShade ?? this.colorShade,
       colorOpacity: colorOpacity ?? this.colorOpacity,

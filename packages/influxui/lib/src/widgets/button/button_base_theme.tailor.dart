@@ -2,31 +2,31 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, unused_element, unnecessary_cast
 
-part of 'box_theme.dart';
+part of 'button_base_theme.dart';
 
 // **************************************************************************
 // TailorAnnotationsGenerator
 // **************************************************************************
 
-mixin _$BoxThemeDataTailorMixin
-    on ThemeExtension<BoxThemeData>, DiagnosticableTreeMixin {
-  BoxStyle? get filledStyle;
-  BoxStyle? get lightStyle;
-  BoxStyle? get outlineStyle;
-  BoxStyle? get subtleStyle;
-  BoxStyle? get transparentStyle;
-  BoxStyle? get whiteStyle;
+mixin _$ButtonBaseThemeDataTailorMixin
+    on ThemeExtension<ButtonBaseThemeData>, DiagnosticableTreeMixin {
+  ButtonBaseStyle? get filledStyle;
+  ButtonBaseStyle? get lightStyle;
+  ButtonBaseStyle? get outlineStyle;
+  ButtonBaseStyle? get subtleStyle;
+  ButtonBaseStyle? get transparentStyle;
+  ButtonBaseStyle? get whiteStyle;
 
   @override
-  BoxThemeData copyWith({
-    BoxStyle? filledStyle,
-    BoxStyle? lightStyle,
-    BoxStyle? outlineStyle,
-    BoxStyle? subtleStyle,
-    BoxStyle? transparentStyle,
-    BoxStyle? whiteStyle,
+  ButtonBaseThemeData copyWith({
+    ButtonBaseStyle? filledStyle,
+    ButtonBaseStyle? lightStyle,
+    ButtonBaseStyle? outlineStyle,
+    ButtonBaseStyle? subtleStyle,
+    ButtonBaseStyle? transparentStyle,
+    ButtonBaseStyle? whiteStyle,
   }) {
-    return BoxThemeData(
+    return ButtonBaseThemeData(
       filledStyle: filledStyle ?? this.filledStyle,
       lightStyle: lightStyle ?? this.lightStyle,
       outlineStyle: outlineStyle ?? this.outlineStyle,
@@ -37,9 +37,10 @@ mixin _$BoxThemeDataTailorMixin
   }
 
   @override
-  BoxThemeData lerp(covariant ThemeExtension<BoxThemeData>? other, double t) {
-    if (other is! BoxThemeData) return this as BoxThemeData;
-    return BoxThemeData(
+  ButtonBaseThemeData lerp(
+      covariant ThemeExtension<ButtonBaseThemeData>? other, double t) {
+    if (other is! ButtonBaseThemeData) return this as ButtonBaseThemeData;
+    return ButtonBaseThemeData(
       filledStyle: t < 0.5 ? filledStyle : other.filledStyle,
       lightStyle: t < 0.5 ? lightStyle : other.lightStyle,
       outlineStyle: t < 0.5 ? outlineStyle : other.outlineStyle,
@@ -53,7 +54,7 @@ mixin _$BoxThemeDataTailorMixin
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is BoxThemeData &&
+            other is ButtonBaseThemeData &&
             const DeepCollectionEquality()
                 .equals(filledStyle, other.filledStyle) &&
             const DeepCollectionEquality()
@@ -85,7 +86,7 @@ mixin _$BoxThemeDataTailorMixin
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'BoxThemeData'))
+      ..add(DiagnosticsProperty('type', 'ButtonBaseThemeData'))
       ..add(DiagnosticsProperty('filledStyle', filledStyle))
       ..add(DiagnosticsProperty('lightStyle', lightStyle))
       ..add(DiagnosticsProperty('outlineStyle', outlineStyle))
@@ -95,12 +96,13 @@ mixin _$BoxThemeDataTailorMixin
   }
 }
 
-extension BoxThemeDataBuildContextProps on BuildContext {
-  BoxThemeData get boxThemeData => Theme.of(this).extension<BoxThemeData>()!;
-  BoxStyle? get filledStyle => boxThemeData.filledStyle;
-  BoxStyle? get lightStyle => boxThemeData.lightStyle;
-  BoxStyle? get outlineStyle => boxThemeData.outlineStyle;
-  BoxStyle? get subtleStyle => boxThemeData.subtleStyle;
-  BoxStyle? get transparentStyle => boxThemeData.transparentStyle;
-  BoxStyle? get whiteStyle => boxThemeData.whiteStyle;
+extension ButtonBaseThemeDataBuildContextProps on BuildContext {
+  ButtonBaseThemeData get boxThemeData =>
+      Theme.of(this).extension<ButtonBaseThemeData>()!;
+  ButtonBaseStyle? get filledStyle => boxThemeData.filledStyle;
+  ButtonBaseStyle? get lightStyle => boxThemeData.lightStyle;
+  ButtonBaseStyle? get outlineStyle => boxThemeData.outlineStyle;
+  ButtonBaseStyle? get subtleStyle => boxThemeData.subtleStyle;
+  ButtonBaseStyle? get transparentStyle => boxThemeData.transparentStyle;
+  ButtonBaseStyle? get whiteStyle => boxThemeData.whiteStyle;
 }

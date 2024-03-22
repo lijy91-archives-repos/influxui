@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:influxui/influxui.dart';
 import 'package:influxui/src/widgets/loader/loaders/oval_loader.dart';
 
