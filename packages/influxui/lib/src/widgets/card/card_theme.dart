@@ -8,34 +8,34 @@ import 'package:theme_tailor_annotation/theme_tailor_annotation.dart';
 part 'card_theme.tailor.dart';
 
 @TailorMixin()
-class InfluxCardThemeData extends ThemeExtension<InfluxCardThemeData>
-    with DiagnosticableTreeMixin, _$InfluxCardThemeDataTailorMixin {
-  const InfluxCardThemeData({
+class CardThemeData extends ThemeExtension<CardThemeData>
+    with DiagnosticableTreeMixin, _$CardThemeDataTailorMixin {
+  const CardThemeData({
     this.borderRadius,
   });
 
   final BorderRadius? borderRadius;
 }
 
-class InfluxCardTheme extends InheritedTheme {
-  const InfluxCardTheme({
+class CardTheme extends InheritedTheme {
+  const CardTheme({
     super.key,
     required this.data,
     required super.child,
   });
 
-  final InfluxCardThemeData data;
+  final CardThemeData data;
 
-  static InfluxCardThemeData? of(BuildContext context) {
-    final theme = context.dependOnInheritedWidgetOfExactType<InfluxCardTheme>();
-    return theme?.data ?? Theme.of(context).extension<InfluxCardThemeData>();
+  static CardThemeData? of(BuildContext context) {
+    final theme = context.dependOnInheritedWidgetOfExactType<CardTheme>();
+    return theme?.data ?? Theme.of(context).extension<CardThemeData>();
   }
 
   @override
   Widget wrap(BuildContext context, Widget child) {
-    return InfluxCardTheme(data: data, child: child);
+    return CardTheme(data: data, child: child);
   }
 
   @override
-  bool updateShouldNotify(InfluxCardTheme oldWidget) => data != oldWidget.data;
+  bool updateShouldNotify(CardTheme oldWidget) => data != oldWidget.data;
 }

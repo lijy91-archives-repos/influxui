@@ -15,7 +15,6 @@ import 'package:influxui_demos/src/demos/kbd/known_demos.dart';
 import 'package:influxui_demos/src/demos/loader/known_demos.dart';
 import 'package:influxui_demos/src/demos/menu/known_demos.dart';
 import 'package:influxui_demos/src/demos/navigation_rail/known_demos.dart';
-import 'package:influxui_demos/src/demos/notification/known_demos.dart';
 import 'package:influxui_demos/src/demos/switch/known_demos.dart';
 
 export 'action_icon/action_icon_demo.dart';
@@ -48,8 +47,6 @@ export 'menu/known_demos.dart';
 export 'menu/menu_demo.dart';
 export 'navigation_rail/known_demos.dart';
 export 'navigation_rail/navigation_rail_demo.dart';
-export 'notification/known_demos.dart';
-export 'notification/notification_demo.dart';
 export 'switch/known_demos.dart';
 export 'switch/switch_demo.dart';
 
@@ -70,6 +67,5 @@ final Map<String, WidgetBuilder> kKnownDemos = {
   ...knownLoaderDemos,
   ...knownMenuDemos,
   ...knownNavigationRailDemos,
-  ...knownNotificationDemos,
   ...knownSwitchDemos,
 };

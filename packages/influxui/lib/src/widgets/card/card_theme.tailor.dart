@@ -8,24 +8,24 @@ part of 'card_theme.dart';
 // TailorAnnotationsGenerator
 // **************************************************************************
 
-mixin _$InfluxCardThemeDataTailorMixin
-    on ThemeExtension<InfluxCardThemeData>, DiagnosticableTreeMixin {
+mixin _$CardThemeDataTailorMixin
+    on ThemeExtension<CardThemeData>, DiagnosticableTreeMixin {
   BorderRadius? get borderRadius;
 
   @override
-  InfluxCardThemeData copyWith({
+  CardThemeData copyWith({
     BorderRadius? borderRadius,
   }) {
-    return InfluxCardThemeData(
+    return CardThemeData(
       borderRadius: borderRadius ?? this.borderRadius,
     );
   }
 
   @override
-  InfluxCardThemeData lerp(
-      covariant ThemeExtension<InfluxCardThemeData>? other, double t) {
-    if (other is! InfluxCardThemeData) return this as InfluxCardThemeData;
-    return InfluxCardThemeData(
+  CardThemeData lerp(
+      covariant ThemeExtension<CardThemeData>? other, double t) {
+    if (other is! CardThemeData) return this as CardThemeData;
+    return CardThemeData(
       borderRadius: t < 0.5 ? borderRadius : other.borderRadius,
     );
   }
@@ -34,7 +34,7 @@ mixin _$InfluxCardThemeDataTailorMixin
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is InfluxCardThemeData &&
+            other is CardThemeData &&
             const DeepCollectionEquality()
                 .equals(borderRadius, other.borderRadius));
   }
@@ -51,13 +51,13 @@ mixin _$InfluxCardThemeDataTailorMixin
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'InfluxCardThemeData'))
+      ..add(DiagnosticsProperty('type', 'CardThemeData'))
       ..add(DiagnosticsProperty('borderRadius', borderRadius));
   }
 }
 
-extension InfluxCardThemeDataBuildContextProps on BuildContext {
-  InfluxCardThemeData get influxCardThemeData =>
-      Theme.of(this).extension<InfluxCardThemeData>()!;
+extension CardThemeDataBuildContextProps on BuildContext {
+  CardThemeData get influxCardThemeData =>
+      Theme.of(this).extension<CardThemeData>()!;
   BorderRadius? get borderRadius => influxCardThemeData.borderRadius;
 }

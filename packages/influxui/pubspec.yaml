@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.3
+  gap: ^3.0.1
   theme_tailor_annotation: ^2.0.2
 
 dev_dependencies:

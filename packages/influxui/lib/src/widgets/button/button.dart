@@ -10,6 +10,8 @@ export 'package:influxui/src/widgets/button/button_theme.dart';
 
 enum ButtonVariant {
   filled,
+  outlined,
+  text,
   light,
   outline,
   subtle,
@@ -155,7 +157,9 @@ class _ButtonDefaults extends ButtonThemeData {
       borderRadius: const BorderRadius.all(Radius.circular(4)),
       // minimumSize: const Size.square(22),
       // iconSize: 16,
-      labelStyle: _theme.textTheme.bodySmall,
+      labelStyle: _theme.textTheme.bodySmall?.copyWith(
+        fontWeight: FontWeight.w600,
+      ),
     );
   }
 
@@ -166,7 +170,9 @@ class _ButtonDefaults extends ButtonThemeData {
       borderRadius: const BorderRadius.all(Radius.circular(4)),
       // minimumSize: const Size.square(22),
       // iconSize: 16,
-      labelStyle: _theme.textTheme.bodyMedium,
+      labelStyle: _theme.textTheme.bodyMedium?.copyWith(
+        fontWeight: FontWeight.w600,
+      ),
     );
   }
 
@@ -177,7 +183,9 @@ class _ButtonDefaults extends ButtonThemeData {
       borderRadius: const BorderRadius.all(Radius.circular(6)),
       // minimumSize: const Size.square(28),
       // iconSize: 20,
-      labelStyle: _theme.textTheme.bodyMedium,
+      labelStyle: _theme.textTheme.bodyMedium?.copyWith(
+        fontWeight: FontWeight.w600,
+      ),
     );
   }
 
@@ -188,7 +196,9 @@ class _ButtonDefaults extends ButtonThemeData {
       borderRadius: const BorderRadius.all(Radius.circular(6)),
       // minimumSize: const Size.square(34),
       // iconSize: 24,
-      labelStyle: _theme.textTheme.bodyMedium,
+      labelStyle: _theme.textTheme.bodyMedium?.copyWith(
+        fontWeight: FontWeight.w600,
+      ),
     );
   }
 
@@ -199,7 +209,9 @@ class _ButtonDefaults extends ButtonThemeData {
       borderRadius: const BorderRadius.all(Radius.circular(6)),
       // minimumSize: const Size.square(34),
       // iconSize: 24,
-      labelStyle: _theme.textTheme.bodyMedium,
+      labelStyle: _theme.textTheme.bodyMedium?.copyWith(
+        fontWeight: FontWeight.w600,
+      ),
     );
   }
 }

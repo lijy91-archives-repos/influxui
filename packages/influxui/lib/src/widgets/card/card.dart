@@ -1,15 +1,15 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide CardTheme;
 import 'package:influxui/src/widgets/card/card_theme.dart';
 
-class InfluxCard extends StatelessWidget {
-  const InfluxCard({super.key, required this.child});
+class Card extends StatelessWidget {
+  const Card({super.key, required this.child});
 
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    final InfluxCardThemeData? themeData = InfluxCardTheme.of(context);
-    final InfluxCardThemeData defaults = _InfluxCardDefaults(context);
+    final CardThemeData? themeData = CardTheme.of(context);
+    final CardThemeData defaults = _CardDefaults(context);
     return DecoratedBox(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
@@ -27,8 +27,8 @@ class InfluxCard extends StatelessWidget {
   }
 }
 
-class _InfluxCardDefaults extends InfluxCardThemeData {
-  _InfluxCardDefaults(this.context) : super();
+class _CardDefaults extends CardThemeData {
+  _CardDefaults(this.context) : super();
 
   final BuildContext context;
 

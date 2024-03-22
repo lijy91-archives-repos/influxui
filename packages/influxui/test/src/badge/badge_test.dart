@@ -14,7 +14,6 @@ void main() {
           Badge(label: 'Badge', color: ExtendedColors.gray),
           Badge(label: 'Badge', color: ExtendedColors.red),
           Badge(label: 'Badge', color: ExtendedColors.pink),
-          Badge(label: 'Badge', color: ExtendedColors.grape),
           Badge(label: 'Badge', color: ExtendedColors.violet),
           Badge(label: 'Badge', color: ExtendedColors.indigo),
           Badge(label: 'Badge', color: ExtendedColors.blue),

@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart' show Theme;
 import 'package:flutter/widgets.dart';
 import 'package:influxui/src/widgets/badge/badge_style.dart';
 import 'package:influxui/src/widgets/badge/badge_theme.dart';
 import 'package:influxui/src/widgets/extended_theme/extended_sizes.dart';
-import 'package:influxui/src/widgets/text/text_theme.dart';
 
 export 'badge_theme.dart';
 
@@ -96,7 +96,7 @@ class Badge extends StatelessWidget {
         widthFactor: 1.0,
         heightFactor: 1.0,
         child: DefaultTextStyle(
-          style: TextTheme.of(context).textStyle.copyWith(
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                 overflow: TextOverflow.ellipsis,
               ),
           child: labelBuilder?.call(context) ?? Text(label!),
