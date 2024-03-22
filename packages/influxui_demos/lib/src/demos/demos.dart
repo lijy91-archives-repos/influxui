@@ -2,8 +2,6 @@ import 'package:flutter/widgets.dart';
 import 'package:influxui_demos/src/demos/alert/known_demos.dart';
 import 'package:influxui_demos/src/demos/avatar/known_demos.dart';
 import 'package:influxui_demos/src/demos/badge/known_demos.dart';
-import 'package:influxui_demos/src/demos/blockquote/known_demos.dart';
-import 'package:influxui_demos/src/demos/breadcrumb/known_demos.dart';
 import 'package:influxui_demos/src/demos/button/known_demos.dart';
 import 'package:influxui_demos/src/demos/card/known_demos.dart';
 import 'package:influxui_demos/src/demos/checkbox/known_demos.dart';
@@ -22,10 +20,6 @@ export 'avatar/avatar_demo.dart';
 export 'avatar/known_demos.dart';
 export 'badge/badge_demo.dart';
 export 'badge/known_demos.dart';
-export 'blockquote/blockquote_demo.dart';
-export 'blockquote/known_demos.dart';
-export 'breadcrumb/breadcrumb_demo.dart';
-export 'breadcrumb/known_demos.dart';
 export 'button/button_demo.dart';
 export 'button/known_demos.dart';
 export 'card/card_demo.dart';
@@ -54,8 +48,6 @@ final Map<String, WidgetBuilder> kKnownDemos = {
   ...knownAlertDemos,
   ...knownAvatarDemos,
   ...knownBadgeDemos,
-  ...knownBlockquoteDemos,
-  ...knownBreadcrumbDemos,
   ...knownButtonDemos,
   ...knownCardDemos,
   ...knownCheckboxDemos,
