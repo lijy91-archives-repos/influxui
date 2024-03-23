@@ -8,36 +8,37 @@ part of 'alert_theme.dart';
 // TailorAnnotationsGenerator
 // **************************************************************************
 
-mixin _$AlertThemeTailorMixin
-    on ThemeExtension<AlertTheme>, DiagnosticableTreeMixin {
-  TextStyle get titleStyle;
-  TextStyle get messageStyle;
-  Color get iconColor;
-  double get iconSize;
+mixin _$AlertThemeDataTailorMixin
+    on ThemeExtension<AlertThemeData>, DiagnosticableTreeMixin {
+  AlertStyle? get successStyle;
+  AlertStyle? get infoStyle;
+  AlertStyle? get warningStyle;
+  AlertStyle? get dangerStyle;
 
   @override
-  AlertTheme copyWith({
-    TextStyle? titleStyle,
-    TextStyle? messageStyle,
-    Color? iconColor,
-    double? iconSize,
+  AlertThemeData copyWith({
+    AlertStyle? successStyle,
+    AlertStyle? infoStyle,
+    AlertStyle? warningStyle,
+    AlertStyle? dangerStyle,
   }) {
-    return AlertTheme(
-      titleStyle: titleStyle ?? this.titleStyle,
-      messageStyle: messageStyle ?? this.messageStyle,
-      iconColor: iconColor ?? this.iconColor,
-      iconSize: iconSize ?? this.iconSize,
+    return AlertThemeData(
+      successStyle: successStyle ?? this.successStyle,
+      infoStyle: infoStyle ?? this.infoStyle,
+      warningStyle: warningStyle ?? this.warningStyle,
+      dangerStyle: dangerStyle ?? this.dangerStyle,
     );
   }
 
   @override
-  AlertTheme lerp(covariant ThemeExtension<AlertTheme>? other, double t) {
-    if (other is! AlertTheme) return this as AlertTheme;
-    return AlertTheme(
-      titleStyle: TextStyle.lerp(titleStyle, other.titleStyle, t)!,
-      messageStyle: TextStyle.lerp(messageStyle, other.messageStyle, t)!,
-      iconColor: Color.lerp(iconColor, other.iconColor, t)!,
-      iconSize: t < 0.5 ? iconSize : other.iconSize,
+  AlertThemeData lerp(
+      covariant ThemeExtension<AlertThemeData>? other, double t) {
+    if (other is! AlertThemeData) return this as AlertThemeData;
+    return AlertThemeData(
+      successStyle: t < 0.5 ? successStyle : other.successStyle,
+      infoStyle: t < 0.5 ? infoStyle : other.infoStyle,
+      warningStyle: t < 0.5 ? warningStyle : other.warningStyle,
+      dangerStyle: t < 0.5 ? dangerStyle : other.dangerStyle,
     );
   }
 
@@ -45,23 +46,24 @@ mixin _$AlertThemeTailorMixin
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is AlertTheme &&
+            other is AlertThemeData &&
             const DeepCollectionEquality()
-                .equals(titleStyle, other.titleStyle) &&
+                .equals(successStyle, other.successStyle) &&
+            const DeepCollectionEquality().equals(infoStyle, other.infoStyle) &&
             const DeepCollectionEquality()
-                .equals(messageStyle, other.messageStyle) &&
-            const DeepCollectionEquality().equals(iconColor, other.iconColor) &&
-            const DeepCollectionEquality().equals(iconSize, other.iconSize));
+                .equals(warningStyle, other.warningStyle) &&
+            const DeepCollectionEquality()
+                .equals(dangerStyle, other.dangerStyle));
   }
 
   @override
   int get hashCode {
     return Object.hash(
       runtimeType.hashCode,
-      const DeepCollectionEquality().hash(titleStyle),
-      const DeepCollectionEquality().hash(messageStyle),
-      const DeepCollectionEquality().hash(iconColor),
-      const DeepCollectionEquality().hash(iconSize),
+      const DeepCollectionEquality().hash(successStyle),
+      const DeepCollectionEquality().hash(infoStyle),
+      const DeepCollectionEquality().hash(warningStyle),
+      const DeepCollectionEquality().hash(dangerStyle),
     );
   }
 
@@ -69,18 +71,19 @@ mixin _$AlertThemeTailorMixin
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AlertTheme'))
-      ..add(DiagnosticsProperty('titleStyle', titleStyle))
-      ..add(DiagnosticsProperty('messageStyle', messageStyle))
-      ..add(DiagnosticsProperty('iconColor', iconColor))
-      ..add(DiagnosticsProperty('iconSize', iconSize));
+      ..add(DiagnosticsProperty('type', 'AlertThemeData'))
+      ..add(DiagnosticsProperty('successStyle', successStyle))
+      ..add(DiagnosticsProperty('infoStyle', infoStyle))
+      ..add(DiagnosticsProperty('warningStyle', warningStyle))
+      ..add(DiagnosticsProperty('dangerStyle', dangerStyle));
   }
 }
 
-extension AlertThemeBuildContextProps on BuildContext {
-  AlertTheme get alertTheme => Theme.of(this).extension<AlertTheme>()!;
-  TextStyle get titleStyle => alertTheme.titleStyle;
-  TextStyle get messageStyle => alertTheme.messageStyle;
-  Color get iconColor => alertTheme.iconColor;
-  double get iconSize => alertTheme.iconSize;
+extension AlertThemeDataBuildContextProps on BuildContext {
+  AlertThemeData get alertThemeData =>
+      Theme.of(this).extension<AlertThemeData>()!;
+  AlertStyle? get successStyle => alertThemeData.successStyle;
+  AlertStyle? get infoStyle => alertThemeData.infoStyle;
+  AlertStyle? get warningStyle => alertThemeData.warningStyle;
+  AlertStyle? get dangerStyle => alertThemeData.dangerStyle;
 }

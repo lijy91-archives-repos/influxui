@@ -8,13 +8,20 @@ class AlertDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 600,
-      height: 300,
       color: Colors.transparent,
-      child: const Alert(
-        title: 'Bummer!',
-        message: 'Something terrible happened! '
-            'You made a mistake and there is no going back, '
-            'your data was lost forever!',
+      child: GappedColumn(
+        gap: 10,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          for (final type in AlertType.values)
+            Alert(
+              type: type,
+              icon: const Icon(Icons.info),
+              title: 'Alert type: $type',
+              message: 'This is an alert of type $type. '
+                  'It is used to attract user attention with important static message.',
+            ),
+        ],
       ),
     );
   }

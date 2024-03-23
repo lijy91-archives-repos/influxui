@@ -96,7 +96,7 @@ class _ButtonState extends State<Button> {
 
     return ButtonBase(
       variant: ButtonBaseVariant.valueOf(widget.variant?.name),
-      padding: widget.padding,
+      padding: widget.padding ?? mergedStyle.padding,
       color: widget.color,
       borderRadius: mergedStyle.borderRadius,
       pressedOpacity: themeData?.pressedOpacity ?? defaults.pressedOpacity,
@@ -106,7 +106,6 @@ class _ButtonState extends State<Button> {
       onPressed: widget.onPressed,
       builder: (context, foregroundColor) {
         return Container(
-          padding: mergedStyle.padding,
           constraints: BoxConstraints(
             minWidth: mergedStyle.minimumSize?.width ?? 0,
             minHeight: mergedStyle.minimumSize?.height ?? 0,

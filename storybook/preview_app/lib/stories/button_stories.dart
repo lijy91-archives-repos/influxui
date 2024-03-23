@@ -56,13 +56,7 @@ class ButtonWithVariantStory extends StoryObj<ButtonMeta>
       direction: Axis.vertical,
       spacing: 10,
       children: [
-        for (final variant in [
-          ButtonVariant.filled,
-          ButtonVariant.light,
-          ButtonVariant.outline,
-          ButtonVariant.subtle,
-          ButtonVariant.transparent,
-        ])
+        for (final variant in ButtonVariant.values)
           Wrap(
             spacing: 10,
             children: [
