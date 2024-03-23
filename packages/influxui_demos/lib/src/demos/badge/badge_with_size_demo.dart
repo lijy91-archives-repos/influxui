@@ -1,8 +1,8 @@
 import 'package:influxui/influxui.dart';
 import 'package:influxui_demos/src/utils/constants.dart';
 
-class BadgeWithColorDemo extends StatelessWidget {
-  const BadgeWithColorDemo({super.key});
+class BadgeWithSizeDemo extends StatelessWidget {
+  const BadgeWithSizeDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +13,13 @@ class BadgeWithColorDemo extends StatelessWidget {
         for (final variant in BadgeVariant.values)
           Wrap(
             spacing: 10,
+            crossAxisAlignment: WrapCrossAlignment.end,
             children: [
-              for (final color in kExtendedColors)
+              for (final size in kExtendedSizes)
                 Badge(
-                  variant: variant,
-                  color: color,
                   label: 'Badge',
+                  variant: variant,
+                  size: size,
                 ),
             ],
           ),

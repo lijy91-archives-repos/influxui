@@ -12,20 +12,24 @@ part 'badge_theme.tailor.dart';
 class BadgeThemeData extends ThemeExtension<BadgeThemeData>
     with DiagnosticableTreeMixin, _$BadgeThemeDataTailorMixin {
   const BadgeThemeData({
+    this.padding,
     this.borderRadius,
-    this.pressedOpacity = 0.8,
+    this.tinyStyle,
     this.smallStyle,
     this.mediumStyle,
     this.largeStyle,
+    this.bigStyle,
   });
+
+  final EdgeInsetsGeometry? padding;
 
   final BorderRadius? borderRadius;
 
-  final double pressedOpacity;
-
+  final BadgeStyle? tinyStyle;
   final BadgeStyle? smallStyle;
   final BadgeStyle? mediumStyle;
   final BadgeStyle? largeStyle;
+  final BadgeStyle? bigStyle;
 }
 
 class BadgeTheme extends InheritedTheme {

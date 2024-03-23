@@ -8,11 +8,7 @@ class BadgeWithVariantDemo extends StatelessWidget {
     return Wrap(
       spacing: 10,
       children: [
-        for (final variant in [
-          BadgeVariant.light,
-          BadgeVariant.filled,
-          BadgeVariant.outline,
-        ])
+        for (final variant in BadgeVariant.values)
           Badge(
             variant: variant,
             label: 'Badge',

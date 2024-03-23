@@ -75,7 +75,7 @@ void main() {
     testGolden(
       'badge-variant-outline',
       (_) => const Badge(
-        variant: BadgeVariant.outline,
+        variant: BadgeVariant.outlined,
         color: ExtendedColors.blue,
         label: 'Badge',
       ),

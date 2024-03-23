@@ -4,35 +4,35 @@ import 'package:flutter/widgets.dart';
 class BadgeStyle with Diagnosticable {
   const BadgeStyle({
     this.padding,
+    this.borderRadius,
     this.minimumSize,
     this.maximumSize,
-    this.iconSize,
     this.labelStyle,
   });
 
   final EdgeInsetsGeometry? padding;
 
+  final BorderRadius? borderRadius;
+
   final Size? minimumSize;
 
   final Size? maximumSize;
 
-  final double? iconSize;
-
   final TextStyle? labelStyle;
 
   BadgeStyle copyWith({
+    EdgeInsetsGeometry? padding,
+    BorderRadius? borderRadius,
     Size? minimumSize,
     Size? maximumSize,
-    double? iconSize,
     TextStyle? labelStyle,
-    EdgeInsetsGeometry? padding,
   }) {
     return BadgeStyle(
+      padding: padding ?? this.padding,
+      borderRadius: borderRadius ?? this.borderRadius,
       minimumSize: minimumSize ?? this.minimumSize,
       maximumSize: maximumSize ?? this.maximumSize,
-      iconSize: iconSize ?? this.iconSize,
       labelStyle: labelStyle ?? this.labelStyle,
-      padding: padding ?? this.padding,
     );
   }
 
@@ -46,11 +46,11 @@ class BadgeStyle with Diagnosticable {
       return this;
     }
     return copyWith(
+      padding: padding ?? style.padding,
+      borderRadius: borderRadius ?? style.borderRadius,
       minimumSize: minimumSize ?? style.minimumSize,
       maximumSize: maximumSize ?? style.maximumSize,
-      iconSize: iconSize ?? style.iconSize,
       labelStyle: labelStyle ?? style.labelStyle,
-      padding: padding ?? style.padding,
     );
   }
 }

@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart' show Theme;
+import 'package:flutter/material.dart' show ThemeData, Theme;
 import 'package:flutter/widgets.dart';
+import 'package:influxui/src/widgets/badge/badge_base.dart';
 import 'package:influxui/src/widgets/badge/badge_style.dart';
 import 'package:influxui/src/widgets/badge/badge_theme.dart';
 import 'package:influxui/src/widgets/extended_theme/extended_sizes.dart';
@@ -8,16 +9,18 @@ export 'badge_theme.dart';
 
 /// Controls badge appearance
 enum BadgeVariant {
-  light,
   filled,
-  outline,
+  outlined,
+  light,
 }
 
 class BadgeSize extends Size {
   const BadgeSize(super.width, super.height);
+  static const ExtendedSize tiny = ExtendedSize.tiny;
   static const ExtendedSize small = ExtendedSize.small;
   static const ExtendedSize medium = ExtendedSize.medium;
   static const ExtendedSize large = ExtendedSize.large;
+  static const ExtendedSize big = ExtendedSize.big;
 }
 
 /// Display badge, pill or tag
@@ -25,10 +28,9 @@ class Badge extends StatelessWidget {
   const Badge({
     super.key,
     this.variant = BadgeVariant.light,
+    this.padding,
     this.color,
     this.size = BadgeSize.medium,
-    this.cornered,
-    this.cornerRadius,
     this.label,
     this.labelStyle,
     this.labelBuilder,
@@ -37,14 +39,12 @@ class Badge extends StatelessWidget {
   /// Controls badge appearance
   final BadgeVariant? variant;
 
+  final EdgeInsetsGeometry? padding;
+
   /// The badge's fill color.
   final Color? color;
 
   final Size? size;
-
-  final bool? cornered;
-
-  final double? cornerRadius;
 
   /// Badge label
   final String? label;
@@ -60,11 +60,15 @@ class Badge extends StatelessWidget {
     final BadgeThemeData? themeData = BadgeTheme.of(context);
     final BadgeThemeData defaults = _BadgeDefaults(context);
 
-    BadgeStyle mergedStyle =
-        themeData?.mediumStyle ?? defaults.mediumStyle ?? const BadgeStyle();
+    BadgeStyle mergedStyle = const BadgeStyle();
 
     if (size is ExtendedSize) {
       switch (size) {
+        case ExtendedSize.tiny:
+          mergedStyle = mergedStyle // merge tiny style
+              .merge(themeData?.tinyStyle)
+              .merge(defaults.tinyStyle);
+          break;
         case ExtendedSize.small:
           mergedStyle = mergedStyle // merge small style
               .merge(themeData?.smallStyle)
@@ -80,28 +84,42 @@ class Badge extends StatelessWidget {
               .merge(themeData?.largeStyle)
               .merge(defaults.largeStyle);
           break;
+        case ExtendedSize.big:
+          mergedStyle = mergedStyle // merge big style
+              .merge(themeData?.bigStyle)
+              .merge(defaults.bigStyle);
+          break;
       }
     }
 
-    return Container(
-      padding: EdgeInsets.zero,
-      constraints: BoxConstraints(
-        minWidth: mergedStyle.minimumSize?.width ?? 0,
-        minHeight: mergedStyle.minimumSize?.height ?? 0,
-        maxWidth: mergedStyle.maximumSize?.width ?? double.infinity,
-        maxHeight: mergedStyle.maximumSize?.height ?? double.infinity,
-      ),
-      child: Align(
-        alignment: Alignment.center,
-        widthFactor: 1.0,
-        heightFactor: 1.0,
-        child: DefaultTextStyle(
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                overflow: TextOverflow.ellipsis,
-              ),
-          child: labelBuilder?.call(context) ?? Text(label!),
-        ),
-      ),
+    return BadgeBase(
+      variant: BadgeBaseVariant.valueOf(variant?.name),
+      padding: padding ?? mergedStyle.padding,
+      color: color,
+      borderRadius: mergedStyle.borderRadius,
+      builder: (context, foregroundColor) {
+        return Container(
+          constraints: BoxConstraints(
+            minWidth: mergedStyle.minimumSize?.width ?? 0,
+            minHeight: mergedStyle.minimumSize?.height ?? 0,
+            maxWidth: mergedStyle.maximumSize?.width ?? double.infinity,
+            maxHeight: mergedStyle.maximumSize?.height ?? double.infinity,
+          ),
+          child: DefaultTextStyle(
+            style: (mergedStyle.labelStyle ?? const TextStyle()).copyWith(
+              color: foregroundColor,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                labelBuilder?.call(context) ?? Text(label!),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
@@ -110,49 +128,55 @@ class _BadgeDefaults extends BadgeThemeData {
   _BadgeDefaults(this.context) : super();
 
   final BuildContext context;
+  late final ThemeData _theme = Theme.of(context);
 
   @override
-  get borderRadius => const BorderRadius.all(Radius.circular(4));
-
-  @override
-  get pressedOpacity => 0.8;
+  BadgeStyle? get tinyStyle {
+    return BadgeStyle(
+      padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 4),
+      borderRadius: const BorderRadius.all(Radius.circular(4)),
+      // minimumSize: const Size.square(20),
+      labelStyle: _theme.textTheme.labelSmall,
+    );
+  }
 
   @override
   BadgeStyle? get smallStyle {
-    return const BadgeStyle(
-      padding: EdgeInsets.symmetric(horizontal: 8),
-      minimumSize: Size.square(22),
-      iconSize: 16,
-      labelStyle: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w600,
-      ),
+    return BadgeStyle(
+      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 6),
+      borderRadius: const BorderRadius.all(Radius.circular(4)),
+      // minimumSize: const Size.square(20),
+      labelStyle: _theme.textTheme.labelSmall,
     );
   }
 
   @override
   BadgeStyle? get mediumStyle {
-    return const BadgeStyle(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      minimumSize: Size.square(28),
-      iconSize: 20,
-      labelStyle: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w600,
-      ),
+    return BadgeStyle(
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+      borderRadius: const BorderRadius.all(Radius.circular(4)),
+      // minimumSize: const Size.square(20),
+      labelStyle: _theme.textTheme.labelSmall,
     );
   }
 
   @override
   BadgeStyle? get largeStyle {
-    return const BadgeStyle(
-      padding: EdgeInsets.symmetric(horizontal: 12),
-      minimumSize: Size.square(34),
-      iconSize: 24,
-      labelStyle: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-      ),
+    return BadgeStyle(
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+      borderRadius: const BorderRadius.all(Radius.circular(4)),
+      // minimumSize: const Size.square(20),
+      labelStyle: _theme.textTheme.labelSmall,
+    );
+  }
+
+  @override
+  BadgeStyle? get bigStyle {
+    return BadgeStyle(
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+      borderRadius: const BorderRadius.all(Radius.circular(4)),
+      // minimumSize: const Size.square(20),
+      labelStyle: _theme.textTheme.labelSmall,
     );
   }
 }
