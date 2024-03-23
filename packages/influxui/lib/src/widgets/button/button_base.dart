@@ -14,11 +14,10 @@ export 'package:influxui/src/widgets/button/button_base_theme.dart';
 
 enum ButtonBaseVariant {
   filled,
+  outlined,
   light,
-  outline,
   subtle,
-  transparent,
-  white;
+  transparent;
 
   static ButtonBaseVariant? valueOf(String? name) {
     return ButtonBaseVariant.values.firstWhereOrNull(
@@ -186,14 +185,14 @@ class _ButtonBaseState extends State<ButtonBase>
         mergedStyle = mergedStyle // merge filled style
             .merge(themeData?.filledStyle)
             .merge(defaults.filledStyle);
+      case ButtonBaseVariant.outlined:
+        mergedStyle = mergedStyle // merge outlined style
+            .merge(themeData?.outlinedStyle)
+            .merge(defaults.outlinedStyle);
       case ButtonBaseVariant.light:
         mergedStyle = mergedStyle // merge light style
             .merge(themeData?.lightStyle)
             .merge(defaults.lightStyle);
-      case ButtonBaseVariant.outline:
-        mergedStyle = mergedStyle // merge outline style
-            .merge(themeData?.outlineStyle)
-            .merge(defaults.outlineStyle);
       case ButtonBaseVariant.subtle: // merge subtle style
         mergedStyle = mergedStyle
             .merge(themeData?.subtleStyle)
@@ -202,10 +201,6 @@ class _ButtonBaseState extends State<ButtonBase>
         mergedStyle = mergedStyle // merge transparent style
             .merge(themeData?.transparentStyle)
             .merge(defaults.transparentStyle);
-      case ButtonBaseVariant.white:
-        mergedStyle = mergedStyle // merge white style
-            .merge(themeData?.whiteStyle)
-            .merge(defaults.whiteStyle);
       default:
     }
 
@@ -292,29 +287,7 @@ class _ButtonBaseDefaults extends ButtonBaseThemeData {
   }
 
   @override
-  ButtonBaseStyle? get lightStyle {
-    if (_isDark) {
-      return const ButtonBaseStyle(
-        color: ButtonBaseStateColor(
-          colorOpacity: 0.15,
-          hoveredColorOpacity: 0.2,
-          pressedColorOpacity: 0.2,
-        ),
-        foregroundColor: ButtonBaseStateColor(),
-      );
-    }
-    return const ButtonBaseStyle(
-      color: ButtonBaseStateColor(
-        colorShade: 50,
-        hoveredColorShade: 100,
-        pressedColorShade: 100,
-      ),
-      foregroundColor: ButtonBaseStateColor(),
-    );
-  }
-
-  @override
-  ButtonBaseStyle? get outlineStyle {
+  ButtonBaseStyle? get outlinedStyle {
     if (_isDark) {
       return const ButtonBaseStyle(
         color: ButtonBaseStateColor(
@@ -338,6 +311,28 @@ class _ButtonBaseDefaults extends ButtonBaseThemeData {
       borderColor: ButtonBaseStateColor(
         colorShade: 600,
       ),
+    );
+  }
+
+  @override
+  ButtonBaseStyle? get lightStyle {
+    if (_isDark) {
+      return const ButtonBaseStyle(
+        color: ButtonBaseStateColor(
+          colorOpacity: 0.15,
+          hoveredColorOpacity: 0.2,
+          pressedColorOpacity: 0.2,
+        ),
+        foregroundColor: ButtonBaseStateColor(),
+      );
+    }
+    return const ButtonBaseStyle(
+      color: ButtonBaseStateColor(
+        colorShade: 50,
+        hoveredColorShade: 100,
+        pressedColorShade: 100,
+      ),
+      foregroundColor: ButtonBaseStateColor(),
     );
   }
 
@@ -368,17 +363,6 @@ class _ButtonBaseDefaults extends ButtonBaseThemeData {
     return const ButtonBaseStyle(
       color: ButtonBaseStateColor(
         color: Colors.transparent,
-      ),
-      foregroundColor: ButtonBaseStateColor(),
-    );
-  }
-
-  @override
-  ButtonBaseStyle? get whiteStyle {
-    return const ButtonBaseStyle(
-      color: ButtonBaseStateColor(
-        color: Colors.white,
-        hoveredColorShade: 100,
       ),
       foregroundColor: ButtonBaseStateColor(),
     );

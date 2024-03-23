@@ -71,8 +71,8 @@ void main() {
     testGolden(
       'button-variant-outline',
       (_) => const Button(
-        variant: ButtonVariant.outline,
-        label: 'Outline variant',
+        variant: ButtonVariant.outlined,
+        label: 'Outlined variant',
       ),
     );
   });

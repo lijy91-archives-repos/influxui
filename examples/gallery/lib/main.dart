@@ -2,8 +2,8 @@
 
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:influxui/influxui.dart';
+import 'package:influxui/themes.dart';
 import 'package:influxui_gallery/router_config.dart';
-import 'package:influxui_gallery/themes/themes.dart';
 import 'package:tabler_icon_library/tabler_icon_library.dart';
 
 class TablerIconLibrary extends IconLibrary {
@@ -46,8 +46,8 @@ class _MyAppState extends State<MyApp> {
 
   Widget _buildApp(BuildContext context) {
     return MaterialApp.router(
-      theme: lightThemeData,
-      darkTheme: darkThemeData,
+      theme: influxLight,
+      darkTheme: influxDark,
       routerConfig: routerConfig,
       debugShowCheckedModeBanner: false,
       themeMode: _themeMode,

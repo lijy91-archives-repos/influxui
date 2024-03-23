@@ -6,7 +6,7 @@ class CheckboxDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Checkbox(
-      label: 'Label',
+      value: true,
     );
   }
 }

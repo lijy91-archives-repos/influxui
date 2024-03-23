@@ -11,21 +11,18 @@ export 'package:influxui/src/widgets/button/button_theme.dart';
 enum ButtonVariant {
   filled,
   outlined,
-  text,
   light,
-  outline,
   subtle,
-  transparent,
-  white;
+  transparent;
 }
 
 class ButtonSize extends Size {
   ButtonSize(super.width, super.height);
-  static ExtendedSize get tiny => ExtendedSize.tiny;
-  static ExtendedSize get small => ExtendedSize.small;
-  static ExtendedSize get medium => ExtendedSize.medium;
-  static ExtendedSize get large => ExtendedSize.large;
-  static ExtendedSize get big => ExtendedSize.big;
+  static const ExtendedSize tiny = ExtendedSize.tiny;
+  static const ExtendedSize small = ExtendedSize.small;
+  static const ExtendedSize medium = ExtendedSize.medium;
+  static const ExtendedSize large = ExtendedSize.large;
+  static const ExtendedSize big = ExtendedSize.big;
 }
 
 class Button extends StatefulWidget {
@@ -37,7 +34,7 @@ class Button extends StatefulWidget {
     this.style,
     this.padding,
     this.color,
-    this.size,
+    this.size = ExtendedSize.medium,
     this.iconSize,
     this.onPressed,
   }) : assert(size is Size || size is ExtendedSize || size == null);

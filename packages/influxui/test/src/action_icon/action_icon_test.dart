@@ -145,9 +145,9 @@ void main() {
       size: const Size(300, 200),
     );
     testGolden(
-      'icon-button-variant-outline',
+      'icon-button-variant-outlined',
       (_) => const _TestWidget(
-        variant: IconButtonVariant.outline,
+        variant: IconButtonVariant.outlined,
       ),
       size: const Size(300, 200),
     );

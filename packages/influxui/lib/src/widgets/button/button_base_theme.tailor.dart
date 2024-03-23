@@ -11,28 +11,25 @@ part of 'button_base_theme.dart';
 mixin _$ButtonBaseThemeDataTailorMixin
     on ThemeExtension<ButtonBaseThemeData>, DiagnosticableTreeMixin {
   ButtonBaseStyle? get filledStyle;
+  ButtonBaseStyle? get outlinedStyle;
   ButtonBaseStyle? get lightStyle;
-  ButtonBaseStyle? get outlineStyle;
   ButtonBaseStyle? get subtleStyle;
   ButtonBaseStyle? get transparentStyle;
-  ButtonBaseStyle? get whiteStyle;
 
   @override
   ButtonBaseThemeData copyWith({
     ButtonBaseStyle? filledStyle,
+    ButtonBaseStyle? outlinedStyle,
     ButtonBaseStyle? lightStyle,
-    ButtonBaseStyle? outlineStyle,
     ButtonBaseStyle? subtleStyle,
     ButtonBaseStyle? transparentStyle,
-    ButtonBaseStyle? whiteStyle,
   }) {
     return ButtonBaseThemeData(
       filledStyle: filledStyle ?? this.filledStyle,
+      outlinedStyle: outlinedStyle ?? this.outlinedStyle,
       lightStyle: lightStyle ?? this.lightStyle,
-      outlineStyle: outlineStyle ?? this.outlineStyle,
       subtleStyle: subtleStyle ?? this.subtleStyle,
       transparentStyle: transparentStyle ?? this.transparentStyle,
-      whiteStyle: whiteStyle ?? this.whiteStyle,
     );
   }
 
@@ -42,11 +39,10 @@ mixin _$ButtonBaseThemeDataTailorMixin
     if (other is! ButtonBaseThemeData) return this as ButtonBaseThemeData;
     return ButtonBaseThemeData(
       filledStyle: t < 0.5 ? filledStyle : other.filledStyle,
+      outlinedStyle: t < 0.5 ? outlinedStyle : other.outlinedStyle,
       lightStyle: t < 0.5 ? lightStyle : other.lightStyle,
-      outlineStyle: t < 0.5 ? outlineStyle : other.outlineStyle,
       subtleStyle: t < 0.5 ? subtleStyle : other.subtleStyle,
       transparentStyle: t < 0.5 ? transparentStyle : other.transparentStyle,
-      whiteStyle: t < 0.5 ? whiteStyle : other.whiteStyle,
     );
   }
 
@@ -58,15 +54,13 @@ mixin _$ButtonBaseThemeDataTailorMixin
             const DeepCollectionEquality()
                 .equals(filledStyle, other.filledStyle) &&
             const DeepCollectionEquality()
-                .equals(lightStyle, other.lightStyle) &&
+                .equals(outlinedStyle, other.outlinedStyle) &&
             const DeepCollectionEquality()
-                .equals(outlineStyle, other.outlineStyle) &&
+                .equals(lightStyle, other.lightStyle) &&
             const DeepCollectionEquality()
                 .equals(subtleStyle, other.subtleStyle) &&
             const DeepCollectionEquality()
-                .equals(transparentStyle, other.transparentStyle) &&
-            const DeepCollectionEquality()
-                .equals(whiteStyle, other.whiteStyle));
+                .equals(transparentStyle, other.transparentStyle));
   }
 
   @override
@@ -74,11 +68,10 @@ mixin _$ButtonBaseThemeDataTailorMixin
     return Object.hash(
       runtimeType.hashCode,
       const DeepCollectionEquality().hash(filledStyle),
+      const DeepCollectionEquality().hash(outlinedStyle),
       const DeepCollectionEquality().hash(lightStyle),
-      const DeepCollectionEquality().hash(outlineStyle),
       const DeepCollectionEquality().hash(subtleStyle),
       const DeepCollectionEquality().hash(transparentStyle),
-      const DeepCollectionEquality().hash(whiteStyle),
     );
   }
 
@@ -88,21 +81,19 @@ mixin _$ButtonBaseThemeDataTailorMixin
     properties
       ..add(DiagnosticsProperty('type', 'ButtonBaseThemeData'))
       ..add(DiagnosticsProperty('filledStyle', filledStyle))
+      ..add(DiagnosticsProperty('outlinedStyle', outlinedStyle))
       ..add(DiagnosticsProperty('lightStyle', lightStyle))
-      ..add(DiagnosticsProperty('outlineStyle', outlineStyle))
       ..add(DiagnosticsProperty('subtleStyle', subtleStyle))
-      ..add(DiagnosticsProperty('transparentStyle', transparentStyle))
-      ..add(DiagnosticsProperty('whiteStyle', whiteStyle));
+      ..add(DiagnosticsProperty('transparentStyle', transparentStyle));
   }
 }
 
 extension ButtonBaseThemeDataBuildContextProps on BuildContext {
-  ButtonBaseThemeData get boxThemeData =>
+  ButtonBaseThemeData get buttonBaseThemeData =>
       Theme.of(this).extension<ButtonBaseThemeData>()!;
-  ButtonBaseStyle? get filledStyle => boxThemeData.filledStyle;
-  ButtonBaseStyle? get lightStyle => boxThemeData.lightStyle;
-  ButtonBaseStyle? get outlineStyle => boxThemeData.outlineStyle;
-  ButtonBaseStyle? get subtleStyle => boxThemeData.subtleStyle;
-  ButtonBaseStyle? get transparentStyle => boxThemeData.transparentStyle;
-  ButtonBaseStyle? get whiteStyle => boxThemeData.whiteStyle;
+  ButtonBaseStyle? get filledStyle => buttonBaseThemeData.filledStyle;
+  ButtonBaseStyle? get outlinedStyle => buttonBaseThemeData.outlinedStyle;
+  ButtonBaseStyle? get lightStyle => buttonBaseThemeData.lightStyle;
+  ButtonBaseStyle? get subtleStyle => buttonBaseThemeData.subtleStyle;
+  ButtonBaseStyle? get transparentStyle => buttonBaseThemeData.transparentStyle;
 }

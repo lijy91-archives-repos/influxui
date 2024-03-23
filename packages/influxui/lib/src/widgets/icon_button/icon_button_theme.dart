@@ -12,20 +12,21 @@ part 'icon_button_theme.tailor.dart';
 class IconButtonThemeData extends ThemeExtension<IconButtonThemeData>
     with DiagnosticableTreeMixin, _$IconButtonThemeDataTailorMixin {
   const IconButtonThemeData({
-    this.borderRadius,
     this.pressedOpacity = 0.8,
+    this.tinyStyle,
     this.smallStyle,
     this.mediumStyle,
     this.largeStyle,
+    this.bigStyle,
   });
-
-  final BorderRadius? borderRadius;
 
   final double pressedOpacity;
 
+  final IconButtonStyle? tinyStyle;
   final IconButtonStyle? smallStyle;
   final IconButtonStyle? mediumStyle;
   final IconButtonStyle? largeStyle;
+  final IconButtonStyle? bigStyle;
 }
 
 class IconButtonTheme extends InheritedTheme {

@@ -10,14 +10,7 @@ class IconButtonWithColorDemo extends StatelessWidget {
       direction: Axis.vertical,
       spacing: 10,
       children: [
-        for (final variant in [
-          IconButtonVariant.filled,
-          IconButtonVariant.light,
-          IconButtonVariant.outline,
-          IconButtonVariant.subtle,
-          IconButtonVariant.transparent,
-          IconButtonVariant.white,
-        ])
+        for (final variant in IconButtonVariant.values)
           Wrap(
             spacing: 10,
             children: [

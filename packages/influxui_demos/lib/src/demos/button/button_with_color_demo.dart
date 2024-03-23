@@ -10,17 +10,11 @@ class ButtonWithColorDemo extends StatelessWidget {
       direction: Axis.vertical,
       spacing: 10,
       children: [
-        for (final variant in [
-          ButtonVariant.filled,
-          ButtonVariant.light,
-          ButtonVariant.outline,
-          ButtonVariant.subtle,
-          ButtonVariant.transparent,
-        ])
+        for (final color in kExtendedColors)
           Wrap(
             spacing: 10,
             children: [
-              for (final color in kExtendedColors)
+              for (final variant in ButtonVariant.values)
                 Button(
                   label: 'Button',
                   variant: variant,

@@ -56,7 +56,6 @@ mixin _$CardThemeDataTailorMixin
 }
 
 extension CardThemeDataBuildContextProps on BuildContext {
-  CardThemeData get influxCardThemeData =>
-      Theme.of(this).extension<CardThemeData>()!;
-  BorderRadius? get borderRadius => influxCardThemeData.borderRadius;
+  CardThemeData get cardThemeData => Theme.of(this).extension<CardThemeData>()!;
+  BorderRadius? get borderRadius => cardThemeData.borderRadius;
 }

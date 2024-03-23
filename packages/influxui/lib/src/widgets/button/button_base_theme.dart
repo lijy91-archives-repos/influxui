@@ -13,18 +13,16 @@ class ButtonBaseThemeData extends ThemeExtension<ButtonBaseThemeData>
   const ButtonBaseThemeData({
     this.filledStyle,
     this.lightStyle,
-    this.outlineStyle,
+    this.outlinedStyle,
     this.subtleStyle,
     this.transparentStyle,
-    this.whiteStyle,
   });
 
   final ButtonBaseStyle? filledStyle;
+  final ButtonBaseStyle? outlinedStyle;
   final ButtonBaseStyle? lightStyle;
-  final ButtonBaseStyle? outlineStyle;
   final ButtonBaseStyle? subtleStyle;
   final ButtonBaseStyle? transparentStyle;
-  final ButtonBaseStyle? whiteStyle;
 }
 
 class ButtonBaseTheme extends InheritedTheme {

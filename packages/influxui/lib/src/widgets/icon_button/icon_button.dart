@@ -17,18 +17,19 @@ typedef IconWidgetBuilder = Widget Function(
 
 enum IconButtonVariant {
   filled,
+  outlined,
   light,
-  outline,
   subtle,
-  transparent,
-  white;
+  transparent;
 }
 
 class IconButtonSize extends Size {
   IconButtonSize(super.width, super.height);
+  static const ExtendedSize tiny = ExtendedSize.tiny;
   static const ExtendedSize small = ExtendedSize.small;
   static const ExtendedSize medium = ExtendedSize.medium;
   static const ExtendedSize large = ExtendedSize.large;
+  static const ExtendedSize big = ExtendedSize.big;
 }
 
 class IconButton extends StatefulWidget {
@@ -40,7 +41,7 @@ class IconButton extends StatefulWidget {
     this.style,
     this.padding,
     this.color,
-    this.size,
+    this.size = ExtendedSize.medium,
     this.iconSize,
     this.onPressed,
   }) : assert(size is Size || size is ExtendedSize || size == null);
@@ -68,13 +69,15 @@ class _IconButtonState extends State<IconButton> {
     final IconButtonThemeData? themeData = IconButtonTheme.of(context);
     final IconButtonThemeData defaults = _IconButtonDefaults(context);
 
-    IconButtonStyle mergedStyle = widget.style ??
-        themeData?.mediumStyle ??
-        defaults.mediumStyle ??
-        const IconButtonStyle();
+    IconButtonStyle mergedStyle = widget.style ?? const IconButtonStyle();
 
     if (widget.size is ExtendedSize) {
       switch (widget.size) {
+        case ExtendedSize.tiny:
+          mergedStyle = mergedStyle // merge tiny style
+              .merge(themeData?.tinyStyle)
+              .merge(defaults.tinyStyle);
+          break;
         case ExtendedSize.small:
           mergedStyle = mergedStyle // merge small style
               .merge(themeData?.smallStyle)
@@ -89,6 +92,11 @@ class _IconButtonState extends State<IconButton> {
           mergedStyle = mergedStyle // merge large style
               .merge(themeData?.largeStyle)
               .merge(defaults.largeStyle);
+          break;
+        case ExtendedSize.big:
+          mergedStyle = mergedStyle // merge big style
+              .merge(themeData?.bigStyle)
+              .merge(defaults.bigStyle);
           break;
       }
     } else if (widget.size is Size) {
@@ -113,7 +121,7 @@ class _IconButtonState extends State<IconButton> {
       variant: ButtonBaseVariant.valueOf(widget.variant?.name),
       padding: widget.padding,
       color: widget.color,
-      borderRadius: themeData?.borderRadius ?? defaults.borderRadius,
+      borderRadius: mergedStyle.borderRadius,
       pressedOpacity: themeData?.pressedOpacity ?? defaults.pressedOpacity,
       mouseCursor: widget.enabled
           ? SystemMouseCursors.click
@@ -144,32 +152,50 @@ class _IconButtonDefaults extends IconButtonThemeData {
   final BuildContext context;
 
   @override
-  get borderRadius => const BorderRadius.all(Radius.circular(4));
+  get pressedOpacity => 0.8;
 
   @override
-  get pressedOpacity => 0.8;
+  get tinyStyle {
+    return const IconButtonStyle(
+      borderRadius: BorderRadius.all(Radius.circular(4)),
+      size: Size(24, 24),
+      iconSize: 18,
+    );
+  }
 
   @override
   get smallStyle {
     return const IconButtonStyle(
-      size: Size(22, 22),
-      iconSize: 16,
+      borderRadius: BorderRadius.all(Radius.circular(4)),
+      size: Size(28, 28),
+      iconSize: 22,
     );
   }
 
   @override
   get mediumStyle {
     return const IconButtonStyle(
-      size: Size(28, 28),
-      iconSize: 20,
+      borderRadius: BorderRadius.all(Radius.circular(6)),
+      size: Size(32, 32),
+      iconSize: 24,
     );
   }
 
   @override
   get largeStyle {
     return const IconButtonStyle(
-      size: Size(34, 34),
-      iconSize: 24,
+      borderRadius: BorderRadius.all(Radius.circular(6)),
+      size: Size(36, 36),
+      iconSize: 28,
+    );
+  }
+
+  @override
+  get bigStyle {
+    return const IconButtonStyle(
+      borderRadius: BorderRadius.all(Radius.circular(6)),
+      size: Size(40, 40),
+      iconSize: 32,
     );
   }
 }

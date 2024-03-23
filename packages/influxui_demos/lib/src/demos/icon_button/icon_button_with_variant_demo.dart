@@ -8,14 +8,7 @@ class IconButtonWithVariantDemo extends StatelessWidget {
     return Wrap(
       spacing: 10,
       children: [
-        for (final variant in [
-          IconButtonVariant.filled,
-          IconButtonVariant.light,
-          IconButtonVariant.outline,
-          IconButtonVariant.subtle,
-          IconButtonVariant.transparent,
-          IconButtonVariant.white,
-        ])
+        for (final variant in IconButtonVariant.values)
           IconButton(
             ExtendedIcons.light_mode,
             variant: variant,

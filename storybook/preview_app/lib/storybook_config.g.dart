@@ -13,10 +13,6 @@ import 'package:storybook_dart/storybook_dart.dart';
 
 final StorybookConfig storybookConfig = StorybookConfig(
   stories: [
-    IconButtonDefaultStory(),
-    IconButtonWithVariantStory(),
-    IconButtonWithSizeStory(),
-    IconButtonWithColorStory(),
     AlertDefaultStory(),
     AvatarDefaultStory(),
     BadgeDefaultStory(),
@@ -26,6 +22,10 @@ final StorybookConfig storybookConfig = StorybookConfig(
     ButtonWithColorStory(),
     CloseButtonDefaultStory(),
     DividerDefaultStory(),
+    IconButtonDefaultStory(),
+    IconButtonWithVariantStory(),
+    IconButtonWithSizeStory(),
+    IconButtonWithColorStory(),
     KbdDefaultStory(),
     KbdWithSizeStory(),
     LoaderDefaultStory(),

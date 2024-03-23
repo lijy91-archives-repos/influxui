@@ -8,29 +8,18 @@ void main() {
       'checkbox',
       (_) => const Checkbox(
         value: true,
-        label: 'Checkbox',
       ),
     );
     testGolden(
       'checkbox-value-true',
       (_) => const Checkbox(
         value: false,
-        label: 'Checkbox',
       ),
     );
     testGolden(
       'checkbox-value-false',
       (_) => const Checkbox(
         value: false,
-        label: 'Checkbox',
-      ),
-    );
-    testGolden(
-      'checkbox-value-null',
-      (_) => const Checkbox(
-        value: null,
-        tristate: true,
-        label: 'Checkbox',
       ),
     );
   });

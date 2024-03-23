@@ -3,19 +3,24 @@ import 'package:flutter/widgets.dart';
 
 class IconButtonStyle with Diagnosticable {
   const IconButtonStyle({
+    this.borderRadius,
     this.size,
     this.iconSize,
   });
+
+  final BorderRadius? borderRadius;
 
   final Size? size;
 
   final double? iconSize;
 
   IconButtonStyle copyWith({
+    BorderRadius? borderRadius,
     Size? size,
     double? iconSize,
   }) {
     return IconButtonStyle(
+      borderRadius: borderRadius ?? this.borderRadius,
       size: size ?? this.size,
       iconSize: iconSize ?? this.iconSize,
     );
@@ -31,6 +36,7 @@ class IconButtonStyle with Diagnosticable {
       return this;
     }
     return copyWith(
+      borderRadius: borderRadius ?? style.borderRadius,
       size: size ?? style.size,
       iconSize: iconSize ?? style.iconSize,
     );
