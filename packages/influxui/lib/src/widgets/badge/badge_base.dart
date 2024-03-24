@@ -172,6 +172,7 @@ class _BadgeBaseDefaults extends BadgeBaseThemeData {
     }
     return const BadgeBaseStyle(
       colorShade: -1,
+      foregroundColorShade: 600,
       borderColorShade: 600,
     );
   }

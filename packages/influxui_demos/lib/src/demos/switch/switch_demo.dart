@@ -13,15 +13,13 @@ class _SwitchDemoState extends State<SwitchDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Switch(
-        value: _value,
-        onChanged: (value) {
-          setState(() {
-            _value = value;
-          });
-        },
-      ),
+    return Switch(
+      value: _value,
+      onChanged: (value) {
+        setState(() {
+          _value = value;
+        });
+      },
     );
   }
 }

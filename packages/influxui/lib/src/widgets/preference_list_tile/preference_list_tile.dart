@@ -6,6 +6,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:influxui/widgets.dart';
 
 // These constants were eyeballed from iOS 14.4 Settings app for base, Notes for
 // notched without leading, and Reminders app for notched with leading.
@@ -330,8 +331,8 @@ class _PreferenceListTileState extends State<PreferenceListTile> {
     // default color that matched the iOS-style.
     Color? backgroundColor = widget.backgroundColor;
     if (_tapped) {
-      backgroundColor = widget.backgroundColorActivated ??
-          CupertinoColors.systemGrey4.resolveFrom(context);
+      backgroundColor =
+          widget.backgroundColorActivated ?? ExtendedColors.gray.shade50;
     }
 
     double minHeight;

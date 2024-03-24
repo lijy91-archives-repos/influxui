@@ -2,6 +2,7 @@ import 'package:flutter/material.dart'
     show Brightness, Colors, Theme, ThemeData;
 import 'package:flutter/widgets.dart';
 import 'package:influxui/src/widgets/extended_theme/extended_colors.dart';
+import 'package:influxui/src/widgets/gapped_row/gapped_row.dart';
 import 'package:influxui/src/widgets/navigation_rail/navigation_rail_destination.dart';
 import 'package:influxui/src/widgets/navigation_rail/navigation_rail_theme.dart';
 import 'package:influxui/src/widgets/web_icon/web_icon.dart';
@@ -105,7 +106,7 @@ class __RailDestinationState extends State<_RailDestination> {
   Widget build(BuildContext context) {
     ShapeBorder? shapeBorder = RoundedRectangleBorder(
       side: const BorderSide(color: Colors.transparent),
-      borderRadius: BorderRadius.circular(4),
+      borderRadius: BorderRadius.circular(6),
     );
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -132,7 +133,7 @@ class __RailDestinationState extends State<_RailDestination> {
               child: Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(
-                  vertical: 6,
+                  vertical: 8,
                   horizontal: 8,
                 ),
                 child: Align(
@@ -141,32 +142,26 @@ class __RailDestinationState extends State<_RailDestination> {
                   heightFactor: 1.0,
                   child: DefaultTextStyle(
                     style: widget.labelTextStyle ?? const TextStyle(),
-                    child: Row(
+                    child: GappedRow(
+                      gap: 12,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         if (widget.icon != null || widget.iconBuilder != null)
-                          Container(
-                            padding: const EdgeInsets.only(
-                              right: 8,
-                            ),
-                            child: IconTheme(
-                              data: widget.iconTheme ?? const IconThemeData(),
-                              child: Builder(
-                                builder: (_) {
-                                  if (widget.iconBuilder != null) {
-                                    return widget.iconBuilder!(context);
-                                  }
-                                  return WebIcon(widget.icon);
-                                },
-                              ),
+                          IconTheme(
+                            data: widget.iconTheme ?? const IconThemeData(),
+                            child: Builder(
+                              builder: (_) {
+                                if (widget.iconBuilder != null) {
+                                  return widget.iconBuilder!(context);
+                                }
+                                return WebIcon(widget.icon);
+                              },
                             ),
                           ),
                         Expanded(
-                          child: SizedBox(
-                            child: Text(
-                              widget.label!,
-                              style: widget.labelTextStyle,
-                            ),
+                          child: Text(
+                            widget.label!,
+                            style: widget.labelTextStyle,
                           ),
                         ),
                       ],
@@ -193,36 +188,38 @@ class _NavigationRailDefaults extends NavigationRailThemeData {
   @override
   IconThemeData? get unselectedIconTheme {
     return IconThemeData(
-      color: _isDark ? ExtendedColors.white : ExtendedColors.black,
-      size: 16,
+      color: _isDark ? ExtendedColors.white : ExtendedColors.gray.shade600,
+      size: 22,
     );
   }
 
   @override
   TextStyle? get unselectedLabelStyle {
     return _theme.textTheme.bodyMedium?.copyWith(
-      color: _isDark ? ExtendedColors.white : ExtendedColors.black,
+      color: _isDark ? ExtendedColors.white : ExtendedColors.gray.shade900,
+      fontWeight: FontWeight.w500,
     );
   }
 
   @override
   IconThemeData? get selectedIconTheme {
     return IconThemeData(
-      color: _isDark ? ExtendedColors.white : ExtendedColors.black,
-      size: 16,
+      color: _isDark ? ExtendedColors.white : ExtendedColors.gray.shade600,
+      size: 22,
     );
   }
 
   @override
   TextStyle? get selectedLabelStyle {
     return _theme.textTheme.bodyMedium?.copyWith(
-      color: _isDark ? ExtendedColors.white : ExtendedColors.black,
+      color: _isDark ? ExtendedColors.white : ExtendedColors.gray.shade900,
+      fontWeight: FontWeight.w500,
     );
   }
 
   @override
   Color? get indicatorColor {
-    return _isDark ? ExtendedColors.gray : ExtendedColors.gray.shade300;
+    return _isDark ? ExtendedColors.gray : ExtendedColors.gray.shade100;
   }
 
   @override

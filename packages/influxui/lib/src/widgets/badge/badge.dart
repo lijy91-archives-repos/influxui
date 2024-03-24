@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' show ThemeData, Theme;
+import 'package:flutter/material.dart' show Theme, ThemeData;
 import 'package:flutter/widgets.dart';
 import 'package:influxui/src/widgets/badge/badge_base.dart';
 import 'package:influxui/src/widgets/badge/badge_style.dart';

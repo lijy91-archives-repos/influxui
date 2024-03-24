@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+extension MaterialColorExtension on MaterialColor {
+  Color get shade950 => this[950]!;
+}
+
 class ExtendedColors {
   static const Color black = Color(0xff000000);
   static const Color white = Color(0xffffffff);
