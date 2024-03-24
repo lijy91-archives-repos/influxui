@@ -279,40 +279,31 @@ class _DividerDefaults extends DividerThemeData {
 
   @override
   get smallStyle {
-    return const DividerStyle(
-      padding: EdgeInsets.symmetric(horizontal: 8),
-      minimumSize: Size.square(22),
+    return DividerStyle(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      minimumSize: const Size.square(22),
       iconSize: 16,
-      labelStyle: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w600,
-      ),
+      labelStyle: _theme.textTheme.labelSmall,
     );
   }
 
   @override
   get mediumStyle {
-    return const DividerStyle(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      minimumSize: Size.square(28),
+    return DividerStyle(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      minimumSize: const Size.square(28),
       iconSize: 20,
-      labelStyle: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w600,
-      ),
+      labelStyle: _theme.textTheme.labelSmall,
     );
   }
 
   @override
   get largeStyle {
-    return const DividerStyle(
-      padding: EdgeInsets.symmetric(horizontal: 12),
-      minimumSize: Size.square(34),
+    return DividerStyle(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      minimumSize: const Size.square(34),
       iconSize: 24,
-      labelStyle: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-      ),
+      labelStyle: _theme.textTheme.labelSmall,
     );
   }
 }

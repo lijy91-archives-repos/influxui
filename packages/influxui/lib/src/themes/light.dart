@@ -7,7 +7,7 @@ final influxLight = ThemeData(
     primary: ExtendedColors.blue,
     background: ExtendedColors.gray.shade100,
     surface: ExtendedColors.white,
-    outline: ExtendedColors.gray.shade200,
+    outline: ExtendedColors.gray.shade300,
   ),
   extensions: const [
     ExtendedThemeData(
