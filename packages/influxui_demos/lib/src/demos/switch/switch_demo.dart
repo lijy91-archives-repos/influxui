@@ -1,4 +1,3 @@
-
 import 'package:influxui/influxui.dart';
 
 class SwitchDemo extends StatefulWidget {

@@ -17,7 +17,5 @@ export 'src/widgets/loader/loader.dart';
 export 'src/widgets/menu/menu.dart';
 export 'src/widgets/navigation_rail/navigation_rail.dart';
 export 'src/widgets/page_scaffold/page_scaffold.dart';
-export 'src/widgets/preference_list_section/preference_list_section.dart';
-export 'src/widgets/preference_list_tile/preference_list_tile.dart';
 export 'src/widgets/skeleton/skeleton.dart';
 export 'src/widgets/switch/switch.dart';
