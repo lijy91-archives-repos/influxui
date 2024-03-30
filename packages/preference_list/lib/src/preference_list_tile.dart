@@ -3,32 +3,28 @@ import 'package:influxui/influxui.dart';
 class PreferenceListTile extends StatelessWidget {
   const PreferenceListTile({
     Key? key,
-    this.padding,
-    this.leading,
-    this.title,
+    required this.title,
     this.subtitle,
     this.additionalInfo,
-    this.accessoryView,
-    this.bottomView,
-    this.disabled = false,
+    this.leading,
+    this.trailing,
     this.onTap,
+    this.padding,
   }) : super(key: key);
 
-  final EdgeInsets? padding;
-  final Widget? leading;
   final Widget? title;
   final Widget? subtitle;
   final Widget? additionalInfo;
-  final Widget? accessoryView;
-  final Widget? bottomView;
-  final bool? disabled;
+  final Widget? leading;
+  final Widget? trailing;
   final VoidCallback? onTap;
+  final EdgeInsets? padding;
 
   _onTap() {
     onTap?.call();
   }
 
-  Widget buildDetailText(BuildContext context) {
+  Widget buildAdditionalInfo(BuildContext context) {
     if (additionalInfo != null) {
       return DefaultTextStyle(
         style: const TextStyle(
@@ -42,9 +38,9 @@ class PreferenceListTile extends StatelessWidget {
     }
   }
 
-  Widget buildAccessoryView(BuildContext context) {
-    if (accessoryView != null) {
-      return accessoryView!;
+  Widget buildTrailing(BuildContext context) {
+    if (trailing != null) {
+      return trailing!;
     } else {
       return Padding(
         padding: const EdgeInsets.only(left: 4),
@@ -57,15 +53,11 @@ class PreferenceListTile extends StatelessWidget {
     }
   }
 
-  Widget buildBottomView(BuildContext context) {
-    return bottomView ?? Container();
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: disabled! ? null : _onTap,
+      onTap: _onTap,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -109,12 +101,11 @@ class PreferenceListTile extends StatelessWidget {
                       ],
                     ),
                   ),
-                buildDetailText(context),
-                buildAccessoryView(context),
+                buildAdditionalInfo(context),
+                buildTrailing(context),
               ],
             ),
           ),
-          buildBottomView(context),
         ],
       ),
     );
@@ -128,7 +119,7 @@ class RadioPreferenceListTile<T> extends PreferenceListTile {
     Widget? title,
     Widget? subtitle,
     Widget? additionalInfo,
-    Widget? accessoryView,
+    Widget? trailing,
     VoidCallback? onTap,
     @required this.value,
     @required this.groupValue,
@@ -139,7 +130,7 @@ class RadioPreferenceListTile<T> extends PreferenceListTile {
           title: title,
           subtitle: subtitle,
           additionalInfo: additionalInfo,
-          accessoryView: accessoryView,
+          trailing: trailing,
           onTap: onTap,
         );
 
@@ -154,7 +145,7 @@ class RadioPreferenceListTile<T> extends PreferenceListTile {
   }
 
   @override
-  Widget buildAccessoryView(BuildContext context) {
+  Widget buildTrailing(BuildContext context) {
     if (value != null && value == groupValue) {
       return Icon(
         ExtendedIcons.square,
@@ -173,7 +164,7 @@ class SwitchPreferenceListTile extends PreferenceListTile {
     Widget? title,
     Widget? subtitle,
     Widget? additionalInfo,
-    Widget? accessoryView,
+    Widget? trailing,
     VoidCallback? onTap,
     @required this.value,
     @required this.onChanged,
@@ -183,7 +174,7 @@ class SwitchPreferenceListTile extends PreferenceListTile {
           title: title,
           subtitle: subtitle,
           additionalInfo: additionalInfo,
-          accessoryView: accessoryView,
+          trailing: trailing,
           onTap: onTap,
         );
 
@@ -197,7 +188,7 @@ class SwitchPreferenceListTile extends PreferenceListTile {
   }
 
   @override
-  Widget buildAccessoryView(BuildContext context) {
+  Widget buildAdditionalInfo(BuildContext context) {
     return SizedBox(
       height: 22,
       width: 34,
@@ -218,7 +209,7 @@ class TextFieldPreferenceListTile extends PreferenceListTile {
     Widget? leading,
     Widget? title,
     Widget? subtitle,
-    Widget? accessoryView,
+    Widget? trailing,
     VoidCallback? onTap,
     this.placeholder,
     this.onChanged,
@@ -229,7 +220,7 @@ class TextFieldPreferenceListTile extends PreferenceListTile {
           leading: leading,
           title: title,
           subtitle: subtitle,
-          accessoryView: accessoryView,
+          trailing: trailing,
           onTap: onTap,
         );
 
@@ -239,10 +230,7 @@ class TextFieldPreferenceListTile extends PreferenceListTile {
   final ValueChanged<String>? onSubmitted;
 
   @override
-  bool get disabled => true;
-
-  @override
-  Widget buildDetailText(BuildContext context) {
+  Widget buildAdditionalInfo(BuildContext context) {
     return Expanded(
       child: TextField(
         // padding: EdgeInsets.zero,
