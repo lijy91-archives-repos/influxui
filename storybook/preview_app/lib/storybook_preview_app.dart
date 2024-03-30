@@ -28,17 +28,20 @@ class _HomePageState extends State<_HomePage> {
   }) {
     final story =
         widget.config.stories.firstWhereOrNull((e) => e.id == storyId);
-    return Center(
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        constraints: const BoxConstraints(maxWidth: 1200),
-        child: Builder(
-          builder: (context) {
-            if (story == null) {
-              return const Text('Not found');
-            }
-            return story.build(context, []);
-          },
+    return ColoredBox(
+      color: ExtendedColors.white,
+      child: Center(
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          constraints: const BoxConstraints(maxWidth: 1200),
+          child: Builder(
+            builder: (context) {
+              if (story == null) {
+                return const Text('Not found');
+              }
+              return story.build(context, []);
+            },
+          ),
         ),
       ),
     );

@@ -26,6 +26,7 @@ final StorybookConfig storybookConfig = StorybookConfig(
     CardDefaultStory(),
     CloseButtonDefaultStory(),
     DividerDefaultStory(),
+    DividerWithVariantStory(),
     IconButtonDefaultStory(),
     IconButtonWithVariantStory(),
     IconButtonWithSizeStory(),

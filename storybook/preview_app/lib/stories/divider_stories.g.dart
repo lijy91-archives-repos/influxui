@@ -27,3 +27,11 @@ mixin _$DividerDefaultStory on StoryObj<DividerMeta> {
   @override
   DividerMeta get meta => DividerMeta();
 }
+
+mixin _$DividerWithVariantStory on StoryObj<DividerMeta> {
+  @override
+  String get name => 'With Variant';
+
+  @override
+  DividerMeta get meta => DividerMeta();
+}
