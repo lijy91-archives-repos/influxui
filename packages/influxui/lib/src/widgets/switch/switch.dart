@@ -74,7 +74,7 @@ class _SwitchState extends State<Switch> with SingleTickerProviderStateMixin {
         child: Stack(
           children: [
             Container(
-              width: 44,
+              width: 40,
               height: 24,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
@@ -84,7 +84,7 @@ class _SwitchState extends State<Switch> with SingleTickerProviderStateMixin {
             AnimatedPositioned(
               duration: const Duration(milliseconds: 200),
               curve: Curves.easeInOut,
-              left: widget.value ? 22 : 2,
+              left: widget.value ? 18 : 2,
               top: 2,
               child: Container(
                 width: 20,

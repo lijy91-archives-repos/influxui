@@ -10,7 +10,6 @@ import 'package:influxui_demos/src/demos/divider/known_demos.dart';
 import 'package:influxui_demos/src/demos/icon_button/known_demos.dart';
 import 'package:influxui_demos/src/demos/kbd/known_demos.dart';
 import 'package:influxui_demos/src/demos/loader/known_demos.dart';
-import 'package:influxui_demos/src/demos/menu/known_demos.dart';
 import 'package:influxui_demos/src/demos/navigation_rail/known_demos.dart';
 import 'package:influxui_demos/src/demos/switch/known_demos.dart';
 
@@ -36,8 +35,6 @@ export 'kbd/kbd_demo.dart';
 export 'kbd/known_demos.dart';
 export 'loader/known_demos.dart';
 export 'loader/loader_demo.dart';
-export 'menu/known_demos.dart';
-export 'menu/menu_demo.dart';
 export 'navigation_rail/known_demos.dart';
 export 'navigation_rail/navigation_rail_demo.dart';
 export 'switch/known_demos.dart';
@@ -55,7 +52,6 @@ final Map<String, WidgetBuilder> kKnownDemos = {
   ...knownDividerDemos,
   ...knownKbdDemos,
   ...knownLoaderDemos,
-  ...knownMenuDemos,
   ...knownNavigationRailDemos,
   ...knownSwitchDemos,
 };
