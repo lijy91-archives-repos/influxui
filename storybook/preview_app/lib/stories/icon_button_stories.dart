@@ -1,4 +1,5 @@
 import 'package:influxui/influxui.dart';
+import 'package:preview_app/utils/constants.dart';
 import 'package:storybook_dart/storybook_dart.dart';
 import 'package:storybook_dart_annotation/storybook_dart_annotation.dart'
     as storybook;
@@ -64,11 +65,7 @@ class IconButtonWithSizeStory extends StoryObj<IconButtonMeta>
     return Wrap(
       spacing: 10,
       children: [
-        for (final size in [
-          IconButtonSize.small,
-          IconButtonSize.medium,
-          IconButtonSize.large,
-        ])
+        for (final size in kExtendedSizes)
           IconButton(
             TablerIcons.sun,
             size: size,
@@ -83,4 +80,27 @@ class IconButtonWithSizeStory extends StoryObj<IconButtonMeta>
   'With Color',
 )
 class IconButtonWithColorStory extends StoryObj<IconButtonMeta>
-    with _$IconButtonWithColorStory {}
+    with _$IconButtonWithColorStory {
+  @override
+  Widget build(BuildContext context, List<Arg> args) {
+    return Wrap(
+      direction: Axis.vertical,
+      spacing: 10,
+      children: [
+        for (final color in kExtendedColors)
+          Wrap(
+            spacing: 10,
+            children: [
+              for (final variant in IconButtonVariant.values)
+                IconButton(
+                  TablerIcons.sun,
+                  variant: variant,
+                  color: color,
+                  onPressed: () {},
+                ),
+            ],
+          ),
+      ],
+    );
+  }
+}

@@ -53,21 +53,13 @@ class ButtonWithVariantStory extends StoryObj<ButtonMeta>
   @override
   Widget build(BuildContext context, List<Arg> args) {
     return Wrap(
-      direction: Axis.vertical,
       spacing: 10,
       children: [
         for (final variant in ButtonVariant.values)
-          Wrap(
-            spacing: 10,
-            children: [
-              for (final color in kAllColors)
-                Button(
-                  label: 'Button',
-                  variant: variant,
-                  color: color,
-                  onPressed: () {},
-                ),
-            ],
+          Button(
+            variant: variant,
+            label: 'Button',
+            onPressed: () {},
           ),
       ],
     );
@@ -81,10 +73,57 @@ class ButtonWithVariantStory extends StoryObj<ButtonMeta>
   ],
 )
 class ButtonWithSizeStory extends StoryObj<ButtonMeta>
-    with _$ButtonWithSizeStory {}
+    with _$ButtonWithSizeStory {
+  @override
+  Widget build(BuildContext context, List<Arg> args) {
+    return Wrap(
+      direction: Axis.vertical,
+      spacing: 10,
+      children: [
+        for (final variant in ButtonVariant.values)
+          Wrap(
+            spacing: 10,
+            crossAxisAlignment: WrapCrossAlignment.end,
+            children: [
+              for (final size in kExtendedSizes)
+                Button(
+                  label: 'Button',
+                  variant: variant,
+                  size: size,
+                  onPressed: () {},
+                ),
+            ],
+          ),
+      ],
+    );
+  }
+}
 
 @storybook.Story(
   'With Color',
 )
 class ButtonWithColorStory extends StoryObj<ButtonMeta>
-    with _$ButtonWithColorStory {}
+    with _$ButtonWithColorStory {
+  @override
+  Widget build(BuildContext context, List<Arg> args) {
+    return Wrap(
+      direction: Axis.vertical,
+      spacing: 10,
+      children: [
+        for (final color in kExtendedColors)
+          Wrap(
+            spacing: 10,
+            children: [
+              for (final variant in ButtonVariant.values)
+                Button(
+                  label: 'Button',
+                  variant: variant,
+                  color: color,
+                  onPressed: () {},
+                ),
+            ],
+          ),
+      ],
+    );
+  }
+}

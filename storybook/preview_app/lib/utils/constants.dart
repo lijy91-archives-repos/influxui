@@ -1,8 +1,6 @@
 import 'package:influxui/influxui.dart';
 
-final kAllColors = [
-  ExtendedColors.black,
-  ExtendedColors.white,
+final kExtendedColors = [
   ExtendedColors.slate,
   ExtendedColors.gray,
   ExtendedColors.zinc,

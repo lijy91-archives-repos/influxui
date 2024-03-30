@@ -18,3 +18,15 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {},
 };
+
+export const With_Size: Story = {
+  args: {},
+};
+
+export const With_Color: Story = {
+  args: {},
+};
+
+export const With_Variant: Story = {
+  args: {},
+};

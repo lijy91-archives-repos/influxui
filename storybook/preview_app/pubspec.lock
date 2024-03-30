@@ -138,7 +138,7 @@ packages:
     source: hosted
     version: "4.9.0"
   collection:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: collection
       sha256: ee67cb0715911d28db6bf4af1026078bd6f0128b07a5f66fb2ed94ec6783c09a
@@ -418,6 +418,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.1"
+  preference_list:
+    dependency: "direct main"
+    description:
+      path: "../../packages/preference_list"
+      relative: true
+    source: path
+    version: "0.0.2"
   pub_semver:
     dependency: transitive
     description:

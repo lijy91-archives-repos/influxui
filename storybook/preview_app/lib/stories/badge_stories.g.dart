@@ -27,3 +27,27 @@ mixin _$BadgeDefaultStory on StoryObj<BadgeMeta> {
   @override
   BadgeMeta get meta => BadgeMeta();
 }
+
+mixin _$BadgeWithSizeStory on StoryObj<BadgeMeta> {
+  @override
+  String get name => 'With Size';
+
+  @override
+  BadgeMeta get meta => BadgeMeta();
+}
+
+mixin _$BadgeWithColorStory on StoryObj<BadgeMeta> {
+  @override
+  String get name => 'With Color';
+
+  @override
+  BadgeMeta get meta => BadgeMeta();
+}
+
+mixin _$BadgeWithVariantStory on StoryObj<BadgeMeta> {
+  @override
+  String get name => 'With Variant';
+
+  @override
+  BadgeMeta get meta => BadgeMeta();
+}
