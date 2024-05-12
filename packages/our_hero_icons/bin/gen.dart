@@ -11,7 +11,6 @@ class IconFont {
     required this.outputClassFile,
     required this.className,
     required this.package,
-    required this.format,
     required this.fontName,
   });
 
@@ -20,7 +19,6 @@ class IconFont {
   final String outputClassFile;
   final String className;
   final String package;
-  final bool format;
   final String fontName;
 
   static IconFont create(int size, String style) {
@@ -30,7 +28,6 @@ class IconFont {
       outputClassFile: 'lib/src/heroicons_${size}_$style.dart',
       className: 'HeroIcons$size$style',
       package: 'our_hero_icons',
-      format: true,
       fontName: 'heroicons_${size}_$style',
     );
   }
@@ -79,6 +76,7 @@ Future<void> main(List<String> args) async {
       familyName: svgToOtfResult.font.familyName,
       className: iconFont.className,
       fontFileName: iconFont.outputFontFile,
+      package: iconFont.package,
     );
 
     // Writing class content to a file

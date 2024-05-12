@@ -20,7 +20,7 @@ dev_dependencies:
 
 flutter:
   fonts:
-    - family: heroicons_20_solid
+    - family: heroicons_16_solid
       fonts:
         - asset: fonts/heroicons_16_solid.otf
     - family: heroicons_20_solid
