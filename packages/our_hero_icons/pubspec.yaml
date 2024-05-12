@@ -1,0 +1,34 @@
+name: our_hero_icons
+description: our_hero_icons
+version: 0.1.0
+homepage: https://github.com/leanflutter/influxui/tree/main/packages/our_hero_icons
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.3.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  icon_font_generator: ^4.0.0
+  mostly_reasonable_lints: ^0.1.1
+  recase: ^4.1.0
+
+flutter:
+  fonts:
+    - family: heroicons_20_solid
+      fonts:
+        - asset: fonts/heroicons_16_solid.otf
+    - family: heroicons_20_solid
+      fonts:
+        - asset: fonts/heroicons_20_solid.otf
+    - family: heroicons_24_outline
+      fonts:
+        - asset: fonts/heroicons_24_outline.otf
+    - family: heroicons_24_solid
+      fonts:
+        - asset: fonts/heroicons_24_solid.otf
