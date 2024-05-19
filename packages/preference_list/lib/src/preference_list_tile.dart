@@ -41,16 +41,8 @@ class PreferenceListTile extends StatelessWidget {
   Widget buildTrailing(BuildContext context) {
     if (trailing != null) {
       return trailing!;
-    } else {
-      return Padding(
-        padding: const EdgeInsets.only(left: 4),
-        child: Icon(
-          ExtendedIcons.chevron_right,
-          size: 14,
-          color: const Color(0xff999999),
-        ),
-      );
     }
+    return Container();
   }
 
   @override
@@ -243,6 +235,19 @@ class TextFieldPreferenceListTile extends PreferenceListTile {
         onEditingComplete: onEditingComplete,
         onSubmitted: onSubmitted,
       ),
+    );
+  }
+}
+
+class PreferenceListTileChevron extends StatelessWidget {
+  const PreferenceListTileChevron({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Icon(
+      ExtendedIcons.chevron_right,
+      size: 18,
+      color: Theme.of(context).textTheme.bodyMedium?.color,
     );
   }
 }
