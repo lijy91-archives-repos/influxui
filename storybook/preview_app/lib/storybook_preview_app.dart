@@ -64,25 +64,28 @@ class _HomePageState extends State<_HomePage> {
                       _selectedStoryId = story.id;
                     });
                   },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: _selectedStoryId == story.id
-                          ? Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withOpacity(0.1)
-                          : null,
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 8,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(story.meta.title),
-                        SelectableText(story.name),
-                      ],
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: _selectedStoryId == story.id
+                            ? Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withOpacity(0.1)
+                            : null,
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(story.meta.title),
+                          SelectableText(story.name),
+                        ],
+                      ),
                     ),
                   ),
                 );

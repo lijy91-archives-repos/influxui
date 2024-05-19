@@ -22,11 +22,16 @@ class IconFont {
   final String fontName;
 
   static IconFont create(int size, String style) {
+    String className = 'HeroIcons$size$style';
+    if (size == 24) {
+      className = 'HeroIcons';
+      if (style == 'solid') className = 'HeroIconsSolid';
+    }
     return IconFont(
-      inputSvgDir: 'heroicons/optimized/$size/$style',
+      inputSvgDir: 'heroicons/src/$size/$style',
       outputFontFile: 'fonts/heroicons_${size}_$style.otf',
       outputClassFile: 'lib/src/heroicons_${size}_$style.dart',
-      className: 'HeroIcons$size$style',
+      className: className,
       package: 'our_hero_icons',
       fontName: 'heroicons_${size}_$style',
     );
@@ -56,9 +61,13 @@ Future<void> main(List<String> args) async {
     final Map<String, String> svgMap = {};
     for (var svgFile in svgFiles) {
       if (svgFile is File) {
-        final svg = svgFile.readAsStringSync();
+        ProcessResult result = Process.runSync(
+          'picosvg',
+          [svgFile.path],
+        );
+
         final iconName = svgFile.path.split('/').last.split('.').first;
-        svgMap[iconName] = svg;
+        svgMap[iconName] = result.stdout.toString();
       }
     }
     // Generating font
