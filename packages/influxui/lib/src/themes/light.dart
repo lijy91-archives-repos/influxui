@@ -5,8 +5,7 @@ final influxLight = ThemeData(
   brightness: Brightness.light,
   colorScheme: ColorScheme.light(
     primary: ExtendedColors.blue,
-    background: ExtendedColors.gray.shade100,
-    surface: ExtendedColors.white,
+    surface: ExtendedColors.gray.shade100,
     outline: ExtendedColors.gray.shade200,
   ),
   textTheme: TextTheme(

@@ -2,7 +2,7 @@ import 'package:influxui/influxui.dart';
 
 class PreferenceListTile extends StatelessWidget {
   const PreferenceListTile({
-    Key? key,
+    super.key,
     required this.title,
     this.subtitle,
     this.additionalInfo,
@@ -10,7 +10,7 @@ class PreferenceListTile extends StatelessWidget {
     this.trailing,
     this.onTap,
     this.padding,
-  }) : super(key: key);
+  });
 
   final Widget? title;
   final Widget? subtitle;
@@ -106,25 +106,17 @@ class PreferenceListTile extends StatelessWidget {
 
 class RadioPreferenceListTile<T> extends PreferenceListTile {
   const RadioPreferenceListTile({
-    Key? key,
-    Widget? leading,
-    Widget? title,
-    Widget? subtitle,
-    Widget? additionalInfo,
-    Widget? trailing,
-    VoidCallback? onTap,
+    super.key,
+    super.leading,
+    super.title,
+    super.subtitle,
+    super.additionalInfo,
+    super.trailing,
+    super.onTap,
     @required this.value,
     @required this.groupValue,
     @required this.onChanged,
-  }) : super(
-          key: key,
-          leading: leading,
-          title: title,
-          subtitle: subtitle,
-          additionalInfo: additionalInfo,
-          trailing: trailing,
-          onTap: onTap,
-        );
+  });
 
   final T? value;
   final T? groupValue;
@@ -151,24 +143,16 @@ class RadioPreferenceListTile<T> extends PreferenceListTile {
 
 class SwitchPreferenceListTile extends PreferenceListTile {
   const SwitchPreferenceListTile({
-    Key? key,
-    Widget? leading,
-    Widget? title,
-    Widget? subtitle,
-    Widget? additionalInfo,
-    Widget? trailing,
-    VoidCallback? onTap,
+    super.key,
+    super.leading,
+    super.title,
+    super.subtitle,
+    super.additionalInfo,
+    super.trailing,
+    super.onTap,
     @required this.value,
     @required this.onChanged,
-  }) : super(
-          key: key,
-          leading: leading,
-          title: title,
-          subtitle: subtitle,
-          additionalInfo: additionalInfo,
-          trailing: trailing,
-          onTap: onTap,
-        );
+  });
 
   final bool? value;
   final ValueChanged<bool>? onChanged;
@@ -197,24 +181,17 @@ class SwitchPreferenceListTile extends PreferenceListTile {
 
 class TextFieldPreferenceListTile extends PreferenceListTile {
   const TextFieldPreferenceListTile({
-    Key? key,
-    Widget? leading,
-    Widget? title,
-    Widget? subtitle,
-    Widget? trailing,
-    VoidCallback? onTap,
+    super.key,
+    super.leading,
+    super.title,
+    super.subtitle,
+    super.trailing,
+    super.onTap,
     this.placeholder,
     this.onChanged,
     this.onEditingComplete,
     this.onSubmitted,
-  }) : super(
-          key: key,
-          leading: leading,
-          title: title,
-          subtitle: subtitle,
-          trailing: trailing,
-          onTap: onTap,
-        );
+  });
 
   final String? placeholder;
   final ValueChanged<String>? onChanged;

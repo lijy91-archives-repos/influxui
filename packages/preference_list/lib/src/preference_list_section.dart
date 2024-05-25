@@ -2,12 +2,12 @@ import 'package:influxui/influxui.dart';
 
 class PreferenceListSection extends StatelessWidget {
   const PreferenceListSection({
-    Key? key,
+    super.key,
     this.leading,
     this.header,
     this.footer,
     this.children = const <Widget>[],
-  }) : super(key: key);
+  });
 
   final Widget? leading;
   final Widget? header;

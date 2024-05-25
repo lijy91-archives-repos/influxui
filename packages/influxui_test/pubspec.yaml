@@ -15,7 +15,7 @@ dependencies:
   influxui: ^0.1.0
 
 dev_dependencies:
-  mostly_reasonable_lints: ^0.1.1
+  mostly_reasonable_lints: ^0.1.2
 
 flutter:
   fonts:

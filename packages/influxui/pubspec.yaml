@@ -21,5 +21,5 @@ dev_dependencies:
     sdk: flutter
   influxui_test:
     path: ../influxui_test
-  mostly_reasonable_lints: ^0.1.1
+  mostly_reasonable_lints: ^0.1.2
   theme_tailor: ^2.0.2
