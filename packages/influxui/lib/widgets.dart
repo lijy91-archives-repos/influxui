@@ -15,6 +15,5 @@ export 'src/widgets/icon_button/icon_button.dart';
 export 'src/widgets/kbd/kbd.dart';
 export 'src/widgets/loader/loader.dart';
 export 'src/widgets/navigation_rail/navigation_rail.dart';
-export 'src/widgets/page_scaffold/page_scaffold.dart';
 export 'src/widgets/skeleton/skeleton.dart';
 export 'src/widgets/switch/switch.dart';
