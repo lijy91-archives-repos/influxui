@@ -196,7 +196,7 @@ class _NavigationRailDefaults extends NavigationRailThemeData {
   @override
   TextStyle? get unselectedLabelStyle {
     return _theme.textTheme.bodyMedium?.copyWith(
-      color: _isDark ? ExtendedColors.white : ExtendedColors.gray.shade900,
+      color: _isDark ? ExtendedColors.white : ExtendedColors.neutral.shade900,
       fontWeight: FontWeight.w500,
     );
   }
@@ -212,14 +212,16 @@ class _NavigationRailDefaults extends NavigationRailThemeData {
   @override
   TextStyle? get selectedLabelStyle {
     return _theme.textTheme.bodyMedium?.copyWith(
-      color: _isDark ? ExtendedColors.white : ExtendedColors.gray.shade900,
+      color: _isDark ? ExtendedColors.white : ExtendedColors.neutral.shade900,
       fontWeight: FontWeight.w500,
     );
   }
 
   @override
   Color? get indicatorColor {
-    return _isDark ? ExtendedColors.gray : ExtendedColors.gray.shade100;
+    return _isDark
+        ? ExtendedColors.neutral.shade900
+        : ExtendedColors.gray.shade100;
   }
 
   @override

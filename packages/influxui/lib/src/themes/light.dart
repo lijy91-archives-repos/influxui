@@ -3,9 +3,11 @@ import 'package:influxui/src/widgets/extended_theme/extended_theme.dart';
 
 final influxLight = ThemeData(
   brightness: Brightness.light,
+  scaffoldBackgroundColor: ExtendedColors.gray.shade100,
   colorScheme: ColorScheme.light(
     primary: ExtendedColors.blue,
     surface: ExtendedColors.gray.shade100,
+    surfaceContainerLow: ExtendedColors.white,
     outline: ExtendedColors.gray.shade200,
   ),
   textTheme: TextTheme(

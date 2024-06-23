@@ -12,7 +12,7 @@ class Card extends StatelessWidget {
     final CardThemeData defaults = _CardDefaults(context);
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
+        color: Theme.of(context).colorScheme.surfaceContainerLow,
         borderRadius: themeData?.borderRadius ?? defaults.borderRadius,
         boxShadow: <BoxShadow>[
           BoxShadow(

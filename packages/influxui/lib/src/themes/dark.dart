@@ -5,10 +5,12 @@ final influxDark = ThemeData(
   brightness: Brightness.dark,
   primaryColor: ExtendedColors.blue,
   primaryColorDark: ExtendedColors.blue,
-  colorScheme: const ColorScheme.dark(
+  scaffoldBackgroundColor: ExtendedColors.neutral.shade900,
+  colorScheme: ColorScheme.dark(
     primary: ExtendedColors.blue,
-    surface: ExtendedColors.black,
-    outline: ExtendedColors.black,
+    surface: ExtendedColors.neutral.shade900,
+    surfaceContainerLow: ExtendedColors.neutral.shade800,
+    outline: ExtendedColors.neutral.shade700.withOpacity(0.6),
   ),
   extensions: const [
     ExtendedThemeData(
